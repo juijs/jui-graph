@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.grid.panel", [ "util.base" ], function(_) {
 
     /**

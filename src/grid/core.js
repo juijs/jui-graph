@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.grid.core", [ "util.base", "util.math", "chart.grid.draw2d", "chart.grid.draw3d" ],
 	function(_, math, Draw2D, Draw3D) {
 

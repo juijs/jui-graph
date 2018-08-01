@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.grid.rule", [ "util.scale", "util.base" ], function(UtilScale, _) {
 
 	/**

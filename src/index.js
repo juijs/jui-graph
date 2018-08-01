@@ -1,6 +1,6 @@
 if (typeof module == 'object' && module.exports) {
     try {
-        module.exports = require("juijs");
+        module.exports = require("juijs")
 
         require("./util/time.js")
         require("./util/transform.js")

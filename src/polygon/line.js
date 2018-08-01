@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.polygon.line", [], function() {
     var LinePolygon = function(x1, y1, d1, x2, y2, d2) {
         this.vertices = [

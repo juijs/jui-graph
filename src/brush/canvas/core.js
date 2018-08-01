@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.brush.canvas.core", [ "util.base" ], function(_) {
     var CanvasCoreBrush = function() {
         this.addPolygon = function(polygon, callback) {

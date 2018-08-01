@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.grid.dateblock", [ "util.time", "util.scale", "util.base" ], function(UtilTime, UtilScale, _) {
 
 	/**

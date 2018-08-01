@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("util.svg.element.path.symbol", [], function() {
 
     /**

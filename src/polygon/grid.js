@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.polygon.grid", [], function() {
     var GridPolygon = function(type, width, height, depth, x, y) {
         x = x || 0;

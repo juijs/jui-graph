@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.polygon.point", [], function() {
     var PointPolygon = function(x, y, d) {
         this.vertices = [

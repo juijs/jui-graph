@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("util.svg.element.path", [ "util.base" ], function(_) {
 
     /**

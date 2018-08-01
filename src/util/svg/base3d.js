@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("util.svg.base3d", [ "util.base", "util.math", "util.color" ], function(_, math, color) {
 
     /**

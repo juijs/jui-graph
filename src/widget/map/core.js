@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.widget.map.core", [], function() {
 
     /**

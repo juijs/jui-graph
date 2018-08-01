@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.brush.map.core", [], function() {
     /**
      * @class chart.brush.map.core

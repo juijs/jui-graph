@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("util.svg.element.transform", [ "util.base" ], function(_) { // polygon, polyline
 
     /**

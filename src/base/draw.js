@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.draw", [ "util.base" ], function(_) {
     /**
      * @class chart.draw

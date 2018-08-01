@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.defineUI("chart.plane", [ "chart.builder", "util.base" ], function(builder, _) {
     var UI = function() {
         var chart = null,

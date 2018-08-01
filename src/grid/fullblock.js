@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.grid.fullblock", [ "util.scale", "util.base" ], function(UtilScale, _) {
 
     /**

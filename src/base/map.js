@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.map", [ "util.base", "util.dom", "util.math", "util.svg" ], function(_, $, math, SVG) {
     /**
      * @class chart.grid.core

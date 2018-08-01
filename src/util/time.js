@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.redefine("util.time", [ "util.base" ], function(_) {
 
 	/**

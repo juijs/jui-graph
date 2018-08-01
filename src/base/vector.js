@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.vector", [], function() {
     var Vector = function(x, y, z) {
         this.x = x || 0;

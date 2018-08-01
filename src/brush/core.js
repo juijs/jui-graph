@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.brush.core", [ "util.base", "util.dom" ], function(_, $) {
     /**
      * @class chart.brush.core

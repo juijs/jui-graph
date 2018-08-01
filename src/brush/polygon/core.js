@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.brush.polygon.core", [], function() {
     var PolygonCoreBrush = function() {
         this.createPolygon = function(polygon, callback) {

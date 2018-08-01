@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.defineUI("chart.builder", [ "util.base", "util.dom", "util.svg", "util.color", "chart.axis" ],
     function(_, $, SVGUtil, ColorUtil, Axis) {
 

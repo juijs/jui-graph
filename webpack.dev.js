@@ -2,17 +2,29 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-
 module.exports = {
     mode: 'development',
-    entry: path.resolve(__dirname, 'examples', 'index.js'),
+    entry: {
+        "jui-graph": path.resolve(__dirname, 'examples', 'index.js'),
+        vendors: [ 'juijs' ]
+    },
     output: {
         path: path.resolve(__dirname, 'out'),
-        filename: '[name].[hash].js'
+        filename: '[name].js'
     },
     optimization: {
-        minimizer: [
-        ]
+        runtimeChunk: 'single',
+        splitChunks: {
+            chunks: 'all',
+            cacheGroups: {
+                vendors: {
+                    test: /[\\/]node_modules[\\/]/,
+                    name: 'vendors',
+                    enforce: true,
+                    chunks: 'all'
+                }
+            }
+        }
     },
     plugins: [
         new HtmlWebpackPlugin({

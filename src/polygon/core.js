@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.polygon.core", [ "chart.vector", "util.transform", "util.math", "util.base" ],
     function(Vector, Transform, math, _) {
 

@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.grid.radar", [ "util.math", "util.base" ], function(math, _) {
 
 	/**

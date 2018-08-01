@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.polygon.cube", [], function() {
     var CubePolygon = function(x, y, z, w, h, d) {
         this.vertices = [

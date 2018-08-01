@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("util.scale.linear", [ "util.math" ], function(math) {
 
     /**

@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.redefine("util.transform", [ "util.math" ], function(math) {
     var Transform = function(points) {
         function calculate(m) {

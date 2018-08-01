@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.theme.dark", [], function() {
     var themeColors = [
         "#12f2e8",

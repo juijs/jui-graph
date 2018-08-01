@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("util.svg.base",
     [ "util.base", "util.math", "util.color", "util.svg.element", "util.svg.element.transform",
         "util.svg.element.path", "util.svg.element.path.symbol", "util.svg.element.path.rect", "util.svg.element.poly" ],

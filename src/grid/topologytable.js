@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.topology.sort.random", [], function() {
     return function(data, area, space) {
         var xy = [];

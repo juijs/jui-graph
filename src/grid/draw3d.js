@@ -1,3 +1,5 @@
+var jui = require("juijs");
+
 jui.define("chart.grid.draw3d", [ "util.base", "chart.polygon.grid", "chart.polygon.line", "chart.polygon.point" ],
     function(_, GridPolygon, LinePolygon, PointPolygon) {
 
