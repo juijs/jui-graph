@@ -1,10 +1,12 @@
-var jui = require("juijs");
-
-jui.define("chart.widget.canvas.core", [], function() {
-    var CanvasCoreWidget = function() {
-        this.drawAfter = function(obj) {
+export default {
+    name: "chart.widget.core",
+    extend: "chart.widget.core",
+    component: function () {
+        var CanvasCoreWidget = function() {
+            this.drawAfter = function(obj) {
+            }
         }
-    }
 
-    return CanvasCoreWidget;
-}, "chart.widget.core");
+        return CanvasCoreWidget;
+    }
+}

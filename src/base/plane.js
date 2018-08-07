@@ -1,164 +1,171 @@
-var jui = require("juijs");
+import jui from "juijs"
 
-jui.defineUI("chart.plane", [ "chart.builder", "util.base" ], function(builder, _) {
-    var UI = function() {
-        var chart = null,
-            axis = [],
-            brush = [],
-            widget = [];
+export default {
+    name: "chart.plane",
+    extend: "core",
+    component: function () {
+        var _ = jui.include("util.base");
+        var builder = jui.include("chart.builder");
 
-        var axisIndex = 0,
-            baseAxis = {},
-            etcAxis = {};
+        var UI = function() {
+            var chart = null,
+                axis = [],
+                brush = [],
+                widget = [];
 
-        this.init = function() {
-            var opts = this.options,
-                defAxis = {
-                    type : "range",
-                    step : opts.step,
-                    line : opts.line
-                };
+            var axisIndex = 0,
+                baseAxis = {},
+                etcAxis = {};
 
-            baseAxis.x = _.extend({ domain: opts.x }, defAxis);
-            baseAxis.y = _.extend({ domain: opts.y }, defAxis);
-            baseAxis.x.orient = "bottom";
-            baseAxis.y.orient = "left";
-            baseAxis.z = _.extend({ domain: opts.z }, defAxis);
-            baseAxis.depth = opts.depth - (opts.padding * 2);
-            baseAxis.degree = { x: opts.dx, y: opts.dy, z: opts.dz };
-            baseAxis.perspective = opts.perspective;
+            this.init = function() {
+                var opts = this.options,
+                    defAxis = {
+                        type : "range",
+                        step : opts.step,
+                        line : opts.line
+                    };
 
-            etcAxis.extend = 0;
-            etcAxis.x = { hide: true };
-            etcAxis.y = { hide: true };
-            etcAxis.z = { hide: true };
+                baseAxis.x = _.extend({ domain: opts.x }, defAxis);
+                baseAxis.y = _.extend({ domain: opts.y }, defAxis);
+                baseAxis.x.orient = "bottom";
+                baseAxis.y.orient = "left";
+                baseAxis.z = _.extend({ domain: opts.z }, defAxis);
+                baseAxis.depth = opts.depth - (opts.padding * 2);
+                baseAxis.degree = { x: opts.dx, y: opts.dy, z: opts.dz };
+                baseAxis.perspective = opts.perspective;
 
-            if(opts.dimension == "2d") {
-                baseAxis.perspective = 1;
-                baseAxis.degree.x = 0;
-                baseAxis.degree.y = 0;
-                baseAxis.degree.z = 0;
-                baseAxis.z.hideText = true;
-            }
-        }
+                etcAxis.extend = 0;
+                etcAxis.x = { hide: true };
+                etcAxis.y = { hide: true };
+                etcAxis.z = { hide: true };
 
-        this.push = function(data) {
-            if(!_.typeCheck("array", data)) return;
-
-            if(!axis[axisIndex]) {
-                axis.push(_.extend({}, (axisIndex == 0) ? baseAxis : etcAxis));
-            }
-
-            if(!axis[axisIndex].data) {
-                axis[axisIndex].data = [];
+                if(opts.dimension == "2d") {
+                    baseAxis.perspective = 1;
+                    baseAxis.degree.x = 0;
+                    baseAxis.degree.y = 0;
+                    baseAxis.degree.z = 0;
+                    baseAxis.z.hideText = true;
+                }
             }
 
-            axis[axisIndex].data.push(data);
-        }
+            this.push = function(data) {
+                if(!_.typeCheck("array", data)) return;
 
-        this.commit = function(symbol, r) {
-            var opts = this.options;
+                if(!axis[axisIndex]) {
+                    axis.push(_.extend({}, (axisIndex == 0) ? baseAxis : etcAxis));
+                }
 
-            brush.push({
-                type: "canvas.dot3d",
-                color: axisIndex,
-                axis: axisIndex,
-                symbol: symbol || opts.symbol,
-                size: (r || opts.r) * 2
-            });
+                if(!axis[axisIndex].data) {
+                    axis[axisIndex].data = [];
+                }
 
-            axisIndex++;
-        }
+                axis[axisIndex].data.push(data);
+            }
 
-        this.append = function(datas, symbol, r) {
-            var opts = this.options;
+            this.commit = function(symbol, r) {
+                var opts = this.options;
 
-            axis.push(_.extend({}, (axisIndex == 0) ? baseAxis : etcAxis));
-            axis[axisIndex].data = datas;
-
-            brush.push({
-                type: "canvas.dot3d",
-                color: axisIndex,
-                axis: axisIndex,
-                symbol: symbol || opts.symbol,
-                size: (r || opts.r) * 2
-            });
-
-            axisIndex++;
-        }
-
-        this.render = function() {
-            var opts = this.options;
-
-            if(opts.dimension == "3d") {
-                widget.push({
-                    type: "polygon.rotate3d"
+                brush.push({
+                    type: "canvas.dot3d",
+                    color: axisIndex,
+                    axis: axisIndex,
+                    symbol: symbol || opts.symbol,
+                    size: (r || opts.r) * 2
                 });
+
+                axisIndex++;
             }
 
-            if(chart != null) {
-                chart.root.innerHTML = "";
-                chart = null;
+            this.append = function(datas, symbol, r) {
+                var opts = this.options;
+
+                axis.push(_.extend({}, (axisIndex == 0) ? baseAxis : etcAxis));
+                axis[axisIndex].data = datas;
+
+                brush.push({
+                    type: "canvas.dot3d",
+                    color: axisIndex,
+                    axis: axisIndex,
+                    symbol: symbol || opts.symbol,
+                    size: (r || opts.r) * 2
+                });
+
+                axisIndex++;
             }
 
-            if(axis.length == 0) {
-                axis.push(baseAxis);
-            }
+            this.render = function() {
+                var opts = this.options;
 
-            chart = builder(this.root, {
-                padding: opts.padding,
-                width : opts.width,
-                height : opts.height,
-                axis : axis,
-                brush : brush,
-                widget : widget,
-                canvas : true,
-                render : false,
-                style : {
-                    gridFaceBackgroundOpacity: 0.1
-                }
-            });
-
-            if(_.typeCheck("array", opts.colors)) {
-                var colors = [];
-
-                for(var i = 0; i < opts.colors.length; i++) {
-                    colors.push(chart.color(opts.colors[i]));
+                if(opts.dimension == "3d") {
+                    widget.push({
+                        type: "polygon.rotate3d"
+                    });
                 }
 
-                chart.setTheme({ colors: colors });
+                if(chart != null) {
+                    chart.root.innerHTML = "";
+                    chart = null;
+                }
+
+                if(axis.length == 0) {
+                    axis.push(baseAxis);
+                }
+
+                chart = builder(this.root, {
+                    padding: opts.padding,
+                    width : opts.width,
+                    height : opts.height,
+                    axis : axis,
+                    brush : brush,
+                    widget : widget,
+                    canvas : true,
+                    render : false,
+                    style : {
+                        gridFaceBackgroundOpacity: 0.1
+                    }
+                });
+
+                if(_.typeCheck("array", opts.colors)) {
+                    var colors = [];
+
+                    for(var i = 0; i < opts.colors.length; i++) {
+                        colors.push(chart.color(opts.colors[i]));
+                    }
+
+                    chart.setTheme({ colors: colors });
+                }
+
+                axis = [];
+                brush = [];
+                widget = [];
+                axisIndex = 0;
+
+                chart.render();
             }
-
-            axis = [];
-            brush = [];
-            widget = [];
-            axisIndex = 0;
-
-            chart.render();
         }
-    }
 
-    UI.setup = function() {
-        return {
-            dimension: "2d",
-            width: 500,
-            height: 500,
-            depth: 500,
-            padding: 50,
-            x: [ -100, 100 ],
-            y: [ -100, 100 ],
-            z: [ -100, 100 ],
-            step: 4,
-            line: true,
-            symbol: "dot",
-            r: 2,
-            perspective: 0.9,
-            dx: 10,
-            dy: 5,
-            dz: 0,
-            colors: null
+        UI.setup = function() {
+            return {
+                dimension: "2d",
+                width: 500,
+                height: 500,
+                depth: 500,
+                padding: 50,
+                x: [ -100, 100 ],
+                y: [ -100, 100 ],
+                z: [ -100, 100 ],
+                step: 4,
+                line: true,
+                symbol: "dot",
+                r: 2,
+                perspective: 0.9,
+                dx: 10,
+                dy: 5,
+                dz: 0,
+                colors: null
+            }
         }
-    }
 
-    return UI;
-}, "core");
+        return UI;
+    }
+}

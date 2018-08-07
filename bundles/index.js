@@ -1,4 +1,4 @@
-import jui from '../src/index.js'
+import jui from '../src/main.js'
 
 jui.define("chart.brush.rangebar", [], function() {
     var RangeBarBrush = function(chart, axis, brush) {

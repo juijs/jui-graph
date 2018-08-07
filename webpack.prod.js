@@ -4,8 +4,8 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
     mode: 'production',
     entry: {
-        "jui-graph": path.resolve(__dirname, 'src', 'production.js'),
-        vendors: [ 'juijs' ]
+        vendors: [ 'juijs' ],
+        "jui-graph": path.resolve(__dirname, 'bundles', 'production.js')
     },
     output: {
         path: path.resolve(__dirname, 'dist'),

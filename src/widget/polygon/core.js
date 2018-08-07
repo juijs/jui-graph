@@ -1,15 +1,12 @@
-var jui = require("juijs");
-
-jui.define("chart.widget.polygon.core", [], function() {
-
-    /**
-     * @class chart.widget.polygon.core
-     * @extends chart.widget.core
-     */
-    var PolygonCoreWidget = function() {
-        this.drawAfter = function(obj) {
+export default {
+    name: "chart.widget.polygon.core",
+    extend: "chart.widget.core",
+    component: function () {
+        var PolygonCoreWidget = function() {
+            this.drawAfter = function(obj) {
+            }
         }
-    }
 
-    return PolygonCoreWidget;
-}, "chart.widget.core");
+        return PolygonCoreWidget;
+    }
+}

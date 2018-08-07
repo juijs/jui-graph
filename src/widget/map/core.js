@@ -1,19 +1,16 @@
-var jui = require("juijs");
-
-jui.define("chart.widget.map.core", [], function() {
-
-    /**
-     * @class chart.widget.map.core
-     * @extends chart.widget.core
-     */
-    var MapCoreWidget = function(chart, axis, widget) {
-    }
-
-    MapCoreWidget.setup = function() {
-        return {
-            axis: 0
+export default {
+    name: "chart.widget.map.core",
+    extend: "chart.widget.core",
+    component: function () {
+        var MapCoreWidget = function(chart, axis, widget) {
         }
-    }
 
-    return MapCoreWidget;
-}, "chart.widget.core");
+        MapCoreWidget.setup = function() {
+            return {
+                axis: 0
+            }
+        }
+
+        return MapCoreWidget;
+    }
+}
