@@ -97,6 +97,3 @@ jui.ready([ 'chart.builder'], function(builder) {
         }
     })
 });
-
-var aaa = "안녕하세요"
-console.log(aaa);
