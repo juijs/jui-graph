@@ -1,5 +1,5 @@
 export default {
-    name: "chart.widget.core",
+    name: "chart.widget.canvas.core",
     extend: "chart.widget.core",
     component: function () {
         var CanvasCoreWidget = function() {
