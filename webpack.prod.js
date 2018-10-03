@@ -4,12 +4,14 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 module.exports = {
     mode: 'production',
     entry: {
-        vendors: [ 'juijs' ],
         "jui-graph": path.resolve(__dirname, 'bundles', 'production.js')
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: '[name].js'
+    },
+    externals: {
+        'juijs': 'jui'
     },
     optimization: {
         splitChunks: {

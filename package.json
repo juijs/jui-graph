@@ -1,6 +1,6 @@
 {
   "name": "juijs-graph",
-  "version": "0.1.1-es6",
+  "version": "0.1.2-es6",
   "sideEffects": false,
   "description": "SVG-based JUI chart that can be used in the browser and Node.js. Support many types of charts. (Dashboard, Map, Topology, Full 3D)",
   "scripts": {
@@ -22,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/juijs/jui-chart.git"
+    "url": "https://github.com/juijs/jui-graph.git"
   },
   "keywords": [
     "HTML5",
@@ -40,7 +40,7 @@
   "author": "seogi1004",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/juijs/jui-chart/issues"
+    "url": "https://github.com/juijs/jui-graph/issues"
   },
   "categories": [
     "Frameworks",
@@ -63,7 +63,7 @@
     }
   ],
   "dependencies": {
-    "juijs": "2.1.10-es6"
+    "juijs": "2.1.11-es6"
   },
   "devDependencies": {
     "compression-webpack-plugin": "^1.1.11",
