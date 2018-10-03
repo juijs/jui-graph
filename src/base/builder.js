@@ -1068,7 +1068,7 @@ export default {
                     right: 50
                 },
 
-                /** @cfg  {String} [theme=jennifer] chart theme  */
+                /** @cfg  {String} [theme=classic] chart theme  */
                 theme: "classic",
                 /** @cfg  {Object} style chart custom theme  */
                 style: {},
@@ -1088,11 +1088,11 @@ export default {
 
                 /**
                  * @cfg {Object} icon Icon-related settings available in the chart.
-                 * @cfg {String} [icon.type="jennifer"]
+                 * @cfg {String} [icon.type="classic"]
                  * @cfg {String} [icon.path=null]
                  */
                 icon: {
-                    type: "jennifer",
+                    type: "classic",
                     path: null
                 },
 

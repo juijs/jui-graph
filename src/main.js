@@ -42,7 +42,6 @@ import RuleGrid from "./grid/rule.js"
 import PanelGrid from "./grid/panel.js"
 import TableGrid from "./grid/table.js"
 import OverlapGrid from "./grid/overlap.js"
-import TopologyTableGrid, { RandomSort, LinearSort } from "./grid/topologytable.js"
 import Grid3dGrid from "./grid/grid3d.js"
 import CoreBrush from "./brush/core.js"
 import MapCoreBrush from "./brush/map/core.js"
@@ -59,7 +58,7 @@ jui.use([
     TimeUtil, TransformUtil, SvgElementUtil, SvgTransformElementUtil, SvgPathElementUtil, SvgPathRectElementUtil, SvgPathSymbolElementUtil, SvgPolyElementUtil,
     SvgBaseUtil, SvgBase3dUtil, SvgUtil, LinearScaleUtil, CircleScaleUtil, LogScaleUtil, OrdinalScaleUtil, TimeScaleUtil, ScaleUtil,
     Vector, Draw, Axis, Map, Builder, Plane, CorePolygon, GridPolygon, LinePolygon, PointPolygon, CubePolygon,
-    Draw2dGrid, Draw3dGrid, CoreGrid, BlockGrid, DateGrid, DateBlockGrid, FullBlockGrid, RadarGrid, RangeGrid, LogGrid, RuleGrid, PanelGrid, TableGrid, OverlapGrid, RandomSort, LinearSort, TopologyTableGrid, Grid3dGrid,
+    Draw2dGrid, Draw3dGrid, CoreGrid, BlockGrid, DateGrid, DateBlockGrid, FullBlockGrid, RadarGrid, RangeGrid, LogGrid, RuleGrid, PanelGrid, TableGrid, OverlapGrid, Grid3dGrid,
     CoreBrush, MapCoreBrush, PolygonCoreBrush, CanvasCoreBrush, CoreWidget, MapCoreWidget, PolygonCoreWidget, CanvasCoreWidget, ClassicTheme, DarkTheme
 ]);
 
