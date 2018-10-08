@@ -30,7 +30,7 @@ export default {
                 var row = this.grid.rows;
                 var column = this.grid.columns;
 
-                padding = this.grid.padding;
+                var padding = this.grid.padding;
 
                 var columnUnit = (this.axis.area('width') -  (column - 1) * padding) / column;
                 var rowUnit = (this.axis.area('height') - (row - 1) * padding ) / row;
