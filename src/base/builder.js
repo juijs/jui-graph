@@ -17,7 +17,7 @@ export default {
                 var ui_list = call_list[i];
 
                 for(var j = 0; j < ui_list.length; j++) {
-                    if(_.typeCheck("function", ui_list[j].resize())) {
+                    if(_.typeCheck("function", ui_list[j].resize)) {
                         ui_list[j].resize();
                     }
                 }
