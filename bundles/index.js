@@ -4,7 +4,7 @@ jui.define("chart.brush.canvas.scatter", [ "util.base" ], function(_) {
 
     var CanvasScatterBrush = function () {
         this.draw = function() {
-            console.log(`FPS:${this.chart.fps}, TPF:${this.chart.tpf}`);
+            console.log(`FPS:${this.chart.getCache("fps")}, TPF:${this.chart.getCache("tpf")}`);
         }
     }
 

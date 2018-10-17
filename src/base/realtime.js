@@ -30,9 +30,11 @@ export default {
                 }
 
                 if(currentTime - prevTime > interval || interval == 0){
-                    this.builder.tpf = (currentTime - prevTime) / 1000;
-                    if(this.builder.tpf > 1) this.builder.tpf = 1;
-                    this.builder.fps = (1.0 / this.builder.tpf);
+                    let tpf = (currentTime - prevTime) / 1000;
+                    if(tpf > 1) tpf = 1;
+
+                    this.builder.setCache("tpf", tpf);
+                    this.builder.setCache("fps", (1.0 / tpf));
 
                     this.render();
                     if(typeof(callback) == "function") {

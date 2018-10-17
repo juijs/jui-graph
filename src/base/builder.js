@@ -29,6 +29,7 @@ export default {
             var _padding, _area,  _theme, _hash = {};
             var _initialize = false, _options = null, _handler = { render: [], renderAll: [] }; // 리셋 대상 커스텀 이벤트 핸들러
             var _canvas = { main: null, sub: null }; // 캔버스 모드 전용
+            var _cache = {};
 
             function calculate(self) {
                 var max = self.svg.size();
@@ -1047,6 +1048,15 @@ export default {
              */
             this.isRender = function() {
                 return (!_initialize) ? true : _options.render;
+            }
+
+            this.setCache = function(key, value) {
+                _cache[key] = value;
+            }
+
+            this.getCache = function(key, defValue) {
+                if(_cache[key] === undefined) return defValue;
+                return _cache[key];
             }
         }
 
