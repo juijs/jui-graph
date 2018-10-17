@@ -1,99 +1,51 @@
 import jui from '../src/main.js'
 
-jui.define("chart.brush.rangebar", [], function() {
-    var RangeBarBrush = function(chart, axis, brush) {
-        var g, height, half_height, barHeight;
-        var outerPadding, innerPadding;
-        var borderColor, borderWidth, borderOpacity;
+jui.define("chart.brush.canvas.scatter", [ "util.base" ], function(_) {
 
-        this.drawBefore = function() {
-            g = chart.svg.group();
-
-            outerPadding = brush.outerPadding;
-            innerPadding = brush.innerPadding;
-
-            height = axis.y.rangeBand();
-            half_height = height - (outerPadding * 2);
-            barHeight = (half_height - (brush.target.length - 1) * innerPadding) / brush.target.length;
-
-            borderColor = chart.theme("barBorderColor");
-            borderWidth = chart.theme("barBorderWidth");
-            borderOpacity = chart.theme("barBorderOpacity");
-        }
-
+    var CanvasScatterBrush = function () {
         this.draw = function() {
-            this.eachData(function(data, i) {
-                var group = chart.svg.group(),
-                    startY = this.offset("y", i) - (half_height / 2);
-
-                for(var j = 0; j < brush.target.length; j++) {
-                    var value = data[brush.target[j]],
-                        startX = axis.x(value[1]),
-                        zeroX = axis.x(value[0]);
-
-                    var r = chart.svg.rect({
-                        x : zeroX,
-                        y : startY,
-                        height : barHeight,
-                        width : Math.abs(zeroX - startX),
-                        fill : this.color(j),
-                        stroke : borderColor,
-                        "stroke-width" : borderWidth,
-                        "stroke-opacity" : borderOpacity
-                    });
-
-                    this.addEvent(r, i, j);
-                    group.append(r);
-
-                    startY += barHeight + innerPadding;
-                }
-
-                g.append(group);
-            });
-
-            return g;
+            console.log(`FPS:${this.chart.fps}, TPF:${this.chart.tpf}`);
         }
     }
 
-    RangeBarBrush.setup = function() {
-        return {
-            /** @cfg {Number} [outerPadding=2] Determines the outer margin of a bar. */
-            outerPadding: 2,
-            /** @cfg {Number} [innerPadding=1] Determines the inner margin of a bar. */
-            innerPadding: 1
-        };
-    }
+    return CanvasScatterBrush;
+}, "chart.brush.canvas.core");
 
-    return RangeBarBrush;
-}, "chart.brush.core");
+var builder = jui.include("chart.realtime"),
+    time = jui.include("util.time");
 
-jui.ready([ 'chart.builder'], function(builder) {
-    builder('#chart', {
-        width: 400,
-        height : 400,
-        axis : {
-            y : {
-                domain : [ "week1", "week2", "week3", "week4" ],
-                line : true
-            },
-            x : {
-                type : 'range',
-                domain: function(d) {
-                    return d.name.concat(d.value);
-                },
-                step : 10,
-                line : true
-            },
-            data : [
-                { name : [-20, 10], value : [-15, 10] },
-                { name : [10, 20], value : [6, 10] },
-                { name : [30, 40], value : [50, 90] },
-                { name : [18, 55], value : [90, 97] }
-            ]
+var chart = builder("#chart", {
+    width : 800,
+    height : 600,
+    axis : [{
+        x : {
+            type : "date",
+            domain : getDomain(),
+            interval : 1,
+            realtime : "minutes",
+            format : "hh:mm",
+            key : "time"
         },
-        brush : {
-            type : 'rangebar',
-            target : [ 'name', 'value' ]
+        y : {
+            type : "range",
+            domain : [ 0, 8000 ],
+            step : 4,
+            line : "solid"
         }
-    })
+    }],
+    brush : [{
+        type : "canvas.scatter"
+    }],
+    interval: 100
 });
+
+chart.run(function(runningTime) {
+    if(runningTime % 1000 > 900) {
+        chart.set("x", { domain : getDomain() });
+        console.log("x-axis rendering!!!");
+    }
+});
+
+function getDomain() {
+    return [ new Date(new Date() - time.MINUTE * 5), new Date() ];
+}
