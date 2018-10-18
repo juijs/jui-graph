@@ -36,11 +36,11 @@ export default {
                     this.builder.setCache("tpf", tpf);
                     this.builder.setCache("fps", (1.0 / tpf));
 
-                    this.render();
                     if(typeof(callback) == "function") {
                         callback.call(this, currentTime - startTime);
                     }
 
+                    this.render();
                     prevTime = currentTime;
                 }
 
