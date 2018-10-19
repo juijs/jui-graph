@@ -270,9 +270,9 @@ export default {
                     chart.emit("axis.click", [ e, index ]);
                 });
 
-                chart.on("chart.dbclick", function(e) {
+                chart.on("chart.dblclick", function(e) {
                     if(!checkAxisPoint(e)) return;
-                    chart.emit("axis.dbclick", [ e, index ]);
+                    chart.emit("axis.dblclick", [ e, index ]);
                 });
 
                 chart.on("chart.rclick", function(e) {
