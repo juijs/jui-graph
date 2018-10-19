@@ -11,15 +11,21 @@ export default {
         const builder = JUI.include("chart.builder");
 
         const UI = function() {
-            let interval = 1000;
-            let prevTime = 0;
-            let startTime = 0;
+            let interval,
+                prevTime = 0,
+                startTime = 0;
 
             this.init = function() {
-                interval = this.options.interval;
-                delete this.options.interval;
+                const opts = this.options;
 
-                this.builder = builder(this.selector, this.options);
+                // 차트 빌더는 interval 옵션을 사용하지 않기 때문에 삭제함
+                interval = opts.interval;
+                delete opts.interval;
+
+                if(opts.axis.length && opts.axis.length > 1)
+                    throw new Error("JUI_CRITICAL_ERR: the real-time module allows only a single axes");
+
+                this.builder = builder(this.selector, opts);
             }
 
             this.run = function(callback) {
@@ -76,7 +82,7 @@ export default {
             return _.extend({
                 render: false,
                 canvas: true,
-                interval: 100
+                interval: 200
             }, JUIBuilder.component().setup(), true);
         }
 
