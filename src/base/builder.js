@@ -28,7 +28,7 @@ export default {
             var _axis = [], _brush = [], _widget = [], _defs = null;
             var _padding, _area,  _theme, _hash = {};
             var _initialize = false, _options = null, _handler = { render: [], renderAll: [] }; // 리셋 대상 커스텀 이벤트 핸들러
-            var _canvas = { main: null, sub: null }; // 캔버스 모드 전용
+            var _canvas = { main: null, sub: null, buffer: null }; // 캔버스 모드 전용
             var _cache = {};
 
             function calculate(self) {
@@ -117,7 +117,7 @@ export default {
                         draw.axis = axis;
                         draw.brush = draws[i];
                         draw.svg = self.svg;
-                        draw.canvas = _canvas.main;
+                        draw.canvas = _canvas.buffer;
 
                         // 브러쉬 렌더링
                         draw.render();
@@ -524,7 +524,10 @@ export default {
                     // Context 설정하기
                     if (elem.getContext) {
                         _canvas[key] = elem.getContext("2d");
-                        self.root.appendChild(elem);
+
+                        if(key != "buffer") {
+                            self.root.appendChild(elem);
+                        }
                     }
 
                     // Widget 캔버스 이벤트 함수 정의
@@ -544,7 +547,7 @@ export default {
             }
 
             function resetCanvasElement(self, type) {
-                var size = getCanvasRealSize(self),
+                let size = getCanvasRealSize(self),
                     context = _canvas[type];
 
                 context.restore();
@@ -859,6 +862,7 @@ export default {
                 // Canvas 초기 설정
                 if(this.options.canvas) {
                     resetCanvasElement(this, "main");
+                    resetCanvasElement(this, "buffer");
 
                     if(isAll) {
                         resetCanvasElement(this, "sub");
@@ -870,6 +874,11 @@ export default {
                 drawAxis(this);
                 drawBrush(this);
                 drawWidget(this, isAll);
+
+                // Canvas 더블버퍼링 렌더링
+                if(this.options.canvas) {
+                    _canvas.main.drawImage(_canvas.buffer.canvas, 0, 0);
+                }
 
                 // SVG 기본 테마 설정
                 this.svg.root.css({
