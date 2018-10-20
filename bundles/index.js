@@ -185,8 +185,8 @@ jui.define("chart.brush.canvas.equalizercolumn", [ "util.base" ], function(_) {
 
 }, "chart.brush.canvas.core");
 
-const realtime = jui.include("chart.realtime");
-const c = realtime("#chart", {
+const animation = jui.include("chart.animation");
+const c = animation("#chart", {
     width: 500,
     height: 300,
     axis: [{

@@ -23,7 +23,7 @@ import Axis from "./base/axis.js"
 import Map from "./base/map.js"
 import Builder from "./base/builder.js"
 import Plane from "./base/plane.js"
-import Realtime from "./base/realtime.js"
+import Animation from "./base/animation.js"
 import CorePolygon from "./polygon/core.js"
 import GridPolygon from "./polygon/grid.js"
 import LinePolygon from "./polygon/line.js"
@@ -58,7 +58,7 @@ import DarkTheme from "./theme/dark.js"
 jui.use([
     TimeUtil, TransformUtil, SvgElementUtil, SvgTransformElementUtil, SvgPathElementUtil, SvgPathRectElementUtil, SvgPathSymbolElementUtil, SvgPolyElementUtil,
     SvgBaseUtil, SvgBase3dUtil, SvgUtil, LinearScaleUtil, CircleScaleUtil, LogScaleUtil, OrdinalScaleUtil, TimeScaleUtil, ScaleUtil,
-    Vector, Draw, Axis, Map, Builder, Plane, Realtime, CorePolygon, GridPolygon, LinePolygon, PointPolygon, CubePolygon,
+    Vector, Draw, Axis, Map, Builder, Plane, Animation, CorePolygon, GridPolygon, LinePolygon, PointPolygon, CubePolygon,
     Draw2dGrid, Draw3dGrid, CoreGrid, BlockGrid, DateGrid, DateBlockGrid, FullBlockGrid, RadarGrid, RangeGrid, LogGrid, RuleGrid, PanelGrid, TableGrid, OverlapGrid, Grid3dGrid,
     CoreBrush, MapCoreBrush, PolygonCoreBrush, CanvasCoreBrush, CoreWidget, MapCoreWidget, PolygonCoreWidget, CanvasCoreWidget, ClassicTheme, DarkTheme
 ]);

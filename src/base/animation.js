@@ -4,7 +4,7 @@ import JUIBuilder from "./builder"
 JUI.use(JUIBuilder);
 
 export default {
-    name: "chart.realtime",
+    name: "chart.animation",
     extend: "core",
     component: function () {
         const _ = JUI.include("util.base");
