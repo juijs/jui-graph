@@ -186,7 +186,7 @@ jui.define("chart.brush.canvas.equalizercolumn", [ "util.base" ], function(_) {
 }, "chart.brush.canvas.core");
 
 const animation = jui.include("chart.animation");
-const c = animation("#chart", {
+window.c = animation("#chart", {
     width: 500,
     height: 300,
     axis: [{

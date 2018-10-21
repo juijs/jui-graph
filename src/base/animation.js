@@ -12,6 +12,7 @@ export default {
 
         const UI = function() {
             let interval,
+                animateSeq = -1,
                 prevTime = 0,
                 startTime = 0;
 
@@ -52,16 +53,17 @@ export default {
 
                 if(interval > 0) {
                     const self = this;
-                    this.animateFunc = window.requestAnimationFrame(function() {
+
+                    animateSeq = requestAnimationFrame(function() {
                         self.run(callback);
                     });
                 }
             }
 
             this.stop = function() {
-                if(typeof(this.animateFunc) == "function") {
-                    cancelAnimationFrame(this.animateFunc);
-                    this.animateFunc = null;
+                if(animateSeq != -1) {
+                    cancelAnimationFrame(animateSeq);
+                    animateSeq = -1;
                 }
             }
 
