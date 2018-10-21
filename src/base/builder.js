@@ -1,17 +1,21 @@
-import jui from "juijs"
+import JUI from "juijs"
+import JUISvgUtil from "../util/svg.js"
+import JUIAxis from "./axis.js"
+
+JUI.use(JUISvgUtil, JUIAxis);
 
 export default {
     name: "chart.builder",
     extend: "core",
     component: function () {
-        var _ = jui.include("util.base");
-        var $ = jui.include("util.dom");
-        var SVGUtil = jui.include("util.svg");
-        var ColorUtil = jui.include("util.color");
-        var Axis = jui.include("chart.axis");
+        const _ = JUI.include("util.base");
+        const $ = JUI.include("util.dom");
+        const SVGUtil = JUI.include("util.svg");
+        const ColorUtil = JUI.include("util.color");
+        const Axis = JUI.include("chart.axis");
 
         _.resize(function() {
-            var call_list = jui.get("chart.builder");
+            var call_list = JUI.get("chart.builder");
 
             for(var i = 0; i < call_list.length; i++) {
                 var ui_list = call_list[i];
@@ -69,7 +73,7 @@ export default {
                 var axisList = _.deepClone(_options.axis, { data : true, origin : true });
 
                 for(var i = 0; i < axisList.length; i++) {
-                    jui.defineOptions(Axis, axisList[i]);
+                    JUI.defineOptions(Axis, axisList[i]);
 
                     // 엑시스 인덱스 설정
                     axisList[i].index = i;
@@ -87,10 +91,10 @@ export default {
 
                 if(draws != null) {
                     for(var i = 0; i < draws.length; i++) {
-                        var Obj = jui.include("chart.brush." + draws[i].type);
+                        var Obj = JUI.include("chart.brush." + draws[i].type);
 
                         // 브러쉬 기본 옵션과 사용자 옵션을 합침
-                        jui.defineOptions(Obj, draws[i]);
+                        JUI.defineOptions(Obj, draws[i]);
                         var axis = _axis[draws[i].axis];
 
                         // 타겟 프로퍼티 설정
@@ -130,10 +134,10 @@ export default {
 
                 if(draws != null) {
                     for(var i = 0; i < draws.length; i++) {
-                        var Obj = jui.include("chart.widget." + draws[i].type);
+                        var Obj = JUI.include("chart.widget." + draws[i].type);
 
                         // 위젯 기본 옵션과 사용자 옵션을 합침
-                        jui.defineOptions(Obj, draws[i]);
+                        JUI.defineOptions(Obj, draws[i]);
 
                         // 위젯 인덱스 설정
                         draws[i].index = i;
@@ -313,7 +317,7 @@ export default {
                     var arr = obj.split("-"),
                         method = arr.pop();
 
-                    var pattern = jui.include("chart." + arr.join("."));
+                    var pattern = JUI.include("chart." + arr.join("."));
 
                     if (!pattern) {
                         return false;
@@ -388,7 +392,7 @@ export default {
 
                 // 테마를 하나의 객체로 Merge
                 if(_.typeCheck("string", theme)) {
-                    _.extend(style, jui.include("chart.theme." + theme));
+                    _.extend(style, JUI.include("chart.theme." + theme));
                     _.extend(style, _options.style);
                 } else if(_.typeCheck("object", theme)) {
                     _.extend(_theme, _options.style);
@@ -697,7 +701,7 @@ export default {
              * @param {String} key  icon's alias
              */
             this.icon = function(key) {
-                return jui.include("chart.icon." + _options.icon.type)[key];
+                return JUI.include("chart.icon." + _options.icon.type)[key];
             }
 
             /**

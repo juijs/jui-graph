@@ -1,12 +1,15 @@
-import jui from "juijs"
+import JUI from "juijs"
+import JUISvgBase from "./base.js"
+
+JUI.use(JUISvgBase);
 
 export default {
     name: "util.svg.base3d",
     extend: "util.svg.base",
     component: function () {
-        var _ = jui.include("util.base");
-        var math = jui.include("util.math");
-        var color = jui.include("util.color");
+        const _ = JUI.include("util.base");
+        const math = JUI.include("util.math");
+        const color = JUI.include("util.color");
 
         var SVG3d = function() {
 

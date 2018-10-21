@@ -1,16 +1,24 @@
-import jui from "juijs"
+import JUI from "juijs"
+import JUISvgElement from "./element.js"
+import JUISvgTransformElement from "./element.transform.js"
+import JUISvgPathElement from "./element.path.js"
+import JUISvgPathSymbolElement from "./element.path.symbol.js"
+import JUISvgPathRectElement from "./element.path.rect.js"
+import JUISvgPolyElement from "./element.poly.js"
+
+JUI.use(JUISvgElement, JUISvgTransformElement, JUISvgPathElement, JUISvgPathSymbolElement, JUISvgPathRectElement, JUISvgPolyElement);
 
 export default {
     name: "util.svg.base",
     extend: null,
     component: function () {
-        var _ = jui.include("util.base");
-        var Element = jui.include("util.svg.element");
-        var TransElement = jui.include("util.svg.element.transform");
-        var PathElement = jui.include("util.svg.element.path");
-        var PathSymbolElement = jui.include("util.svg.element.path.symbol");
-        var PathRectElement = jui.include("util.svg.element.path.rect");
-        var PolyElement = jui.include("util.svg.element.poly");
+        const _ = JUI.include("util.base");
+        const Element = JUI.include("util.svg.element");
+        const TransElement = JUI.include("util.svg.element.transform");
+        const PathElement = JUI.include("util.svg.element.path");
+        const PathSymbolElement = JUI.include("util.svg.element.path.symbol");
+        const PathRectElement = JUI.include("util.svg.element.path.rect");
+        const PolyElement = JUI.include("util.svg.element.poly");
 
         var globalObj = null;
 

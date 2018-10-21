@@ -1,14 +1,17 @@
-import jui from "juijs"
+import JUI from "juijs"
+import JUISvgBase3d from "./svg/base3d.js"
+
+JUI.use(JUISvgBase3d);
 
 export default {
     name: "util.svg",
     extend: "util.svg.base3d",
     component: function () {
-        var _ = jui.include("util.base");
-        var Element = jui.include("util.svg.element");
-        var TransElement = jui.include("util.svg.element.transform");
-        var PathElement = jui.include("util.svg.element.path");
-        var PolyElement = jui.include("util.svg.element.poly");
+        const _ = JUI.include("util.base");
+        const Element = JUI.include("util.svg.element");
+        const TransElement = JUI.include("util.svg.element.transform");
+        const PathElement = JUI.include("util.svg.element.path");
+        const PolyElement = JUI.include("util.svg.element.poly");
 
         var SVG = function(rootElem, rootAttr) {
             var self = this,
