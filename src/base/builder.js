@@ -32,7 +32,7 @@ export default {
             var _axis = [], _brush = [], _widget = [], _defs = null;
             var _padding, _area,  _theme, _hash = {};
             var _initialize = false, _options = null, _handler = { render: [], renderAll: [] }; // 리셋 대상 커스텀 이벤트 핸들러
-            var _canvas = { main: null, sub: null, buffer: null }; // 캔버스 모드 전용
+            var _canvas = { main: null, buffer: null, sub: null }; // 캔버스 모드 전용
             var _cache = {};
 
             function calculate(self) {
