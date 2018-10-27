@@ -435,6 +435,12 @@ export default {
                     _options.widget = [ _options.widget ];
                 }
 
+
+                // Axis 기본값 설정
+                if(_options.axis.length == 0) {
+                    _options.axis.push({ data: [] });
+                }
+
                 // Axis 확장 설정
                 for(var i = 0; i < _options.axis.length; i++) {
                     var axis = _options.axis[i];

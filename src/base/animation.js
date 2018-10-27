@@ -30,7 +30,8 @@ export default {
             }
 
             this.run = function(callback) {
-                let currentTime = Date.now();
+                const self = this;
+                const currentTime = Date.now();
 
                 if(startTime == 0) {
                     startTime = currentTime;
@@ -51,13 +52,9 @@ export default {
                     prevTime = currentTime;
                 }
 
-                if(interval > 0) {
-                    const self = this;
-
-                    animateSeq = requestAnimationFrame(function() {
-                        self.run(callback);
-                    });
-                }
+                animateSeq = requestAnimationFrame(function() {
+                    self.run(callback);
+                });
             }
 
             this.stop = function() {
@@ -84,7 +81,8 @@ export default {
             return _.extend({
                 render: false,
                 canvas: true,
-                interval: 200
+                interval: 200,
+                padding: 0
             }, JUIBuilder.component().setup(), true);
         }
 

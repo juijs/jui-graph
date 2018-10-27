@@ -2,6 +2,10 @@ import jui from 'juijs'
 
 import TimeUtil from "./util/time.js"
 import TransformUtil from "./util/transform.js"
+import CanvasUtil from "./util/canvas/base.js"
+import CanvasKinetic from "./util/canvas/kinetic.js"
+import CanvasBubble from "./util/canvas/bubble.js"
+import CanvasMortalBubble from "./util/canvas/bubble.mortal.js"
 import SvgElementUtil from "./util/svg/element.js"
 import SvgTransformElementUtil from "./util/svg/element.transform.js"
 import SvgPathElementUtil from "./util/svg/element.path.js"
@@ -56,8 +60,8 @@ import ClassicTheme from "./theme/classic.js"
 import DarkTheme from "./theme/dark.js"
 
 jui.use([
-    TimeUtil, TransformUtil, SvgElementUtil, SvgTransformElementUtil, SvgPathElementUtil, SvgPathRectElementUtil, SvgPathSymbolElementUtil, SvgPolyElementUtil,
-    SvgBaseUtil, SvgBase3dUtil, SvgUtil, LinearScaleUtil, CircleScaleUtil, LogScaleUtil, OrdinalScaleUtil, TimeScaleUtil, ScaleUtil,
+    TimeUtil, TransformUtil, CanvasUtil, CanvasKinetic, CanvasBubble, CanvasMortalBubble, SvgElementUtil, SvgTransformElementUtil, SvgPathElementUtil, SvgPathRectElementUtil, SvgPathSymbolElementUtil,
+    SvgPolyElementUtil, SvgBaseUtil, SvgBase3dUtil, SvgUtil, LinearScaleUtil, CircleScaleUtil, LogScaleUtil, OrdinalScaleUtil, TimeScaleUtil, ScaleUtil,
     Vector, Draw, Axis, Map, Builder, Plane, Animation, CorePolygon, GridPolygon, LinePolygon, PointPolygon, CubePolygon,
     Draw2dGrid, Draw3dGrid, CoreGrid, BlockGrid, DateGrid, DateBlockGrid, FullBlockGrid, RadarGrid, RangeGrid, LogGrid, RuleGrid, PanelGrid, TableGrid, OverlapGrid, Grid3dGrid,
     CoreBrush, MapCoreBrush, PolygonCoreBrush, CanvasCoreBrush, CoreWidget, MapCoreWidget, PolygonCoreWidget, CanvasCoreWidget, ClassicTheme, DarkTheme
