@@ -81,7 +81,7 @@ export default {
             return _.extend({
                 render: false,
                 canvas: true,
-                interval: 200,
+                interval: 0,
                 padding: 0
             }, JUIBuilder.component().setup(), true);
         }
