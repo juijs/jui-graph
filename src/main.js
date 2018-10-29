@@ -53,15 +53,13 @@ import CoreWidget from "./widget/core.js"
 import MapCoreWidget from "./widget/map/core.js"
 import PolygonCoreWidget from "./widget/polygon/core.js"
 import CanvasCoreWidget from "./widget/canvas/core.js"
-import ClassicTheme from "./theme/classic.js"
-import DarkTheme from "./theme/dark.js"
 
 jui.use([
     TimeUtil, TransformUtil, CanvasUtil, SvgElementUtil, SvgTransformElementUtil, SvgPathElementUtil, SvgPathRectElementUtil, SvgPathSymbolElementUtil,
     SvgPolyElementUtil, SvgBaseUtil, SvgBase3dUtil, SvgUtil, LinearScaleUtil, CircleScaleUtil, LogScaleUtil, OrdinalScaleUtil, TimeScaleUtil, ScaleUtil,
     Vector, Draw, Axis, Map, Builder, Plane, Animation, CorePolygon, GridPolygon, LinePolygon, PointPolygon, CubePolygon,
     Draw2dGrid, Draw3dGrid, CoreGrid, BlockGrid, DateGrid, DateBlockGrid, FullBlockGrid, RadarGrid, RangeGrid, LogGrid, RuleGrid, PanelGrid, TableGrid, OverlapGrid, Grid3dGrid,
-    CoreBrush, MapCoreBrush, PolygonCoreBrush, CanvasCoreBrush, CoreWidget, MapCoreWidget, PolygonCoreWidget, CanvasCoreWidget, ClassicTheme, DarkTheme
+    CoreBrush, MapCoreBrush, PolygonCoreBrush, CanvasCoreBrush, CoreWidget, MapCoreWidget, PolygonCoreWidget, CanvasCoreWidget
 ]);
 
 export default jui;
