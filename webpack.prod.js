@@ -27,8 +27,7 @@ module.exports = {
             }
         },
         minimizer: [
-            new UglifyJsPlugin(),
-            new BundleAnalyzerPlugin()
+            new UglifyJsPlugin()
         ]
     },
     module: {
@@ -41,5 +40,8 @@ module.exports = {
                 }
             }]
         }]
-    }
+    },
+    plugins: [
+        new BundleAnalyzerPlugin()
+    ]
 }
