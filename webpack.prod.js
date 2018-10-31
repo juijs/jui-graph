@@ -30,5 +30,16 @@ module.exports = {
             new UglifyJsPlugin(),
             new BundleAnalyzerPlugin()
         ]
+    },
+    module: {
+        rules: [{
+            test: /\.js$/,
+            use: [{
+                loader: 'babel-loader',
+                options: {
+                    presets: [ 'env' ]
+                }
+            }]
+        }]
     }
 }
