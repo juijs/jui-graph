@@ -174,7 +174,8 @@ export default {
                     _clipPath = null;
                 }
 
-                _clipId = _.createId("clip-id-");
+                // _clipId = _.createId("clip-id-");
+                _clipId = "axis-clip-id";
 
                 _clipPath = chart.svg.clipPath({
                     id: _clipId
@@ -194,7 +195,8 @@ export default {
                     _clipRect = null;
                 }
 
-                _clipRectId = _.createId("clip-rect-id-");
+                // _clipRectId = _.createId("clip-rect-id-");
+                _clipRectId = "axis-clip-rect-id";
 
                 _clipRect = chart.svg.clipPath({
                     id: _clipRectId
