@@ -285,13 +285,11 @@ export default {
                     return "url(#" + _hash[hashKey] + ")";
                 }
 
-                var g = null,
-                    id = _.createId("gradient");
-
+                // var id = _.createId("gradient");
+                var id = "gradient";
                 obj.attr.id = id;
 
-                g = SVGUtil.createObject(obj);
-
+                var g = SVGUtil.createObject(obj);
                 _defs.append(g);
 
                 if(!_.typeCheck("undefined", hashKey)) {
@@ -343,7 +341,8 @@ export default {
                     return "url(#" + obj + ")";
 
                 } else {
-                    obj.attr.id = obj.attr.id || _.createId('pattern-');
+                    // obj.attr.id = obj.attr.id || _.createId('pattern-');
+                    obj.attr.id = obj.attr.id || "pattern";
 
                     if (_hash[obj.attr.id]) {
                         return "url(#" + obj.attr.id + ")";

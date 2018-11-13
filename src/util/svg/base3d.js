@@ -65,7 +65,8 @@ export default {
                     tr = r * rate,
                     l = (Math.cos(radian) * depth) / 2,
                     d = (Math.sin(radian) * depth) / 2,
-                    key = _.createId("cylinder3d");
+                    // key = _.createId("cylinder3d");
+                    key = "cylinder3d";
 
                 var g = self.group({}, function() {
                     self.ellipse({
