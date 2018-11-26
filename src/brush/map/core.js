@@ -1,5 +1,3 @@
-import jui from "juijs"
-
 export default {
     name: "chart.brush.map.core",
     extend: "chart.brush.core",

@@ -3,27 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     mode: 'development',
+    devtool: 'inline-source-map',
     entry: {
-        vendors: [ 'juijs' ],
         "jui-graph": path.resolve(__dirname, 'bundles', 'index.js')
     },
     output: {
         path: path.resolve(__dirname, 'out'),
         filename: '[name].js'
-    },
-    optimization: {
-        runtimeChunk: 'single',
-        splitChunks: {
-            chunks: 'all',
-            cacheGroups: {
-                vendors: {
-                    test: /[\\/]node_modules[\\/]/,
-                    name: 'vendors',
-                    enforce: true,
-                    chunks: 'all'
-                }
-            }
-        }
     },
     module: {
         rules: [{

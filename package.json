@@ -1,6 +1,6 @@
 {
   "name": "juijs-graph",
-  "version": "0.5.2-es6",
+  "version": "0.6.0-es6",
   "sideEffects": false,
   "description": "SVG-based JUI chart that can be used in the browser and Node.js. Support many types of charts. (Dashboard, Map, Topology, Full 3D)",
   "scripts": {
@@ -62,9 +62,6 @@
       "email": "yoha@jennifersoft.com"
     }
   ],
-  "dependencies": {
-    "juijs": "2.2.0-es6"
-  },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-core": "^6.26.3",

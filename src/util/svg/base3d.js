@@ -1,4 +1,4 @@
-import JUI from "juijs"
+import JUI from "../../base/base.js"
 import JUISvgBase from "./base.js"
 
 JUI.use(JUISvgBase);

@@ -1,4 +1,4 @@
-import jui from "juijs"
+import jui from "../base/base.js"
 
 export default {
     name: "chart.grid.grid3d",

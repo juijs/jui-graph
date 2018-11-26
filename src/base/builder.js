@@ -1,4 +1,4 @@
-import JUI from "juijs"
+import JUI from "./base.js"
 import JUISvgUtil from "../util/svg.js"
 import JUIAxis from "./axis.js"
 
@@ -416,11 +416,6 @@ export default {
                     _padding = padding;
                 }
 
-                // UI 바인딩 설정 (차후에 변경, 현재는 첫번째 엑시스로 고정)
-                if(_.typeCheck("object", _options.bind)) {
-                    self.bindUI(0, _options.bind);
-                }
-
                 // Draw 옵션 설정
                 if(!_.typeCheck("array", _options.axis)) {
                     _options.axis = [ _options.axis ];
@@ -802,33 +797,6 @@ export default {
                 }
 
                 return arguments[0];
-            }
-
-            /**
-             * @method bindUI
-             *
-             * Binds data used in a uix.table or the uix.xtable.
-             *
-             * @param {Number} axisIndex
-             * @param {Object} uiObj
-             */
-            this.bindUI = function(axisIndex, uiObj) {
-                var self = this;
-
-                if(uiObj.module.type == "grid.table") {
-                    uiObj.callAfter("update", updateTable);
-                    uiObj.callAfter("sort", updateTable);
-                    uiObj.callAfter("append", updateTable);
-                    uiObj.callAfter("insert", updateTable);
-                    uiObj.callAfter("remove", updateTable);
-                } else if(uiObj.module.type == "grid.xtable") {
-                    uiObj.callAfter("update", updateTable);
-                    uiObj.callAfter("sort", updateTable);
-                }
-
-                function updateTable() {
-                    self.axis(axisIndex).update(uiObj.listData());
-                }
             }
 
             /**

@@ -1,4 +1,4 @@
-import JUI from "juijs"
+import JUI from "../base/base.js"
 import JUISvgBase3d from "./svg/base3d.js"
 
 JUI.use(JUISvgBase3d);

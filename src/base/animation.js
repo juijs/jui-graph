@@ -1,7 +1,5 @@
-import JUI from "juijs"
+import JUI from "./base.js"
 import JUIBuilder from "./builder"
-
-JUI.use(JUIBuilder);
 
 export default {
     name: "chart.animation",

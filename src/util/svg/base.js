@@ -1,4 +1,4 @@
-import JUI from "juijs"
+import JUI from "../../base/base.js"
 import JUISvgElement from "./element.js"
 import JUISvgTransformElement from "./element.transform.js"
 import JUISvgPathElement from "./element.path.js"
