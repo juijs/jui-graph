@@ -1,4 +1,10 @@
 import jui from "../base/base.js"
+import draw from "../base/draw.js"
+import grid from "../polygon/grid.js"
+import line from "../polygon/line.js"
+import point from "../polygon/point.js"
+
+jui.use(draw, grid, line, point);
 
 export default {
     name: "chart.grid.draw3d",

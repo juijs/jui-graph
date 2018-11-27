@@ -1,4 +1,8 @@
 import jui from "./base.js"
+import dom from "../util/dom.js"
+import svg from "../util/svg.js"
+
+jui.use([ dom, svg ]);
 
 export default {
     name: "chart.map",
@@ -6,7 +10,6 @@ export default {
     component: function () {
         var _ = jui.include("util.base");
         var $ = jui.include("util.dom");
-        var math = jui.include("util.math");
         var SVG = jui.include("util.svg");
 
         var Map = function() {

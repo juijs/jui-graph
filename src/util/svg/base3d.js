@@ -1,7 +1,9 @@
 import JUI from "../../base/base.js"
 import JUISvgBase from "./base.js"
+import math from "../math.js"
+import color from "../color.js"
 
-JUI.use(JUISvgBase);
+JUI.use(math, color, JUISvgBase);
 
 export default {
     name: "util.svg.base3d",

@@ -1,4 +1,8 @@
 import jui from "../base/base.js"
+import draw from "../base/draw.js"
+import dom from "../util/dom.js"
+
+jui.use(draw, dom);
 
 export default {
     name: "chart.brush.core",

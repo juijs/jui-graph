@@ -1,4 +1,8 @@
 import jui from "../base/base.js"
+import math from './math';
+import time from './time';
+
+jui.use([ math, time ]);
 
 export default {
     name: "util.scale",

@@ -1,4 +1,7 @@
 import jui from "../base/base.js"
+import math from "../util/math.js"
+
+jui.use([ math ]);
 
 export default {
     name: "chart.grid.grid3d",

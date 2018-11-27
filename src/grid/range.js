@@ -1,4 +1,8 @@
 import jui from "../base/base.js"
+import math from "../util/math.js"
+import scale from "../util/scale.js"
+
+jui.use([ math, scale ]);
 
 export default {
     name: "chart.grid.range",

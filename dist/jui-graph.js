@@ -1,1 +1,12841 @@
-!function(t){var e={};function i(n){if(e[n])return e[n].exports;var r=e[n]={i:n,l:!1,exports:{}};return t[n].call(r.exports,r,r.exports,i),r.l=!0,r.exports}i.m=t,i.c=e,i.d=function(t,e,n){i.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:n})},i.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},i.t=function(t,e){if(1&e&&(t=i(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var n=Object.create(null);if(i.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var r in t)i.d(n,r,function(e){return t[e]}.bind(null,r));return n},i.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return i.d(e,"a",e),e},i.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},i.p="",i(i.s=12)}([function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},r={},a={},o={},s=r["util.base"]={browser:{webkit:"WebkitAppearance"in document.documentElement.style,mozilla:void 0!==window.mozInnerScreenX,msie:-1!=window.navigator.userAgent.indexOf("Trident")},isTouch:/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent),inherit:function(t,e){this.typeCheck("function",t)&&this.typeCheck("function",e)&&(t.parent=e,t.prototype=new e,t.prototype.constructor=t,t.prototype.parent=t.prototype,t.prototype.super=function(t,e){return this.constructor.prototype[t].apply(this,e)})},extend:function(t,e,i){if(this.typeCheck(["object","function"],t)||(t={}),!this.typeCheck(["object","function"],e))return t;for(var n in e)!0===i?r(t[n])?this.extend(t[n],e[n],i):this.typeCheck("undefined",t[n])&&(t[n]=e[n]):r(t[n])?this.extend(t[n],e[n],i):t[n]=e[n];function r(t){return s.typeCheck("object",t)}return t},pxToInt:function(t){return this.typeCheck("string",t)&&-1!=t.indexOf("px")?parseInt(t.split("px").join("")):t},clone:function(t){var e=this.typeCheck("array",t)?[]:{};for(var i in t)this.typeCheck("object",t[i])?e[i]=this.clone(t[i]):e[i]=t[i];return e},deepClone:function(t,e){var i=null;if(e=e||{},this.typeCheck("array",t)){i=new Array(t.length);for(var n=0,r=t.length;n<r;n++)i[n]=this.deepClone(t[n],e)}else if(this.typeCheck("date",t))i=t;else if(this.typeCheck("object",t))for(var a in i={},t)e[a]?i[a]=t[a]:i[a]=this.deepClone(t[a],e);else i=t;return i},runtime:function(t,e){var i=(new Date).getTime();e();var n=(new Date).getTime();console.warn(t+" : "+(n-i)+"ms")},resize:function(t,e){var i=function(){var i=0;return function(){clearTimeout(i),i=setTimeout(t,e)}}();window.addEventListener?window.addEventListener("resize",i):object.attachEvent?window.attachEvent("onresize",i):window.onresize=i},typeCheck:function(t,e){function i(t,e){return"string"==typeof t&&("string"==t?"string"==typeof e:"integer"==t?"number"==typeof e&&e%1==0:"float"==t?"number"==typeof e&&e%1!=0:"number"==t?"number"==typeof e:"boolean"==t?"boolean"==typeof e:"undefined"==t?void 0===e:"null"==t?null===e:"array"==t?e instanceof Array:"date"==t?e instanceof Date:"function"==t?"function"==typeof e:"object"==t&&!("object"!=(void 0===e?"undefined":n(e))||null===e||e instanceof Array||e instanceof Date||e instanceof RegExp))}if("object"==(void 0===t?"undefined":n(t))&&t.length){for(var r=t,a=0;a<r.length;a++)if(i(r[a],e))return!0;return!1}return i(t,e)},typeCheckObj:function(t,e){if("object"==(void 0===t?"undefined":n(t))){var i=this;for(var r in t){var a=t[r];"function"==typeof a&&function(n,r){t[n]=function(){for(var t=arguments,a=e[n],o=0;o<t.length;o++)if(!i.typeCheck(a[o],t[o]))throw new Error("JUI_CRITICAL_ERR: the "+o+"th parameter is not a "+a[o]+" ("+name+")");return r.apply(this,t)}}(r,a)}}},dateFormat:function(t,e,i){var n=["\0","January","February","March","April","May","June","July","August","September","October","November","December"],r=["","Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],a=["","Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],o=["","Sun","Mon","Tue","Wed","Thu","Fri","Sat"];function s(t,e){var i=t+"";for(e=e||2;i.length<e;)i="0"+i;return i}var h=i?t.getUTCFullYear():t.getFullYear();e=(e=(e=e.replace(/(^|[^\\])yyyy+/g,"$1"+h)).replace(/(^|[^\\])yy/g,"$1"+h.toString().substr(2,2))).replace(/(^|[^\\])y/g,"$1"+h);var u=(i?t.getUTCMonth():t.getMonth())+1;e=(e=(e=(e=e.replace(/(^|[^\\])MMMM+/g,"$1"+n[0])).replace(/(^|[^\\])MMM/g,"$1"+r[0])).replace(/(^|[^\\])MM/g,"$1"+s(u))).replace(/(^|[^\\])M/g,"$1"+u);var l=i?t.getUTCDate():t.getDate();e=(e=(e=(e=e.replace(/(^|[^\\])dddd+/g,"$1"+a[0])).replace(/(^|[^\\])ddd/g,"$1"+o[0])).replace(/(^|[^\\])dd/g,"$1"+s(l))).replace(/(^|[^\\])d/g,"$1"+l);var c=i?t.getUTCHours():t.getHours();e=(e=e.replace(/(^|[^\\])HH+/g,"$1"+s(c))).replace(/(^|[^\\])H/g,"$1"+c);var d=c>12?c-12:0==c?12:c;e=(e=e.replace(/(^|[^\\])hh+/g,"$1"+s(d))).replace(/(^|[^\\])h/g,"$1"+d);var f=i?t.getUTCMinutes():t.getMinutes();e=(e=e.replace(/(^|[^\\])mm+/g,"$1"+s(f))).replace(/(^|[^\\])m/g,"$1"+f);var p=i?t.getUTCSeconds():t.getSeconds();e=(e=e.replace(/(^|[^\\])ss+/g,"$1"+s(p))).replace(/(^|[^\\])s/g,"$1"+p);var g=i?t.getUTCMilliseconds():t.getMilliseconds();e=e.replace(/(^|[^\\])fff+/g,"$1"+s(g,3)),g=Math.round(g/10),e=e.replace(/(^|[^\\])ff/g,"$1"+s(g)),g=Math.round(g/10),e=e.replace(/(^|[^\\])f/g,"$1"+g);var v=c<12?"AM":"PM";e=(e=e.replace(/(^|[^\\])TT+/g,"$1"+v)).replace(/(^|[^\\])T/g,"$1"+v.charAt(0));var m=v.toLowerCase();e=(e=e.replace(/(^|[^\\])tt+/g,"$1"+m)).replace(/(^|[^\\])t/g,"$1"+m.charAt(0));var y=-t.getTimezoneOffset(),x=i||!y?"Z":y>0?"+":"-";if(!i){var w=(y=Math.abs(y))%60;x+=s(Math.floor(y/60))+":"+s(w)}e=e.replace(/(^|[^\\])K/g,"$1"+x);var b=(i?t.getUTCDay():t.getDay())+1;return e=(e=(e=(e=(e=e.replace(new RegExp(a[0],"g"),a[b])).replace(new RegExp(o[0],"g"),o[b])).replace(new RegExp(n[0],"g"),n[u])).replace(new RegExp(r[0],"g"),r[u])).replace(/\\(.)/g,"$1")},createId:function(t){return[t||"id",+new Date,Math.round(100*Math.random())%100].join("-")},timeLoop:function(t,e){return function(i,n){!function t(r){r<1||(1==r?(i.call(e,r),n.call(e)):setTimeout(function(){r>-1&&i.call(e,r--),r>-1&&t(r)},1))}(t)}},loop:function(t,e){var i=t,n=Math.ceil(t/5);return function(t){for(var r=0,a=1*n,o=2*n,s=3*n,h=4*n,u=a,l=o,c=s,d=h,f=i;r<u&&r<i;)t.call(e,r,1),r++,a<l&&a<i&&(t.call(e,a,2),a++),o<c&&o<i&&(t.call(e,o,3),o++),s<d&&s<i&&(t.call(e,s,4),s++),h<f&&h<i&&(t.call(e,h,5),h++)}},loopArray:function(t,e){var i=t.length,n=i,r=Math.ceil(i/5);return function(i){for(var a=0,o=1*r,s=2*r,h=3*r,u=4*r,l=o,c=s,d=h,f=u,p=n;a<l&&a<n;)i.call(e,t[a],a,1),a++,o<c&&o<n&&(i.call(e,t[o],o,2),o++),s<d&&s<n&&(i.call(e,t[s],s,3),s++),h<f&&h<n&&(i.call(e,t[h],h,4),h++),u<p&&u<n&&(i.call(e,t[u],u,5),u++)}},startsWith:function(t,e,i){return i=i||0,t.lastIndexOf(e,i)===i},endsWith:function(t,e,i){var n=t;(void 0===i||i>n.length)&&(i=n.length),i-=e.length;var r=n.indexOf(e,i);return-1!==r&&r===i},inArray:function(t,e){if(this.typeCheck(["undefined","null"],t)||!this.typeCheck("array",e))return-1;for(var i=0,n=e.length;i<n;i++)if(e[i]==t)return i;return-1},trim:function(t){var e=new RegExp("^[\\x20\\t\\r\\n\\f]+|((?:^|[^\\\\])(?:\\\\.)*)[\\x20\\t\\r\\n\\f]+$","g");return null==t?"":(t+"").replace(e,"")},ready:function(){var t,e,i={"[object Boolean]":"boolean","[object Number]":"number","[object String]":"string","[object Function]":"function","[object Array]":"array","[object Date]":"date","[object RegExp]":"regexp","[object Object]":"object"},n={isReady:!1,readyWait:1,holdReady:function(t){t?n.readyWait++:n.ready(!0)},ready:function(e){if(!0===e&&!--n.readyWait||!0!==e&&!n.isReady){if(!document.body)return setTimeout(n.ready,1);if(n.isReady=!0,!0!==e&&--n.readyWait>0)return;t.resolveWith(document,[n])}},bindReady:function(){if(!t){if(t=n._Deferred(),"complete"===document.readyState)return setTimeout(n.ready,1);if(document.addEventListener)document.addEventListener("DOMContentLoaded",e,!1),window.addEventListener("load",n.ready,!1);else if(document.attachEvent){document.attachEvent("onreadystatechange",e),window.attachEvent("onload",n.ready);var i=!1;try{i=null==window.frameElement}catch(t){}document.documentElement.doScroll&&i&&r()}}},_Deferred:function(){var t,e,i,r=[],a={done:function(){if(!i){var e,o,s,h,u,l=arguments;for(t&&(u=t,t=0),e=0,o=l.length;e<o;e++)s=l[e],"array"===(h=n.type(s))?a.done.apply(a,s):"function"===h&&r.push(s);u&&a.resolveWith(u[0],u[1])}return this},resolveWith:function(n,a){if(!i&&!t&&!e){a=a||[],e=1;try{for(;r[0];)r.shift().apply(n,a)}finally{t=[n,a],e=0}}return this},resolve:function(){return a.resolveWith(this,arguments),this},isResolved:function(){return!(!e&&!t)},cancel:function(){return i=1,r=[],this}};return a},type:function(t){return null==t?String(t):i[Object.prototype.toString.call(t)]||"object"}};function r(){if(!n.isReady){try{document.documentElement.doScroll("left")}catch(t){return void setTimeout(r,1)}n.ready()}}return document.addEventListener?e=function(){document.removeEventListener("DOMContentLoaded",e,!1),n.ready()}:document.attachEvent&&(e=function(){"complete"===document.readyState&&(document.detachEvent("onreadystatechange",e),n.ready())}),function(e){n.bindReady(),n.type(e),t.done(e)}}(),param:function(t){var e=[],i=function(t,i){i=s.typeCheck("function",i)?i():null==i?"":i,e[e.length]=encodeURIComponent(t)+"="+encodeURIComponent(i)};for(var n in t)i(n,t[n]);return e.join("&").replace(/%20/g,"+")},ajax:function(t){var e=null,i="",n=null,r=s.extend({url:null,type:"GET",data:null,async:!0,success:null,fail:null},t);if(this.typeCheck("string",r.url)&&this.typeCheck("function",r.success)){if(this.typeCheck("object",r.data)&&(i=this.param(r.data)),this.typeCheck("undefined",XMLHttpRequest))for(var a=["MSXML2.XmlHttp.5.0","MSXML2.XmlHttp.4.0","MSXML2.XmlHttp.3.0","MSXML2.XmlHttp.2.0","Microsoft.XmlHttp"],o=0,h=a.length;o<h;o++)try{e=new ActiveXObject(a[o]);break}catch(t){}else e=new XMLHttpRequest;null!=e&&(e.open(r.type,r.url,r.async),e.send(i),n=function(){4===e.readyState&&200==e.status?r.success(e):s.typeCheck("function",r.fail)&&r.fail(e)},r.async?e.onreadystatechange=n:n())}},scrollWidth:function(){var t=document.createElement("p");t.style.width="100%",t.style.height="200px";var e=document.createElement("div");e.style.position="absolute",e.style.top="0px",e.style.left="0px",e.style.visibility="hidden",e.style.width="200px",e.style.height="150px",e.style.overflow="hidden",e.appendChild(t),document.body.appendChild(e);var i=t.offsetWidth;e.style.overflow="scroll";var n=t.offsetWidth;return i==n&&(n=e.clientWidth),document.body.removeChild(e),i-n}},h=function(t){for(var e=[],i=0;i<t.length;i++){var n=r[t[i]];if(s.typeCheck(["function","object"],n))e.push(n);else{var a=u(t[i]);null==a?(console.warn("JUI_WARNING_MSG: '"+t[i]+"' is not loaded"),e.push(null)):e.push(a)}}return e},u=function(t){var e=null;t+=".";for(var i in r)if(-1!=i.indexOf(t)&&s.typeCheck(["function","object"],r[i])){var n=i.split(t).join("");-1==n.indexOf(".")&&(null==e&&(e={}),e[n]=r[i])}return e},l={ready:function(){var t=[],e=2==arguments.length?arguments[1]:arguments[0],i=2==arguments.length?arguments[0]:null;if(!s.typeCheck(["array","null"],i)||!s.typeCheck("function",e))throw new Error("JUI_CRITICAL_ERR: Invalid parameter type of the function");s.ready(function(){if(i)t=h(i);else{var n=u("ui"),r={};s.extend(r,n),s.extend(r,u("grid")),t=[n,r,s]}e.apply(null,t)})},defineUI:function(t,e,i,n){if(!(s.typeCheck("string",t)&&s.typeCheck("array",e)&&s.typeCheck("function",i)&&s.typeCheck(["string","undefined"],n)))throw new Error("JUI_CRITICAL_ERR: Invalid parameter type of the function");if(s.typeCheck("function",o[t]))throw new Error("JUI_CRITICAL_ERR: '"+t+"' is already exist");if(s.typeCheck("undefined",n)&&(n="core"),!s.typeCheck("function",o[n]))throw new Error("JUI_CRITICAL_ERR: Parents are the only function");if(!0!==a[n])throw new Error("JUI_CRITICAL_ERR: UI function can not be inherited");var u=h(e),l=i.apply(null,u);s.inherit(l,o[n]),r[t]=o[n].init({type:t,class:l}),o[t]=l,a[t]=!0},redefineUI:function(t,e,i,n,s){s||!0!==a[t]||(r[t]=null,o[t]=null,a[t]=!1),(!s||s&&!0!==a[t])&&this.defineUI(t,e,i,n)},createUIObject:function(t,e,i,n,r,a){var o=new t.class,h=l.defineOptions(t.class,r||{});for(var u in o.init.prototype=o,o.init.prototype.selector=e,o.init.prototype.root=n,o.init.prototype.options=h,o.init.prototype.tpl={},o.init.prototype.event=new Array,o.init.prototype.timestamp=(new Date).getTime(),o.init.prototype.index=i,o.init.prototype.module=t,s.typeCheck("function",a)&&a(o,h),h.tpl){var c=h.tpl[u];s.typeCheck("string",c)&&""!=c&&(o.init.prototype.tpl[u]=s.template(c))}var d=new o.init;for(var f in h.event)d.on(f,h.event[f]);return n.jui=d,d},define:function(t,e,i,n){if(!(s.typeCheck("string",t)&&s.typeCheck("array",e)&&s.typeCheck("function",i)&&s.typeCheck(["string","undefined","null"],n)))throw new Error("JUI_CRITICAL_ERR: Invalid parameter type of the function");if(s.typeCheck("function",o[t]))throw new Error("JUI_CRITICAL_ERR: '"+t+"' is already exist");var u=h(e),l=i.apply(null,u);if(s.typeCheck("function",o[n])){if(!0!==a[n])throw new Error("JUI_CRITICAL_ERR: UI function can not be inherited");s.inherit(l,o[n])}r[t]=l,o[t]=l,a[t]=!0},redefine:function(t,e,i,n,s){s||!0!==a[t]||(r[t]=null,o[t]=null,a[t]=!1),(!s||s&&!0!==a[t])&&this.define(t,e,i,n)},defineOptions:function(t,e,i){for(var n=function t(e,i){if(s.typeCheck("function",e)){if(s.typeCheck("function",e.setup)){var n=e.setup();for(var r in n)s.typeCheck("undefined",i[r])&&(i[r]=n[r])}t(e.parent,i)}return i}(t,{}),r=Object.keys(n),a=Object.keys(e),o=0;o<a.length;o++){var h=a[o];if(-1==s.inArray(h,r)&&-1==s.inArray(h,i))throw new Error("JUI_CRITICAL_ERR: '"+h+"' is not an option")}return s.extend(e,n,!0),e},include:function(t){if(!s.typeCheck("string",t))throw new Error("JUI_CRITICAL_ERR: Invalid parameter type of the function");var e=r[t];if(s.typeCheck(["function","object"],e))return e;var i=u(t);return null==i?(console.warn("JUI_WARNING_MSG: '"+t+"' is not loaded"),null):i},includeAll:function(){var t=[];for(var e in r)t.push(r[e]);return t},use:function(){for(var t=[],e=0;e<arguments.length;e++)if(s.typeCheck("array",arguments[e]))for(var i=arguments[e],r=0;r<i.length;r++)s.typeCheck("object",i[r])&&t.push(i[r]);else s.typeCheck("object",arguments[e])&&t.push(arguments[e]);for(e=0;e<t.length;e++){var a=t[e];if("object"==(void 0===a?"undefined":n(a))){if("string"!=typeof a.name)return;if("function"!=typeof a.component)return;null!=a.extend&&null==l.include(a.extend)&&console.warn("JUI_WARNING_MSG: '"+a.extend+"' module should be imported in first"),"core"==a.extend?l.redefineUI(a.name,[],a.component,a.extend):l.redefine(a.name,[],a.component,a.extend)}}}};e.default=l},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"util.svg.element",extend:null,component:function(){return function t(){var e=[];this.create=function(t,e){this.element=document.createElementNS("http://www.w3.org/2000/svg",t),this.children=[],this.parent=null,this.styles={},this.attributes={},this.order=0,this.attr(e)},this.each=function(t){if("function"==typeof t){for(var e=0,i=this.children.length;e<i;e++){var n=this.children[e];t.apply(n,[e,n])}return this.children}},this.get=function(t){return this.children[t]?this.children[t]:null},this.index=function(t){for(var e=0;e<this.children.length;e++)if(t==this.children[e])return e;return-1},this.append=function(e){return e instanceof t&&(e.parent&&e.remove(),this.children.push(e),e.parent=this),this},this.prepend=function(t){return this.insert(0,t)},this.insert=function(t,e){return e.parent&&e.remove(),this.children.splice(t,0,e),e.parent=this,this},this.remove=function(){for(var t=[],e=this.parent.children,i=0;i<e.length&&e[i]!=this;i++)t.push(e[i]);return this.parent.children=t,this},this.attr=function(t){if(void 0!==t&&t){if("string"==typeof t)return this.attributes[t]||this.element.getAttribute(t);for(var e in t)this.attributes[e]=t[e],-1!=e.indexOf("xlink:")?this.element.setAttributeNS("http://www.w3.org/1999/xlink",e,t[e]):this.element.setAttribute(e,t[e]);return this}},this.css=function(t){var e=[];for(var i in t)this.styles[i]=t[i];for(var i in t)e.push(i+":"+t[i]);return this.attr({style:e.join(";")}),this},this.html=function(t){return this.element.innerHTML=t,this},this.text=function(t){for(var e=this.element.childNodes,i=0;i<e.length;i++)this.element.removeChild(e[i]);return this.element.appendChild(document.createTextNode(t)),this},this.on=function(t,i){var n=function(t){"function"==typeof i&&i.call(this,t)};return this.element.addEventListener(t,n,!1),e.push({type:t,callback:n}),this},this.off=function(t){if(t){var i=[];for(n=0,r=e.length;n<r;n++)(a=e[n]).type!=t?i.push(a):this.element.removeEventListener(a.type,a.callback,!1);e=i}else for(var n=0,r=e.length;n<r;n++){var a=e.shift();this.element.removeEventListener(a.type,a.callback,!1)}return this},this.hover=function(t,i){var n=function(e){"function"==typeof t&&t.call(this,e)},r=function(t){"function"==typeof i&&i.call(this,t)};return this.element.addEventListener("mouseover",n,!1),this.element.addEventListener("mouseout",r,!1),e.push({type:"mouseover",callback:n}),e.push({type:"mouseout",callback:r}),this},this.size=function(){var t={width:0,height:0},e=this.element.getBoundingClientRect();if(!e||0==e.width&&0==e.height){for(var i=["height","paddingTop","paddingBottom","borderTopWidth","borderBottomWidth"],n=["width","paddingLeft","paddingRight","borderLeftWidth","borderRightWidth"],r=window.getComputedStyle(this.element),a=0;a<i.length;a++)t.height+=parseFloat(r[i[a]]);for(a=0;a<n.length;a++)t.width+=parseFloat(r[n[a]]);t.width=t.width||this.element.getAttribute("width"),t.height=t.height||this.element.getAttribute("height")}else t.width=e.width,t.height=e.height;return isNaN(t.width)&&(t.width=0),isNaN(t.height)&&(t.height=0),t},this.is=function(t){return this instanceof jui.include(t)}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"util.svg.element.transform",extend:"util.svg.element",component:function(){var t=n.default.include("util.base");return function(){var e={translate:null,scale:null,rotate:null,skew:null,matrix:null};function i(t){var i=[];for(var n in e)e[n]&&i.push(e[n]);t.attr({transform:i.join(" ")})}function n(t){for(var e=[],i=0;i<t.length;i++)e.push(t[i]);return e.join(",")}this.translate=function(){return e.translate="translate("+n(arguments)+")",i(this),this},this.rotate=function(t,n,r){if(1==arguments.length)var a=t;else 3==arguments.length&&(a=t+" "+n+","+r);return e.rotate="rotate("+a+")",i(this),this},this.scale=function(){return e.scale="scale("+n(arguments)+")",i(this),this},this.skew=function(){return e.skew="skew("+n(arguments)+")",i(this),this},this.matrix=function(){return e.matrix="matrix("+n(arguments)+")",i(this),this},this.data=function(e){var i=this.attr("transform");return t.typeCheck("string",i)?i.match({translate:/[^translate()]+/g,rotate:/[^rotate()]+/g,scale:/[^scale()]+/g,skew:/[^skew()]+/g,matrix:/[^matrix()]+/g}[e])[0]:null}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"util.svg.element.path",extend:"util.svg.element.transform",component:function(){var t=n.default.include("util.base");return function(){var e=[];this.moveTo=function(t,i,n){return e.push((n||"m")+t+","+i),this},this.MoveTo=function(t,e){return this.moveTo(t,e,"M")},this.lineTo=function(t,i,n){return e.push((n||"l")+t+","+i),this},this.LineTo=function(t,e){return this.lineTo(t,e,"L")},this.hLineTo=function(t,i){return e.push((i||"h")+t),this},this.HLineTo=function(t){return this.hLineTo(t,"H")},this.vLineTo=function(t,i){return e.push((i||"v")+t),this},this.VLineTo=function(t){return this.vLineTo(t,"V")},this.curveTo=function(t,i,n,r,a,o,s){return e.push((s||"c")+t+","+i+" "+n+","+r+" "+a+","+o),this},this.CurveTo=function(t,e,i,n,r,a){return this.curveTo(t,e,i,n,r,a,"C")},this.sCurveTo=function(t,i,n,r,a){return e.push((a||"s")+t+","+i+" "+n+","+r),this},this.SCurveTo=function(t,e,i,n){return this.sCurveTo(t,e,i,n,"S")},this.qCurveTo=function(t,i,n,r,a){return e.push((a||"q")+t+","+i+" "+n+","+r),this},this.QCurveTo=function(t,e,i,n){return this.qCurveTo(t,e,i,n,"Q")},this.tCurveTo=function(t,i,n,r,a){return e.push((a||"t")+t+","+i+" "+n+","+r),this},this.TCurveTo=function(t,e,i,n){return this.tCurveTo(t,e,i,n,"T")},this.arc=function(t,i,n,r,a,o,s,h){return r=r?1:0,a=a?1:0,e.push((h||"a")+t+","+i+" "+n+" "+r+","+a+" "+o+","+s),this},this.Arc=function(t,e,i,n,r,a,o){return this.arc(t,e,i,n,r,a,o,"A")},this.closePath=function(t){return e.push(t||"z"),this},this.ClosePath=function(){return this.closePath("Z")},this.join=function(){e.length>0&&(this.attr({d:e.join(" ")}),e=[])},this.length=function(){var i=t.createId(),n=e.join(" "),r=document.createElement("svg"),a=document.createElementNS("http://www.w3.org/2000/svg","path");a.setAttributeNS(null,"id",i),a.setAttributeNS(null,"d",n),r.appendChild(a),document.body.appendChild(r);var o=document.getElementById(i).getTotalLength();return document.body.removeChild(r),o}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"util.svg.element.path.rect",extend:"util.svg.element.path",component:function(){return function(){this.round=function(t,e,i,n,r,a){i=i||0,n=n||0,r=r||0,a=a||0,this.MoveTo(0,i).Arc(i,i,0,0,1,i,0).HLineTo(t-n).Arc(n,n,0,0,1,t,n).VLineTo(e-r).Arc(r,r,0,0,1,t-r,e).HLineTo(a).Arc(a,a,0,0,1,0,e-a).ClosePath().join()}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"util.svg.element.path.symbol",extend:"util.svg.element.path",component:function(){return function(){var t="";this.template=function(t,e){var i=t,n=half_r=t/2,r=e/2,a="a"+half_r+","+half_r+" 0 1,1 "+i+",0",o="a"+half_r+","+half_r+" 0 1,1 "+-i+",0",s={triangle:["m0,"+-r,"l"+n+","+e,"l"+-t+",0","l"+n+","+-e].join(" "),rect:["m"+-n+","+-r,"l"+t+",0","l0,"+e,"l"+-t+",0","l0,"+-e].join(" "),cross:["m"+-n+","+-r,"l"+t+","+e,"m0,"+-e,"l"+-t+","+e].join(" "),circle:["m"+-i+",0",a,o].join(" ")};return s.rectangle=s.rect,s},this.join=function(){t.length>0&&(this.attr({d:t}),t="")},this.add=function(e,i,n){t+=" M"+e+","+i+n},this.triangle=function(t,e,i,n){return this.MoveTo(t,e).moveTo(0,-n/2).lineTo(i/2,n).lineTo(-i,0).lineTo(i/2,-n)},this.rect=this.rectangle=function(t,e,i,n){return this.MoveTo(t,e).moveTo(-i/2,-n/2).lineTo(i,0).lineTo(0,n).lineTo(-i,0).lineTo(0,-n)},this.cross=function(t,e,i,n){return this.MoveTo(t,e).moveTo(-i/2,-n/2).lineTo(i,n).moveTo(0,-n).lineTo(-i,n)},this.circle=function(t,e,i){return this.MoveTo(t,e).moveTo(-i,0).arc(i/2,i/2,0,1,1,i,0).arc(i/2,i/2,0,1,1,-i,0)}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"util.svg.element.poly",extend:"util.svg.element.transform",component:function(){return function(){var t=[];this.point=function(e,i){return t.push(e+","+i),this},this.join=function(){if(t.length>0){var e=t[0];t.push(e),this.attr({points:t.join(" ")}),t=[]}}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=l(i(0)),r=l(i(1)),a=l(i(2)),o=l(i(3)),s=l(i(5)),h=l(i(4)),u=l(i(6));function l(t){return t&&t.__esModule?t:{default:t}}n.default.use(r.default,a.default,o.default,s.default,h.default,u.default),e.default={name:"util.svg.base",extend:null,component:function(){var t=n.default.include("util.base"),e=n.default.include("util.svg.element"),i=n.default.include("util.svg.element.transform"),r=n.default.include("util.svg.element.path"),a=n.default.include("util.svg.element.path.symbol"),o=n.default.include("util.svg.element.path.rect"),s=n.default.include("util.svg.element.poly"),h=null,u=function(){this.create=function(t,e,i,n){return t.create(e,i),t},this.createChild=function(t,e,i,n){return this.create(t,e,i,n)},this.custom=function(t,i,n){return this.create(new e,t,i,n)},this.defs=function(t){return this.create(new e,"defs",null,t)},this.symbol=function(t,i){return this.create(new e,"symbol",t,i)},this.g=this.group=function(t,e){return this.create(new i,"g",t,e)},this.marker=function(t,i){return this.create(new e,"marker",t,i)},this.a=function(t,e){return this.create(new i,"a",t,e)},this.switch=function(t,i){return this.create(new e,"switch",t,i)},this.use=function(t){return this.create(new e,"use",t)},this.rect=function(t,e){return this.create(new i,"rect",t,e)},this.line=function(t,e){return this.create(new i,"line",t,e)},this.circle=function(t,e){return this.create(new i,"circle",t,e)},this.text=function(e,n){return 2==arguments.length?t.typeCheck("function",n)?this.create(new i,"text",e,n):this.create(new i,"text",e).text(n):this.create(new i,"text",e)},this.textPath=function(i,n){return t.typeCheck("string",n)?this.create(new e,"textPath",i).text(n):this.create(new e,"textPath",i)},this.tref=function(i,n){return t.typeCheck("string",n)?this.create(new e,"tref",i).text(n):this.create(new e,"tref",i)},this.tspan=function(i,n){return t.typeCheck("string",n)?this.create(new e,"tspan",i).text(n):this.create(new e,"tspan",i)},this.ellipse=function(t,e){return this.create(new i,"ellipse",t,e)},this.image=function(t,e){return this.create(new i,"image",t,e)},this.path=function(t,e){return this.create(new r,"path",t,e)},this.pathSymbol=function(t,e){return this.create(new a,"path",t,e)},this.pathRect=function(t,e){return this.create(new o,"path",t,e)},this.polyline=function(t,e){return this.create(new s,"polyline",t,e)},this.polygon=function(t,e){return this.create(new s,"polygon",t,e)},this.pattern=function(t,i){return this.create(new e,"pattern",t,i)},this.mask=function(t,i){return this.create(new e,"mask",t,i)},this.clipPath=function(t,i){return this.create(new e,"clipPath",t,i)},this.linearGradient=function(t,i){return this.create(new e,"linearGradient",t,i)},this.radialGradient=function(t,i){return this.create(new e,"radialGradient",t,i)},this.filter=function(t,i){return this.create(new e,"filter",t,i)},this.foreignObject=function(t,e){return this.create(new i,"foreignObject",t,e)},this.stop=function(t){return this.createChild(new e,"stop",t)},this.animate=function(t){return this.createChild(new e,"animate",t)},this.animateColor=function(t){return this.createChild(new e,"animateColor",t)},this.animateMotion=function(t){return this.createChild(new e,"animateMotion",t)},this.animateTransform=function(t){return this.createChild(new e,"animateTransform",t)},this.mpath=function(t){return this.createChild(new e,"mpath",t)},this.set=function(t){return this.createChild(new e,"set",t)},this.feBlend=function(t){return this.createChild(new e,"feBlend",t)},this.feColorMatrix=function(t){return this.createChild(new e,"feColorMatrix",t)},this.feComponentTransfer=function(t){return this.createChild(new e,"feComponentTransfer",t)},this.feComposite=function(t){return this.createChild(new e,"feComposite",t)},this.feConvolveMatrix=function(t){return this.createChild(new e,"feConvolveMatrix",t)},this.feDiffuseLighting=function(t){return this.createChild(new e,"feDiffuseLighting",t)},this.feDisplacementMap=function(t){return this.createChild(new e,"feDisplacementMap",t)},this.feFlood=function(t){return this.createChild(new e,"feFlood",t)},this.feGaussianBlur=function(t){return this.createChild(new e,"feGaussianBlur",t)},this.feImage=function(t){return this.createChild(new e,"feImage",t)},this.feMerge=function(t,i){return this.createChild(new e,"feMerge",t,i)},this.feMergeNode=function(t){return this.createChild(new e,"feMergeNode",t)},this.feMorphology=function(t){return this.createChild(new e,"feMorphology",t)},this.feOffset=function(t){return this.createChild(new e,"feOffset",t)},this.feSpecularLighting=function(t){return this.createChild(new e,"feSpecularLighting",t)},this.feTile=function(t){return this.createChild(new e,"feTile",t)},this.feTurbulence=function(t){return this.createChild(new e,"feTurbulence",t)}};return u.create=function(t,e,i){return null==h&&(h=new u),h.custom(t,e,i)},u}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=a(i(0)),r=a(i(7));function a(t){return t&&t.__esModule?t:{default:t}}n.default.use(r.default),e.default={name:"util.svg.base3d",extend:"util.svg.base",component:function(){n.default.include("util.base");var t=n.default.include("util.math"),e=n.default.include("util.color");return function(){this.rect3d=function(i,n,r,a,o){var s=this,h=t.radian(a),u=n,l=r,c=Math.cos(h)*o,d=Math.sin(h)*o,f=n+c,p=r+d;return s.group({},function(){s.path({fill:e.lighten(i,.15),stroke:e.lighten(i,.15)}).MoveTo(c,0).LineTo(f,0).LineTo(u,d).LineTo(0,d),s.path({fill:i,stroke:i}).MoveTo(0,d).LineTo(0,p).LineTo(u,p).LineTo(u,d),s.path({fill:e.darken(i,.2),stroke:e.darken(i,.2)}).MoveTo(u,p).LineTo(f,l).LineTo(f,0).LineTo(u,d)})},this.cylinder3d=function(i,n,r,a,o,s){var h=this,u=t.radian(a),l=n/2,c=l*(s=void 0==s?1:0==s?.01:s),d=Math.cos(u)*o/2,f=Math.sin(u)*o/2,p="cylinder3d";return h.group({},function(){h.ellipse({fill:e.darken(i,.05),"fill-opacity":.85,stroke:e.darken(i,.05),rx:l,ry:f,cx:l,cy:r}).translate(d,f),h.path({fill:"url(#"+p+")","fill-opacity":.85,stroke:i}).MoveTo(l-c,f).LineTo(0,r).Arc(l,f,0,0,0,n,r).LineTo(l+c,f).Arc(l+c,f,0,0,1,l-c,f).translate(d,f),h.ellipse({fill:e.lighten(i,.2),"fill-opacity":.95,stroke:e.lighten(i,.2),rx:l*s,ry:f*s,cx:l,cy:f}).translate(d,f),h.linearGradient({id:p,x1:"100%",x2:"0%",y1:"0%",y2:"0%"},function(){h.stop({offset:"0%","stop-color":e.lighten(i,.15)}),h.stop({offset:"33.333333333333336%","stop-color":e.darken(i,.2)}),h.stop({offset:"66.66666666666667%","stop-color":e.darken(i,.2)}),h.stop({offset:"100%","stop-color":e.lighten(i,.15)})})})}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=a(i(0)),r=a(i(8));function a(t){return t&&t.__esModule?t:{default:t}}n.default.use(r.default),e.default={name:"util.svg",extend:"util.svg.base3d",component:function(){var t=n.default.include("util.base"),e=n.default.include("util.svg.element"),i=n.default.include("util.svg.element.transform"),r=n.default.include("util.svg.element.path"),a=n.default.include("util.svg.element.poly"),o=function(n,o){var s=this,h=null,u=null,l=null,c={},d=0,f=!1;function p(t){var e=t.children;(function(t){for(var e=0,i=t.length;e<i;e++)if(t[e].order>0)return!0;return!1})(e)&&e.sort(function(t,e){return t.order-e.order});for(var i=0,n=e.length;i<n;i++){var o=e[i];o&&(o.children.length>0&&p(o),(o instanceof r||o instanceof a)&&o.join(),o.parent==t&&t.element.appendChild(o.element))}}function g(t){for(var e=t.children,i=0,n=e.length;i<n;i++){var r=e[i];r&&(r.off(),r.children.length>0&&g(r))}}this.create=function(e,i,n,r){return e.create(i,n),0==d?u.append(e):c[d].append(e),t.typeCheck("function",r)&&(c[++d]=e,r.call(e),d--),e},this.createChild=function(t,e,i,n){if(t.parent==u)throw new Error("JUI_CRITICAL_ERR: Parents are required elements of the '"+e+"'");return this.create(t,e,i,n)},this.size=function(){if(2!=arguments.length)return h.size();var t=arguments[0],e=arguments[1];h.attr({width:t,height:e})},this.clear=function(t){u.each(function(){this.element.parentNode&&u.element.removeChild(this.element)}),g(u),!0===t&&(l.each(function(){this.element.parentNode&&l.element.removeChild(this.element)}),g(l))},this.reset=function(t){this.clear(t),u.children=[],!0===t&&(l.children=[])},this.render=function(t){this.clear(),p(!1===f||!0===t?h:u),f=!0},this.download=function(e){t.typeCheck("string",e)&&(e=e.split(".")[0]);var i=document.createElement("a");i.download=e?e+".svg":"svg.svg",i.href=this.toDataURI(),document.body.appendChild(i),i.click(),i.parentNode.removeChild(i)},this.downloadImage=function(e,i){i=i||"image/png";var n=new Image,r=this.size(),a=this.toDataURI().replace('width="100%"','width="'+r.width+'"').replace('height="100%"','height="'+r.height+'"');n.onload=function(){var r=document.createElement("canvas");r.width=n.width,r.height=n.height,r.getContext("2d").drawImage(n,0,0);var a=r.toDataURL(i);t.typeCheck("string",e)&&(e=e.split(".")[0]);var o=document.createElement("a");o.download=e?e+".png":"svg.png",o.href=a,document.body.appendChild(o),o.click(),o.parentNode.removeChild(o)},n.src=a},this.exportCanvas=function(t){var e=new Image,i=this.size(),n=this.toDataURI().replace('width="100%"','width="'+i.width+'"').replace('height="100%"','height="'+i.height+'"');e.onload=function(){t.width=e.width,t.height=e.height,t.getContext("2d").drawImage(e,0,0)},e.src=n},this.toXML=function(){var t=n.innerHTML;return['<?xml version="1.0" encoding="utf-8"?>',(t=t.replace('xmlns="http://www.w3.org/2000/svg"',"")).replace("<svg ",'<svg xmlns="http://www.w3.org/2000/svg" ')].join("\n")},this.toDataURI=function(){var e=this.toXML();return(t.browser.mozilla||t.browser.msie)&&(e=encodeURIComponent(e)),t.browser.msie?"data:image/svg+xml,"+e:"data:image/svg+xml;utf8,"+e},this.autoRender=function(t,e){d>0||(e?u.append(t):l.append(t))},this.getTextSize=function(t,e){if(""==t)return{width:0,height:0};e=e||{};var i=document.body||h.element,n=document.createElementNS("http://www.w3.org/2000/svg","svg");n.setAttributeNS(null,"width",500),n.setAttributeNS(null,"height",100),n.setAttributeNS(null,"x",-2e4),n.setAttributeNS(null,"y",-2e4);var r=document.createElementNS("http://www.w3.org/2000/svg","text");r.setAttributeNS(null,"x",-200),r.setAttributeNS(null,"y",-200),r.appendChild(document.createTextNode(t)),e.fontSize&&r.setAttributeNS(null,"font-size",e.fontSize),e.fontFamily&&r.setAttributeNS(null,"font-family",e.fontFamily),e.bold&&r.setAttributeNS(null,"font-weight",e.bold),e.style&&r.setAttributeNS(null,"font-style",e.style),n.appendChild(r),i.appendChild(n);var a=r.getBoundingClientRect();return i.removeChild(n),{width:a.width,height:a.height}},s.root=h=new e,u=new i,l=new i,h.create("svg",o),u.create("g"),l.create("g"),u.translate(.5,.5),l.translate(.5,.5),n.appendChild(h.element),h.append(u),h.append(l)};return o.createObject=function(t){var i=new e;if(i.create(t.type,t.attr),t.children instanceof Array)for(var n=0,r=t.children.length;n<r;n++)i.append(o.createObject(t.children[n]));return i},o}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.axis",extend:null,component:function(){var t=n.default.include("util.base"),e=function(e,i,r){var a=this,o=null,s={},h={},u="",l=null,c="",d=null;function f(e,i){return t.typeCheck("string",e)&&e.indexOf("%")>-1?i*(parseFloat(e.replace("%",""))/100):e}function p(i,r){if(("x"==r||"y"==r||"z"==r)&&!t.typeCheck("object",i[r]))return null;i[r]=i[r]||{},"x"==r?i[r].orient="top"==i[r].orient?"top":"bottom":"y"==r?i[r].orient="right"==i[r].orient?"right":"left":"z"==r?i[r].orient="center":"c"==r&&(i[r].type=i[r].type||"panel",i[r].orient="custom"),i[r].type=i[r].type||"block";var o=n.default.include("chart.grid."+i[r].type);n.default.defineOptions(o,i[r]);var s=new o(e,i,i[r]);s.chart=e,s.axis=i,s.grid=i[r],s.svg=e.svg;var h=s.render();return a.isFull3D()||("left"==i[r].orient?h.root.translate(e.area("x")+a.area("x")-i[r].dist,e.area("y")):"right"==i[r].orient?h.root.translate(e.area("x")+a.area("x2")+i[r].dist,e.area("y")):"bottom"==i[r].orient?h.root.translate(e.area("x"),e.area("y")+a.area("y2")+i[r].dist):"top"==i[r].orient?h.root.translate(e.area("x"),e.area("y")+a.area("y")-i[r].dist):h.root&&h.root.translate(e.area("x")+a.area("x"),e.area("y")+a.area("y"))),h.scale.type=i[r].type,h.scale.root=h.root,h.scale}function g(t){var e=a.origin,i=a.buffer,n=Math.ceil(e.length/i);a.page=t<1?1:t>n?n:t,a.start=(a.page-1)*i,a.end=a.start+i,a.end>e.length&&(a.start=e.length-i,a.end=e.length),a.end<=e.length&&(a.start=a.start<0?0:a.start,a.data=e.slice(a.start,a.end),e.length>0&&a.page++)}function v(t,e){var i=a.origin;a.end=e>i.length?i.length:e,a.start=t<0?0:t,a.data=i.slice(a.start,a.end)}function m(t){var e=a.area("y"),i=a.area("x");return t.chartY>e&&t.chartY<e+a.area("height")&&t.chartX>i&&t.chartX<i+a.area("width")&&(t.axisX=t.chartX-i,t.axisY=t.chartY-e,!0)}this.getValue=function(e,i,n){var a=e[r.keymap[i]];return t.typeCheck("undefined",a)?(a=e[i],t.typeCheck("undefined",a)?n:a):a},this.reload=function(i){var r=e.area();t.extend(this,{x:i.x,y:i.y,z:i.z,c:i.c,map:i.map}),h=t.typeCheck("integer",i.padding)?{left:i.padding,right:i.padding,bottom:i.padding,top:i.padding}:i.padding,s=function(t,i){return t.x=f(t.x,e.area("width")),t.y=f(t.y,e.area("height")),t.width=f(t.width,e.area("width")),t.height=f(t.height,e.area("height")),t.x2=t.x+t.width,t.y2=t.y+t.height,t.x+=i.left||0,t.y+=i.top||0,t.x2-=i.right||0,t.y2-=i.bottom||0,t.width=t.x2-t.x,t.height=t.y2-t.y,t}(t.extend(i.area,{x:0,y:0,width:r.width,height:r.height},!0),h),l&&(l.remove(),l=null),u="axis-clip-id",l=e.svg.clipPath({id:u},function(){e.svg.rect({x:s.x,y:s.y,width:s.width,height:s.height})}),e.appendDefs(l),d&&(d.remove(),d=null),c="axis-clip-rect-id",d=e.svg.clipPath({id:c},function(){e.svg.rect({x:0,y:0,width:s.width,height:s.height})}),e.appendDefs(d),this.root=function(){var t=e.theme("axisBorderWidth"),i=h.left+h.right,n=h.top+h.bottom,r=e.svg.rect({rx:e.theme("axisBorderRadius"),ry:e.theme("axisBorderRadius"),fill:e.theme("axisBackgroundColor"),"fill-opacity":e.theme("axisBackgroundOpacity"),stroke:e.theme("axisBorderColor"),"stroke-width":t,width:s.width+i-t,height:s.height+n-t,x:s.x-h.left,y:s.y-h.top});return r.translate(e.area("x"),e.area("y")),r}(),this.x=p(this,"x"),this.y=p(this,"y"),this.z=p(this,"z"),this.c=p(this,"c"),this.map=function(i,r){if("map"==r&&!t.typeCheck("object",i[r]))return null;i[r]=i[r]||{};var s=n.default.include("chart.map");n.default.defineOptions(s,i[r]),null==o&&(o=new s(e,i,i[r])),o.chart=e,o.axis=i,o.map=i[r],o.svg=e.svg;var h=o.render();return h.root.translate(e.area("x")+a.area("x"),e.area("y")+a.area("y")),h.scale.type=i[r].type,h.scale.root=h.root,h.scale}(this,"map"),this.buffer=i.buffer,this.shift=i.shift,this.index=i.index,this.page=i.page,this.start=i.start,this.end=i.end,this.degree=i.degree,this.depth=i.depth,this.perspective=i.perspective},this.area=function(e){return t.typeCheck("undefined",s[e])?s:s[e]},this.padding=function(e){return t.typeCheck("undefined",h[e])?h:h[e]},this.get=function(t){return{area:s,padding:h,clipId:u,clipRectId:c}[t]||r[t]},this.set=function(n,a,o){t.typeCheck("object",a)?!0===o?(i[n]=t.deepClone(a),r[n]=t.deepClone(a)):(t.extend(i[n],a),t.extend(r[n],a)):(i[n]=a,r[n]=a),e.isRender()&&e.render()},this.updateGrid=this.set,this.update=function(e){this.origin=t.typeCheck("array",e)?e:[e],this.page=1,this.start=0,this.end=0,this.screen(1)},this.screen=function(t){g(t),this.end<=this.origin.length&&e.isRender()&&e.render()},this.next=function(){var t=this.origin,i=this.buffer,n=this.shift;this.start+=n;var r=this.start+i>t.length;this.end=r?t.length:this.start+i,this.start=r?t.length-i:this.start,this.start=this.start<0?0:this.start,this.data=t.slice(this.start,this.end),e.isRender()&&e.render()},this.prev=function(){var t=this.origin,i=this.buffer,n=this.shift;this.start-=n;var r=this.start<0;this.end=r?i:this.start+i,this.start=r?0:this.start,this.data=t.slice(this.start,this.end),e.isRender()&&e.render()},this.zoom=function(t,i){t!=i&&(v(t,i),e.isRender()&&e.render())},this.isFull3D=function(){return!t.typeCheck(["undefined","null"],this.z)},t.extend(a,{data:r.data,origin:r.origin,buffer:r.buffer,shift:r.shift,index:r.index,page:r.page,start:r.start,end:r.end,degree:r.degree,depth:r.depth,perspective:r.perspective}),a.origin=a.data,a.start>0||a.end>0?v(a.start,a.end):g(a.page),function(){var t=!1,i=r.index;e.on("chart.mousemove",function(n){m(n)?t||(e.emit("axis.mouseover",[n,i]),t=!0):t&&(e.emit("axis.mouseout",[n,i]),t=!1),m(n)&&e.emit("axis.mousemove",[n,i])}),e.on("bg.mousemove",function(n){!m(n)&&t&&(e.emit("axis.mouseout",[n,i]),t=!1)}),e.on("chart.mousedown",function(t){m(t)&&e.emit("axis.mousedown",[t,i])}),e.on("chart.mouseup",function(t){m(t)&&e.emit("axis.mouseup",[t,i])}),e.on("chart.click",function(t){m(t)&&e.emit("axis.click",[t,i])}),e.on("chart.dblclick",function(t){m(t)&&e.emit("axis.dblclick",[t,i])}),e.on("chart.rclick",function(t){m(t)&&e.emit("axis.rclick",[t,i])}),e.on("chart.mousewheel",function(t){m(t)&&e.emit("axis.mousewheel",[t,i])})}(),a.reload(r)};return e.setup=function(){return{extend:null,x:null,y:null,z:null,c:null,map:null,data:[],origin:[],keymap:{},area:{},padding:{top:0,bottom:0,left:0,right:0},buffer:1e4,shift:1,page:1,start:0,end:0,degree:{x:0,y:0,z:0},depth:0,perspective:.9}},e}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=o(i(0)),r=o(i(9)),a=o(i(10));function o(t){return t&&t.__esModule?t:{default:t}}n.default.use(r.default,a.default),e.default={name:"chart.builder",extend:"core",component:function(){var t=n.default.include("util.base"),e=n.default.include("util.dom"),i=n.default.include("util.svg"),r=n.default.include("util.color"),a=n.default.include("chart.axis");t.resize(function(){for(var e=n.default.get("chart.builder"),i=0;i<e.length;i++)for(var r=e[i],a=0;a<r.length;a++)t.typeCheck("function",r[a].resize)&&r[a].resize()},1e3);var o=function(){var o,s,h,u=[],l=[],c=[],d=null,f={},p=!1,g=null,v={render:[],renderAll:[]},m={main:null,buffer:null,sub:null},y={};function x(t,i){var n=!1;function r(i){var n=e.offset(t.root),r=i.pageX-n.left,a=i.pageY-n.top;if(i.bgX=r,i.bgY=a,i.chartX=r-t.padding("left"),i.chartY=a-t.padding("top"),!(i.chartX<0||i.chartX>t.area("width")||i.chartY<0||i.chartY>t.area("height")))return!0}i.on("click",function(e){r(e)?t.emit("chart.click",[e]):t.emit("bg.click",[e])}),i.on("dblclick",function(e){r(e)?t.emit("chart.dblclick",[e]):t.emit("bg.dblclick",[e])}),i.on("contextmenu",function(e){r(e)?t.emit("chart.rclick",[e]):t.emit("bg.rclick",[e]),e.preventDefault()}),i.on("mousemove",function(e){r(e)?n?t.emit("chart.mousemove",[e]):(t.emit("chart.mouseover",[e]),n=!0):(n&&(t.emit("chart.mouseout",[e]),n=!1),t.emit("bg.mousemove",[e]))}),i.on("mousedown",function(e){r(e)?t.emit("chart.mousedown",[e]):t.emit("bg.mousedown",[e])}),i.on("mouseup",function(e){r(e)?t.emit("chart.mouseup",[e]):t.emit("bg.mouseup",[e])}),i.on("mouseover",function(e){r(e)||t.emit("bg.mouseover",[e])}),i.on("mouseout",function(e){r(e)||t.emit("bg.mouseout",[e])}),i.on("mousewheel",function(e){r(e)?t.emit("chart.mousewheel",[e]):t.emit("bg.mousewheel",[e])})}function w(e,n){if(!t.typeCheck("undefined",n)&&f[n])return"url(#"+f[n]+")";var r="gradient";e.attr.id=r;var a=i.createObject(e);return d.append(a),t.typeCheck("undefined",n)||(f[n]=r),"url(#"+r+")"}function b(e){if(t.typeCheck("string",e)){if(e=e.replace("url(#","").replace(")",""),f[e])return"url(#"+e+")";if(-1==e.indexOf("pattern-"))return!1;var r=e.split("-"),a=r.pop(),o=n.default.include("chart."+r.join("."));return!!o&&("function"==typeof(s=o[a])&&(s=s.call(s)),s.attr&&!s.attr.id&&(s.attr.id=e),s=i.createObject(s),d.append(s),f[e]=e,"url(#"+e+")")}if(e.attr.id=e.attr.id||"pattern",f[e.attr.id])return"url(#"+e.attr.id+")";var s=i.createObject(e);return d.append(s),f[e.attr.id]=e.attr.id,"url(#"+e.attr.id+")"}function M(e){if(t.typeCheck("undefined",e))return"none";if(t.typeCheck("object",e))return"pattern"==e.type?b(e):w(e);if("string"==typeof e){var i=b(e);if(i)return i}var n=r.parse(e);return n==e?e:w(n,e)}function k(e){var i={};t.typeCheck("string",e)?(t.extend(i,n.default.include("chart.theme."+e)),t.extend(i,g.style)):t.typeCheck("object",e)&&(t.extend(h,g.style),t.extend(h,e),t.extend(i,h)),h=i}function C(t,e){var i=e.match(/{([^{}]+)}/g);if(null!=i)for(var n=0;n<i.length;n++){var r=i[n].substring(1,i[n].length-1);e=e.replace(i[n],t.icon(r))}return e}function _(e){var i=e.svg.size();return{width:t.typeCheck("integer",g.width)?g.width:i.width,height:t.typeCheck("integer",g.height)?g.height:i.height}}function T(t,e){var i=_(t),n=m[e];n.restore(),n.clearRect(0,0,i.width,i.height),n.save(),"main"==e&&n.translate(s.x,s.y)}this.init=function(){!function(e){var i=(g=t.deepClone(e.options,{data:!0,bind:!0})).padding;o=t.typeCheck("integer",i)?{left:i,right:i,bottom:i,top:i}:i,t.typeCheck("array",g.axis)||(g.axis=[g.axis]),t.typeCheck("array",g.brush)||(g.brush=[g.brush]),t.typeCheck("array",g.widget)||(g.widget=[g.widget]),0==g.axis.length&&g.axis.push({data:[]});for(var n=0;n<g.axis.length;n++){var r=g.axis[n];t.extend(r,g.axis[r.extend],!0)}}(this),k(g.theme),function(t){t.style.position="relative",t.style.userSelect="none",t.style.webkitUserSelect="none",t.style.MozUserSelect="none",t.setAttribute("unselectable","on")}(this.root),this.svg=new i(this.root,{width:g.width,height:g.height,"buffered-rendering":"dynamic"}),g.canvas?(!function(t){var e=_(t);for(var i in m){var n=document.createElement("CANVAS");n.setAttribute("width",e.width),n.setAttribute("height",e.height),n.style.position="absolute",n.style.left="0px",n.style.top="0px",n.getContext&&(m[i]=n.getContext("2d"),"buffer"!=i&&t.root.appendChild(n)),"sub"==i&&(n.on=function(t,e){return n.addEventListener(t,function(t){"function"==typeof e&&e.call(this,t)},!1),this})}}(this),x(this,e.find(this.root,"CANVAS")[1])):x(this,this.svg.root),function(){var e=g.icon;if(t.typeCheck(["string","array"],e.path)){for(var i=t.typeCheck("string",e.path)?[e.path]:e.path,n=[],r=0;r<i.length;r++){var a=i[r],o="url("+a+") ";-1!=a.indexOf(".eot")?o+="format('embedded-opentype')":-1!=a.indexOf(".woff")?o+="format('woff')":-1!=a.indexOf(".ttf")?o+="format('truetype')":-1!=a.indexOf(".svg")&&(o+="format('svg')"),n.push(o)}!function(t){(function(){var t=document.createElement("style");return t.appendChild(document.createTextNode("")),document.head.appendChild(t),t.sheet})().insertRule(t,0)}("@font-face {font-family: "+e.type+"; font-weight: normal; font-style: normal; src: "+n.join(",")+"}")}}(),this.render()},this.get=function(t,e){var i={axis:u,brush:l,widget:c,padding:o,area:s};return i[t][e]?i[t][e]:i[t]||i},this.axis=function(t){return 0==arguments.length?u:u[t]},this.area=function(e){return t.typeCheck("undefined",s[e])?s:s[e]},this.padding=function(e){return t.typeCheck("undefined",o[e])?o:o[e]},this.color=function(e,i){var n=null;if(1==arguments.length?t.typeCheck("string",e)?n=e:t.typeCheck("integer",e)&&(n=r(e)):t.typeCheck(["array","object"],i)?(n=i[e],t.typeCheck("integer",n)&&(n=r(n))):n=r(),f[n])return"url(#"+f[n]+")";function r(t){var i=h.colors,n=t||e;return n>i.length-1?i[i.length-1]:i[n]}return M(n)},this.icon=function(t){return n.default.include("chart.icon."+g.icon.type)[t]},this.text=function(e,i){return t.typeCheck("string",i)?i=C(this,i):t.typeCheck("undefined",i)&&(i=""),this.svg.text(e,i)},this.texts=function(e,i,n){for(var r=this.svg.group(),a=0;a<i.length;a++)if(t.typeCheck("string",i[a])){var o=(e["font-size"]||10)*(n||1);r.append(this.svg.text(t.extend({y:a*o},e,!0),C(this,i[a])))}return r},this.theme=function(t,e,i){if(0==arguments.length)return h;if(1==arguments.length)return t.indexOf("Color")>-1&&null!=h[t]?M(h[t]):h[t];if(3==arguments.length){var n=t?e:i;return n.indexOf("Color")>-1&&null!=h[n]?M(h[n]):h[n]}},this.format=function(){if(0!=arguments.length){var e=g.format;return t.typeCheck("function",e)?e.apply(this,arguments):arguments[0]}},this.on=function(e,i,n){t.typeCheck("string",e)&&t.typeCheck("function",i)&&(this.event.push({type:e.toLowerCase(),callback:i}),"render"!=n&&"renderAll"!=n||v[n].push(i))},this.render=function(e){this.svg.reset(e),function(t,e){for(var i=0;i<v.render.length;i++)t.off(v.render[i]);if(v.render=[],!0===e){for(i=0;i<v.renderAll.length;i++)t.off(v.renderAll[i]);v.renderAll=[]}}(this,e),function(t){var e=t.svg.size(),i={width:e.width-(o.left+o.right),height:e.height-(o.top+o.bottom),x:o.left,y:o.top};i.width<0&&(i.width=0),i.height<0&&(i.height=0),i.x2=i.x+i.width,i.y2=i.y+i.height,s=i}(this),this.options.canvas&&(T(this,"main"),T(this,"buffer"),e&&T(this,"sub")),function(e){l=t.deepClone(g.brush),c=t.deepClone(g.widget),d=e.svg.defs(),f={}}(this),function(e){for(var i=t.deepClone(g.axis,{data:!0,origin:!0}),r=0;r<i.length;r++)n.default.defineOptions(a,i[r]),i[r].index=r,u[r]?u[r].reload(i[r]):u[r]=new a(e,g.axis[r],i[r])}(this),function(e){var i=l;if(null!=i)for(var r=0;r<i.length;r++){var a=n.default.include("chart.brush."+i[r].type);n.default.defineOptions(a,i[r]);var o=u[i[r].axis];if(i[r].target)t.typeCheck("string",i[r].target)&&(i[r].target=[i[r].target]);else{var s=[];if(o)for(var h in o.data[0])s.push(h);i[r].target=s}i[r].index=r;var c=new a(e,o,i[r]);c.chart=e,c.axis=o,c.brush=i[r],c.svg=e.svg,c.canvas=m.buffer,c.render()}}(this),function(t,e){var i=c;if(null!=i)for(var r=0;r<i.length;r++){var a=n.default.include("chart.widget."+i[r].type);n.default.defineOptions(a,i[r]),i[r].index=r;var o=new a(t,u[0],i[r]);if(o.chart=t,o.axis=u[0],o.widget=i[r],o.svg=t.svg,o.canvas=m.sub,p&&!o.isRender()&&!0!==e)return;var s=o.render();o.isRender()||t.svg.autoRender(s,!1)}}(this,e),this.options.canvas&&m.main.drawImage(m.buffer.canvas,0,0),this.svg.root.css({"font-family":this.theme("fontFamily")+","+g.icon.type,background:this.theme("backgroundColor")}),this.svg.render(e),this.emit("render",[p]),p=!0},this.appendDefs=function(t){d.append(t)},this.addBrush=function(t){g.brush.push(t),this.isRender()&&this.render()},this.removeBrush=function(t){g.brush.splice(t,1),this.isRender()&&this.render()},this.updateBrush=function(e,i,n){!0===n?g.brush[e]=i:t.extend(g.brush[e],i),this.isRender()&&this.render()},this.addWidget=function(t){g.widget.push(t),this.isRender()&&this.render()},this.removeWidget=function(t){g.widget.splice(t,1),this.isRender()&&this.render()},this.updateWidget=function(e,i,n){!0===n?g.widget[e]=i:t.extend(g.widget[e],i),this.isRender()&&this.render()},this.setTheme=function(t){k(t),this.isRender()&&this.render(!0)},this.setSize=function(t,i){if(2==arguments.length&&(g.width=t,g.height=i),this.svg.size(g.width,g.height),g.canvas)for(var n=e.find(this.root,"CANVAS"),r=_(this),a=0;a<n.length;a++)n[a].setAttribute("width",r.width),n[a].setAttribute("height",r.height);this.isRender()&&this.render(!0)},this.isFullSize=function(){return"100%"==g.width||g.height,!0},this.resize=function(){this.isFullSize()&&this.setSize(),this.isRender()||this.render(!0)},this.isRender=function(){return!p||g.render},this.setCache=function(t,e){y[t]=e},this.getCache=function(t,e){return void 0===y[t]?e:y[t]}};return o.setup=function(){return{width:"100%",height:"100%",padding:{top:50,bottom:50,left:50,right:50},theme:"classic",style:{},brush:[],widget:[],axis:[],bind:null,format:null,render:!0,icon:{type:"classic",path:null},canvas:!1}},o}}},function(t,e,i){"use strict";var n=function(t){return t&&t.__esModule?t:{default:t}}(i(13));window.jui=window.JUI=n.default},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=ut(i(0)),r=ut(i(14)),a=ut(i(15)),o=ut(i(16)),s=ut(i(17)),h=ut(i(18)),u=ut(i(19)),l=ut(i(20)),c=ut(i(21)),d=ut(i(22)),f=ut(i(1)),p=ut(i(2)),g=ut(i(3)),v=ut(i(4)),m=ut(i(5)),y=ut(i(6)),x=ut(i(7)),w=ut(i(8)),b=ut(i(9)),M=ut(i(23)),k=ut(i(24)),C=ut(i(25)),_=ut(i(26)),T=ut(i(27)),A=ut(i(28)),j=ut(i(29)),F=ut(i(30)),P=ut(i(10)),S=ut(i(31)),L=ut(i(11)),z=ut(i(32)),O=ut(i(33)),B=ut(i(34)),R=ut(i(35)),D=ut(i(36)),I=ut(i(37)),E=ut(i(38)),Y=ut(i(39)),W=ut(i(40)),X=ut(i(41)),N=ut(i(42)),G=ut(i(43)),U=ut(i(44)),V=ut(i(45)),H=ut(i(46)),$=ut(i(47)),J=ut(i(48)),q=ut(i(49)),Z=ut(i(50)),K=ut(i(51)),Q=ut(i(52)),tt=ut(i(53)),et=ut(i(54)),it=ut(i(55)),nt=ut(i(56)),rt=ut(i(57)),at=ut(i(58)),ot=ut(i(59)),st=ut(i(60)),ht=ut(i(61));function ut(t){return t&&t.__esModule?t:{default:t}}n.default.use([r.default,a.default,o.default,s.default,h.default,u.default,l.default,c.default,d.default,f.default,p.default,g.default,v.default,m.default,y.default,x.default,w.default,b.default,M.default,k.default,C.default,_.default,T.default,A.default,j.default,F.default,P.default,S.default,L.default,z.default,O.default,B.default,R.default,D.default,I.default,E.default,Y.default,W.default,X.default,N.default,G.default,U.default,V.default,H.default,$.default,J.default,q.default,Z.default,K.default,Q.default,tt.default,et.default,it.default,nt.default,rt.default,at.default,ot.default,st.default,ht.default]),e.default=n.default},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},r=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"util.dom",extend:null,component:function(){var t=r.default.include("util.base");return{find:function(){var e=arguments;if(1==e.length){if(t.typeCheck("string",e[0]))return document.querySelectorAll(e[0])}else if(2==e.length&&t.typeCheck("object",e[0])&&t.typeCheck("string",e[1]))return e[0].querySelectorAll(e[1]);return[]},each:function(e,i){if(t.typeCheck("function",i)){var n=null;t.typeCheck("string",e)?n=document.querySelectorAll(e):t.typeCheck("array",e)&&(n=e),null!=n&&Array.prototype.forEach.call(n,function(t,e){i.apply(t,[e,t])})}},attr:function(e,i){if(t.typeCheck(["string","array"],e)){var n=document.querySelectorAll(e);if(t.typeCheck("object",i))for(var r=0;r<n.length;r++)for(var a in i)n[r].setAttribute(a,i[a]);else if(t.typeCheck("string",i)&&n.length>0)return n[0].getAttribute(i)}},remove:function(t){this.each(t,function(){this.parentNode.removeChild(this)})},offset:function(t){var e,i,r={top:0,left:0},a=t&&t.ownerDocument;if(a){e=a.documentElement;return"undefined"!==n(t.getBoundingClientRect)&&(r=t.getBoundingClientRect()),i=function(t){return function(t){return null!=t&&t==t.window}(t)?t:9===t.nodeType&&(t.defaultView||t.parentWindow)}(a),{top:r.top+(i.pageYOffset||e.scrollTop)-(e.clientTop||0),left:r.left+(i.pageXOffset||e.scrollLeft)-(e.clientLeft||0)}}}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"util.math",extend:null,component:function(){var t=n.default.include("util.base");function e(t,e){for(var i=[],n=0,r=t.length;n<r;n++){for(var a=0,o=0,s=t[n].length;o<s;o++)a+=t[n][o]*e[o];i.push(a)}return i}return{rotate:function(t,e,i){return{x:t*Math.cos(i)-e*Math.sin(i),y:t*Math.sin(i)+e*Math.cos(i)}},resize:function(t,e,i,n){var r=n/i;return i>=t&&r<=1?(i=t,n=e*r):n>=e&&(n=e,i=t/r),{width:i,height:n}},radian:function(t){return t*Math.PI/180},degree:function(t){return 180*t/Math.PI},angle:function(t,e,i,n){var r=i-t,a=n-e;return Math.atan2(a,r)},interpolateNumber:function(t,e){var i=e-t;return function(e){return t+i*e}},interpolateRound:function(t,e){var i=e-t;return function(e){return Math.round(t+i*e)}},getFixed:function(t,e){var i=(t+"").split("."),n=i.length<2?0:i[1].length,r=(e+"").split("."),a=r.length<2?0:r[1].length;return n>a?n:a},fixed:function(t){var e=this.getFixed(t,0),i=Math.pow(10,e),n=function(t){return Math.round(t*i)/i};return n.plus=function(t,e){return Math.round(t*i+e*i)/i},n.minus=function(t,e){return Math.round(t*i-e*i)/i},n.multi=function(t,e){return Math.round(t*i*(e*i))/(i*i)},n.div=function(t,e){var n=t*i/(e*i),r=Math.pow(10,this.getFixed(n,0));return Math.round(n*r)/r},n.remain=function(t,e){return Math.round(t*i%(e*i))/i},n},round:function(t,e){var i=Math.pow(10,e);return Math.round(t*i)/i},plus:function(t,e){var i=Math.pow(10,this.getFixed(t,e));return Math.round(t*i+e*i)/i},minus:function(t,e){var i=Math.pow(10,this.getFixed(t,e));return Math.round(t*i-e*i)/i},multi:function(t,e){var i=Math.pow(10,this.getFixed(t,e));return Math.round(t*i*(e*i))/(i*i)},div:function(t,e){var i=Math.pow(10,this.getFixed(t,e)),n=t*i/(e*i),r=Math.pow(10,this.getFixed(n,0));return Math.round(n*r)/r},remain:function(t,e){var i=Math.pow(10,this.getFixed(t,e));return Math.round(t*i%(e*i))/i},nice:function(t,e,i,n){if(n=n||!1,t>e)var r=t,a=e;else a=t,r=e;var o,s,h=i,u=0,l=[];function c(t,e){var i=Math.floor(Math.log(t)/Math.LN10),n=t/Math.pow(10,i);return niceFraction=e?n<1.5?1:n<3?2:n<7?5:10:n<=1?1:n<=2?2:n<=5?5:10,niceFraction*Math.pow(10,i)}return l=n?c(r-a,!1):r-a,u=n?c(l/h,!0):l/h,o=n?Math.floor(a/u)*u:a,s=n?Math.floor(r/u)*u:r,{min:o,max:s,range:l,spacing:u}},matrix:function(i,n){return t.typeCheck("array",n[0])?function(t,i){for(var n=[],r=[],a=0,o=i.length;a<o;a++)n[a]=[],r[a]=[];for(a=0,o=i.length;a<o;a++)for(var s=0,h=i[a].length;s<h;s++)n[s].push(i[a][s]);for(a=0,o=n.length;a<o;a++){var u=e(t,n[a]);for(s=0,h=u.length;s<h;s++)r[s].push(u[s])}return r}(i,n):e(i,n)},matrix3d:function(t,e){return e[0]instanceof Array||e[0]instanceof Float32Array?function(t,e){var i=[new Float32Array(4),new Float32Array(4),new Float32Array(4),new Float32Array(4)],n=[new Float32Array([e[0][0],e[1][0],e[2][0],e[3][0]]),new Float32Array([e[0][1],e[1][1],e[2][1],e[3][1]]),new Float32Array([e[0][2],e[1][2],e[2][2],e[3][2]]),new Float32Array([e[0][3],e[1][3],e[2][3],e[3][3]])];return i[0][0]=t[0][0]*n[0][0]+t[0][1]*n[0][1]+t[0][2]*n[0][2]+t[0][3]*n[0][3],i[1][0]=t[1][0]*n[0][0]+t[1][1]*n[0][1]+t[1][2]*n[0][2]+t[1][3]*n[0][3],i[2][0]=t[2][0]*n[0][0]+t[2][1]*n[0][1]+t[2][2]*n[0][2]+t[2][3]*n[0][3],i[3][0]=t[3][0]*n[0][0]+t[3][1]*n[0][1]+t[3][2]*n[0][2]+t[3][3]*n[0][3],i[0][1]=t[0][0]*n[1][0]+t[0][1]*n[1][1]+t[0][2]*n[1][2]+t[0][3]*n[1][3],i[1][1]=t[1][0]*n[1][0]+t[1][1]*n[1][1]+t[1][2]*n[1][2]+t[1][3]*n[1][3],i[2][1]=t[2][0]*n[1][0]+t[2][1]*n[1][1]+t[2][2]*n[1][2]+t[2][3]*n[1][3],i[3][1]=t[3][0]*n[1][0]+t[3][1]*n[1][1]+t[3][2]*n[1][2]+t[3][3]*n[1][3],i[0][2]=t[0][0]*n[2][0]+t[0][1]*n[2][1]+t[0][2]*n[2][2]+t[0][3]*n[2][3],i[1][2]=t[1][0]*n[2][0]+t[1][1]*n[2][1]+t[1][2]*n[2][2]+t[1][3]*n[2][3],i[2][2]=t[2][0]*n[2][0]+t[2][1]*n[2][1]+t[2][2]*n[2][2]+t[2][3]*n[2][3],i[3][2]=t[3][0]*n[2][0]+t[3][1]*n[2][1]+t[3][2]*n[2][2]+t[3][3]*n[2][3],i[0][3]=t[0][0]*n[3][0]+t[0][1]*n[3][1]+t[0][2]*n[3][2]+t[0][3]*n[3][3],i[1][3]=t[1][0]*n[3][0]+t[1][1]*n[3][1]+t[1][2]*n[3][2]+t[1][3]*n[3][3],i[2][3]=t[2][0]*n[3][0]+t[2][1]*n[3][1]+t[2][2]*n[3][2]+t[2][3]*n[3][3],i[3][3]=t[3][0]*n[3][0]+t[3][1]*n[3][1]+t[3][2]*n[3][2]+t[3][3]*n[3][3],i}(t,e):function(t,e){var i=new Float32Array(4);return i[0]=t[0][0]*e[0]+t[0][1]*e[1]+t[0][2]*e[2]+t[0][3]*e[3],i[1]=t[1][0]*e[0]+t[1][1]*e[1]+t[1][2]*e[2]+t[1][3]*e[3],i[2]=t[2][0]*e[0]+t[2][1]*e[1]+t[2][2]*e[2]+t[2][3]*e[3],i[3]=t[3][0]*e[0]+t[3][1]*e[1]+t[3][2]*e[2]+t[3][3]*e[3],i}(t,e)},inverseMatrix3d:function(t){return function(t){var e=[new Float32Array(4),new Float32Array(4),new Float32Array(4),new Float32Array(4)],i=t[0][0],n=t[0][1],r=t[0][2],a=t[0][3],o=t[1][0],s=t[1][1],h=t[1][2],u=t[1][3],l=t[2][0],c=t[2][1],d=t[2][2],f=t[2][3],p=t[3][0],g=t[3][1],v=t[3][2],m=t[3][3];e[0][0]=h*f*g-u*d*g+u*c*v-s*f*v-h*c*m+s*d*m,e[0][1]=a*d*g-r*f*g-a*c*v+n*f*v+r*c*m-n*d*m,e[0][2]=r*u*g-a*h*g+a*s*v-n*u*v-r*s*m+n*h*m,e[0][3]=a*h*c-r*u*c-a*s*d+n*u*d+r*s*f-n*h*f,e[1][0]=u*d*p-h*f*p-u*l*v+o*f*v+h*l*m-o*d*m,e[1][1]=r*f*p-a*d*p+a*l*v-i*f*v-r*l*m+i*d*m,e[1][2]=a*h*p-r*u*p-a*o*v+i*u*v+r*o*m-i*h*m,e[1][3]=r*u*l-a*h*l+a*o*d-i*u*d-r*o*f+i*h*f,e[2][0]=s*f*p-u*c*p+u*l*g-o*f*g-s*l*m+o*c*m,e[2][1]=a*c*p-n*f*p-a*l*g+i*f*g+n*l*m-i*c*m,e[2][2]=n*u*p-a*s*p+a*o*g-i*u*g-n*o*m+i*s*m,e[2][3]=a*s*l-n*u*l-a*o*c+i*u*c+n*o*f-i*s*f,e[3][0]=h*c*p-s*d*p-h*l*g+o*d*g+s*l*v-o*c*v,e[3][1]=n*d*p-r*c*p+r*l*g-i*d*g-n*l*v+i*c*v,e[3][2]=r*s*p-n*h*p-r*o*g+i*h*g+n*o*v-i*s*v,e[3][4]=n*h*l-r*s*l+r*o*c-i*h*c-n*o*d+i*s*d;var y=1/(i*e[0][0]+o*e[0][1]+l*e[0][2]+p*e[0][3]);return 0===y?e=[new Float32Array([1,0,0,0]),new Float32Array([0,1,0,0]),new Float32Array([0,0,1,0]),new Float32Array([0,0,0,1])]:(e[0][0]*=y,e[0][1]*=y,e[0][2]*=y,e[0][3]*=y,e[1][0]*=y,e[1][1]*=y,e[1][2]*=y,e[1][3]*=y,e[2][0]*=y,e[2][1]*=y,e[2][2]*=y,e[2][3]*=y,e[3][0]*=y,e[3][1]*=y,e[3][2]*=y,e[3][4]*=y),e}(t)},scaleValue:function(t,e,i,n,r){return(r-n)*((t-(e=e==i?0:e))/(i-e))+n}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"util.color",extend:null,component:function(){var t=n.default.include("util.base"),e=n.default.include("util.math");var i={regex:/(linear|radial)\((.*)\)(.*)/i,format:function(t,e){if("hex"==e){var i=t.r.toString(16);t.r<16&&(i="0"+i);var n=t.g.toString(16);t.g<16&&(n="0"+n);var r=t.b.toString(16);return t.b<16&&(r="0"+r),"#"+[i,n,r].join("").toUpperCase()}return"rgb"==e?void 0===t.a?"rgb("+[t.r,t.g,t.b].join(",")+")":"rgba("+[t.r,t.g,t.b,t.a].join(",")+")":t},scale:function(){var t,n;function r(e,r){var a={r:parseInt(t.r+(n.r-t.r)*e,10),g:parseInt(t.g+(n.g-t.g)*e,10),b:parseInt(t.b+(n.b-t.b)*e,10)};return i.format(a,r)}return r.domain=function(e,a){return t=i.rgb(e),n=i.rgb(a),r},r.ticks=function(t){for(var i=1/t,n=0,a=[];n<=1;){var o=r(n,"hex");a.push(o),n=e.plus(n,i)}return a},r},map:function(t,e){var n=[];e=e||5;for(var r=i.scale(),a=0,o=t.length-1;a<o;a++)if(0==a)n=r.domain(t[a],t[a+1]).ticks(e);else{var s=r.domain(t[a],t[a+1]).ticks(e);s.shift(),n=n.concat(s)}return n},rgb:function(e){if("string"==typeof e){if(e.indexOf("rgb(")>-1){for(var i=0,n=(r=e.replace("rgb(","").replace(")","").split(",")).length;i<n;i++)r[i]=parseInt(t.trim(r[i]),10);return{r:r[0],g:r[1],b:r[2],a:1}}if(e.indexOf("rgba(")>-1){for(i=0,n=(r=e.replace("rgba(","").replace(")","").split(",")).length;i<n;i++)r[i]=n-1==i?parseFloat(t.trim(r[i])):parseInt(t.trim(r[i]),10);return{r:r[0],g:r[1],b:r[2],a:r[3]}}if(0==e.indexOf("#")){var r=[];if(3==(e=e.replace("#","")).length)for(i=0,n=e.length;i<n;i++){var a=e.substr(i,1);r.push(parseInt(a+a,16))}else for(i=0,n=e.length;i<n;i+=2)r.push(parseInt(e.substr(i,2),16));return{r:r[0],g:r[1],b:r[2],a:1}}}return e},HSVtoRGB:function(t,e,i){360==t&&(t=0);var n=e*i,r=n*(1-Math.abs(t/60%2-1)),a=i-n,o=[];return 0<=t&&t<60?o=[n,r,0]:60<=t&&t<120?o=[r,n,0]:120<=t&&t<180?o=[0,n,r]:180<=t&&t<240?o=[0,r,n]:240<=t&&t<300?o=[r,0,n]:300<=t&&t<360&&(o=[n,0,r]),{r:Math.ceil(255*(o[0]+a)),g:Math.ceil(255*(o[1]+a)),b:Math.ceil(255*(o[2]+a))}},RGBtoHSV:function(t,e,i){var n=t/255,r=e/255,a=i/255,o=Math.max(n,r,a),s=o-Math.min(n,r,a),h=0;0==s?h=0:o==n?h=(r-a)/s%6*60:o==r?h=60*((a-n)/s+2):o==a&&(h=60*((n-r)/s+4)),h<0&&(h=360+h);return{h:h,s:0==o?0:s/o,v:o}},trim:function(t){return(t||"").replace(/^\s+|\s+$/g,"")},lighten:function(t,e){t=t.replace(/[^0-9a-f]/gi,""),e=e||0;var i,n,r=[];for(n=0;n<6;n+=2)i=parseInt(t.substr(n,2),16),i=Math.round(Math.min(Math.max(0,i+i*e),255)).toString(16),r.push(("00"+i).substr(i.length));return"#"+r.join("")},darken:function(t,e){return this.lighten(t,-e)},parse:function(t){return this.parseGradient(t)},parseGradient:function(t){var e=t.match(this.regex);if(!e)return t;var i=this.trim(e[1]);return{type:i+"Gradient",attr:this.parseAttr(i,this.trim(e[2])),children:this.parseStop(this.trim(e[3]))}},parseStop:function(t){for(var e=t.split(","),i=[],n=0,r=e.length;n<r;n++){var a=(t=e[n]).split(" ");0!=a.length&&(1==a.length?i.push({type:"stop",attr:{"stop-color":a[0]}}):2==a.length?i.push({type:"stop",attr:{offset:a[0],"stop-color":a[1]}}):3==a.length&&i.push({type:"stop",attr:{offset:a[0],"stop-color":a[1],"stop-opacity":a[2]}}))}var o=-1,s=-1;for(n=0,r=i.length;n<r;n++){t=i[n];if(0==n?t.offset||(t.offset=0):n==r-1&&(t.offset||(t.offset=1)),-1==o&&void 0===t.offset)o=n;else if(-1==s&&void 0===t.offset){for(var h=(s=n)-o,u=i[s].offset.indexOf("%")>-1?parseFloat(i[s].offset)/100:i[s].offset,l=i[o].offset.indexOf("%")>-1?parseFloat(i[o].offset)/100:i[o].offset,c=(u-l)/h,d=l+c,f=o+1;f<s;f++)i[f].offset=d,d+=c;o=s,s=-1}}return i},parseAttr:function(t,e){if("linear"!=t){for(n=0,r=(i=e.split(",")).length;n<r;n++)-1==i[n].indexOf("%")&&(i[n]=parseFloat(i[n]));return{cx:i[0],cy:i[1],r:i[2],fx:i[3],fy:i[4]}}switch(e){case"":case"left":return{x1:0,y1:0,x2:1,y2:0,direction:e||"left"};case"right":return{x1:1,y1:0,x2:0,y2:0,direction:e};case"top":return{x1:0,y1:0,x2:0,y2:1,direction:e};case"bottom":return{x1:0,y1:1,x2:0,y2:0,direction:e};case"top left":return{x1:0,y1:0,x2:1,y2:1,direction:e};case"top right":return{x1:1,y1:0,x2:0,y2:1,direction:e};case"bottom left":return{x1:0,y1:1,x2:1,y2:0,direction:e};case"bottom right":return{x1:1,y1:1,x2:0,y2:0,direction:e};default:for(var i,n=0,r=(i=e.split(",")).length;n<r;n++)-1==i[n].indexOf("%")&&(i[n]=parseFloat(i[n]));return{x1:i[0],y1:i[1],x2:i[2],y2:i[3]}}},colorHash:function(t,e){var i=0;return t&&(i=function(t){var e=0,i=1,n=0;if(t){for(var r=0;r<t.length&&!(r>6);r++)e+=i*(t.charCodeAt(r)%10),n+=9*i,i*=.7;n>0&&(e/=n)}return e}(t=(t=t.replace(/.*`/,"")).replace(/\(.*/,""))),"function"==typeof e?e(i):{r:200+Math.round(55*i),g:0+Math.round(230*(1-i)),b:0+Math.round(55*(1-i))}}};return i.map.parula=function(t){return i.map(["#352a87","#0f5cdd","#00b5a6","#ffc337","#fdff00"],t)},i.map.jet=function(t){return i.map(["#00008f","#0020ff","#00ffff","#51ff77","#fdff00","#ff0000","#800000"],t)},i.map.hsv=function(t){return i.map(["#ff0000","#ffff00","#00ff00","#00ffff","#0000ff","#ff00ff","#ff0000"],t)},i.map.hot=function(t){return i.map(["#0b0000","#ff0000","#ffff00","#ffffff"],t)},i.map.pink=function(t){return i.map(["#1e0000","#bd7b7b","#e7e5b2","#ffffff"],t)},i.map.bone=function(t){return i.map(["#000000","#4a4a68","#a6c6c6","#ffffff"],t)},i.map.copper=function(t){return i.map(["#000000","#3d2618","#9d623e","#ffa167","#ffc77f"],t)},i}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"collection",extend:null,component:function(){var t=function(t,e,i,n){this.type=t,this.selector=e,this.options=i,this.destroy=function(){for(var t=0;t<n.length;t++)n[t].destroy()};for(var r=0;r<n.length;r++)this.push(n[r])};return t.prototype=Object.create(Array.prototype),t}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"manager",extend:null,component:function(){var t=n.default.include("util.base"),e=new function(){var i=[],n=[];this.add=function(t){i.push(t)},this.emit=function(t,e,n){for(var r=[],a=0;a<i.length;a++){t!=(o=i[a]).selector&&t!=o.type||r.push(o)}for(a=0;a<r.length;a++)for(var o=r[a],s=0;s<o.length;s++)o[s].emit(e,n)},this.get=function(e){if(t.typeCheck("integer",e))return i[e];if(t.typeCheck("string",e)){for(var n=0;n<i.length;n++){if(e==(a=i[n]).selector)return 1==a.length?a[0]:a}var r=[];for(n=0;n<i.length;n++){var a;e==(a=i[n]).type&&r.push(a)}return r}},this.getAll=function(){return i},this.remove=function(e){if(t.typeCheck("integer",e))return i.splice(e,1)[0]},this.shift=function(){return i.shift()},this.pop=function(){return i.pop()},this.size=function(){return i.length},this.addClass=function(t){n.push(t)},this.getClass=function(e){if(t.typeCheck("integer",e))return n[e];if(t.typeCheck("string",e))for(var i=0;i<n.length;i++)if(e==n[i].type)return n[i];return null},this.getClassAll=function(){return n},this.create=function(i,n,r){var a=e.getClass(i);if(t.typeCheck("null",a))throw new Error("JUI_CRITICAL_ERR: '"+i+"' does not exist");return a.class(n,r)}};return e}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},r=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"core",extend:null,component:function(){var t=r.default.include("util.base"),e=r.default.include("util.dom"),i=r.default.include("manager"),a=r.default.include("collection"),o=function(){this.emit=function(e,i){if(t.typeCheck("string",e)){for(var n,r=0;r<this.event.length;r++){var a=this.event[r];if(a.type==e.toLowerCase()){var o=t.typeCheck("array",i)?i:[i];n=a.callback.apply(this,o)}}return n}},this.on=function(e,i){t.typeCheck("string",e)&&t.typeCheck("function",i)&&this.event.push({type:e.toLowerCase(),callback:i,unique:!1})},this.off=function(e){for(var i=[],n=0;n<this.event.length;n++){var r=this.event[n];(t.typeCheck("function",e)&&r.callback!=e||t.typeCheck("string",e)&&r.type!=e.toLowerCase())&&i.push(r)}this.event=i},this.setOption=function(e,i){if(t.typeCheck("object",e))for(var n in e)this.options[n]=e[n];else this.options[e]=i},this.destroy=function(){if(this.__proto__)for(var t in this.__proto__)delete this.__proto__[t]}};return o.build=function(n){return function(o,s){var h=[],u=[];t.typeCheck("string",o)?u=e.find(o):t.typeCheck("object",o)?u.push(o):u.push(document.createElement("div"));for(var l=0,c=u.length;l<c;l++)h[l]=r.default.createUIObject(n,o,l,u[l],s);return i.add(new a(n.type,o,s,h)),0==h.length?null:1==h.length?h[0]:h}},o.init=function(t){var e=null;return"object"===(void 0===t?"undefined":n(t))&&(e=o.build(t),i.addClass({type:t.type,class:e})),e},o.setup=function(){return{event:{}}},o}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"util.time",extend:null,component:function(){var t=n.default.include("util.base"),e={MILLISECOND:1e3,MINUTE:6e4,HOUR:36e5,DAY:864e5,years:"years",months:"months",days:"days",hours:"hours",minutes:"minutes",seconds:"seconds",milliseconds:"milliseconds",weeks:"weeks",diff:function(t,i,n){var r=+i-+n;return"seconds"==t?Math.abs(Math.floor(r/e.MILLISECOND)):"minutes"==t?Math.abs(Math.floor(r/e.MINUTE)):"hours"==t?Math.abs(Math.floor(r/e.HOUR)):"days"==t?Math.abs(Math.floor(r/e.DAY)):r},add:function(t){if(arguments.length<=2)return t;if(arguments.length>2){for(var e=new Date(+t),i=1;i<arguments.length;i+=2){var n="string"==typeof arguments[i]?this[arguments[i]]:arguments[i],r=arguments[i+1];this.years==n?e.setFullYear(e.getFullYear()+r):this.months==n?e.setMonth(e.getMonth()+r):this.days==n?e.setDate(e.getDate()+r):this.hours==n?e.setHours(e.getHours()+r):this.minutes==n?e.setMinutes(e.getMinutes()+r):this.seconds==n?e.setSeconds(e.getSeconds()+r):this.milliseconds==n?e.setMilliseconds(e.getMilliseconds()+r):this.weeks==n&&e.setDate(e.getDate()+7*r)}return e}},format:function(e,i,n){return t.dateFormat(e,i,n)}};return e}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"util.transform",extend:null,component:function(){var t=n.default.include("util.math");return function(e){function i(i){for(var n=0,r=e.length;n<r;n++)e[n]=t.matrix(i,e[n]);return e}this.matrix=function(){var e=arguments,i=e[0];return"move"==i?[new Float32Array([1,0,e[1]]),new Float32Array([0,1,e[2]]),new Float32Array([0,0,1])]:"scale"==i?[new Float32Array([e[1],0,0]),new Float32Array([0,e[2],0]),new Float32Array([0,0,1])]:"rotate"==i?[new Float32Array([Math.cos(t.radian(e[1])),-Math.sin(t.radian(e[1])),0]),new Float32Array([Math.sin(t.radian(e[1])),Math.cos(t.radian(e[1])),0]),new Float32Array([0,0,1])]:"move3d"==i?[new Float32Array([1,0,0,e[1]]),new Float32Array([0,1,0,e[2]]),new Float32Array([0,0,1,e[3]]),new Float32Array([0,0,0,1])]:"scale3d"==i?[new Float32Array([e[1],0,0,0]),new Float32Array([0,e[2],0,0]),new Float32Array([0,0,e[3],0]),new Float32Array([0,0,0,1])]:"rotate3dz"==i?[new Float32Array([Math.cos(t.radian(e[1])),-Math.sin(t.radian(e[1])),0,0]),new Float32Array([Math.sin(t.radian(e[1])),Math.cos(t.radian(e[1])),0,0]),new Float32Array([0,0,1,0]),new Float32Array([0,0,0,1])]:"rotate3dx"==i?[new Float32Array([1,0,0,0]),new Float32Array([0,Math.cos(t.radian(e[1])),-Math.sin(t.radian(e[1])),0]),new Float32Array([0,Math.sin(t.radian(e[1])),Math.cos(t.radian(e[1])),0]),new Float32Array([0,0,0,1])]:"rotate3dy"==i?[new Float32Array([Math.cos(t.radian(e[1])),0,Math.sin(t.radian(e[1])),0]),new Float32Array([0,1,0,0]),new Float32Array([-Math.sin(t.radian(e[1])),0,Math.cos(t.radian(e[1])),0]),new Float32Array([0,0,0,1])]:void 0},this.move=function(t,e){return i(this.matrix("move",t,e))},this.move3d=function(t,e,n){return i(this.matrix("move3d",t,e,n))},this.scale=function(t,e){return i(this.matrix("scale",t,e))},this.scale3d=function(t,e,n){return i(this.matrix("scale3d",t,e,n))},this.rotate=function(t){return i(this.matrix("rotate",t))},this.rotate3dz=function(t){return i(this.matrix("rotate3dz",t))},this.rotate3dx=function(t){return i(this.matrix("rotate3dx",t))},this.rotate3dy=function(t){return i(this.matrix("rotate3dy",t))},this.custom=function(t){return i(t)},this.merge=function(){for(var e=arguments,n=this.matrix.apply(this,e[0]),r=1;r<e.length;r++)n=t.matrix(n,this.matrix.apply(this,e[r]));return i(n)},this.merge2=function(i){for(var n=0,r=e.length;n<r;n++){for(var a=i.apply(null,e[n]),o=this.matrix.apply(this,a[0]),s=1;s<a.length;s++)o=t.matrix(o,this.matrix.apply(this,a[s]));e[n]=t.matrix(o,e[n])}}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"util.canvas.base",extend:null,component:function(){return function(t){this.clearContext=function(){t.clearRect(0,0,t.canvas.width,t.canvas.height)},this.drawLine=function(e,i,n,r,a){var o=arguments.length>5&&void 0!==arguments[5]?arguments[5]:1;a=a||"#434d6b",t.beginPath(),t.moveTo(e,i),t.lineTo(n,r),t.lineWidth=o,t.strokeStyle=a,t.stroke()},this.drawCurve=function(e,i,n){var r=arguments.length>3&&void 0!==arguments[3]?arguments[3]:.5,a=arguments.length>4&&void 0!==arguments[4]&&arguments[4],o=arguments.length>5&&void 0!==arguments[5]?arguments[5]:16;t.beginPath();var s=e.reduce(function(t,e){return t.push(e[0],e[1]),t},[]),h=getCurvePoints(s,i,n,r,a,o);t.moveTo(h[0],h[1]);for(var u=2;u<h.length-1;u+=2)t.lineTo(h[u],h[u+1])},this.drawDashedLine=function(e,i,n,r,a){var o=arguments.length>5&&void 0!==arguments[5]?arguments[5]:[3,3],s=arguments.length>6&&void 0!==arguments[6]?arguments[6]:1;a=a||"#434d6b",t.beginPath(),t.moveTo(e,i),t.lineTo(n,r),t.lineWidth=s,t.strokeStyle=a;var h=t.getLineDash();t.setLineDash(o),t.stroke(),t.setLineDash(h)},this.drawLines=function(e){e=e||"#434d6b",t.beginPath();for(var i=arguments.length,n=Array(i>1?i-1:0),r=1;r<i;r++)n[r-1]=arguments[r];t.moveTo(n[0][0],n[0][1]),n.slice(1).map(function(e){return t.lineTo(e[0],e[1])}),t.lineWidth=1,t.strokeStyle=e,t.stroke()},this.drawRoundRect=function(e,i,n,r,a){t.beginPath(),t.moveTo(e,i+a),t.lineTo(e,i+r-a),t.arcTo(e,i+r,e+a,i+r,a),t.lineTo(e+n-a,i+r),t.arcTo(e+n,i+r,e+n,i+r-a,a),t.lineTo(e+n,i+a),t.arcTo(e+n,i,e+n-a,i,a),t.lineTo(e+a,i),t.arcTo(e,i,e,i+a,a),t.closePath()},this.drawFreeRect=function(e,i,n,r,a,o,s,h,u){var l=arguments.length>9&&void 0!==arguments[9]?arguments[9]:null;u=u||"#ffffff",t.beginPath(),t.moveTo(e,i),t.lineTo(n,r),t.lineTo(a,o),t.lineTo(s,h),t.closePath(),t.fillStyle=u,null!=l&&(t.lineWidth=2,t.strokeStyle=l,t.stroke()),t.fill()},this.drawFreeRectStroke=function(e,i,n,r,a,o,s,h,u){u=u||"#ffffff",t.beginPath(),t.moveTo(e,i),t.lineTo(n,r),t.lineTo(a,o),t.lineTo(s,h),t.lineWidth=1,t.strokeStyle=u,t.stroke()},this.drawTriangle=function(e,i,n,r){r=r||"#ffffff",t.beginPath(),t.moveTo(e,i-n),t.lineTo(e-n,i+n),t.lineTo(e+n,i+n),t.closePath(),t.fillStyle=r,t.fill()},this.drawSquare=function(e,i,n,r){r=r||"#ffffff",t.beginPath(),t.moveTo(e-n,i-n),t.lineTo(e-n,i+n),t.lineTo(e+n,i+n),t.lineTo(e+n,i-n),t.closePath(),t.fillStyle=r,t.fill()},this.drawPage=function(e,i,n,r){var a=arguments.length>4&&void 0!==arguments[4]&&arguments[4];drawFreeRect(t,e+i,n,e+i-20,n+14,e+i-20,n+52,e+i,n+38,r,a?"rgba(255,255,255,0.2)":null)},this.drawCircle=function(e,i,n,r){r=r||"white",n=n||1,t.beginPath(),t.arc(e,i,n,0,2*Math.PI),t.fillStyle=r,t.fill()},this.drawBullet=function(e,i){var n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:74,r=t.createLinearGradient(e,i,e+n,i);r.addColorStop(0,"#1074fc"),r.addColorStop(1,"rgba(37, 172, 254, 0)"),t.beginPath(),t.arc(e,i,2,Math.PI/2,Math.PI/2*3),t.lineTo(e+n,i-2),t.lineTo(e+n,i+2),t.closePath(),t.fillStyle=r,t.fill(),t.fillStyle=r},this.getCurvePoints=function(t,e,i){var n,r,a,o,s,h,u,l,c,d,f,p,g,v=arguments.length>3&&void 0!==arguments[3]?arguments[3]:.5,m=arguments.length>4&&void 0!==arguments[4]&&arguments[4],y=arguments.length>5&&void 0!==arguments[5]?arguments[5]:16,x=[],w=[];for(x=t.slice(0),m?(x.unshift(t[t.length-1]),x.unshift(t[t.length-2]),x.unshift(t[t.length-1]),x.unshift(t[t.length-2]),x.push(t[0]),x.push(t[1])):(x.unshift(t[1]),x.unshift(t[0]),x.push(t[t.length-2]),x.push(t[t.length-1])),g=2;g<x.length-4;g+=2)for(p=0;p<=y;p++)a=(x[g+2]-x[g-2])*v,o=(x[g+4]-x[g])*v,s=(x[g+3]-x[g-1])*v,h=(x[g+5]-x[g+1])*v,f=p/y,u=2*Math.pow(f,3)-3*Math.pow(f,2)+1,l=-2*Math.pow(f,3)+3*Math.pow(f,2),c=Math.pow(f,3)-2*Math.pow(f,2)+f,d=Math.pow(f,3)-Math.pow(f,2),n=u*x[g]+l*x[g+2]+c*a+d*o,r=u*x[g+1]+l*x[g+3]+c*s+d*h,w.push(n),r>i?w.push(i):r<e?w.push(e):w.push(r);return w}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"util.scale.linear",extend:null,component:function(){var t=n.default.include("util.math");return function e(){var i=[0,1],n=[0,1],r=!1,a=!1,o={},s=null,h=null,u=null,l=null,c=null,d=null,f=null,p=null,g=0,v=null,m=null;function y(t){if(l<t)return a?y(l):n[0]+Math.abs(t-i[0])*g;if(u>t)return a?y(u):n[0]-Math.abs(t-i[0])*g;var e=(t-i[0])/f;return v(e)}return y.cache=function(){return o},y.min=function(){return Math.min.apply(Math,i)},y.max=function(){return Math.max.apply(Math,i)},y.rangeMin=function(){return Math.min.apply(Math,n)},y.rangeMax=function(){return Math.max.apply(Math,n)},y.rate=function(t,e){return y(y.max()*(t/e))},y.clamp=function(t){a=t||!1},y.domain=function(t){if(!arguments.length)return i;for(var e=0;e<t.length;e++)i[e]=t[e];return u=y.min(),l=y.max(),f=i[1]-i[0],this},y.range=function(e){if(!arguments.length)return n;for(var i=0;i<e.length;i++)n[i]=e[i];return s=t.interpolateRound(n[0],n[1]),h=t.interpolateNumber(n[0],n[1]),c=y.rangeMin(),d=y.rangeMax(),p=Math.abs(d-c),g=p/f,v=r?s:h,this},y.rangeRound=function(t){return r=!0,y.range(t)},y.rangeBand=function(){return m},y.invert=function(t){return e().domain(n).range(i)(t)},y.ticks=function(e,n,r,a){a=a||!1;var o=y.max();if(0==i[0]&&0==i[1])return[];for(var s=t.nice(i[0],i[1],e||10,n||!1),h=[],u=a?s.max:s.min,l=a?s.min:s.max,c=s.spacing,d=t.fixed(c);a?l<=u:u<=l;)h.push(u),u=a?d.minus(u,c):d.plus(u,c);if(a){h[0]!=o&&h.unshift(o);for(var f=0,p=h.length;f<p;f++)h[f]=Math.abs(h[f]-o)}else h[h.length-1]!=l&&u>l&&h.push(l),i[0]>i[1]&&h.reverse();var g=y(h[0]),v=y(h[1]);return m=Math.abs(v-g),h},y}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"util.scale.circle",extend:null,component:function(){return function(){var t=[],e=[],i=0;function n(t){}return n.domain=function(e){if(void 0===e)return t;for(var i=0;i<e.length;i++)t[i]=e[i];return this},n.range=function(t){if(void 0===t)return e;for(var i=0;i<t.length;i++)e[i]=t[i];return this},n.rangePoints=function(r,a){a=a||0;for(var o=t.length,s=(r[1]-r[0]-a)/o,h=[],u=0;u<t.length;u++)h[u]=0==u?r[0]+a/2+s/2:h[u-1]+s;return e=h,i=s,n},n.rangeBands=function(r,a,o){a=a||0,o=o||0;for(var s=t.length-1,h=(r[1]-r[0])/s,u=[],l=0;l<t.length;l++)u[l]=0==l?r[0]:h+u[l-1];return i=h,e=u,n},n.rangeBand=function(){return i},n}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"util.scale.log",extend:null,component:function(){var t=n.default.include("util.base"),e=n.default.include("util.scale.linear");return function(i){var n=i||10,r=e(),a=[],o=null,s=null;function h(t){return t<0?-Math.log(Math.abs(t))/Math.log(n):t>0?Math.log(t)/Math.log(n):0}function u(t){return t<0?-Math.pow(n,Math.abs(t)):t>0?Math.pow(n,t):0}function l(t){return Math.pow(n,(t+"").length-1)<t}function c(t){return Math.pow(n,(t+"").length)}var d=function(t){var e=t;return t>o?e=o:t<s&&(e=s),r(h(e))};return t.extend(d,r),d.log=function(){for(var t=[],e=0;e<a.length;e++)t[e]=h(a[e]);return t},d.domain=function(t){if(!arguments.length)return a;for(var e=0;e<t.length;e++)a[e]=t[e];if(o=Math.max.apply(Math,a),s=Math.min.apply(Math,a),l(o)&&(a[1]=o=c(o)),l(Math.abs(s))){var i=c(Math.abs(s));a[0]=s=s<0?-i:i}return r.domain(d.log()),d},d.base=function(t){return r.domain(d.log()),d},d.invert=function(t){return u(r.invert(t))},d.ticks=function(t,e,i){var n=r.ticks(t,e,i||1e20,!0);n[n.length-1]<r.max()&&n.push(r.max());for(var a=[],o=0,s=n.length;o<s;o++)a[o]=u(n[o]);return a},d}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"util.scale.ordinal",extend:null,component:function(){return function(){var t=[],e=[],i=0,n={},r=!1;function a(i){var r=""+i;if(void 0!==n[r])return n[r];for(var a=-1,o=0;o<t.length;o++)if("string"==typeof i&&t[o]===i){a=o;break}return a>-1?(n[r]=e[a],e[a]):void 0!==e[i]?(n[r]=e[i],e[i]):null}return a.domain=function(e){if(void 0===e)return t;for(var i=0;i<e.length;i++)t[i]=e[i];return this},a.range=function(t){if(void 0===t)return e;for(var i=0;i<t.length;i++)e[i]=t[i];return this},a.rangePoints=function(n,o){o=o||0;for(var s=t.length,h=(n[1]-n[0]-o)/s,u=[],l=0;l<t.length;l++)u[l]=0==l?n[0]+o/2+h/2:u[l-1]+h;return e=u,i=h,r=!0,a},a.rangeBands=function(n,o,s){o=o||0,s=s||0;for(var h=t.length-1,u=(n[1]-n[0])/h,l=[],c=0;c<t.length;c++)l[c]=0==c?n[0]:u+l[c-1];return i=u,e=l,r=!1,a},a.rangeBand=function(){return i},a.invert=function(t){var n=Math.min(e[0],e[1]);if(r){var a=t;a<(n-=i/2)&&(a=n);var o=Math.abs(a-n)/i;return Math.floor(o)}return o=Math.abs(t-n)/i,Math.ceil(o)},a}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"util.scale.time",extend:null,component:function(){var t=n.default.include("util.time"),e=n.default.include("util.scale.linear");return function(){var i,n=[],r=e(),a=r.domain;return r.domain=function(t){if(!arguments.length)return a.call(r);for(var e=0;e<t.length;e++)n[e]=+t[e];return a.call(r,n)},r.min=function(){return Math.min(n[0],n[n.length-1])},r.max=function(){return Math.max(n[0],n[n.length-1])},r.rate=function(t,e){return r(r.max()*(t/e))},r.ticks=function(e,a){for(var o=n[0],s=n[1],h=[];o<s;)h.push(new Date(+o)),o=t.add(o,e,a);h.push(new Date(+o));var u=r(h[1]),l=r(h[2]);return i=l-u,h},r.realTicks=function(e,a){var o=n[0],s=n[1],h=[],u=new Date(+o),l=null;for(e==t.years?l=new Date(u.getFullYear(),0,1):e==t.months?l=new Date(u.getFullYear(),u.getMonth(),1):e==t.days||e==t.weeks?l=new Date(u.getFullYear(),u.getMonth(),u.getDate()):e==t.hours?l=new Date(u.getFullYear(),u.getMonth(),u.getDate(),u.getHours(),0,0,0):e==t.minutes?l=new Date(u.getFullYear(),u.getMonth(),u.getDate(),u.getHours(),u.getMinutes(),0,0):e==t.seconds?l=new Date(u.getFullYear(),u.getMonth(),u.getDate(),u.getHours(),u.getMinutes(),u.getSeconds(),0):e==t.milliseconds&&(l=new Date(u.getFullYear(),u.getMonth(),u.getDate(),u.getHours(),u.getMinutes(),u.getSeconds(),u.getMilliseconds())),l=t.add(l,e,a);+l<+s;)h.push(new Date(+l)),l=t.add(l,e,a);var c=r(h[1]),d=r(h[2]);return i=d-c,h},r.rangeBand=function(){return i},r.invert=function(t){var i=e().domain(r.range()).range(r.domain());return new Date(i(t))},r}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"util.scale",extend:null,component:function(){var t=n.default.include("util.math"),e=n.default.include("util.time"),i={circle:function(){var t=[],e=[],i=0;function n(t){}return n.domain=function(e){if(void 0===e)return t;for(var i=0;i<e.length;i++)t[i]=e[i];return this},n.range=function(t){if(void 0===t)return e;for(var i=0;i<t.length;i++)e[i]=t[i];return this},n.rangePoints=function(r,a){a=a||0;for(var o=t.length,s=(r[1]-r[0]-a)/o,h=[],u=0;u<t.length;u++)h[u]=0==u?r[0]+a/2+s/2:h[u-1]+s;return e=h,i=s,n},n.rangeBands=function(r,a,o){a=a||0,o=o||0;for(var s=t.length-1,h=(r[1]-r[0])/s,u=[],l=0;l<t.length;l++)u[l]=0==l?r[0]:h+u[l-1];return i=h,e=u,n},n.rangeBand=function(){return i},n},ordinal:function(){var t=[],e=[],i=0,n={};function r(i){var r=""+i;if(void 0!==n[r])return n[r];for(var a=-1,o=0;o<t.length;o++)if("string"==typeof i&&t[o]===i){a=o;break}return a>-1?(n[r]=e[a],e[a]):void 0!==e[i]?(t[i]=i,n[r]=e[i],e[i]):null}return r.domain=function(e){if(void 0===e)return t;for(var i=0;i<e.length;i++)t[i]=e[i];return this},r.range=function(t){if(void 0===t)return e;for(var i=0;i<t.length;i++)e[i]=t[i];return this},r.rangePoints=function(n,a){a=a||0;for(var o=t.length,s=(n[1]-n[0]-a)/o,h=[],u=0;u<t.length;u++)h[u]=0==u?n[0]+a/2+s/2:h[u-1]+s;return e=h,i=s,r},r.rangeBands=function(n,a,o){a=a||0,o=o||0;for(var s=t.length-1,h=(n[1]-n[0])/s,u=[],l=0;l<t.length;l++)u[l]=0==l?n[0]:h+u[l-1];return i=h,e=u,r},r.rangeBand=function(){return i},r.invert=function(t){return Math.ceil(t/i)},r},time:function(){var t,n=[],r=i.linear(),a=r.domain;return r.domain=function(t){if(!arguments.length)return a.call(r);for(var e=0;e<t.length;e++)n[e]=+t[e];return a.call(r,n)},r.min=function(){return Math.min(n[0],n[n.length-1])},r.max=function(){return Math.max(n[0],n[n.length-1])},r.rate=function(t,e){return r(r.max()*(t/e))},r.ticks=function(i,a){for(var o=n[0],s=n[1],h=[];o<s;)h.push(new Date(+o)),o=e.add(o,i,a);h.push(new Date(+o));var u=r(h[1]),l=r(h[2]);return t=l-u,h},r.realTicks=function(i,a){var o=n[0],s=n[1],h=[],u=new Date(+o),l=null;for(i==e.years?l=new Date(u.getFullYear(),0,1):i==e.months?l=new Date(u.getFullYear(),u.getMonth(),1):i==e.days||i==e.weeks?l=new Date(u.getFullYear(),u.getMonth(),u.getDate()):i==e.hours?l=new Date(u.getFullYear(),u.getMonth(),u.getDate(),u.getHours(),0,0,0):i==e.minutes?l=new Date(u.getFullYear(),u.getMonth(),u.getDate(),u.getHours(),u.getMinutes(),0,0):i==e.seconds?l=new Date(u.getFullYear(),u.getMonth(),u.getDate(),u.getHours(),u.getMinutes(),u.getSeconds(),0):i==e.milliseconds&&(l=new Date(u.getFullYear(),u.getMonth(),u.getDate(),u.getHours(),u.getMinutes(),u.getSeconds(),u.getMilliseconds())),l=e.add(l,i,a);+l<+s;)h.push(new Date(+l)),l=e.add(l,i,a);var c=r(h[1]),d=r(h[2]);return t=d-c,h},r.rangeBand=function(){return t},r.invert=function(t){var e=i.linear().domain(r.range()).range(r.domain());return new Date(e(t))},r},log:function(t){var e=t||10,n=i.linear(),r=[],a=null,o=null;function s(t){return t<0?-Math.log(Math.abs(t))/Math.log(e):t>0?Math.log(t)/Math.log(e):0}function h(t){return t<0?-Math.pow(e,Math.abs(t)):t>0?Math.pow(e,t):0}function u(t){return Math.pow(e,(t+"").length-1)<t}function l(t){return Math.pow(e,(t+"").length)}var c=function(t){var e=t;return t>a?e=a:t<o&&(e=o),n(s(e))};return $.extend(c,n),c.log=function(){for(var t=[],e=0;e<r.length;e++)t[e]=s(r[e]);return t},c.domain=function(t){if(!arguments.length)return r;for(var e=0;e<t.length;e++)r[e]=t[e];if(a=Math.max.apply(Math,r),o=Math.min.apply(Math,r),u(a)&&(r[1]=a=l(a)),u(Math.abs(o))){var i=l(Math.abs(o));r[0]=o=o<0?-i:i}return n.domain(c.log()),c},c.base=function(t){return n.domain(c.log()),c},c.invert=function(t){return h(n.invert(t))},c.ticks=function(t,e,i){var r=n.ticks(t,e,i||1e20,!0);r[r.length-1]<n.max()&&r.push(n.max());for(var a=[],o=0,s=r.length;o<s;o++)a[o]=h(r[o]);return a},c},linear:function(){var e=[0,1],n=[0,1],r=!1,a=!1,o={},s=null,h=null,u=null,l=null,c=null,d=null,f=null,p=null,g=0,v=null,m=null;function y(t){if(l<t)return a?y(l):n[0]+Math.abs(t-e[0])*g;if(u>t)return a?y(u):n[0]-Math.abs(t-e[0])*g;var i=(t-e[0])/f;return v(i)}return y.cache=function(){return o},y.min=function(){return Math.min.apply(Math,e)},y.max=function(){return Math.max.apply(Math,e)},y.rangeMin=function(){return Math.min.apply(Math,n)},y.rangeMax=function(){return Math.max.apply(Math,n)},y.rate=function(t,e){return y(y.max()*(t/e))},y.clamp=function(t){a=t||!1},y.domain=function(t){if(!arguments.length)return e;for(var i=0;i<t.length;i++)e[i]=t[i];return u=y.min(),l=y.max(),f=e[1]-e[0],this},y.range=function(e){if(!arguments.length)return n;for(var i=0;i<e.length;i++)n[i]=e[i];return s=t.interpolateRound(n[0],n[1]),h=t.interpolateNumber(n[0],n[1]),c=y.rangeMin(),d=y.rangeMax(),p=Math.abs(d-c),g=p/f,v=r?s:h,this},y.rangeRound=function(t){return r=!0,y.range(t)},y.rangeBand=function(){return m},y.invert=function(t){return i.linear().domain(n).range(e)(t)},y.ticks=function(i,n,r,a){a=a||!1;var o=y.max();if(0==e[0]&&0==e[1])return[];for(var s=t.nice(e[0],e[1],i||10,n||!1),h=[],u=a?s.max:s.min,l=a?s.min:s.max,c=s.spacing,d=t.fixed(c);a?l<=u:u<=l;)h.push(u),u=a?d.minus(u,c):d.plus(u,c);if(a){h[0]!=o&&h.unshift(o);for(var f=0,p=h.length;f<p;f++)h[f]=Math.abs(h[f]-o)}else h[h.length-1]!=l&&u>l&&h.push(l),e[0]>e[1]&&h.reverse();var g=y(h[0]),v=y(h[1]);return m=Math.abs(v-g),h},y}};return i}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"chart.vector",extend:null,component:function(){return function t(e,i,n){this.x=e||0,this.y=i||0,this.z=n||0,this.add=function(e){return e instanceof t?new t(this.x+e.x,this.y+e.y,this.z+e.z):new t(this.x+e,this.y+e,this.z+e)},this.subtract=function(e){return e instanceof t?new t(this.x-e.x,this.y-e.y,this.z-e.z):new t(this.x-e,this.y-e,this.z-e)},this.multiply=function(e){return e instanceof t?new t(this.x*e.x,this.y*e.y,this.z*e.z):new t(this.x*e,this.y*e,this.z*e)},this.dotProduct=function(t){var e=this.x*t.x+this.y*t.y+this.z*t.z;return Math.acos(e/(this.getMagnitude()*t.getMagnitude()))},this.crossProduct=function(e){return new t(this.y*e.z-this.z*e.y,this.z*e.x-this.x*e.z,this.x*e.y-this.y*e.x)},this.normalize=function(){var t=this.getMagnitude();this.x/=t,this.y/=t,this.z/=t},this.getMagnitude=function(){return Math.sqrt(this.x*this.x+this.y*this.y+this.z*this.z)}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.draw",extend:null,component:function(){var t=n.default.include("util.base"),e=function(){this.render=function(){if(!t.typeCheck("function",this.draw))throw new Error("JUI_CRITICAL_ERR: 'draw' method must be implemented");t.typeCheck("function",this.drawBefore)&&this.drawBefore();var e=this.draw();t.typeCheck("function",this.drawAnimate)&&(!1!==(this.grid||this.brush||this.widget||this.map).animate&&this.drawAnimate(e));return t.typeCheck("function",this.drawAfter)&&this.drawAfter(e),e},this.format=function(){return((this.grid||this.brush||this.widget).format||this.chart.format).apply(this.chart,arguments)},this.balloonPoints=function(t,e,i,n){var r=[];return"top"==t?(r.push([0,0].join(",")),r.push([e,0].join(",")),r.push([e,i].join(",")),r.push([e/2+n/2,i].join(",")),r.push([e/2,i+n].join(",")),r.push([e/2-n/2,i].join(",")),r.push([0,i].join(",")),r.push([0,0].join(","))):"bottom"==t?(r.push([0,n].join(",")),r.push([e/2-n/2,n].join(",")),r.push([e/2,0].join(",")),r.push([e/2+n/2,n].join(",")),r.push([e,n].join(",")),r.push([e,n+i].join(",")),r.push([0,n+i].join(",")),r.push([0,n].join(","))):"left"==t?(r.push([0,0].join(",")),r.push([e,0].join(",")),r.push([e,i/2-n/2].join(",")),r.push([e+n,i/2].join(",")),r.push([e,i/2+n/2].join(",")),r.push([e,i].join(",")),r.push([0,i].join(",")),r.push([0,0].join(","))):"right"==t?(r.push([0,0].join(",")),r.push([e,0].join(",")),r.push([e,i].join(",")),r.push([0,i].join(",")),r.push([0,i/2+n/2].join(",")),r.push([0-n,i/2].join(",")),r.push([0,i/2-n/2].join(",")),r.push([0,0].join(","))):(r.push([0,0].join(",")),r.push([e,0].join(",")),r.push([e,i].join(",")),r.push([0,i].join(",")),r.push([0,0].join(","))),r.join(" ")},this.on=function(e,i){var n=this;return this.chart.on(e,function(){if(t.startsWith(e,"axis.")&&t.typeCheck("integer",n.axis.index)){var r=n.chart.axis(n.axis.index),a=arguments[0];t.typeCheck("object",r)&&arguments[1]==n.axis.index&&i.apply(n,[a])}else i.apply(n,arguments)},"render")},this.calculate3d=function(){var e=this.axis.area("width"),i=this.axis.area("height"),n=this.axis.area("x"),r=this.axis.area("y"),a=this.axis.depth,o=this.axis.degree,s=this.axis.perspective,h=arguments;t.typeCheck("integer",o.x)||(o.x=0),t.typeCheck("integer",o.y)||(o.y=0),t.typeCheck("integer",o.z)||(o.z=0);for(var u=0;u<h.length;u++)h[u].perspective=s,h[u].rotate(Math.max(e,i,a),o,n+e/2,r+i/2,a/2)}};return e.setup=function(){return{type:null,animate:!1}},e}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.map",extend:null,component:function(){var t=n.default.include("util.base"),e=n.default.include("util.dom"),i=(n.default.include("util.math"),n.default.include("util.svg")),r=function(){var n=this,r={},a=null,o={},s=1,h=0,u=0;function l(e){for(var r=[],a=0,o=e.length;a<o;a++)if(t.typeCheck("object",e[a])){var s={};t.typeCheck("string",e[a].style)&&(s=u(e[a].style),delete e[a].style);var h=i.createObject({type:null!=e[a].d?"path":"polygon",attr:e[a]});h.attr(t.extend(s,{fill:n.chart.theme("mapPathBackgroundColor"),"fill-opacity":n.chart.theme("mapPathBackgroundOpacity"),stroke:n.chart.theme("mapPathBorderColor"),"stroke-width":n.chart.theme("mapPathBorderWidth"),"stroke-opacity":n.chart.theme("mapPathBorderOpacity")})),r.push({path:h,data:e[a]})}function u(e){for(var i={},n=e.split(";"),r=0;r<n.length;r++)if(-1!=n[r].indexOf(":")){var a=n[r].split(":");i[t.trim(a[0])]=t.trim(a[1])}return i}return r}function c(e){if(t.typeCheck("string",e.id)){for(var i=[],n=e.childNodes,r=0,a=n.length;r<a;r++){var o=n[r],s=o.nodeName.toLowerCase();if(1==o.nodeType)if("g"==s)i=i.concat(c(o));else if("path"==s||"polygon"==s){var h={group:e.id};for(var u in o.attributes){var l=o.attributes[u];l.specified&&d(l.name)&&(h[l.name]=f(l))}t.typeCheck("string",h.id)&&t.extend(h,p(h.id)),i.push(h)}}return i}}function d(t){return"group"==t||"id"==t||"title"==t||"x"==t||"y"==t||"d"==t||"points"==t||"class"==t||"style"==t}function f(t){return"x"==t.name||"y"==t.name?parseFloat(t.value):t.value}function p(t){for(var e=n.axis.data,i=0;i<e.length;i++){if(n.axis.getValue(e[i],"id",null)==t)return e[i]}return null}function g(){for(var e=n.chart.svg.group(),i=function(e){return t.typeCheck("array",r[e])?l(r[e]):(r[e]=[],t.ajax({url:e,async:!1,success:function(i){var a=i.responseXML,o=a.getElementsByTagName("svg"),s=a.getElementsByTagName("style");if(1==o.length){for(var h=o[0].childNodes,u=0,l=h.length;u<l;u++){var g=h[u],v=g.nodeName.toLowerCase();if(1==g.nodeType)if("g"==v)r[e]=r[e].concat(c(g));else if("path"==v||"polygon"==v){var m={};for(var y in g.attributes){var x=g.attributes[y];x.specified&&d(x.name)&&(m[x.name]=f(x))}t.typeCheck("string",m.id)&&t.extend(m,p(m.id)),r[e].push(m)}}for(u=0;u<s.length;u++)n.svg.root.element.appendChild(s[u])}},fail:function(t){throw new Error("JUI_CRITICAL_ERR: Failed to load resource")}}),l(r[e]))}(n.map.path),a=0,s=i.length;a<s;a++){var h=i[a].path,u=i[a].data;e.append(h),t.typeCheck("string",u.id)&&(o[u.id]=i[a])}return e}function v(){var t=n.map.width,e=n.map.height;return{x:(t*s-t)/2+h,y:(e*s-e)/2+u}}this.scale=function(e){if(t.typeCheck("string",e)){var i=null,r=null,a=null,h=null,u=v();if(t.typeCheck("object",o[e])){if(a=o[e].path,null!=(h=o[e].data).x){var l=n.axis.getValue(h,"dx",0);i=(parseFloat(h.x)+l)*s-u.x}if(null!=h.y){var c=n.axis.getValue(h,"dy",0);r=(parseFloat(h.y)+c)*s-u.y}}return{x:i,y:r,path:a,data:h}}},this.scale.each=function(t){for(var e in o)t.apply(this,[e,o[e]])},this.scale.size=function(){return{width:n.map.width,height:n.map.height}},this.scale.scale=function(t){return!t||t<0?s:(s=t,a.scale(s),this.view(h,u),s)},this.scale.view=function(e,i){var n={x:h,y:u};if(!t.typeCheck("number",e)||!t.typeCheck("number",i))return n;h=e,u=i;var r=v();return a.translate(-r.x,-r.y),{x:h,y:u}},this.draw=function(){var t=this.chart.svg.group();return s=this.map.scale,h=this.map.viewX,u=this.map.viewY,a=g(),t.append(a),1!=this.map.scale&&this.scale.scale(s),0==this.map.viewX&&0==this.map.viewY||this.scale.view(h,u),this.map.hide&&t.attr({visibility:"hidden"}),{root:t,scale:this.scale}},this.drawAfter=function(t){t.root.attr({"clip-path":"url(#"+this.axis.get("clipRectId")+")"}),setTimeout(function(){n.scale.each(function(t,i){!function(t,i){var r=n.chart;function a(t){var i=e.offset(r.root),n=t.pageX-i.left,a=t.pageY-i.top;t.bgX=n,t.bgY=a,t.chartX=n-r.padding("left"),t.chartY=a-r.padding("top")}t.on("click",function(t){a(t),r.emit("map.click",[i,t])}),t.on("dblclick",function(t){a(t),r.emit("map.dblclick",[i,t])}),t.on("contextmenu",function(t){a(t),r.emit("map.rclick",[i,t]),t.preventDefault()}),t.on("mouseover",function(t){a(t),r.emit("map.mouseover",[i,t])}),t.on("mouseout",function(t){a(t),r.emit("map.mouseout",[i,t])}),t.on("mousemove",function(t){a(t),r.emit("map.mousemove",[i,t])}),t.on("mousedown",function(t){a(t),r.emit("map.mousedown",[i,t])}),t.on("mouseup",function(t){a(t),r.emit("map.mouseup",[i,t])})}(i.path,i)})},1)}};return r.setup=function(){return{scale:1,viewX:0,viewY:0,hide:!1,path:"",width:-1,height:-1}},r}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.plane",extend:"core",component:function(){var t=n.default.include("util.base"),e=n.default.include("chart.builder"),i=function(){var i=null,n=[],r=[],a=[],o=0,s={},h={};this.init=function(){var e=this.options,i={type:"range",step:e.step,line:e.line};s.x=t.extend({domain:e.x},i),s.y=t.extend({domain:e.y},i),s.x.orient="bottom",s.y.orient="left",s.z=t.extend({domain:e.z},i),s.depth=e.depth-2*e.padding,s.degree={x:e.dx,y:e.dy,z:e.dz},s.perspective=e.perspective,h.extend=0,h.x={hide:!0},h.y={hide:!0},h.z={hide:!0},"2d"==e.dimension&&(s.perspective=1,s.degree.x=0,s.degree.y=0,s.degree.z=0,s.z.hideText=!0)},this.push=function(e){t.typeCheck("array",e)&&(n[o]||n.push(t.extend({},0==o?s:h)),n[o].data||(n[o].data=[]),n[o].data.push(e))},this.commit=function(t,e){var i=this.options;r.push({type:"canvas.dot3d",color:o,axis:o,symbol:t||i.symbol,size:2*(e||i.r)}),o++},this.append=function(e,i,a){var u=this.options;n.push(t.extend({},0==o?s:h)),n[o].data=e,r.push({type:"canvas.dot3d",color:o,axis:o,symbol:i||u.symbol,size:2*(a||u.r)}),o++},this.render=function(){var h=this.options;if("3d"==h.dimension&&a.push({type:"polygon.rotate3d"}),null!=i&&(i.root.innerHTML="",i=null),0==n.length&&n.push(s),i=e(this.root,{padding:h.padding,width:h.width,height:h.height,axis:n,brush:r,widget:a,canvas:!0,render:!1,style:{gridFaceBackgroundOpacity:.1}}),t.typeCheck("array",h.colors)){for(var u=[],l=0;l<h.colors.length;l++)u.push(i.color(h.colors[l]));i.setTheme({colors:u})}n=[],r=[],a=[],o=0,i.render()}};return i.setup=function(){return{dimension:"2d",width:500,height:500,depth:500,padding:50,x:[-100,100],y:[-100,100],z:[-100,100],step:4,line:!0,symbol:"dot",r:2,perspective:.9,dx:10,dy:5,dz:0,colors:null}},i}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=a(i(0)),r=a(i(11));function a(t){return t&&t.__esModule?t:{default:t}}e.default={name:"chart.animation",extend:"core",component:function(){var t=n.default.include("util.base"),e=n.default.include("chart.builder"),i=function(){var t=void 0,i=-1,n=0,r=0;this.init=function(){var i=this.options;if(t=i.interval,delete i.interval,i.axis.length&&i.axis.length>1)throw new Error("JUI_CRITICAL_ERR: the real-time module allows only a single axes");this.builder=e(this.selector,i)},this.run=function(e){var a=this,o=Date.now();if(0==r&&(r=o),o-n>t||0==t){var s=(o-n)/1e3;s>1&&(s=1),this.builder.setCache("tpf",s),this.builder.setCache("fps",1/s),"function"==typeof e&&e.call(this,o-r),this.render(),n=o}i=requestAnimationFrame(function(){a.run(e)})},this.stop=function(){-1!=i&&(cancelAnimationFrame(i),i=-1)},this.set=function(t,e,i){this.builder.axis(0).set(t,e,i)},this.update=function(t){this.builder.axis(0).update(t)},this.render=function(t){this.builder.render(t)}};return i.setup=function(){return t.extend({render:!1,canvas:!0,interval:0},r.default.component().setup(),!0)},i}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.polygon.core",extend:null,component:function(){var t=n.default.include("util.base"),e=n.default.include("chart.vector"),i=n.default.include("util.transform"),r=n.default.include("util.math");return function(){this.perspective=.9,this.rotate=function(n,a,o,s,h){var u=this.perspective,l=new i(this.vertices),c=l.matrix("move3d",o,s,h);c=r.matrix3d(c,l.matrix("rotate3dx",a.x)),c=r.matrix3d(c,l.matrix("rotate3dy",a.y)),c=r.matrix3d(c,l.matrix("rotate3dz",a.z)),c=r.matrix3d(c,l.matrix("move3d",-o,-s,-h)),this.vertices=l.custom(c);for(var d=0,f=this.vertices.length;d<f;d++){var p=Math.abs(this.vertices[d][2]-n),g=r.scaleValue(p,0,n,u,1),v=new i,m=v.matrix("move3d",o,s,n/2);m=r.matrix3d(m,v.matrix("scale3d",g,g,g)),m=r.matrix3d(m,v.matrix("move3d",-o,-s,-n/2)),this.vertices[d]=r.matrix3d(m,this.vertices[d]),t.typeCheck("array",this.vectors)&&(null==this.vectors[d]?this.vectors[d]=new e(this.vertices[d][0],this.vertices[d][1],this.vertices[d][2]):(this.vectors[d].x=this.vertices[d][0],this.vectors[d].y=this.vertices[d][1],this.vectors[d].z=this.vertices[d][2]))}},this.min=function(){for(var t={x:this.vertices[0][0],y:this.vertices[0][1],z:this.vertices[0][2]},e=1,i=this.vertices.length;e<i;e++)t.x=Math.min(t.x,this.vertices[e][0]),t.y=Math.min(t.y,this.vertices[e][1]),t.z=Math.min(t.z,this.vertices[e][2]);return t},this.max=function(){for(var t={x:this.vertices[0][0],y:this.vertices[0][1],z:this.vertices[0][2]},e=1,i=this.vertices.length;e<i;e++)t.x=Math.max(t.x,this.vertices[e][0]),t.y=Math.max(t.y,this.vertices[e][1]),t.z=Math.max(t.z,this.vertices[e][2]);return t}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"chart.polygon.grid",extend:"chart.polygon.core",component:function(){return function(t,e,i,n,r,a){e=(r=r||0)+e,i=(a=a||0)+i;var o={center:[new Float32Array([r,a,n,1]),new Float32Array([e,a,n,1]),new Float32Array([e,i,n,1]),new Float32Array([r,i,n,1])],horizontal:[new Float32Array([r,i,0,1]),new Float32Array([e,i,0,1]),new Float32Array([e,i,n,1]),new Float32Array([r,i,n,1])],vertical:[new Float32Array([e,a,0,1]),new Float32Array([e,i,0,1]),new Float32Array([e,i,n,1]),new Float32Array([e,a,n,1])]};this.vertices=o[t],this.vectors=[]}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"chart.polygon.line",extend:"chart.polygon.core",component:function(){return function(t,e,i,n,r,a){this.vertices=[new Float32Array([t,e,i,1]),new Float32Array([n,r,a,1])],this.vectors=[]}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"chart.polygon.point",extend:"chart.polygon.core",component:function(){return function(t,e,i){this.vertices=[new Float32Array([t,e,i,1])],this.vectors=[]}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"chart.polygon.cube",extend:"chart.polygon.core",component:function(){return function(t,e,i,n,r,a){this.vertices=[new Float32Array([t,e,i,1]),new Float32Array([t+n,e,i,1]),new Float32Array([t+n,e,i+a,1]),new Float32Array([t,e,i+a,1]),new Float32Array([t,e+r,i,1]),new Float32Array([t+n,e+r,i,1]),new Float32Array([t+n,e+r,i+a,1]),new Float32Array([t,e+r,i+a,1])],this.faces=[[0,1,2,3],[3,2,6,7],[0,3,7,4],[1,2,6,5],[0,1,5,4],[4,5,6,7]],this.vectors=[]}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.grid.draw2d",extend:"chart.draw",component:function(){var t=n.default.include("util.base");return function(){this.createGridX=function(t,e,i,n,r){var a=this.getLineOption(),o=this.chart.svg.group().translate(i,0),s=this.chart.theme("gridTickBorderSize");return o.append(this.line({y2:"bottom"==t?s:-s,stroke:this.color(n,"gridActiveBorderColor","gridXAxisBorderColor"),"stroke-width":this.chart.theme("gridTickBorderWidth")})),a&&this.drawValueLine(t,o,n,a,e,r),o},this.createGridY=function(t,e,i,n,r){var a=this.getLineOption(),o=this.chart.svg.group().translate(0,i),s=this.chart.theme("gridTickBorderSize");return o.append(this.line({x2:"left"==t?-s:s,stroke:this.color(n,"gridActiveBorderColor","gridYAxisBorderColor"),"stroke-width":this.chart.theme("gridTickBorderWidth")})),a&&this.drawValueLine(t,o,n,a,e,r),o},this.fillRectObject=function(t,e,i,n,r,a,o){e.type.indexOf("gradient")>-1?t.append(this.chart.svg.rect({x:n,y:r,height:o,width:a,fill:this.chart.color(e.fill?e.fill:"linear("+i+") "+this.chart.theme("gridPatternColor")+",0.5 "+this.chart.theme("backgroundColor")),"fill-opacity":this.chart.theme("gridPatternOpacity")})):e.type.indexOf("rect")>-1&&t.append(this.chart.svg.rect({x:n,y:r,height:o,width:a,fill:this.chart.color(e.fill?e.fill:this.chart.theme("gridPatternColor")),"fill-opacity":this.chart.theme("gridPatternOpacity")}))},this.drawAxisLine=function(e,i,n){var r="top"==e||"bottom"==e;i.append(this.chart.svg.line(t.extend({x1:0,y1:0,x2:0,y2:0,stroke:this.color(r?"gridXAxisBorderColor":"gridYAxisBorderColor"),"stroke-width":this.chart.theme(r?"gridXAxisBorderWidth":"gridYAxisBorderWidth"),"stroke-opacity":1},n)))},this.drawPattern=function(t,e,i,n){if(!this.grid.hide&&t&&e&&i){var r=this.getLineOption(),a="left"==t||"right"==t,o=this.chart.svg.group();if(o.translate(this.axis.area("x")+this.chart.area("x"),this.axis.area("y")+this.chart.area("y")),r&&(r.type.indexOf("gradient")>-1||r.type.indexOf("rect")>-1))for(var s=0;s<i.length-1;s+=2){var h=Math.abs(i[s+1]-i[s]),u=i[s]-(n?h/2:0),l=a?0:u,c=a?u:0,d=a?this.axis.area("width"):h,f=a?h:this.axis.area("height");this.fillRectObject(o,r,t,l,c,d,f)}}},this.drawBaseLine=function(t,e){var i=this.getGridSize(),n={};"bottom"==t||"top"==t?n={x1:i.start,x2:i.end}:"left"!=t&&"right"!=t||(n={y1:i.start,y2:i.end}),this.drawAxisLine(t,e,n)},this.drawValueLine=function(e,i,n,r,a,o){var s={},h=!1;if("top"==e?(h=this.checkDrawLineY(a,o),s={x1:0,x2:0,y1:0,y2:this.axis.area("height")}):"bottom"==e?(h=this.checkDrawLineY(a,o),s={x1:0,x2:0,y1:0,y2:-this.axis.area("height")}):"left"==e?(h=this.checkDrawLineX(a,o),s={x1:0,x2:this.axis.area("width"),y1:0,y2:0}):"right"==e&&(h=this.checkDrawLineX(a,o),s={x1:0,x2:-this.axis.area("width"),y1:0,y2:0}),h){var u=this.line(t.extend({stroke:this.chart.theme(n,"gridActiveBorderColor","gridBorderColor"),"stroke-width":this.chart.theme(n,"gridActiveBorderWidth","gridBorderWidth")},s));if(r.type.indexOf("dashed")>-1){var l=this.chart.theme("gridBorderDashArray");u.attr({"stroke-dasharray":"none"!=l&&l?l:"3,3"})}i.append(u)}},this.drawValueText=function(t,e,i,n,r,a,o){this.grid.hideText||("top"==t?e.append(this.getTextRotate(this.chart.text({x:a,y:-(this.chart.theme("gridTickBorderSize")+2*this.chart.theme("gridTickPadding")),dy:this.chart.theme("gridXFontSize")/3,fill:this.chart.theme(o,"gridActiveFontColor","gridXFontColor"),"text-anchor":"middle","font-size":this.chart.theme("gridXFontSize"),"font-weight":this.chart.theme("gridXFontWeight")},r))):"bottom"==t?e.append(this.getTextRotate(this.chart.text({x:a,y:this.chart.theme("gridTickBorderSize")+2*this.chart.theme("gridTickPadding"),dy:this.chart.theme("gridXFontSize")/3,fill:this.chart.theme(o,"gridActiveFontColor","gridXFontColor"),"text-anchor":"middle","font-size":this.chart.theme("gridXFontSize"),"font-weight":this.chart.theme("gridXFontWeight")},r))):"left"==t?e.append(this.getTextRotate(this.chart.text({x:-this.chart.theme("gridTickBorderSize")-this.chart.theme("gridTickPadding"),y:a,dy:this.chart.theme("gridYFontSize")/3,fill:this.chart.theme(o,"gridActiveFontColor","gridYFontColor"),"text-anchor":"end","font-size":this.chart.theme("gridYFontSize"),"font-weight":this.chart.theme("gridYFontWeight")},r))):"right"==t&&e.append(this.getTextRotate(this.chart.text({x:this.chart.theme("gridTickBorderSize")+this.chart.theme("gridTickPadding"),y:a,dy:this.chart.theme("gridYFontSize")/3,fill:this.chart.theme(o,"gridActiveFontColor","gridYFontColor"),"text-anchor":"start","font-size":this.chart.theme("gridYFontSize"),"font-weight":this.chart.theme("gridYFontWeight")},r))))},this.drawImage=function(e,i,n,r,a,o){if(t.typeCheck("function",this.grid.image)){var s=this.grid.image.apply(this.chart,[n,r]);if(t.typeCheck("object",s)){var h=this.chart.svg.image({"xlink:href":s.uri,width:s.width,height:s.height});"top"==e||"bottom"==e?h.attr({x:"block"==this.grid.type?this.scale.rangeBand()/2-s.width/2:-s.width/2}):"left"!=e&&"right"!=e||h.attr({y:"block"==this.grid.type?this.scale.rangeBand()/2-s.height/2:-s.height/2}),"bottom"==e?h.attr({y:s.dist}):"top"==e?h.attr({y:-(s.dist+s.height)}):"left"==e?h.attr({x:-(s.dist+s.width)}):"right"==e&&h.attr({x:s.dist}),h.translate(a,o),i.append(h)}}}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.grid.draw3d",extend:"chart.draw",component:function(){n.default.include("util.base");var t=n.default.include("chart.polygon.grid"),e=n.default.include("chart.polygon.line"),i=n.default.include("chart.polygon.point");return function(){this.createGridX=function(t,e,i,n,r){var a=this.getLineOption(),o=this.svg.group();return a&&this.drawValueLine(t,o,n,a,e,i,r),o},this.createGridY=function(t,e,i,n,r){var a=this.getLineOption(),o=this.svg.group();return a&&this.drawValueLine(t,o,n,a,e,i,r),o},this.drawCenter=function(t,e,i,n,r){var a=this.svg.group(),o=this.getLineOption();o&&this.drawValueLineCenter(a,e,o),this.drawValueTextCenter(a,e,i,n,r),t.append(a)},this.drawBaseLine=function(t,e){var i=this.svg.group();this.drawAxisLine(t,i),e.append(i)},this.drawAxisLine=function(e,i){var n="top"==e||"bottom"==e,r=n?"gridXAxisBorderColor":"gridYAxisBorderColor",a=n?"gridXAxisBorderWidth":"gridYAxisBorderWidth";"center"==e&&(r="gridZAxisBorderColor",a="gridZAxisBorderWidth");var o=this.svg.polygon({stroke:this.chart.theme(r),"stroke-width":this.chart.theme(a),"stroke-opacity":1,fill:this.chart.theme("gridFaceBackgroundColor"),"fill-opacity":this.chart.theme("gridFaceBackgroundOpacity")}),s=null,h=this.axis.area("width"),u=this.axis.area("height"),l=this.axis.area("x"),c=this.axis.area("y"),d=this.axis.depth;s="center"==e?new t("center",h,u,d,l,c):n?new t("horizontal",h,u="bottom"==e?u:0,d,l,c):new t("vertical",h="right"==e?h:0,u,d,l,c),this.calculate3d(s);for(var f=0;f<s.vectors.length;f++)o.point(s.vectors[f].x,s.vectors[f].y);"center"==e?!0!==this.axis.get("y").hide&&i.append(o):i.append(o)},this.drawValueLine=function(t,i,n,r,a,o,s){var h=!1,u=this.axis.area("width"),l=this.axis.area("height"),c=this.axis.area("x"),d=this.axis.area("y"),f=this.axis.depth,p=null,g=null;if("top"==t?(h=this.checkDrawLineY(a,s),p=new e(o,d,0,o,d,f),g=new e(o,d,f,o,d+l,f)):"bottom"==t?(h=this.checkDrawLineY(a,s),p=new e(o,d+l,0,o,d+l,f),g=new e(o,d+l,f,o,d,f)):"left"==t?(h=this.checkDrawLineX(a,s),p=new e(c,o,0,c,o,f),g=new e(c,o,f,c+u,o,f)):"right"==t&&(h=this.checkDrawLineX(a,s),p=new e(c+u,o,0,c+u,o,f),g=new e(c+u,o,f,c,o,f)),h){this.calculate3d(p,g);var v=this.line({stroke:this.chart.theme("gridBorderColor"),"stroke-width":this.chart.theme("gridBorderWidth"),x1:p.vectors[0].x,y1:p.vectors[0].y,x2:p.vectors[1].x,y2:p.vectors[1].y}),m=this.line({stroke:this.chart.theme("gridBorderColor"),"stroke-width":this.chart.theme("gridBorderWidth"),x1:g.vectors[0].x,y1:g.vectors[0].y,x2:g.vectors[1].x,y2:g.vectors[1].y});if(r.type.indexOf("dashed")>-1){var y=this.chart.theme("gridBorderDashArray"),x="none"!=y&&y?y:"3,3";v.attr({"stroke-dasharray":x}),m.attr({"stroke-dasharray":x})}i.append(v),!0!==this.axis.get("y").hide&&i.append(m)}},this.drawValueLineCenter=function(t,i,n){for(var r="block"!=this.grid.type?i.length-1:i.length,a=this.axis.area("width"),o=this.axis.area("height"),s=this.axis.area("x"),h=this.axis.area("y"),u=this.axis.depth,l="left"==this.axis.get("y").orient?0:a,c="top"==this.axis.get("x").orient?0:o,d=1;d<r;d++){var f=d*(u/r),p=new e(s,h+c,f,s+a,h+c,f),g=new e(s+l,h,f,s+l,h+o,f);this.calculate3d(p,g);var v=this.line({stroke:this.chart.theme("gridBorderColor"),"stroke-width":this.chart.theme("gridBorderWidth"),x1:p.vectors[0].x,y1:p.vectors[0].y,x2:p.vectors[1].x,y2:p.vectors[1].y}),m=this.line({stroke:this.chart.theme("gridBorderColor"),"stroke-width":this.chart.theme("gridBorderWidth"),x1:g.vectors[0].x,y1:g.vectors[0].y,x2:g.vectors[1].x,y2:g.vectors[1].y});if(n.type.indexOf("dashed")>-1){var y=this.chart.theme("gridBorderDashArray"),x="none"!=y&&y?y:"3,3";v.attr({"stroke-dasharray":x}),m.attr({"stroke-dasharray":x})}t.append(v),!0!==this.axis.get("y").hide&&t.append(m)}},this.drawValueText=function(t,e,n,r,a){if(!this.grid.hideText){var o="left"==t||"right"==t,s=this.chart.theme("gridTickBorderSize"),h=this.chart.theme("gridTickPadding"),u=this.axis.area("width"),l=this.axis.area("height"),c=this.axis.area("x"),d=this.axis.area("y"),f=0,p=0;"top"==t?(f=r,p=d+-(s+2*h)):"bottom"==t?(f=r,p=d+(l+s+2*h)):"left"==t?(f=c+-(s+h),p=r):"right"==t&&(f=c+(u+s+h),p=r);var g=new i(f,p,0);this.calculate3d(g),e.append(this.getTextRotate(this.chart.text({x:g.vectors[0].x,y:g.vectors[0].y,dx:o?0:this.chart.theme("gridXFontSize")/3,dy:o?this.chart.theme("gridYFontSize")/3:0,fill:this.chart.theme(o?"gridYFontColor":"gridXFontColor"),"text-anchor":o?"left"==t?"end":"start":"middle","font-size":this.chart.theme(o?"gridYFontSize":"gridXFontSize"),"font-weight":this.chart.theme(o?"gridYFontWeight":"gridXFontWeight")},a)))}},this.drawValueTextCenter=function(t,e,n,r,a){if(!this.grid.hideText)for(var o=this.chart.theme("gridTickBorderSize")+this.chart.theme("gridTickPadding"),s="left"==this.axis.get("y").orient,h="top"==this.axis.get("x").orient,u="block"!=this.grid.type?e.length-1:e.length,l=this.axis.area("width"),c=this.axis.area("height"),d=this.axis.depth,f=this.axis.area("x")+(s?l+o:-o),p=this.axis.area("y")+(h?-o:c+o),g=0;g<e.length;g++){var v=this.format(e[g],g),m=new i(f,p,g*(d/u)+a);this.calculate3d(m),t.append(this.getTextRotate(this.chart.text({x:m.vectors[0].x,y:m.vectors[0].y,fill:this.chart.theme("gridZFontColor"),"text-anchor":s?"start":"end","font-size":this.chart.theme("gridZFontSize"),"font-weight":this.chart.theme("gridZFontWeight")},v)))}},this.drawPattern=function(){},this.drawImage=function(){}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(t){return typeof t}:function(t){return t&&"function"==typeof Symbol&&t.constructor===Symbol&&t!==Symbol.prototype?"symbol":typeof t},r=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.grid.core",extend:"chart.draw",component:function(){var t=r.default.include("util.base"),e=r.default.include("util.math"),i=r.default.include("chart.grid.draw2d"),a=r.default.include("chart.grid.draw3d"),o=function(){this.wrapper=function(t,e){return t},this.line=function(e){return this.chart.svg.line(t.extend({x1:0,y1:0,x2:0,y2:0,stroke:this.color("gridBorderColor"),"stroke-width":this.chart.theme("gridBorderWidth"),"stroke-dasharray":this.chart.theme("gridBorderDashArray"),"stroke-opacity":this.chart.theme("gridBorderOpacity")},e))},this.color=function(t){var e=this.grid.color;return 3==arguments.length?null!=e?this.chart.color(e):this.chart.theme.apply(this.chart,arguments):null!=e?this.chart.color(e):this.chart.theme(t)},this.data=function(t,e){return this.axis.data&&this.axis.data[t]?this.axis.data[t][e]||this.axis.data[t]:this.axis.data||[]},this.getGridSize=function(){var t=this.grid.orient,i=this.axis.depth,n=this.axis.degree,r="left"==t||"right"==t?this.axis.area("y"):this.axis.area("x"),a="left"==t||"right"==t?this.axis.area("height"):this.axis.area("width"),o={start:r,size:a,end:r+a};if(this.axis.isFull3D())"center"==t&&(o.start=0,o.size=i,o.end=i);else if(i>0||n>0){var s=e.radian(360-n),h=Math.cos(s)*i,u=Math.sin(s)*i;"left"==t?(o.start=o.start-u,o.size=o.size-u):"bottom"==t&&(o.end=o.end-h,o.size=o.size-h)}return o},this.getDefaultOffset=function(){var t=this.grid.orient,e=this.axis.area(),i=e.width,n=e.height,r="left"==t||"right"==t?e.y:e.x,a="left"==t||"right"==t?n:i;return{start:r,size:a,end:r+a}},this.getTextRotate=function(e){var i=this.grid.textRotate;if(null==i)return e;t.typeCheck("function",i)&&(i=i.apply(this.chart,[e]));var n=e.attr("x"),r=e.attr("y");return e.rotate(i,n,r),e},this.getLineOption=function(){var t=this.grid.line;return"string"==typeof t?t={type:t||"solid"}:"number"==typeof t?t={type:"solid","stroke-width":t}:"object"!==(void 0===t?"undefined":n(t))&&(t=!!t)&&(t={type:"solid"}),t&&"string"==!t.type&&(t.type=t.type.split(/ /g)),t},this.checkDrawLineY=function(t,e){var i=this.axis.get("y");if(!i.hide){if("left"==i.orient&&0==t&&!this.grid.realtime)return!1;if("right"==i.orient&&e)return!1}return!0},this.checkDrawLineX=function(t,e){var i=this.axis.get("x");if(!i.hide){if("top"==i.orient&&0==t)return!1;if("bottom"==i.orient&&e&&!this.grid.realtime)return!1}return!0},this.drawTop=function(e,i,n,r,a){for(var o=0,s=i.length;o<s;o++){var h=this.format(i[o],o),u=n[o]-a,l=o==s-1&&"block"!=this.grid.type,c=!1;if(this.drawImage("top",e,i[o],o,u,0),h||0===h){t.typeCheck("function",r)&&(c=r(i[o]));var d=this.createGridX("top",o,u,c,l);this.drawValueText("top",d,o,n[o],h,a,c),e.append(d)}}},this.drawBottom=function(e,i,n,r,a){for(var o=0,s=i.length;o<s;o++){var h=this.format(i[o],o),u=n[o]-a,l=o==s-1&&"block"!=this.grid.type,c=!1;if(this.drawImage("bottom",e,i[o],o,u,0),h||0===h){t.typeCheck("function",r)&&(c=r(i[o]));var d=this.createGridX("bottom",o,u,c,l);this.drawValueText("bottom",d,o,n[o],h,a,c),e.append(d)}}},this.drawLeft=function(e,i,n,r,a){for(var o=0,s=i.length;o<s;o++){var h=this.format(i[o],o),u=n[o]-a,l=o==s-1&&"block"!=this.grid.type,c=!1;if(this.drawImage("left",e,i[o],o,0,u),h||0===h){t.typeCheck("function",r)&&(c=r(i[o]));var d=this.createGridY("left",o,u,c,l);this.drawValueText("left",d,o,n[o],h,a,c),e.append(d)}}},this.drawRight=function(e,i,n,r,a){for(var o=0,s=i.length;o<s;o++){var h=this.format(i[o],o),u=n[o]-a,l=o==s-1&&"block"!=this.grid.type,c=!1;if(this.drawImage("right",e,i[o],o,0,u),h||0===h){t.typeCheck("function",r)&&(c=r(i[o]));var d=this.createGridY("right",o,u,c,l);this.drawValueText("right",d,o,n[o],h,a,c),e.append(d)}}},this.drawGrid=function(){var e=this.chart.svg.group(),n=this[this.grid.orient],r=this.axis.isFull3D()?a:i;return this.scale=this.wrapper(this.scale,this.grid.key),t.typeCheck("function",n)&&(r.call(this),n.call(this,e)),this.grid.hide&&e.attr({display:"none"}),{root:e,scale:this.scale}},this.drawAfter=function(t){t.root.attr({class:"grid-"+this.grid.type}),t.root.translate(this.chart.area("x"),this.chart.area("y"))}};return o.setup=function(){return{dist:0,orient:null,hide:!1,color:null,title:null,line:!1,format:null,image:null,textRotate:null}},o}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.grid.block",extend:"chart.grid.core",component:function(){var t=n.default.include("util.base"),e=n.default.include("util.scale"),i=function(){this.center=function(t){this.drawCenter(t,this.domain,this.points,null,this.half_band),this.drawBaseLine("center",t)},this.top=function(t){this.drawPattern("top",this.domain,this.points,!0),this.drawTop(t,this.domain,this.points,null,this.half_band),this.drawBaseLine("top",t),t.append(this.createGridX("top",this.domain.length,this.end,null,!0))},this.bottom=function(t){this.drawPattern("bottom",this.domain,this.points,!0),this.drawBottom(t,this.domain,this.points,null,this.half_band),this.drawBaseLine("bottom",t),t.append(this.createGridX("bottom",this.domain.length,this.end,null,!0))},this.left=function(t){this.drawPattern("left",this.domain,this.points,!0),this.drawLeft(t,this.domain,this.points,null,this.half_band),this.drawBaseLine("left",t),t.append(this.createGridY("left",this.domain.length,this.end,null,!0))},this.right=function(t){this.drawPattern("right",this.domain,this.points,!0),this.drawRight(t,this.domain,this.points,null,this.half_band),this.drawBaseLine("right",t),t.append(this.createGridY("right",this.domain.length,this.end,null,!0))},this.initDomain=function(){var e=[];if(t.typeCheck("string",this.grid.domain)){var i=this.grid.domain,n=this.data();if(this.grid.reverse)var r=n.length-1,a=0,o=-1;else r=0,a=n.length-1,o=1;for(var s=r;this.grid.reverse?s>=a:s<=a;s+=o)e.push(n[s][i])}else t.typeCheck("function",this.grid.domain)?e=this.grid.domain.call(this.chart):t.typeCheck("array",this.grid.domain)&&(e=this.grid.domain);return this.grid.reverse&&e.reverse(),e},this.wrapper=function(e,i){var n=e,r=this,a=r.domain.length,o=r.grid.reverse;return i?t.extend(function(t){return n("number"==typeof t&&i?r.axis.data[t][i]:o?a-t-1:t)},n):n},this.drawBefore=function(){var t=this.initDomain(),i=this.getGridSize(),n=[i.start,i.end];this.scale=e.ordinal().domain(t),this.scale.rangePoints(n),this.start=i.start,this.size=i.size,this.end=i.end,this.points=this.scale.range(),this.domain=this.scale.domain(),this.band=this.scale.rangeBand(),this.half_band=this.band/2,this.bar=6,this.reverse=this.grid.reverse},this.draw=function(){return this.drawGrid("block")}};return i.setup=function(){return{domain:null,reverse:!1,max:10,hideText:!1,key:null}},i}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.grid.date",extend:"chart.grid.core",component:function(){var t=n.default.include("util.base"),e=n.default.include("util.scale"),i=n.default.include("util.time"),r=function(){this.center=function(t){this.drawCenter(t,this.ticks,this.values,null,0),this.drawBaseLine("center",t)},this.top=function(t){this.drawPattern("top",this.ticks,this.values),this.drawTop(t,this.ticks,this.values,null,0),this.drawBaseLine("top",t)},this.bottom=function(t){this.drawPattern("bottom",this.ticks,this.values),this.drawBottom(t,this.ticks,this.values,null,0),this.drawBaseLine("bottom",t)},this.left=function(t){this.drawPattern("left",this.ticks,this.values),this.drawLeft(t,this.ticks,this.values,null,0),this.drawBaseLine("left",t)},this.right=function(t){this.drawPattern("right",this.ticks,this.values),this.drawRight(t,this.ticks,this.values,null,0),this.drawBaseLine("right",t)},this.wrapper=function(e,i){var n=e,r=this;return i?t.extend(function(t){return n("number"==typeof t?r.axis.data[t][i]:+t)},n):n},this.initDomain=function(){var e=[],i=[],n=this.grid.min||void 0,r=this.grid.max||void 0,a=this.data(),o=[];if(t.typeCheck("string",this.grid.domain)){if(a.length>0){var s=this.grid.domain;o.push(+a[0][s]),o.push(+a[a.length-1][s])}}else if(t.typeCheck("function",this.grid.domain))for(var h=a.length;h--;){var u=this.grid.domain.call(this.chart,a[h]);t.typeCheck("array",u)?(o[h]=Math.max.apply(Math,u),o.push(Math.min.apply(Math,u))):o[h]=u}else o=this.grid.domain;return t.typeCheck("undefined",n)&&o.length>0&&(n=Math.min.apply(Math,o)),t.typeCheck("undefined",r)&&o.length>0&&(r=Math.max.apply(Math,o)),e=[n,r],i=this.grid.interval,this.grid.reverse&&e.reverse(),t.typeCheck("function",i)?this.interval=i.call(this.chart,e):this.interval=i,e},this.drawBefore=function(){var t=this.initDomain(),n=this.getGridSize(),r=[n.start,n.end];if(this.scale=e.time().domain(t).range(r),this.scale.clamp(this.grid.clamp),this.ticks=[],null!=this.grid.realtime&&i[this.grid.realtime]==this.grid.realtime)var a=this.scale.realTicks(this.grid.realtime,this.interval);else a=this.scale.ticks("milliseconds",this.interval);"string"==typeof this.grid.format&&function(t,e){t.format=function(t){return i.format(t,e)}}(this.grid,this.grid.format),this.start=n.start,this.size=n.size,this.end=n.end,this.bar=6,this.values=[];for(var o=0,s=a.length;o<s;o++){var h=this.scale(a[o]);h>=n.start&&h<=n.end&&(this.values.push(h),this.ticks.push(a[o]))}},this.draw=function(){return this.drawGrid("date")}};return r.setup=function(){return{domain:null,interval:1e3,min:null,max:null,reverse:!1,key:null,realtime:null,hideText:!1}},r}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.grid.dateblock",extend:"chart.grid.date",component:function(){var t=n.default.include("util.base"),e=n.default.include("util.scale"),i=n.default.include("util.time");return function(){this.wrapper=function(t,e){var i=t,n=this;return i.rangeBand=function(){return n.grid.unit},i},this.initDomain=function(){var e=[],i=[],n=this.grid.min||void 0,r=this.grid.max||void 0,a=this.data(),o=[];if(t.typeCheck("string",this.grid.domain)){var s=this.grid.domain;o.push(+a[0][s]),o.push(+a[a.length-1][s])}else if(t.typeCheck("function",this.grid.domain))for(var h=a.length;h--;){var u=this.grid.domain.call(this.chart,a[h]);t.typeCheck("array",u)?(o[h]=+Math.max.apply(Math,u),o.push(+Math.min.apply(Math,u))):o[h]=+u}else o=this.grid.domain;return t.typeCheck("undefined",n)&&(n=Math.min.apply(Math,o)),t.typeCheck("undefined",r)&&(r=Math.max.apply(Math,o)),e=[n,r],i=this.grid.interval,this.grid.reverse&&e.reverse(),t.typeCheck("function",i)?e.interval=i.call(this.chart,e):e.interval=i,e},this.drawBefore=function(){var n=this.initDomain(),r=this.getGridSize(),a=[r.start,r.end],o=e.time().domain(n).rangeRound(a);null!=this.grid.realtime&&i[this.grid.realtime]==this.grid.realtime?this.ticks=o.realTicks(this.grid.realtime,n.interval):this.ticks=o.ticks("milliseconds",n.interval);var s=this.axis.data.length-1,h=this.grid.unit=Math.abs(a[0]-a[1])/s;"string"==typeof this.grid.format&&function(t,e){t.format=function(t){return i.format(t,e)}}(this.grid,this.grid.format),this.start=r.start,this.size=r.size,this.end=r.end,this.bar=6,this.values=[];var u=0;for(s=this.ticks.length;u<s;u++)this.values[u]=o(this.ticks[u]);var l=this;this.scale=t.extend(function(t){return l.start+t*h},o)},this.draw=function(){return this.drawGrid("dateblock")}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.grid.fullblock",extend:"chart.grid.core",component:function(){var t=n.default.include("util.base"),e=n.default.include("util.scale"),i=function(){this.center=function(t){this.drawCenter(t,this.domain,this.points,null,0),this.drawBaseLine("center",t)},this.top=function(t){this.drawPattern("top",this.domain,this.points),this.drawTop(t,this.domain,this.points,null,0),this.drawBaseLine("top",t)},this.bottom=function(t){this.drawPattern("bottom",this.domain,this.points),this.drawBottom(t,this.domain,this.points,null,0),this.drawBaseLine("bottom",t)},this.left=function(t){this.drawPattern("left",this.domain,this.points),this.drawLeft(t,this.domain,this.points,null,0),this.drawBaseLine("left",t)},this.right=function(t){this.drawPattern("right",this.domain,this.points),this.drawRight(t,this.domain,this.points,null,0),this.drawBaseLine("right",t)},this.initDomain=function(){var e=[];if(t.typeCheck("string",this.grid.domain)){var i=this.grid.domain,n=this.data();if(this.grid.reverse)var r=n.length-1,a=0,o=-1;else r=0,a=n.length-1,o=1;for(var s=r;this.grid.reverse?s>=a:s<=a;s+=o)e.push(n[s][i])}else t.typeCheck("function",this.grid.domain)?e=this.grid.domain.call(this.chart):t.typeCheck("array",this.grid.domain)&&(e=this.grid.domain);return this.grid.reverse&&e.reverse(),e},this.wrapper=function(e,i){var n=e,r=this,a=r.domain.length,o=r.grid.reverse;return i?t.extend(function(t){return n("number"==typeof t&&i?r.axis.data[t][i]:o?a-t:t)},n):n},this.drawBefore=function(){var t=this.initDomain(),i=this.getGridSize();this.scale=e.ordinal().domain(t);var n=[i.start,i.end];this.scale.rangeBands(n),this.start=i.start,this.size=i.size,this.end=i.end,this.points=this.scale.range(),this.domain=this.scale.domain(),this.band=this.scale.rangeBand(),this.half_band=0,this.bar=6,this.reverse=this.grid.reverse},this.draw=function(){return this.drawGrid("fullblock")}};return i.setup=function(){return{domain:null,reverse:!1,max:10,hideText:!1}},i}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.grid.radar",extend:"chart.grid.core",component:function(){var t=n.default.include("util.base"),e=n.default.include("util.math"),i=function(){var i=this,n=[];function r(t,e,n,r,a,o){var s=Math.abs(a),h=e,u=n;t.append(i.chart.svg.circle({cx:h,cy:u,r:s,"fill-opacity":0,stroke:i.color("gridBorderColor"),"stroke-width":i.chart.theme("gridBorderWidth")}))}function a(t,n,r,a,o,s,h){var u=i.chart.svg.group(),l=[];l.push([n+a,r+o]);for(var c=a,d=o,f=0;f<s;f++){var p=e.rotate(c,d,h);c=p.x,d=p.y,l.push([n+p.x,r+p.y])}var g=i.chart.svg.path({fill:"none",stroke:i.color("gridBorderColor"),"stroke-width":i.chart.theme("gridBorderWidth")});for(f=0;f<l.length;f++){var v=l[f];0==f?g.MoveTo(v[0],v[1]):g.LineTo(v[0],v[1])}g.LineTo(l[0][0],l[0][1]),u.append(g),t.append(u)}function o(t){var n=i.grid.max,r=i.chart.padding("left"),a=i.chart.padding("top");return function(o,s){var h=s/n,u=(Math.abs(t.y1)-Math.abs(t.y2))*h,l=2*Math.PI/i.domain.length,c=t.x1,d=t.y1,f=-u,p=e.rotate(0,f,l*o);return{x:r+c+p.x,y:a+d+p.y}}}this.initDomain=function(){var e=[];if(t.typeCheck("string",this.grid.domain)){var i=this.grid.domain,n=this.data();if(this.grid.reverse)var r=n.length-1,a=0,o=-1;else r=0,a=n.length-1,o=1;for(var s=r;this.grid.reverse?s>=a:s<=a;s+=o)e.push(n[s][i])}else e=t.typeCheck("function",this.grid.domain)?this.grid.domain(this.chart,this.grid):this.grid.domain;return this.grid.reverse&&e.reverse(),e},this.drawBefore=function(){this.domain=this.initDomain()},this.draw=function(){var t=this.axis.area("width"),i=this.axis.area("height"),s=t;i<s&&(s=i);var h=s/2,u=this.axis.area("x")+t/2,l=this.axis.area("y")+i/2,c=-h,d=0,f=this.domain.length,p=this.grid.step,g=2*Math.PI/f,v=Math.abs(c)/p,m=this.chart.svg.group(),y=this.chart.svg.group();m.append(y),n=[];for(var x=0;x<f;x++){var w=u+d,b=l+c;y.append(this.chart.svg.line({x1:u,y1:l,x2:w,y2:b,stroke:this.color("gridAxisBorderColor"),"stroke-width":this.chart.theme("gridBorderWidth")})),n[x]={x1:u,y1:l,x2:w,y2:b};var M=b,k=w,C="middle";b>l?M=b+20:b<l&&(M=b-10),w>u?(C="start",k+=10):w<u&&(C="end",k-=10),this.grid.hideText||y.append(this.chart.text({x:k,y:M,"text-anchor":C,"font-size":this.chart.theme("gridCFontSize"),"font-weight":this.chart.theme("gridCFontWeight"),fill:this.chart.theme("gridCFontColor")},this.domain[x]));var _=e.rotate(d,c,g);d=_.x,c=_.y}if(!this.grid.line)return{root:y,scale:o(n[0])};c=-h;var T=0,A=this.grid.max/this.grid.step;for(x=0;x<p;x++)0==x&&this.grid.extra?c+=v:("circle"==this.grid.shape?r(y,u,l,0,c):a(y,u,l,0,c,f,g),this.grid.hideText||y.append(this.chart.text({x:u,y:l+(c+v-5),"font-size":this.chart.theme("gridCFontSize"),"font-weight":this.chart.theme("gridCFontWeight"),fill:this.chart.theme("gridCFontColor")},this.grid.max-T+"")),c+=v,T+=A);return this.grid.hide&&y.attr({display:"none"}),{root:y,scale:o(n[0])}}};return i.setup=function(){return{domain:null,reverse:!1,max:100,step:10,line:!0,hideText:!1,extra:!1,shape:"radial"}},i}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.grid.range",extend:"chart.grid.core",component:function(){var t=n.default.include("util.base"),e=n.default.include("util.math"),i=n.default.include("util.scale"),r=function(){this.center=function(t){var e=this.scale.min(),i=this.scale.max();this.drawCenter(t,this.ticks,this.values,function(t){return 0==t&&t!=e&&t!=i},0),this.drawBaseLine("center",t)},this.top=function(t){this.drawPattern("top",this.ticks,this.values);var e=this.scale.min(),i=this.scale.max();this.drawTop(t,this.ticks,this.values,function(t){return 0==t&&t!=e&&t!=i},0),this.drawBaseLine("top",t)},this.bottom=function(t){this.drawPattern("bottom",this.ticks,this.values);var e=this.scale.min(),i=this.scale.max();this.drawBottom(t,this.ticks,this.values,function(t){return 0==t&&t!=e&&t!=i},0),this.drawBaseLine("bottom",t)},this.left=function(t){this.drawPattern("left",this.ticks,this.values);var e=this.scale.min(),i=this.scale.max();this.drawLeft(t,this.ticks,this.values,function(t){return 0==t&&t!=e&&t!=i},0),this.drawBaseLine("left",t)},this.right=function(t){this.drawPattern("right",this.ticks,this.values);var e=this.scale.min(),i=this.scale.max();this.drawRight(t,this.ticks,this.values,function(t){return 0==t&&t!=e&&t!=i},0),this.drawBaseLine("right",t)},this.wrapper=function(e,i){var n=e,r=this;return i?t.extend(function(t){return n(r.axis.data[t][i])},n):n},this.initDomain=function(){var i=[],n=this.grid.min||void 0,r=this.grid.max||void 0,a=this.data(),o=[],s=!1;if(t.typeCheck("string",this.grid.domain)){var h=this.grid.domain;o=new Array(a.length);for(var u=a.length;u--;){var l=a[u][h];t.typeCheck("array",l)?(o[u]=Math.max(l),o.push(Math.min(l))):(o[u]=l,o.push(0))}}else if(t.typeCheck("function",this.grid.domain)){o=new Array(a.length);var c=!1;for(u=a.length;u--;){l=this.grid.domain.call(this.chart,a[u]);t.typeCheck("array",l)?(o[u]=Math.max.apply(Math,l),o.push(Math.min.apply(Math,l))):(o[u]=l,c||(o.push(0),c=!0))}}else o=this.grid.domain,s=!0;var d,f=Math.min.apply(Math,o),p=Math.max.apply(Math,o);s?(n=f,r=p):((void 0===n||n>f)&&(n=f),(void 0===r||r<p)&&(r=p));if(t.typeCheck("function",this.grid.unit)?d=this.grid.unit.call(this.chart,this.grid):t.typeCheck("number",this.grid.unit)?d=this.grid.unit:(n>0&&(n=Math.floor(n)),(d=e.div(r-n,this.grid.step))>1?d=Math.ceil(d):0<d&&d<1&&(d=e.div(Math.ceil(e.multi(d,10)),10))),0==d)i=[0,0];else{for(var g=0,v=e.fixed(d);g<r;)g=v.plus(g,d);for(var m=g;m>n;)m=v.minus(m,d);(i=[m,g]).step=Math.abs(m-g)/d}return this.grid.reverse&&i.reverse(),i},this.drawBefore=function(){var t=this.initDomain(),e=this.getGridSize();if(this.scale=i.linear().domain(t),"left"==this.grid.orient||"right"==this.grid.orient)var n=[e.end,e.start];else n=[e.start,e.end];this.scale.range(n),this.scale.clamp(this.grid.clamp),this.start=e.start,this.size=e.size,this.end=e.end,this.step=t.step,this.nice=this.grid.nice,this.ticks=this.scale.ticks(this.step,this.nice),"left"!=this.grid.orient&&"right"!=this.grid.orient||this.ticks.reverse(),this.bar=6,this.values=[];for(var r=0,a=this.ticks.length;r<a;r++)this.values[r]=this.scale(this.ticks[r])},this.draw=function(){return this.drawGrid("range")}};return r.setup=function(){return{domain:null,step:10,min:0,max:0,unit:null,clamp:!0,reverse:!1,key:null,hideText:!1,nice:!1}},r}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.grid.log",extend:"chart.grid.range",component:function(){var t=n.default.include("util.scale"),e=function(){this.drawBefore=function(){this.grid.unit=!1;var e=this.initDomain(),i=this.getGridSize();if(this.scale=t.log(this.grid.base).domain(e),"left"==this.grid.orient||"right"==this.grid.orient)var n=[i.end,i.start];else n=[i.start,i.end];this.scale.range(n),this.start=i.start,this.size=i.size,this.end=i.end,this.step=this.grid.step,this.nice=this.grid.nice,this.ticks=this.scale.ticks(this.step,this.nice),"left"!=this.grid.orient&&"right"!=this.grid.orient||this.ticks.reverse(),this.bar=6,this.values=[];for(var r=0,a=this.ticks.length;r<a;r++)this.values[r]=this.scale(this.ticks[r])},this.draw=function(){return this.drawGrid("log")}};return e.setup=function(){return{base:10,step:4,nice:!1,hideText:!1}},e}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.grid.rule",extend:"chart.grid.core",component:function(){var t=n.default.include("util.base"),e=n.default.include("util.scale"),i=function(){this.top=function(t){var e=this.axis.area("height")/2;t.append(this.axisLine({y1:this.center?e:0,y2:this.center?e:0,x1:this.start,x2:this.end}));for(var i=this.ticks,n=this.values,r=this.bar,a=0;a<i.length;a++){var o=this.format(i[a],a);if(o||0===o){var s=0==i[a],h=this.chart.svg.group().translate(n[a],this.center?e:0);h.append(this.line({y1:this.center?-r:0,y2:r,stroke:this.color("gridAxisBorderColor"),"stroke-width":this.chart.theme("gridBorderWidth")})),(!s||s&&!this.hideZero)&&h.append(this.getTextRotate(this.chart.text({x:0,y:r+r+4,"text-anchor":"middle",fill:this.chart.theme("gridFontColor")},o))),t.append(h)}}},this.bottom=function(t){var e=this.axis.area("height")/2;t.append(this.axisLine({y1:this.center?-e:0,y2:this.center?-e:0,x1:this.start,x2:this.end}));for(var i=this.ticks,n=this.values,r=this.bar,a=0;a<i.length;a++){var o=this.format(i[a],a);if(o||0===o){var s=0==i[a],h=this.chart.svg.group().translate(n[a],this.center?-e:0);h.append(this.line({y1:this.center?-r:0,y2:this.center?r:-r,stroke:this.color("gridAxisBorderColor"),"stroke-width":this.chart.theme("gridBorderWidth")})),(!s||s&&!this.hideZero)&&h.append(this.getTextRotate(this.chart.text({x:0,y:2*-r,"text-anchor":"middle",fill:this.chart.theme(s,"gridActiveFontColor","gridFontColor")},o))),t.append(h)}}},this.left=function(t){var e=this.axis.area("width"),i=(this.axis.area("height"),e/2);t.append(this.axisLine({x1:this.center?i:0,x2:this.center?i:0,y1:this.start,y2:this.end}));for(var n=this.ticks,r=this.values,a=this.bar,o=0;o<n.length;o++){var s=this.format(n[o],o);if(s||0===s){var h=0==n[o],u=this.chart.svg.group().translate(this.center?i:0,r[o]);u.append(this.line({x1:this.center?-a:0,x2:a,stroke:this.color("gridAxisBorderColor"),"stroke-width":this.chart.theme("gridBorderWidth")})),(!h||h&&!this.hideZero)&&u.append(this.getTextRotate(this.chart.text({x:a/2+4,y:a-2,fill:this.chart.theme("gridFontColor")},s))),t.append(u)}}},this.right=function(t){var e=this.axis.area("width")/2;t.append(this.axisLine({x1:this.center?-e:0,x2:this.center?-e:0,y1:this.start,y2:this.end}));for(var i=this.ticks,n=this.values,r=this.bar,a=0;a<i.length;a++){var o=this.format(i[a],a);if(o||0===o){var s=0==i[a],h=this.chart.svg.group().translate(this.center?-e:0,n[a]);h.append(this.line({x1:this.center?-r:0,x2:this.center?r:-r,stroke:this.color("gridAxisBorderColor"),"stroke-width":this.chart.theme("gridBorderWidth")})),(!s||s&&!this.hideZero)&&h.append(this.getTextRotate(this.chart.text({x:-r-4,y:r-2,"text-anchor":"end",fill:this.chart.theme("gridFontColor")},o))),t.append(h)}}},this.wrapper=function(e,i){var n=e,r=this;return i?t.extend(function(t){return n(r.axis.data[t][i])},n):n},this.initDomain=function(){var e=[],i=this.grid.min||void 0,n=this.grid.max||void 0,r=this.data(),a=[];if(t.typeCheck("string",this.grid.domain)){var o=this.grid.domain;a=new Array(r.length);for(var s=0,h=r.length;s<h;s++){var u=r[s][o];t.typeCheck("array",u)?(a[s]=Math.max(u),a.push(Math.min(u))):a[s]=u}}else if(t.typeCheck("function",this.grid.domain)){a=new Array(r.length);for(s=0,h=r.length;s<h;s++){u=this.grid.domain.call(this.chart,r[s]);t.typeCheck("array",u)?(a[s]=Math.max.apply(Math,u),a.push(Math.min.apply(Math,u))):a[s]=u}}else a=grid.domain;var l,c=Math.min.apply(Math,a),d=Math.max.apply(Math,a);if(void 0===i&&(i=c),void 0===n&&(n=d),this.grid.max=n,this.grid.min=i,0==(l=t.typeCheck("function",this.grid.unit)?this.grid.unit.call(this.chart,this.grid):t.typeCheck("number",this.grid.unit)?this.grid.unit:Math.ceil((n-i)/this.grid.step)))e=[0,0];else{for(var f=0;f<n;)f+=l;for(var p=f;p>i;)p-=l;e=[p,f]}return this.grid.reverse&&e.reverse(),e},this.drawBefore=function(){var t=this.initDomain(),i=this.getGridSize();if(this.scale=e.linear().domain(t),"left"==this.grid.orient||"right"==this.grid.orient)var n=[i.end,i.start];else n=[i.start,i.end];this.scale.range(n),this.start=i.start,this.size=i.size,this.end=i.end,this.step=this.grid.step,this.nice=this.grid.nice,this.ticks=this.scale.ticks(this.step,this.nice),this.bar=6,this.hideZero=this.grid.hideZero,this.center=this.grid.center,this.values=[];for(var r=0,a=this.ticks.length;r<a;r++)this.values[r]=this.scale(this.ticks[r])},this.draw=function(){return this.drawGrid(chart,orient,"rule",grid)}};return i.setup=function(){return{domain:null,step:10,min:0,max:0,unit:null,clamp:!0,reverse:!1,key:null,hideText:!1,hideZero:!1,nice:!1,center:!1}},i}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.grid.panel",extend:"chart.grid.core",component:function(){var t=n.default.include("util.base");return function(){this.custom=function(e){var i=this.scale(0);i.x-=this.axis.area("x"),i.y-=this.axis.area("y"),e.append(this.chart.svg.rect(t.extend(i,{fill:"transparent",stroke:"transparent"})))},this.drawBefore=function(){this.scale=function(t){return function(e){return{x:t.area("x"),y:t.area("y"),width:t.area("width"),height:t.area("height")}}}(this.axis)},this.draw=function(){return this.grid.hide=!0,this.drawGrid("panel")}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"chart.grid.table",extend:"chart.grid.core",component:function(){var t=function(t,e,i){this.custom=function(t){for(var e=0;e<void 0;e++)for(var i=0;i<void 0;i++){var n=void 0*e+i,r=this.scale(n);r.x-=this.axis.area("x"),r.y-=this.axis.area("y");this.chart.svg.rect(_.extend(r,{fill:"tranparent",stroke:"black"}))}},this.drawBefore=function(){var t=this.grid.rows,e=this.grid.columns,i=this.grid.padding,n=(this.axis.area("width")-(e-1)*i)/e,r=(this.axis.area("height")-(t-1)*i)/t;this.scale=function(t,e,n,r,a){return function(e){var o=Math.floor(e/n),s=e%n,h=s*a,u=o*r,l=i*s,c=i*o;return{x:t.area("x")+h+l,y:t.area("y")+u+c,width:a,height:r}}}(this.axis,0,e,r,n)},this.draw=function(){return this.grid.hide=!0,this.drawGrid("table")}};return t.setup=function(){return{rows:1,columns:1,padding:10}},t}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.grid.overlap",extend:"chart.grid.core",component:function(){var t=n.default.include("util.base"),e=function(){var e,i,n,r,a;this.custom=function(){for(var e=0,i=this.axis.data.length;e<i;e++){var n=this.scale(e);n.x-=this.axis.area("x"),n.y-=this.axis.area("y"),this.chart.svg.rect(t.extend(n,{fill:"transparent",stroke:"transparent"}))}},this.drawBefore=function(){e=this.grid.count||this.axis.data.length||1,i=this.axis.area("width")/2/e,n=this.axis.area("height")/2/e,r=this.axis.area("width"),a=this.axis.area("height"),this.scale=function(t){return function(e){var o=e*i,s=e*n;return{x:t.area("x")+o,y:t.area("y")+s,width:2*Math.abs(r/2-o),height:2*Math.abs(a/2-s)}}}(this.axis)},this.draw=function(){return this.grid.hide=!0,this.drawGrid("overlap")}};return e.setup=function(){return{count:null}},e}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.grid.grid3d",extend:"chart.grid.core",component:function(){var t=n.default.include("util.base"),e=n.default.include("util.math"),i=function(){var i=this,n=0,r=0,a=0;function o(t){var e=null;return t.each(function(t,i){"line"==i.element.nodeName&&(e=i.attributes)}),e}this.drawBefore=function(){n=this.axis.get("depth"),r=this.axis.get("degree"),a=e.radian(360-r),this.scale=(this.axis,function(e,r,o,s){var h=t.typeCheck("integer",s)?s:1,u=n/h;if(void 0==o||1==h)return{x:i.axis.x(e),y:i.axis.y(r),depth:u};var l=u*(o=void 0==o?0:o),c=Math.sin(a)*u;return{x:i.axis.x(e)+Math.cos(a)*l,y:i.axis.y(r)+Math.sin(a)*l+c,depth:u}}),this.scale.depth=n,this.scale.degree=r,this.scale.radian=a},this.draw=function(){var t=this.axis.x.root,e=this.axis.y.root,r=Math.sin(a)*n,s=Math.cos(a)*n;return e.each(function(n,a){if("line"==a.element.nodeName)e.append(i.line({x1:s,y1:0,x2:s,y2:r+a.attributes.y2}));else{var h=o(t);a.append(i.line({x1:0,y1:0,x2:s,y2:r})),a.append(i.line({x1:s,y1:r,x2:s+h.x2,y2:r}))}}),t.each(function(t,r){var s="line"==r.element.nodeName?r.attributes:r.get(0).attributes,h=s.y1+Math.sin(a)*n,u=s.x1+Math.cos(a)*n;if(t>0){var l=o(e);r.append(i.line({x1:s.x1,y1:s.y1,x2:u,y2:h})),r.append(i.line({x1:u,y1:h,x2:u,y2:-(l.y2-h)}))}}),this.drawGrid()}};return i.setup=function(){return{domain:null}},i}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.brush.core",extend:"chart.draw",component:function(){var t=n.default.include("util.base"),e=n.default.include("util.dom"),i=function(){this.drawAfter=function(t){!1!==this.brush.clip&&t.attr({"clip-path":"url(#"+this.axis.get("clipId")+")"}),t.attr({class:"brush-"+this.brush.type}),t.translate(this.chart.area("x"),this.chart.area("y"))},this.drawTooltip=function(t,e,i){var n=this,r=null;return{tooltip:r=n.chart.svg.group({visibility:"hidden"},function(){n.chart.text({fill:n.chart.theme("tooltipPointFontColor"),"font-size":n.chart.theme("tooltipPointFontSize"),"font-weight":n.chart.theme("tooltipPointFontWeight"),"text-anchor":"middle",opacity:i}),n.chart.svg.circle({r:n.chart.theme("tooltipPointRadius"),fill:t,stroke:e,opacity:i,"stroke-width":n.chart.theme("tooltipPointBorderWidth")})}),control:function(t,e,i,n){var a=r.get(0);a.element.textContent=n,"left"==t?a.attr({x:-7,y:4,"text-anchor":"end"}):"right"==t?a.attr({x:7,y:4,"text-anchor":"start"}):"bottom"==t?a.attr({y:16}):a.attr({y:-7}),r.attr({visibility:0!=n?"visible":"hidden"}),r.translate(e,i)},style:function(t,e,i){r.get(0).attr({opacity:i}),r.get(1).attr({fill:t,stroke:e,opacity:i})}}},this.curvePoints=function(t){var e=[],i=[],n=t.length-1,r=[],a=[],o=[],s=[];for(r[0]=0,a[0]=2,o[0]=1,s[0]=t[0]+2*t[1],h=1;h<n-1;h++)r[h]=1,a[h]=4,o[h]=1,s[h]=4*t[h]+2*t[h+1];r[n-1]=2,a[n-1]=7,o[n-1]=0,s[n-1]=8*t[n-1]+t[n];for(var h=1;h<n;h++){var u=r[h]/a[h-1];a[h]=a[h]-u*o[h-1],s[h]=s[h]-u*s[h-1]}e[n-1]=s[n-1]/a[n-1];for(h=n-2;h>=0;--h)e[h]=(s[h]-o[h]*e[h+1])/a[h];for(h=0;h<n-1;h++)i[h]=2*t[h+1]-e[h+1];return i[n-1]=.5*(t[n]+e[n-1]),{p1:e,p2:i}},this.eachData=function(e,i){if(t.typeCheck("function",e)){var n=this.listData();if(!0===i)for(var r=n.length-1;r>=0;r--)e.call(this,r,n[r]);else{var a=0;for(r=n.length;a<r;a++)e.call(this,n[a],a)}}},this.listData=function(){return this.axis&&this.axis.data?this.axis.data:[]},this.getData=function(t){return this.listData()[t]},this.getValue=function(t,e,i){return this.axis.getValue(t,e,i)},this.getXY=function(e){var i=[],n={},r=this.listData().length,a=r,o=this.brush.target,s=o.length;!1!==e&&(n=function(t,e){for(var i={},n={},r=0;r<e.length;r++)i[e[r]]||(n[e[r]]=[]);r=0;for(var a=t.length;r<a;r++){var o=t[r];for(var s in n)n[s].push(o[s])}for(var h in n)i[h]={min:Math.min.apply(Math,n[h]),max:Math.max.apply(Math,n[h])};return i}(this.axis.data,o));for(var h=0;h<s;h++)i[h]={x:new Array(r),y:new Array(r),value:new Array(r),min:[],max:[],length:r};var u=this.axis.data,l="range"==this.axis.y.type,c=this.axis.x,d=this.axis.y;return t.loop(a)(function(t,r){var a=u[t],h=0,f=0;l?h=c(t):f=d(t);for(var p=0;p<s;p++){var g=o[p],v=a[g];l?f=d(v):h=c(v),i[p].x[t]=h,i[p].y[t]=f,i[p].value[t]=v,!1!==e&&(i[p].min[t]=v==n[g].min,i[p].max[t]=v==n[g].max)}}),i},this.getStackXY=function(t){var e=this.getXY(t),i="range"==this.axis.y.type;return this.eachData(function(t,n){for(var r=0,a=0;a<this.brush.target.length;a++){var o=t[this.brush.target[a]];a>0&&(r+=t[this.brush.target[a-1]]),i?e[a].y[n]=this.axis.y(o+r):e[a].x[n]=this.axis.x(o+r)}}),e},this.addEvent=function(i,n,r){if(!0===this.brush.useEvent){var a=this.chart,o={};t.typeCheck("object",n)&&!r?(o.brush=this.brush,o.data=n):(o.brush=this.brush,o.dataIndex=n,o.dataKey=null!=r?this.brush.target[r]:null,o.data=null!=n?this.getData(n):null),i.on("click",function(t){s(t),a.emit("click",[o,t])}),i.on("dblclick",function(t){s(t),a.emit("dblclick",[o,t])}),i.on("contextmenu",function(t){s(t),a.emit("rclick",[o,t]),t.preventDefault()}),i.on("mouseover",function(t){s(t),a.emit("mouseover",[o,t])}),i.on("mouseout",function(t){s(t),a.emit("mouseout",[o,t])}),i.on("mousemove",function(t){s(t),a.emit("mousemove",[o,t])}),i.on("mousedown",function(t){s(t),a.emit("mousedown",[o,t])}),i.on("mouseup",function(t){s(t),a.emit("mouseup",[o,t])})}function s(t){var i=e.offset(a.root),n=t.pageX-i.left,r=t.pageY-i.top;t.bgX=n,t.bgY=r,t.chartX=n-a.padding("left"),t.chartY=r-a.padding("top")}},this.color=function(e,i){var n=this.brush.colors,r=null,a=0,o=0;if(t.typeCheck("undefined",i)?a=e:(a=i,o=e),t.typeCheck("function",n)){var s=n.call(this.chart,this.getData(o),o);r=t.typeCheck(["string","integer"],s)?this.chart.color(s):t.typeCheck("array",s)?this.chart.color(a,s):this.chart.color(0)}else r=this.chart.color(a,n);return r},this.offset=function(t,e){var i=this.axis[t](e);return"block"!=this.axis[t].type&&(i+=this.axis[t].rangeBand()/2),i}};return i.setup=function(){return{target:null,colors:null,axis:0,index:null,clip:!0,useEvent:!0}},i}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"chart.brush.map.core",extend:"chart.brush.core",component:function(){return function(){}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"chart.brush.polygon.core",extend:"chart.brush.core",component:function(){var t=function(){this.createPolygon=function(t,e){this.calculate3d(t);var i=e.call(this,t);if(i)return i.order=this.axis.depth-t.max().z,i}};return t.setup=function(){return{id:null,clip:!1}},t}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.brush.canvas.core",extend:"chart.brush.core",component:function(){var t=n.default.include("util.base");return function(){this.addPolygon=function(e,i){t.typeCheck("array",this.polygons)||(this.polygons=[]),this.calculate3d(e),this.polygons.push({polygon:e,order:this.axis.depth-e.max().z,handler:i})},this.drawAfter=function(){if(t.typeCheck("array",this.polygons)){var e=this.polygons;e.sort(function(t,e){return t.order-e.order});for(var i=0,n=e.length;i<n;i++){var r=e.shift();r.handler.call(this,r.polygon)}}}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n=function(t){return t&&t.__esModule?t:{default:t}}(i(0));e.default={name:"chart.widget.core",extend:"chart.draw",component:function(){var t=n.default.include("util.base"),e=function(){this.getIndexArray=function(e){var i=[0];return t.typeCheck("array",e)?i=e:t.typeCheck("integer",e)&&(i=[e]),i},this.getScaleToValue=function(t,e,i,n,r){var a=r-(r-n)/(10*(i-e))*((t-e)/.1);return a<n?n:a>r?r:a},this.getValueToScale=function(t,e,i,n,r){return parseFloat((n+(i-t)/((i-e)/(10*(r-n)))*.1).toFixed(1))},this.isRender=function(){return!0===this.widget.render},this.on=function(e,i,n){var r=this;return this.chart.on(e,function(){if(t.startsWith(e,"axis.")&&t.typeCheck("integer",n)){var a=r.chart.axis(n),o=arguments[0];t.typeCheck("object",a)&&arguments[1]==n&&i.apply(r,[o])}else i.apply(r,arguments)},this.isRender()?"render":"renderAll")},this.drawAfter=function(t){t.attr({class:"widget-"+this.widget.type})}};return e.setup=function(){return{render:!1,index:0}},e}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"chart.widget.map.core",extend:"chart.widget.core",component:function(){var t=function(t,e,i){};return t.setup=function(){return{axis:0}},t}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"chart.widget.polygon.core",extend:"chart.widget.core",component:function(){return function(){this.drawAfter=function(t){}}}}},function(t,e,i){"use strict";Object.defineProperty(e,"__esModule",{value:!0}),e.default={name:"chart.widget.canvas.core",extend:"chart.widget.core",component:function(){return function(){this.drawAfter=function(t){}}}}}]);
+var graph = (function () {
+  'use strict';
+
+  var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+    return typeof obj;
+  } : function (obj) {
+    return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+  };
+
+  var global$1 = {},
+      globalFunc = {},
+      globalClass = {};
+
+  /**
+   * @class util.base
+   *
+   * jui 에서 공통적으로 사용하는 유틸리티 함수 모음
+   *
+   * ```
+   * var _ = jui.include("util.base");
+   *
+   * console.warn(_.browser.webkit);
+   * ```
+   *
+   * @singleton
+   */
+  var utility = global$1["util.base"] = {
+
+      /**
+       * @property browser check browser agent
+       * @property {Boolean} browser.webkit  Webkit 브라우저 체크
+       * @property {Boolean} browser.mozilla  Mozilla 브라우저 체크
+       * @property {Boolean} browser.msie  IE 브라우저 체크 */
+      browser: {
+          webkit: 'WebkitAppearance' in document.documentElement.style ? true : false,
+          mozilla: typeof window.mozInnerScreenX != "undefined" ? true : false,
+          msie: window.navigator.userAgent.indexOf("Trident") != -1 ? true : false
+      },
+
+      /**
+       * @property {Boolean} isTouch
+       * check touch device
+       */
+      isTouch: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent),
+
+      /**
+       * @method inherit
+       *
+       * 프로토타입 기반의 상속 제공
+       *
+       * @param {Function} ctor base Class
+       * @param {Function} superCtor super Class
+       */
+      inherit: function inherit(ctor, superCtor) {
+          if (!this.typeCheck("function", ctor) || !this.typeCheck("function", superCtor)) return;
+
+          ctor.parent = superCtor;
+          ctor.prototype = new superCtor();
+          ctor.prototype.constructor = ctor;
+          ctor.prototype.parent = ctor.prototype;
+
+          /**
+           * @method super
+           * call parent method
+           * @param {String} method  parent method name
+           * @param {Array} args
+           * @returns {Mixed}
+           */
+          ctor.prototype.super = function (method, args) {
+              return this.constructor.prototype[method].apply(this, args);
+          };
+      },
+
+      /**
+       * @method extend
+       *
+       * implements object extend
+       *
+       * @param {Object|Function} origin
+       * @param {Object|Function} add
+       * @param {Boolean} skip
+       * @return {Object}
+       */
+      extend: function extend(origin, add, skip) {
+          if (!this.typeCheck(["object", "function"], origin)) origin = {};
+          if (!this.typeCheck(["object", "function"], add)) return origin;
+
+          for (var key in add) {
+              if (skip === true) {
+                  if (isRecursive(origin[key])) {
+                      this.extend(origin[key], add[key], skip);
+                  } else if (this.typeCheck("undefined", origin[key])) {
+                      origin[key] = add[key];
+                  }
+              } else {
+                  if (isRecursive(origin[key])) {
+                      this.extend(origin[key], add[key], skip);
+                  } else {
+                      origin[key] = add[key];
+                  }
+              }
+          }
+
+          function isRecursive(value) {
+              return utility.typeCheck("object", value);
+          }
+
+          return origin;
+      },
+
+      /**
+       * convert px to integer
+       * @param {String or Number} px
+       * @return {Number}
+       */
+      pxToInt: function pxToInt(px) {
+          if (this.typeCheck("string", px) && px.indexOf("px") != -1) {
+              return parseInt(px.split("px").join(""));
+          }
+
+          return px;
+      },
+
+      /**
+       * @method clone
+       * implements object clone
+       * @param {Array/Object} obj 복사할 객체
+       * @return {Array}
+       */
+      clone: function clone(obj) {
+          var clone = this.typeCheck("array", obj) ? [] : {};
+
+          for (var i in obj) {
+              if (this.typeCheck("object", obj[i])) clone[i] = this.clone(obj[i]);else clone[i] = obj[i];
+          }
+
+          return clone;
+      },
+
+      /**
+       * @method deepClone
+       * implements object deep clone
+       * @param obj
+       * @param emit
+       * @return {*}
+       */
+      deepClone: function deepClone(obj, emit) {
+          var value = null;
+          emit = emit || {};
+
+          if (this.typeCheck("array", obj)) {
+              value = new Array(obj.length);
+
+              for (var i = 0, len = obj.length; i < len; i++) {
+                  value[i] = this.deepClone(obj[i], emit);
+              }
+          } else if (this.typeCheck("date", obj)) {
+              value = obj;
+          } else if (this.typeCheck("object", obj)) {
+              value = {};
+
+              for (var key in obj) {
+                  if (emit[key]) {
+                      value[key] = obj[key];
+                  } else {
+                      value[key] = this.deepClone(obj[key], emit);
+                  }
+              }
+          } else {
+              value = obj;
+          }
+
+          return value;
+      },
+
+      /**
+       * @method runtime
+       *
+       * caculate callback runtime
+       *
+       * @param {String} name
+       * @param {Function} callback
+       */
+      runtime: function runtime(name, callback) {
+          var nStart = new Date().getTime();
+          callback();
+          var nEnd = new Date().getTime();
+
+          console.warn(name + " : " + (nEnd - nStart) + "ms");
+      },
+
+      /**
+       * @method resize
+       * add event in window resize event
+       * @param {Function} callback
+       * @param {Number} ms delay time
+       */
+      resize: function resize(callback, ms) {
+          var after_resize = function () {
+              var timer = 0;
+
+              return function () {
+                  clearTimeout(timer);
+                  timer = setTimeout(callback, ms);
+              };
+          }();
+
+          if (window.addEventListener) {
+              window.addEventListener("resize", after_resize);
+          } else if (object.attachEvent) {
+              window.attachEvent("onresize", after_resize);
+          } else {
+              window["onresize"] = after_resize;
+          }
+      },
+
+      /**
+       * @method typeCheck
+       * check data  type
+       * @param {String} t  type string
+       * @param {Object} v value object
+       * @return {Boolean}
+       */
+      typeCheck: function typeCheck(t, v) {
+          function check(type, value) {
+              if (typeof type != "string") return false;
+
+              if (type == "string") {
+                  return typeof value == "string";
+              } else if (type == "integer") {
+                  return typeof value == "number" && value % 1 == 0;
+              } else if (type == "float") {
+                  return typeof value == "number" && value % 1 != 0;
+              } else if (type == "number") {
+                  return typeof value == "number";
+              } else if (type == "boolean") {
+                  return typeof value == "boolean";
+              } else if (type == "undefined") {
+                  return typeof value == "undefined";
+              } else if (type == "null") {
+                  return value === null;
+              } else if (type == "array") {
+                  return value instanceof Array;
+              } else if (type == "date") {
+                  return value instanceof Date;
+              } else if (type == "function") {
+                  return typeof value == "function";
+              } else if (type == "object") {
+                  // typeCheck에 정의된 타입일 경우에는 object 체크시 false를 반환 (date, array, null)
+                  return (typeof value === "undefined" ? "undefined" : _typeof(value)) == "object" && value !== null && !(value instanceof Array) && !(value instanceof Date) && !(value instanceof RegExp);
+              }
+
+              return false;
+          }
+
+          if ((typeof t === "undefined" ? "undefined" : _typeof(t)) == "object" && t.length) {
+              var typeList = t;
+
+              for (var i = 0; i < typeList.length; i++) {
+                  if (check(typeList[i], v)) return true;
+              }
+
+              return false;
+          } else {
+              return check(t, v);
+          }
+      },
+      typeCheckObj: function typeCheckObj(uiObj, list) {
+          if ((typeof uiObj === "undefined" ? "undefined" : _typeof(uiObj)) != "object") return;
+          var self = this;
+
+          for (var key in uiObj) {
+              var func = uiObj[key];
+
+              if (typeof func == "function") {
+                  (function (funcName, funcObj) {
+                      uiObj[funcName] = function () {
+                          var args = arguments,
+                              params = list[funcName];
+
+                          for (var i = 0; i < args.length; i++) {
+                              if (!self.typeCheck(params[i], args[i])) {
+                                  throw new Error("JUI_CRITICAL_ERR: the " + i + "th parameter is not a " + params[i] + " (" + name + ")");
+                              }
+                          }
+
+                          return funcObj.apply(this, args);
+                      };
+                  })(key, func);
+              }
+          }
+      },
+
+      /**
+       * @method dateFormat
+       *
+       * implements date format function
+       *
+       * yyyy : 4 digits year
+       * yy : 2 digits year
+       * y : 1 digit year
+       *
+       * @param {Date} date
+       * @param {String} format   date format string
+       * @param utc
+       * @return {string}
+       */
+      dateFormat: function dateFormat(date, format, utc) {
+          var MMMM = ["\x00", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+          var MMM = ["\x01", "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+          var dddd = ["\x02", "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+          var ddd = ["\x03", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+          function ii(i, len) {
+              var s = i + "";
+              len = len || 2;
+              while (s.length < len) {
+                  s = "0" + s;
+              }return s;
+          }
+
+          var y = utc ? date.getUTCFullYear() : date.getFullYear();
+          format = format.replace(/(^|[^\\])yyyy+/g, "$1" + y);
+          format = format.replace(/(^|[^\\])yy/g, "$1" + y.toString().substr(2, 2));
+          format = format.replace(/(^|[^\\])y/g, "$1" + y);
+
+          var M = (utc ? date.getUTCMonth() : date.getMonth()) + 1;
+          format = format.replace(/(^|[^\\])MMMM+/g, "$1" + MMMM[0]);
+          format = format.replace(/(^|[^\\])MMM/g, "$1" + MMM[0]);
+          format = format.replace(/(^|[^\\])MM/g, "$1" + ii(M));
+          format = format.replace(/(^|[^\\])M/g, "$1" + M);
+
+          var d = utc ? date.getUTCDate() : date.getDate();
+          format = format.replace(/(^|[^\\])dddd+/g, "$1" + dddd[0]);
+          format = format.replace(/(^|[^\\])ddd/g, "$1" + ddd[0]);
+          format = format.replace(/(^|[^\\])dd/g, "$1" + ii(d));
+          format = format.replace(/(^|[^\\])d/g, "$1" + d);
+
+          var H = utc ? date.getUTCHours() : date.getHours();
+          format = format.replace(/(^|[^\\])HH+/g, "$1" + ii(H));
+          format = format.replace(/(^|[^\\])H/g, "$1" + H);
+
+          var h = H > 12 ? H - 12 : H == 0 ? 12 : H;
+          format = format.replace(/(^|[^\\])hh+/g, "$1" + ii(h));
+          format = format.replace(/(^|[^\\])h/g, "$1" + h);
+
+          var m = utc ? date.getUTCMinutes() : date.getMinutes();
+          format = format.replace(/(^|[^\\])mm+/g, "$1" + ii(m));
+          format = format.replace(/(^|[^\\])m/g, "$1" + m);
+
+          var s = utc ? date.getUTCSeconds() : date.getSeconds();
+          format = format.replace(/(^|[^\\])ss+/g, "$1" + ii(s));
+          format = format.replace(/(^|[^\\])s/g, "$1" + s);
+
+          var f = utc ? date.getUTCMilliseconds() : date.getMilliseconds();
+          format = format.replace(/(^|[^\\])fff+/g, "$1" + ii(f, 3));
+          f = Math.round(f / 10);
+          format = format.replace(/(^|[^\\])ff/g, "$1" + ii(f));
+          f = Math.round(f / 10);
+          format = format.replace(/(^|[^\\])f/g, "$1" + f);
+
+          var T = H < 12 ? "AM" : "PM";
+          format = format.replace(/(^|[^\\])TT+/g, "$1" + T);
+          format = format.replace(/(^|[^\\])T/g, "$1" + T.charAt(0));
+
+          var t = T.toLowerCase();
+          format = format.replace(/(^|[^\\])tt+/g, "$1" + t);
+          format = format.replace(/(^|[^\\])t/g, "$1" + t.charAt(0));
+
+          var tz = -date.getTimezoneOffset();
+          var K = utc || !tz ? "Z" : tz > 0 ? "+" : "-";
+          if (!utc) {
+              tz = Math.abs(tz);
+              var tzHrs = Math.floor(tz / 60);
+              var tzMin = tz % 60;
+              K += ii(tzHrs) + ":" + ii(tzMin);
+          }
+          format = format.replace(/(^|[^\\])K/g, "$1" + K);
+
+          var day = (utc ? date.getUTCDay() : date.getDay()) + 1;
+          format = format.replace(new RegExp(dddd[0], "g"), dddd[day]);
+          format = format.replace(new RegExp(ddd[0], "g"), ddd[day]);
+
+          format = format.replace(new RegExp(MMMM[0], "g"), MMMM[M]);
+          format = format.replace(new RegExp(MMM[0], "g"), MMM[M]);
+
+          format = format.replace(/\\(.)/g, "$1");
+
+          return format;
+      },
+      /**
+       * @method createId
+       *
+       * 유니크 아이디 생성
+       *
+       * @param {String} key  prefix string
+       * @return {String} 생성된 아이디 문자열
+       */
+      createId: function createId(key) {
+          return [key || "id", +new Date(), Math.round(Math.random() * 100) % 100].join("-");
+      },
+
+      /**
+       * implement async loop without blocking ui
+       *
+       * @param total
+       * @param context
+       * @returns {Function}
+       */
+      timeLoop: function timeLoop(total, context) {
+
+          return function (callback, lastCallback) {
+              function TimeLoopCallback(i) {
+
+                  if (i < 1) return;
+
+                  if (i == 1) {
+                      callback.call(context, i);
+                      lastCallback.call(context);
+                  } else {
+                      setTimeout(function () {
+                          if (i > -1) callback.call(context, i--);
+                          if (i > -1) TimeLoopCallback(i);
+                      }, 1);
+                  }
+              }
+
+              TimeLoopCallback(total);
+          };
+      },
+      /**
+       * @method loop
+       *
+       * 최적화된 루프 생성 (5단계로 나눔)
+       *
+       * @param {Number} total
+       * @param {Object} [context=null]
+       * @return {Function} 최적화된 루프 콜백 (index, groupIndex 2가지 파라미터를 받는다.)
+       */
+      loop: function loop(total, context) {
+          var start = 0,
+              end = total,
+              unit = Math.ceil(total / 5);
+
+          return function (callback) {
+              var first = start,
+                  second = unit * 1,
+                  third = unit * 2,
+                  fourth = unit * 3,
+                  fifth = unit * 4,
+                  firstMax = second,
+                  secondMax = third,
+                  thirdMax = fourth,
+                  fourthMax = fifth,
+                  fifthMax = end;
+
+              while (first < firstMax && first < end) {
+                  callback.call(context, first, 1);
+                  first++;
+
+                  if (second < secondMax && second < end) {
+                      callback.call(context, second, 2);
+                      second++;
+                  }
+                  if (third < thirdMax && third < end) {
+                      callback.call(context, third, 3);
+                      third++;
+                  }
+                  if (fourth < fourthMax && fourth < end) {
+                      callback.call(context, fourth, 4);
+                      fourth++;
+                  }
+                  if (fifth < fifthMax && fifth < end) {
+                      callback.call(context, fifth, 5);
+                      fifth++;
+                  }
+              }
+          };
+      },
+
+      /**
+       * @method loopArray
+       *
+       * 배열을 사용해서 최적화된 루프로 생성한다.
+       *
+       *
+       * @param {Array} data 루프로 생성될 배열
+       * @param {Object} [context=null]
+       * @return {Function} 최적화된 루프 콜백 (data, index, groupIndex 3가지 파라미터를 받는다.)
+       */
+      loopArray: function loopArray(data, context) {
+          var total = data.length,
+              start = 0,
+              end = total,
+              unit = Math.ceil(total / 5);
+
+          return function (callback) {
+              var first = start,
+                  second = unit * 1,
+                  third = unit * 2,
+                  fourth = unit * 3,
+                  fifth = unit * 4,
+                  firstMax = second,
+                  secondMax = third,
+                  thirdMax = fourth,
+                  fourthMax = fifth,
+                  fifthMax = end;
+
+              while (first < firstMax && first < end) {
+                  callback.call(context, data[first], first, 1);
+                  first++;
+                  if (second < secondMax && second < end) {
+                      callback.call(context, data[second], second, 2);
+                      second++;
+                  }
+                  if (third < thirdMax && third < end) {
+                      callback.call(context, data[third], third, 3);
+                      third++;
+                  }
+                  if (fourth < fourthMax && fourth < end) {
+                      callback.call(context, data[fourth], fourth, 4);
+                      fourth++;
+                  }
+                  if (fifth < fifthMax && fifth < end) {
+                      callback.call(context, data[fifth], fifth, 5);
+                      fifth++;
+                  }
+              }
+          };
+      },
+
+      /**
+       * @method startsWith
+       * Check that it matches the starting string search string.
+       *
+       * @param {String} string
+       * @param {String} searchString
+       * @return {Integer} position
+       */
+      startsWith: function startsWith(string, searchString, position) {
+          position = position || 0;
+
+          return string.lastIndexOf(searchString, position) === position;
+      },
+
+      /**
+       * @method endsWith
+       * Check that it matches the end of a string search string.
+       *
+       * @param {String} string
+       * @param {String} searchString
+       * @return {Integer} position
+       */
+      endsWith: function endsWith(string, searchString, position) {
+          var subjectString = string;
+
+          if (position === undefined || position > subjectString.length) {
+              position = subjectString.length;
+          }
+
+          position -= searchString.length;
+          var lastIndex = subjectString.indexOf(searchString, position);
+
+          return lastIndex !== -1 && lastIndex === position;
+      },
+
+      inArray: function inArray(target, list) {
+          if (this.typeCheck(["undefined", "null"], target) || !this.typeCheck("array", list)) return -1;
+
+          for (var i = 0, len = list.length; i < len; i++) {
+              if (list[i] == target) return i;
+          }
+
+          return -1;
+      },
+
+      trim: function trim(text) {
+          var whitespace = "[\\x20\\t\\r\\n\\f]",
+              rtrim = new RegExp("^" + whitespace + "+|((?:^|[^\\\\])(?:\\\\.)*)" + whitespace + "+$", "g");
+
+          return text == null ? "" : (text + "").replace(rtrim, "");
+      },
+
+      ready: function () {
+          var readyList,
+              _DOMContentLoaded2,
+              class2type = {};
+
+          class2type["[object Boolean]"] = "boolean";
+          class2type["[object Number]"] = "number";
+          class2type["[object String]"] = "string";
+          class2type["[object Function]"] = "function";
+          class2type["[object Array]"] = "array";
+          class2type["[object Date]"] = "date";
+          class2type["[object RegExp]"] = "regexp";
+          class2type["[object Object]"] = "object";
+
+          var ReadyObj = {
+              // Is the DOM ready to be used? Set to true once it occurs.
+              isReady: false,
+              // A counter to track how many items to wait for before
+              // the ready event fires. See #6781
+              readyWait: 1,
+              // Hold (or release) the ready event
+              holdReady: function holdReady(hold) {
+                  if (hold) {
+                      ReadyObj.readyWait++;
+                  } else {
+                      ReadyObj.ready(true);
+                  }
+              },
+              // Handle when the DOM is ready
+              ready: function ready(wait) {
+                  // Either a released hold or an DOMready/load event and not yet ready
+                  if (wait === true && ! --ReadyObj.readyWait || wait !== true && !ReadyObj.isReady) {
+                      // Make sure body exists, at least, in case IE gets a little overzealous (ticket #5443).
+                      if (!document.body) {
+                          return setTimeout(ReadyObj.ready, 1);
+                      }
+
+                      // Remember that the DOM is ready
+                      ReadyObj.isReady = true;
+                      // If a normal DOM Ready event fired, decrement, and wait if need be
+                      if (wait !== true && --ReadyObj.readyWait > 0) {
+                          return;
+                      }
+                      // If there are functions bound, to execute
+                      readyList.resolveWith(document, [ReadyObj]);
+
+                      // Trigger any bound ready events
+                      //if ( ReadyObj.fn.trigger ) {
+                      //  ReadyObj( document ).trigger( "ready" ).unbind( "ready" );
+                      //}
+                  }
+              },
+              bindReady: function bindReady() {
+                  if (readyList) {
+                      return;
+                  }
+                  readyList = ReadyObj._Deferred();
+
+                  // Catch cases where $(document).ready() is called after the
+                  // browser event has already occurred.
+                  if (document.readyState === "complete") {
+                      // Handle it asynchronously to allow scripts the opportunity to delay ready
+                      return setTimeout(ReadyObj.ready, 1);
+                  }
+
+                  // Mozilla, Opera and webkit nightlies currently support this event
+                  if (document.addEventListener) {
+                      // Use the handy event callback
+                      document.addEventListener("DOMContentLoaded", _DOMContentLoaded2, false);
+                      // A fallback to window.onload, that will always work
+                      window.addEventListener("load", ReadyObj.ready, false);
+
+                      // If IE event model is used
+                  } else if (document.attachEvent) {
+                      // ensure firing before onload,
+                      // maybe late but safe also for iframes
+                      document.attachEvent("onreadystatechange", _DOMContentLoaded2);
+
+                      // A fallback to window.onload, that will always work
+                      window.attachEvent("onload", ReadyObj.ready);
+
+                      // If IE and not a frame
+                      // continually check to see if the document is ready
+                      var toplevel = false;
+
+                      try {
+                          toplevel = window.frameElement == null;
+                      } catch (e) {}
+
+                      if (document.documentElement.doScroll && toplevel) {
+                          doScrollCheck();
+                      }
+                  }
+              },
+              _Deferred: function _Deferred() {
+                  var // callbacks list
+                  callbacks = [],
+
+                  // stored [ context , args ]
+                  fired,
+
+                  // to avoid firing when already doing so
+                  firing,
+
+                  // flag to know if the deferred has been cancelled
+                  cancelled,
+
+                  // the deferred itself
+                  deferred = {
+
+                      // done( f1, f2, ...)
+                      done: function done() {
+                          if (!cancelled) {
+                              var args = arguments,
+                                  i,
+                                  length,
+                                  elem,
+                                  type,
+                                  _fired;
+                              if (fired) {
+                                  _fired = fired;
+                                  fired = 0;
+                              }
+                              for (i = 0, length = args.length; i < length; i++) {
+                                  elem = args[i];
+                                  type = ReadyObj.type(elem);
+                                  if (type === "array") {
+                                      deferred.done.apply(deferred, elem);
+                                  } else if (type === "function") {
+                                      callbacks.push(elem);
+                                  }
+                              }
+                              if (_fired) {
+                                  deferred.resolveWith(_fired[0], _fired[1]);
+                              }
+                          }
+                          return this;
+                      },
+
+                      // resolve with given context and args
+                      resolveWith: function resolveWith(context, args) {
+                          if (!cancelled && !fired && !firing) {
+                              // make sure args are available (#8421)
+                              args = args || [];
+                              firing = 1;
+                              try {
+                                  while (callbacks[0]) {
+                                      callbacks.shift().apply(context, args); //shifts a callback, and applies it to document
+                                  }
+                              } finally {
+                                  fired = [context, args];
+                                  firing = 0;
+                              }
+                          }
+                          return this;
+                      },
+
+                      // resolve with this as context and given arguments
+                      resolve: function resolve() {
+                          deferred.resolveWith(this, arguments);
+                          return this;
+                      },
+
+                      // Has this deferred been resolved?
+                      isResolved: function isResolved() {
+                          return !!(firing || fired);
+                      },
+
+                      // Cancel
+                      cancel: function cancel() {
+                          cancelled = 1;
+                          callbacks = [];
+                          return this;
+                      }
+                  };
+
+                  return deferred;
+              },
+              type: function type(obj) {
+                  return obj == null ? String(obj) : class2type[Object.prototype.toString.call(obj)] || "object";
+              }
+              // The DOM ready check for Internet Explorer
+          };function doScrollCheck() {
+              if (ReadyObj.isReady) {
+                  return;
+              }
+
+              try {
+                  // If IE is used, use the trick by Diego Perini
+                  // http://javascript.nwbox.com/IEContentLoaded/
+                  document.documentElement.doScroll("left");
+              } catch (e) {
+                  setTimeout(doScrollCheck, 1);
+                  return;
+              }
+
+              // and execute any waiting functions
+              ReadyObj.ready();
+          }
+          // Cleanup functions for the document ready method
+          if (document.addEventListener) {
+              _DOMContentLoaded2 = function DOMContentLoaded() {
+                  document.removeEventListener("DOMContentLoaded", _DOMContentLoaded2, false);
+                  ReadyObj.ready();
+              };
+          } else if (document.attachEvent) {
+              _DOMContentLoaded2 = function _DOMContentLoaded() {
+                  // Make sure body exists, at least, in case IE gets a little overzealous (ticket #5443).
+                  if (document.readyState === "complete") {
+                      document.detachEvent("onreadystatechange", _DOMContentLoaded2);
+                      ReadyObj.ready();
+                  }
+              };
+          }
+          function ready(fn) {
+              // Attach the listeners
+              ReadyObj.bindReady();
+
+              var type = ReadyObj.type(fn);
+
+              // Add the callback
+              readyList.done(fn); //readyList is result of _Deferred()
+          }
+
+          return ready;
+      }(),
+
+      param: function param(data) {
+          var r20 = /%20/g,
+              s = [],
+              add = function add(key, value) {
+              // If value is a function, invoke it and return its value
+              value = utility.typeCheck("function", value) ? value() : value == null ? "" : value;
+              s[s.length] = encodeURIComponent(key) + "=" + encodeURIComponent(value);
+          };
+
+          for (var key in data) {
+              add(key, data[key]);
+          }
+
+          return s.join("&").replace(r20, "+");
+      },
+
+      ajax: function ajax(data) {
+          var xhr = null,
+              paramStr = "",
+              callback = null;
+
+          var opts = utility.extend({
+              url: null,
+              type: "GET",
+              data: null,
+              async: true,
+              success: null,
+              fail: null
+          }, data);
+
+          if (!this.typeCheck("string", opts.url) || !this.typeCheck("function", opts.success)) return;
+
+          if (this.typeCheck("object", opts.data)) paramStr = this.param(opts.data);
+
+          if (!this.typeCheck("undefined", XMLHttpRequest)) {
+              xhr = new XMLHttpRequest();
+          } else {
+              var versions = ["MSXML2.XmlHttp.5.0", "MSXML2.XmlHttp.4.0", "MSXML2.XmlHttp.3.0", "MSXML2.XmlHttp.2.0", "Microsoft.XmlHttp"];
+
+              for (var i = 0, len = versions.length; i < len; i++) {
+                  try {
+                      xhr = new ActiveXObject(versions[i]);
+                      break;
+                  } catch (e) {}
+              }
+          }
+
+          if (xhr != null) {
+              xhr.open(opts.type, opts.url, opts.async);
+              xhr.send(paramStr);
+
+              callback = function callback() {
+                  if (xhr.readyState === 4 && xhr.status == 200) {
+                      opts.success(xhr);
+                  } else {
+                      if (utility.typeCheck("function", opts.fail)) {
+                          opts.fail(xhr);
+                      }
+                  }
+              };
+
+              if (!opts.async) {
+                  callback();
+              } else {
+                  xhr.onreadystatechange = callback;
+              }
+          }
+      },
+
+      scrollWidth: function scrollWidth() {
+          var inner = document.createElement("p");
+          inner.style.width = "100%";
+          inner.style.height = "200px";
+
+          var outer = document.createElement("div");
+          outer.style.position = "absolute";
+          outer.style.top = "0px";
+          outer.style.left = "0px";
+          outer.style.visibility = "hidden";
+          outer.style.width = "200px";
+          outer.style.height = "150px";
+          outer.style.overflow = "hidden";
+          outer.appendChild(inner);
+
+          document.body.appendChild(outer);
+          var w1 = inner.offsetWidth;
+          outer.style.overflow = "scroll";
+          var w2 = inner.offsetWidth;
+          if (w1 == w2) w2 = outer.clientWidth;
+          document.body.removeChild(outer);
+
+          return w1 - w2;
+      }
+
+      /*
+       * Module related functions
+       *
+       */
+  };var getDepends = function getDepends(depends) {
+      var args = [];
+
+      for (var i = 0; i < depends.length; i++) {
+          var module = global$1[depends[i]];
+
+          if (!utility.typeCheck(["function", "object"], module)) {
+              var modules = getModules(depends[i]);
+
+              if (modules == null) {
+                  console.warn("JUI_WARNING_MSG: '" + depends[i] + "' is not loaded");
+                  args.push(null);
+              } else {
+                  args.push(modules);
+              }
+          } else {
+              args.push(module);
+          }
+      }
+
+      return args;
+  };
+
+  var getModules = function getModules(parent) {
+      var modules = null,
+          parent = parent + ".";
+
+      for (var key in global$1) {
+          if (key.indexOf(parent) != -1) {
+              if (utility.typeCheck(["function", "object"], global$1[key])) {
+                  var child = key.split(parent).join("");
+
+                  if (child.indexOf(".") == -1) {
+                      if (modules == null) {
+                          modules = {};
+                      }
+
+                      modules[child] = global$1[key];
+                  }
+              }
+          }
+      }
+
+      return modules;
+  };
+
+  /**
+   * @class jui
+   *
+   * Global Object
+   *
+   * @singleton
+   */
+  var jui$1 = {
+
+      /**
+       * @method ready
+       *
+       * ready 타임에 실행될 callback 정의
+       *
+       * @param {Function} callback
+       */
+      ready: function ready() {
+          var args = [],
+              callback = arguments.length == 2 ? arguments[1] : arguments[0],
+              depends = arguments.length == 2 ? arguments[0] : null;
+
+          if (!utility.typeCheck(["array", "null"], depends) || !utility.typeCheck("function", callback)) {
+              throw new Error("JUI_CRITICAL_ERR: Invalid parameter type of the function");
+          }
+
+          utility.ready(function () {
+              if (depends) {
+                  args = getDepends(depends);
+              } else {
+                  // @Deprecated 기존의 레거시를 위한 코드
+                  var ui = getModules("ui"),
+                      uix = {};
+
+                  utility.extend(uix, ui);
+                  utility.extend(uix, getModules("grid"));
+
+                  args = [ui, uix, utility];
+              }
+
+              callback.apply(null, args);
+          });
+      },
+
+      /**
+       * @method defineUI
+       *
+       * 사용자가 실제로 사용할 수 있는 UI 클래스를 정의
+       *
+       * @param {String} name 모듈 로드와 상속에 사용될 이름을 정한다.
+       * @param {Array} depends 'define'이나 'defineUI'로 정의된 클래스나 객체를 인자로 받을 수 있다.
+       * @param {Function} callback UI 클래스를 해당 콜백 함수 내에서 클래스 형태로 구현하고 리턴해야 한다.
+       */
+      defineUI: function defineUI(name, depends, callback, parent) {
+          if (!utility.typeCheck("string", name) || !utility.typeCheck("array", depends) || !utility.typeCheck("function", callback) || !utility.typeCheck(["string", "undefined"], parent)) {
+              throw new Error("JUI_CRITICAL_ERR: Invalid parameter type of the function");
+          }
+
+          if (utility.typeCheck("function", globalClass[name])) {
+              throw new Error("JUI_CRITICAL_ERR: '" + name + "' is already exist");
+          }
+
+          if (utility.typeCheck("undefined", parent)) {
+              parent = "core";
+          }
+
+          if (!utility.typeCheck("function", globalClass[parent])) {
+              throw new Error("JUI_CRITICAL_ERR: Parents are the only function");
+          } else {
+              if (globalFunc[parent] !== true) {
+                  throw new Error("JUI_CRITICAL_ERR: UI function can not be inherited");
+              }
+          }
+
+          var args = getDepends(depends),
+              uiFunc = callback.apply(null, args);
+
+          // 상속
+          utility.inherit(uiFunc, globalClass[parent]);
+
+          // TODO: 차트 빌더를 제외하고, 무조건 event 클래스에 정의된 init 메소드를 호출함
+          global$1[name] = globalClass[parent].init({
+              type: name,
+              "class": uiFunc
+          });
+
+          globalClass[name] = uiFunc;
+          globalFunc[name] = true;
+
+          /**
+           * @deprecated
+           // support AMD module
+           if (typeof define == "function" && define.amd) {
+          define(name, function () {
+          return global[name]
+          });
+          }
+           */
+      },
+
+      /**
+       * @method redefineUI
+       *
+       * UI 클래스에서 사용될 클래스를 정의하고, 자유롭게 상속할 수 있는 클래스를 정의
+       *
+       * @param {String} name 모듈 로드와 상속에 사용될 이름을 정한다.
+       * @param {Array} depends 'define'이나 'defineUI'로 정의된 클래스나 객체를 인자로 받을 수 있다.
+       * @param {Function} callback UI 클래스를 해당 콜백 함수 내에서 클래스 형태로 구현하고 리턴해야 한다.
+       * @param {String} parent 상속받을 클래스
+       */
+      redefineUI: function redefineUI(name, depends, callback, parent, skip) {
+          if (!skip && globalFunc[name] === true) {
+              global$1[name] = null;
+              globalClass[name] = null;
+              globalFunc[name] = false;
+          }
+
+          if (!skip || skip && globalFunc[name] !== true) {
+              this.defineUI(name, depends, callback, parent);
+          }
+      },
+
+      createUIObject: function createUIObject(UI, selector, index, elem, options, afterHook) {
+          var mainObj = new UI["class"]();
+
+          // Check Options
+          var opts = jui$1.defineOptions(UI["class"], options || {});
+
+          // Public Properties
+          mainObj.init.prototype = mainObj;
+          /** @property {String/HTMLElement} selector */
+          mainObj.init.prototype.selector = selector;
+          /** @property {HTMLElement} root */
+          mainObj.init.prototype.root = elem;
+          /** @property {Object} options */
+          mainObj.init.prototype.options = opts;
+          /** @property {Object} tpl Templates */
+          mainObj.init.prototype.tpl = {};
+          /** @property {Array} event Custom events */
+          mainObj.init.prototype.event = new Array(); // Custom Event
+          /** @property {Integer} timestamp UI Instance creation time*/
+          mainObj.init.prototype.timestamp = new Date().getTime();
+          /** @property {Integer} index Index of UI instance*/
+          mainObj.init.prototype.index = index;
+          /** @property {Class} module Module class */
+          mainObj.init.prototype.module = UI;
+
+          // UI 객체 프로퍼티를 외부에서 정의할 수 있음 (jQuery 의존성 제거를 위한 코드)
+          if (utility.typeCheck("function", afterHook)) {
+              afterHook(mainObj, opts);
+          }
+
+          // Script-based Template Settings
+          for (var name in opts.tpl) {
+              var tplHtml = opts.tpl[name];
+
+              if (utility.typeCheck("string", tplHtml) && tplHtml != "") {
+                  mainObj.init.prototype.tpl[name] = utility.template(tplHtml);
+              }
+          }
+
+          var uiObj = new mainObj.init();
+
+          // Custom Event Setting
+          for (var key in opts.event) {
+              uiObj.on(key, opts.event[key]);
+          }
+
+          // 엘리먼트 객체에 jui 속성 추가
+          elem.jui = uiObj;
+
+          return uiObj;
+      },
+
+      /**
+       * @method define
+       *
+       * UI 클래스에서 사용될 클래스를 정의하고, 자유롭게 상속할 수 있는 클래스를 정의
+       *
+       * @param {String} name 모듈 로드와 상속에 사용될 이름을 정한다.
+       * @param {Array} depends 'define'이나 'defineUI'로 정의된 클래스나 객체를 인자로 받을 수 있다.
+       * @param {Function} callback UI 클래스를 해당 콜백 함수 내에서 클래스 형태로 구현하고 리턴해야 한다.
+       * @param {String} parent 상속받을 클래스
+       */
+      define: function define(name, depends, callback, parent) {
+          if (!utility.typeCheck("string", name) || !utility.typeCheck("array", depends) || !utility.typeCheck("function", callback) || !utility.typeCheck(["string", "undefined", "null"], parent)) {
+              throw new Error("JUI_CRITICAL_ERR: Invalid parameter type of the function");
+          }
+
+          if (utility.typeCheck("function", globalClass[name])) {
+              throw new Error("JUI_CRITICAL_ERR: '" + name + "' is already exist");
+          }
+
+          var args = getDepends(depends),
+              uiFunc = callback.apply(null, args);
+
+          if (utility.typeCheck("function", globalClass[parent])) {
+              if (globalFunc[parent] !== true) {
+                  throw new Error("JUI_CRITICAL_ERR: UI function can not be inherited");
+              } else {
+                  utility.inherit(uiFunc, globalClass[parent]);
+              }
+          }
+
+          // 함수 고유 설정
+          global$1[name] = uiFunc;
+          globalClass[name] = uiFunc; // original function
+          globalFunc[name] = true;
+
+          // support AMD module
+          // @deprecated
+          /*
+          if (typeof define == "function" && define.amd) {
+              define(name, function () {
+                  return global[name]
+              });
+          }*/
+      },
+
+      /**
+       * @method redefine
+       *
+       * UI 클래스에서 사용될 클래스를 정의하고, 자유롭게 상속할 수 있는 클래스를 정의
+       *
+       * @param {String} name 모듈 로드와 상속에 사용될 이름을 정한다.
+       * @param {Array} depends 'define'이나 'defineUI'로 정의된 클래스나 객체를 인자로 받을 수 있다.
+       * @param {Function} callback UI 클래스를 해당 콜백 함수 내에서 클래스 형태로 구현하고 리턴해야 한다.
+       * @param {String} parent 상속받을 클래스
+       */
+      redefine: function redefine(name, depends, callback, parent, skip) {
+          if (!skip && globalFunc[name] === true) {
+              global$1[name] = null;
+              globalClass[name] = null;
+              globalFunc[name] = false;
+          }
+
+          if (!skip || skip && globalFunc[name] !== true) {
+              this.define(name, depends, callback, parent);
+          }
+      },
+
+      /**
+       * @method defineOptions
+       *
+       * 모듈 기본 옵션 정의
+       *
+       * @param {Object} Module
+       * @param {Object} options
+       * @param {Object} exceptOpts
+       * @return {Object}
+       */
+      defineOptions: function defineOptions(Module, options, exceptOpts) {
+          var defOpts = getOptions(Module, {});
+          var defOptKeys = Object.keys(defOpts),
+              optKeys = Object.keys(options);
+
+          // 정의되지 않은 옵션 사용 유무 체크
+          for (var i = 0; i < optKeys.length; i++) {
+              var name = optKeys[i];
+
+              if (utility.inArray(name, defOptKeys) == -1 && utility.inArray(name, exceptOpts) == -1) {
+                  throw new Error("JUI_CRITICAL_ERR: '" + name + "' is not an option");
+              }
+          }
+
+          // 사용자 옵션 + 기본 옵션
+          utility.extend(options, defOpts, true);
+
+          // 상위 모듈의 옵션까지 모두 얻어오는 함수
+          function getOptions(Module, options) {
+              if (utility.typeCheck("function", Module)) {
+                  if (utility.typeCheck("function", Module.setup)) {
+                      var opts = Module.setup();
+
+                      for (var key in opts) {
+                          if (utility.typeCheck("undefined", options[key])) {
+                              options[key] = opts[key];
+                          }
+                      }
+                  }
+
+                  getOptions(Module.parent, options);
+              }
+
+              return options;
+          }
+
+          return options;
+      },
+
+      /**
+       * define과 defineUI로 정의된 클래스 또는 객체를 가져온다.
+       *
+       * @param name 가져온 클래스 또는 객체의 이름
+       * @return {*}
+       */
+      include: function include(name) {
+          if (!utility.typeCheck("string", name)) {
+              throw new Error("JUI_CRITICAL_ERR: Invalid parameter type of the function");
+          }
+
+          var module = global$1[name];
+
+          if (utility.typeCheck(["function", "object"], module)) {
+              return module;
+          } else {
+              var modules = getModules(name);
+
+              if (modules == null) {
+                  console.warn("JUI_WARNING_MSG: '" + name + "' is not loaded");
+                  return null;
+              } else {
+                  return modules;
+              }
+          }
+      },
+
+      /**
+       * define과 defineUI로 정의된 모든 클래스와 객체를 가져온다.
+       *
+       * @return {Array}
+       */
+      includeAll: function includeAll() {
+          var result = [];
+
+          for (var key in global$1) {
+              result.push(global$1[key]);
+          }
+
+          return result;
+      },
+
+      use: function use() {
+          var modules = [];
+
+          for (var i = 0; i < arguments.length; i++) {
+              if (utility.typeCheck("array", arguments[i])) {
+                  var list = arguments[i];
+
+                  for (var j = 0; j < list.length; j++) {
+                      if (utility.typeCheck("object", list[j])) {
+                          modules.push(list[j]);
+                      }
+                  }
+              } else if (utility.typeCheck("object", arguments[i])) {
+                  modules.push(arguments[i]);
+              }
+          }
+
+          for (var i = 0; i < modules.length; i++) {
+              var module = modules[i];
+
+              if ((typeof module === "undefined" ? "undefined" : _typeof(module)) == "object") {
+                  if (typeof module.name != "string") return;
+                  if (typeof module.component != "function") return;
+
+                  // 상속 대상 부모 클래스가 존재할 경우
+                  if (module.extend != null) {
+                      if (jui$1.include(module.extend) == null) {
+                          console.warn("JUI_WARNING_MSG: '" + module.extend + "' module should be imported in first");
+                      }
+                  }
+
+                  if (module.extend == "core") {
+                      jui$1.redefineUI(module.name, [], module.component, module.extend);
+                  } else {
+                      jui$1.redefine(module.name, [], module.component, module.extend);
+                  }
+              }
+          }
+      }
+  };
+
+  var dom = {
+      name: "util.dom",
+      extend: null,
+      component: function component() {
+          var _ = jui$1.include("util.base");
+
+          return {
+              find: function find() {
+                  var args = arguments;
+
+                  if (args.length == 1) {
+                      if (_.typeCheck("string", args[0])) {
+                          return document.querySelectorAll(args[0]);
+                      }
+                  } else if (args.length == 2) {
+                      if (_.typeCheck("object", args[0]) && _.typeCheck("string", args[1])) {
+                          return args[0].querySelectorAll(args[1]);
+                      }
+                  }
+
+                  return [];
+              },
+
+              each: function each(selectorOrElements, callback) {
+                  if (!_.typeCheck("function", callback)) return;
+
+                  var elements = null;
+
+                  if (_.typeCheck("string", selectorOrElements)) {
+                      elements = document.querySelectorAll(selectorOrElements);
+                  } else if (_.typeCheck("array", selectorOrElements)) {
+                      elements = selectorOrElements;
+                  }
+
+                  if (elements != null) {
+                      Array.prototype.forEach.call(elements, function (el, i) {
+                          callback.apply(el, [i, el]);
+                      });
+                  }
+              },
+
+              attr: function attr(selectorOrElements, keyOrAttributes) {
+                  if (!_.typeCheck(["string", "array"], selectorOrElements)) return;
+
+                  var elements = document.querySelectorAll(selectorOrElements);
+
+                  if (_.typeCheck("object", keyOrAttributes)) {
+                      // set
+                      for (var i = 0; i < elements.length; i++) {
+                          for (var key in keyOrAttributes) {
+                              elements[i].setAttribute(key, keyOrAttributes[key]);
+                          }
+                      }
+                  } else if (_.typeCheck("string", keyOrAttributes)) {
+                      // get
+                      if (elements.length > 0) {
+                          return elements[0].getAttribute(keyOrAttributes);
+                      }
+                  }
+              },
+
+              remove: function remove(selectorOrElements) {
+                  this.each(selectorOrElements, function () {
+                      this.parentNode.removeChild(this);
+                  });
+              },
+
+              offset: function offset(elem) {
+                  function isWindow(obj) {
+                      /* jshint eqeqeq: false */
+                      return obj != null && obj == obj.window;
+                  }
+
+                  function getWindow(elem) {
+                      return isWindow(elem) ? elem : elem.nodeType === 9 ? elem.defaultView || elem.parentWindow : false;
+                  }
+
+                  var docElem,
+                      win,
+                      box = { top: 0, left: 0 },
+                      doc = elem && elem.ownerDocument;
+
+                  if (!doc) {
+                      return;
+                  }
+
+                  docElem = doc.documentElement;
+
+                  // Make sure it's not a disconnected DOM node
+                  /*/
+                   if ( !global.jquery.contains( docElem, elem ) ) {
+                   return box;
+                   }
+                   /**/
+
+                  // If we don't have gBCR, just use 0,0 rather than error
+                  // BlackBerry 5, iOS 3 (original iPhone)
+                  var strundefined = "undefined";
+                  if (_typeof(elem.getBoundingClientRect) !== strundefined) {
+                      box = elem.getBoundingClientRect();
+                  }
+                  win = getWindow(doc);
+
+                  return {
+                      top: box.top + (win.pageYOffset || docElem.scrollTop) - (docElem.clientTop || 0),
+                      left: box.left + (win.pageXOffset || docElem.scrollLeft) - (docElem.clientLeft || 0)
+                  };
+              }
+          };
+      }
+  };
+
+  var math = {
+      name: "util.math",
+      extend: null,
+      component: function component() {
+          var _ = jui$1.include("util.base");
+
+          // 2x1 or 3x1 or ?x1 형태의 매트릭스 연산
+          function _matrix(a, b) {
+              var m = [];
+
+              for (var i = 0, len = a.length; i < len; i++) {
+                  var sum = 0;
+
+                  for (var j = 0, len2 = a[i].length; j < len2; j++) {
+                      sum += a[i][j] * b[j];
+                  }
+
+                  m.push(sum);
+              }
+
+              return m;
+          }
+
+          // 2x2 or 3x3 or ?x? 형태의 매트릭스 연산
+          function deepMatrix(a, b) {
+              var m = [],
+                  nm = [];
+
+              for (var i = 0, len = b.length; i < len; i++) {
+                  m[i] = [];
+                  nm[i] = [];
+              }
+
+              for (var i = 0, len = b.length; i < len; i++) {
+                  for (var j = 0, len2 = b[i].length; j < len2; j++) {
+                      m[j].push(b[i][j]);
+                  }
+              }
+
+              for (var i = 0, len = m.length; i < len; i++) {
+                  var mm = _matrix(a, m[i]);
+
+                  for (var j = 0, len2 = mm.length; j < len2; j++) {
+                      nm[j].push(mm[j]);
+                  }
+              }
+
+              return nm;
+          }
+
+          function _matrix3d(a, b) {
+              var m = new Float32Array(4);
+
+              m[0] = a[0][0] * b[0] + a[0][1] * b[1] + a[0][2] * b[2] + a[0][3] * b[3];
+              m[1] = a[1][0] * b[0] + a[1][1] * b[1] + a[1][2] * b[2] + a[1][3] * b[3];
+              m[2] = a[2][0] * b[0] + a[2][1] * b[1] + a[2][2] * b[2] + a[2][3] * b[3];
+              m[3] = a[3][0] * b[0] + a[3][1] * b[1] + a[3][2] * b[2] + a[3][3] * b[3];
+
+              return m;
+          }
+
+          function deepMatrix3d(a, b) {
+              var nm = [new Float32Array(4), new Float32Array(4), new Float32Array(4), new Float32Array(4)];
+
+              var m = [new Float32Array([b[0][0], b[1][0], b[2][0], b[3][0]]), new Float32Array([b[0][1], b[1][1], b[2][1], b[3][1]]), new Float32Array([b[0][2], b[1][2], b[2][2], b[3][2]]), new Float32Array([b[0][3], b[1][3], b[2][3], b[3][3]])];
+
+              nm[0][0] = a[0][0] * m[0][0] + a[0][1] * m[0][1] + a[0][2] * m[0][2] + a[0][3] * m[0][3];
+              nm[1][0] = a[1][0] * m[0][0] + a[1][1] * m[0][1] + a[1][2] * m[0][2] + a[1][3] * m[0][3];
+              nm[2][0] = a[2][0] * m[0][0] + a[2][1] * m[0][1] + a[2][2] * m[0][2] + a[2][3] * m[0][3];
+              nm[3][0] = a[3][0] * m[0][0] + a[3][1] * m[0][1] + a[3][2] * m[0][2] + a[3][3] * m[0][3];
+
+              nm[0][1] = a[0][0] * m[1][0] + a[0][1] * m[1][1] + a[0][2] * m[1][2] + a[0][3] * m[1][3];
+              nm[1][1] = a[1][0] * m[1][0] + a[1][1] * m[1][1] + a[1][2] * m[1][2] + a[1][3] * m[1][3];
+              nm[2][1] = a[2][0] * m[1][0] + a[2][1] * m[1][1] + a[2][2] * m[1][2] + a[2][3] * m[1][3];
+              nm[3][1] = a[3][0] * m[1][0] + a[3][1] * m[1][1] + a[3][2] * m[1][2] + a[3][3] * m[1][3];
+
+              nm[0][2] = a[0][0] * m[2][0] + a[0][1] * m[2][1] + a[0][2] * m[2][2] + a[0][3] * m[2][3];
+              nm[1][2] = a[1][0] * m[2][0] + a[1][1] * m[2][1] + a[1][2] * m[2][2] + a[1][3] * m[2][3];
+              nm[2][2] = a[2][0] * m[2][0] + a[2][1] * m[2][1] + a[2][2] * m[2][2] + a[2][3] * m[2][3];
+              nm[3][2] = a[3][0] * m[2][0] + a[3][1] * m[2][1] + a[3][2] * m[2][2] + a[3][3] * m[2][3];
+
+              nm[0][3] = a[0][0] * m[3][0] + a[0][1] * m[3][1] + a[0][2] * m[3][2] + a[0][3] * m[3][3];
+              nm[1][3] = a[1][0] * m[3][0] + a[1][1] * m[3][1] + a[1][2] * m[3][2] + a[1][3] * m[3][3];
+              nm[2][3] = a[2][0] * m[3][0] + a[2][1] * m[3][1] + a[2][2] * m[3][2] + a[2][3] * m[3][3];
+              nm[3][3] = a[3][0] * m[3][0] + a[3][1] * m[3][1] + a[3][2] * m[3][2] + a[3][3] * m[3][3];
+
+              return nm;
+          }
+
+          function _inverseMatrix3d(me) {
+              var te = [new Float32Array(4), new Float32Array(4), new Float32Array(4), new Float32Array(4)];
+
+              var n11 = me[0][0],
+                  n12 = me[0][1],
+                  n13 = me[0][2],
+                  n14 = me[0][3];
+              var n21 = me[1][0],
+                  n22 = me[1][1],
+                  n23 = me[1][2],
+                  n24 = me[1][3];
+              var n31 = me[2][0],
+                  n32 = me[2][1],
+                  n33 = me[2][2],
+                  n34 = me[2][3];
+              var n41 = me[3][0],
+                  n42 = me[3][1],
+                  n43 = me[3][2],
+                  n44 = me[3][3];
+
+              te[0][0] = n23 * n34 * n42 - n24 * n33 * n42 + n24 * n32 * n43 - n22 * n34 * n43 - n23 * n32 * n44 + n22 * n33 * n44;
+              te[0][1] = n14 * n33 * n42 - n13 * n34 * n42 - n14 * n32 * n43 + n12 * n34 * n43 + n13 * n32 * n44 - n12 * n33 * n44;
+              te[0][2] = n13 * n24 * n42 - n14 * n23 * n42 + n14 * n22 * n43 - n12 * n24 * n43 - n13 * n22 * n44 + n12 * n23 * n44;
+              te[0][3] = n14 * n23 * n32 - n13 * n24 * n32 - n14 * n22 * n33 + n12 * n24 * n33 + n13 * n22 * n34 - n12 * n23 * n34;
+              te[1][0] = n24 * n33 * n41 - n23 * n34 * n41 - n24 * n31 * n43 + n21 * n34 * n43 + n23 * n31 * n44 - n21 * n33 * n44;
+              te[1][1] = n13 * n34 * n41 - n14 * n33 * n41 + n14 * n31 * n43 - n11 * n34 * n43 - n13 * n31 * n44 + n11 * n33 * n44;
+              te[1][2] = n14 * n23 * n41 - n13 * n24 * n41 - n14 * n21 * n43 + n11 * n24 * n43 + n13 * n21 * n44 - n11 * n23 * n44;
+              te[1][3] = n13 * n24 * n31 - n14 * n23 * n31 + n14 * n21 * n33 - n11 * n24 * n33 - n13 * n21 * n34 + n11 * n23 * n34;
+              te[2][0] = n22 * n34 * n41 - n24 * n32 * n41 + n24 * n31 * n42 - n21 * n34 * n42 - n22 * n31 * n44 + n21 * n32 * n44;
+              te[2][1] = n14 * n32 * n41 - n12 * n34 * n41 - n14 * n31 * n42 + n11 * n34 * n42 + n12 * n31 * n44 - n11 * n32 * n44;
+              te[2][2] = n12 * n24 * n41 - n14 * n22 * n41 + n14 * n21 * n42 - n11 * n24 * n42 - n12 * n21 * n44 + n11 * n22 * n44;
+              te[2][3] = n14 * n22 * n31 - n12 * n24 * n31 - n14 * n21 * n32 + n11 * n24 * n32 + n12 * n21 * n34 - n11 * n22 * n34;
+              te[3][0] = n23 * n32 * n41 - n22 * n33 * n41 - n23 * n31 * n42 + n21 * n33 * n42 + n22 * n31 * n43 - n21 * n32 * n43;
+              te[3][1] = n12 * n33 * n41 - n13 * n32 * n41 + n13 * n31 * n42 - n11 * n33 * n42 - n12 * n31 * n43 + n11 * n32 * n43;
+              te[3][2] = n13 * n22 * n41 - n12 * n23 * n41 - n13 * n21 * n42 + n11 * n23 * n42 + n12 * n21 * n43 - n11 * n22 * n43;
+              te[3][4] = n12 * n23 * n31 - n13 * n22 * n31 + n13 * n21 * n32 - n11 * n23 * n32 - n12 * n21 * n33 + n11 * n22 * n33;
+
+              var det = 1 / (n11 * te[0][0] + n21 * te[0][1] + n31 * te[0][2] + n41 * te[0][3]);
+
+              if (det === 0) {
+                  te = [new Float32Array([1, 0, 0, 0]), new Float32Array([0, 1, 0, 0]), new Float32Array([0, 0, 1, 0]), new Float32Array([0, 0, 0, 1])];
+              } else {
+                  te[0][0] *= det;te[0][1] *= det;te[0][2] *= det;te[0][3] *= det;
+                  te[1][0] *= det;te[1][1] *= det;te[1][2] *= det;te[1][3] *= det;
+                  te[2][0] *= det;te[2][1] *= det;te[2][2] *= det;te[2][3] *= det;
+                  te[3][0] *= det;te[3][1] *= det;te[3][2] *= det;te[3][4] *= det;
+              }
+
+              return te;
+          }
+
+          /**
+           * @class util.math
+           *
+           * Math Utility
+           *
+           * @singleton
+           */
+          var self = {
+
+              /**
+               * @method rotate
+               *
+               * 2d rotate
+               *
+               * @param {Number} x
+               * @param {Number} y
+               * @param {Number} radian	roate 할 radian
+               * @return {Object}
+               * @return {Number} return.x  변환된 x
+               * @return {Number} return.y  변환된 y
+               *
+               */
+              rotate: function rotate(x, y, radian) {
+                  return {
+                      x: x * Math.cos(radian) - y * Math.sin(radian),
+                      y: x * Math.sin(radian) + y * Math.cos(radian)
+                  };
+              },
+
+              resize: function resize(maxWidth, maxHeight, objectWidth, objectHeight) {
+                  var ratio = objectHeight / objectWidth;
+
+                  if (objectWidth >= maxWidth && ratio <= 1) {
+                      objectWidth = maxWidth;
+                      objectHeight = maxHeight * ratio;
+                  } else if (objectHeight >= maxHeight) {
+                      objectHeight = maxHeight;
+                      objectWidth = maxWidth / ratio;
+                  }
+
+                  return { width: objectWidth, height: objectHeight };
+              },
+
+              /**
+               * @method radian
+               *
+               * convert degree to radian
+               *
+               * @param {Number} degree
+               * @return {Number} radian
+               */
+              radian: function radian(degree) {
+                  return degree * Math.PI / 180;
+              },
+
+              /**
+               * @method degree
+               *
+               * convert radian to degree
+               *
+               * @param {Number} radian
+               * @return {Number} degree
+               */
+              degree: function degree(radian) {
+                  return radian * 180 / Math.PI;
+              },
+
+              angle: function angle(x1, y1, x2, y2) {
+                  var dx = x2 - x1,
+                      dy = y2 - y1;
+
+                  return Math.atan2(dy, dx);
+              },
+
+              /**
+               * @method interpolateNumber
+               *
+               * a, b 의 중간값 계산을 위한 callback 함수 만들기
+               *
+               * @param {Number} a	first value
+               * @param {Number} b 	second value
+               * @return {Function}
+               */
+              interpolateNumber: function interpolateNumber(a, b) {
+                  var dist = b - a;
+                  return function (t) {
+                      return a + dist * t;
+                  };
+              },
+
+              // 중간값 round 해서 계산하기
+              interpolateRound: function interpolateRound(a, b) {
+
+                  var dist = b - a;
+                  return function (t) {
+                      return Math.round(a + dist * t);
+                  };
+              },
+
+              getFixed: function getFixed(a, b) {
+                  var aArr = (a + "").split(".");
+                  var aLen = aArr.length < 2 ? 0 : aArr[1].length;
+
+                  var bArr = (b + "").split(".");
+                  var bLen = bArr.length < 2 ? 0 : bArr[1].length;
+
+                  return aLen > bLen ? aLen : bLen;
+              },
+
+              fixed: function fixed(_fixed) {
+
+                  var fixedNumber = this.getFixed(_fixed, 0);
+                  var pow = Math.pow(10, fixedNumber);
+
+                  var func = function func(value) {
+                      return Math.round(value * pow) / pow;
+                  };
+
+                  func.plus = function (a, b) {
+                      return Math.round(a * pow + b * pow) / pow;
+                  };
+
+                  func.minus = function (a, b) {
+                      return Math.round(a * pow - b * pow) / pow;
+                  };
+
+                  func.multi = function (a, b) {
+                      return Math.round(a * pow * (b * pow)) / (pow * pow);
+                  };
+
+                  func.div = function (a, b) {
+                      var result = a * pow / (b * pow);
+                      var pow2 = Math.pow(10, this.getFixed(result, 0));
+                      return Math.round(result * pow2) / pow2;
+                  };
+
+                  func.remain = function (a, b) {
+                      return Math.round(a * pow % (b * pow)) / pow;
+                  };
+
+                  return func;
+              },
+
+              round: function round(num, fixed) {
+                  var fixedNumber = Math.pow(10, fixed);
+
+                  return Math.round(num * fixedNumber) / fixedNumber;
+              },
+
+              plus: function plus(a, b) {
+                  var pow = Math.pow(10, this.getFixed(a, b));
+
+                  return Math.round(a * pow + b * pow) / pow;
+              },
+
+              minus: function minus(a, b) {
+                  var pow = Math.pow(10, this.getFixed(a, b));
+                  return Math.round(a * pow - b * pow) / pow;
+              },
+
+              multi: function multi(a, b) {
+                  var pow = Math.pow(10, this.getFixed(a, b));
+                  return Math.round(a * pow * (b * pow)) / (pow * pow);
+              },
+
+              div: function div(a, b) {
+                  var pow = Math.pow(10, this.getFixed(a, b));
+
+                  var result = a * pow / (b * pow);
+                  var pow2 = Math.pow(10, this.getFixed(result, 0));
+                  return Math.round(result * pow2) / pow2;
+              },
+
+              remain: function remain(a, b) {
+                  var pow = Math.pow(10, this.getFixed(a, b));
+                  return Math.round(a * pow % (b * pow)) / pow;
+              },
+
+              /**
+               * 특정 구간의 값을 자동으로 계산
+               *
+               * @param {Object} min
+               * @param {Object} max
+               * @param {Object} ticks
+               * @param {Object} isNice
+               */
+              nice: function nice(min, max, ticks, isNice) {
+                  isNice = isNice || false;
+
+                  if (min > max) {
+                      var _max = min;
+                      var _min = max;
+                  } else {
+                      var _min = min;
+                      var _max = max;
+                  }
+
+                  var _ticks = ticks;
+                  var _tickSpacing = 0;
+                  var _range = [];
+                  var _niceMin;
+                  var _niceMax;
+
+                  function niceNum(range, round) {
+                      var exponent = Math.floor(Math.log(range) / Math.LN10);
+                      var fraction = range / Math.pow(10, exponent);
+
+                      if (round) {
+                          if (fraction < 1.5) niceFraction = 1;else if (fraction < 3) niceFraction = 2;else if (fraction < 7) niceFraction = 5;else niceFraction = 10;
+                      } else {
+                          if (fraction <= 1) niceFraction = 1;else if (fraction <= 2) niceFraction = 2;else if (fraction <= 5) niceFraction = 5;else niceFraction = 10;
+
+                          //console.log(niceFraction)
+                      }
+
+                      return niceFraction * Math.pow(10, exponent);
+                  }
+
+                  function caculate() {
+                      _range = isNice ? niceNum(_max - _min, false) : _max - _min;
+                      _tickSpacing = isNice ? niceNum(_range / _ticks, true) : _range / _ticks;
+                      _niceMin = isNice ? Math.floor(_min / _tickSpacing) * _tickSpacing : _min;
+                      _niceMax = isNice ? Math.floor(_max / _tickSpacing) * _tickSpacing : _max;
+                  }
+
+                  caculate();
+
+                  return {
+                      min: _niceMin,
+                      max: _niceMax,
+                      range: _range,
+                      spacing: _tickSpacing
+                  };
+              },
+
+              matrix: function matrix(a, b) {
+                  if (_.typeCheck("array", b[0])) {
+                      return deepMatrix(a, b);
+                  }
+
+                  return _matrix(a, b);
+              },
+
+              matrix3d: function matrix3d(a, b) {
+                  if (b[0] instanceof Array || b[0] instanceof Float32Array) {
+                      return deepMatrix3d(a, b);
+                  }
+
+                  return _matrix3d(a, b);
+              },
+
+              inverseMatrix3d: function inverseMatrix3d(a) {
+                  return _inverseMatrix3d(a);
+              },
+
+              scaleValue: function scaleValue(value, minValue, maxValue, minScale, maxScale) {
+                  // 최소/최대 값이 같을 경우 처리
+                  minValue = minValue == maxValue ? 0 : minValue;
+
+                  var range = maxScale - minScale,
+                      tg = range * getPer();
+
+                  function getPer() {
+                      var range = maxValue - minValue,
+                          tg = value - minValue,
+                          per = tg / range;
+
+                      return per;
+                  }
+
+                  return tg + minScale;
+              }
+          };
+
+          return self;
+      }
+  };
+
+  jui$1.use(math);
+
+  var color = {
+      name: "util.color",
+      extend: null,
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var math$$1 = jui$1.include("util.math");
+
+          function generateHash(name) {
+              // Return a vector (0.0->1.0) that is a hash of the input string.
+              // The hash is computed to favor early characters over later ones, so
+              // that strings with similar starts have similar vectors. Only the first
+              // 6 characters are considered.
+              var hash = 0,
+                  weight = 1,
+                  max_hash = 0,
+                  mod = 10,
+                  max_char = 6;
+
+              if (name) {
+                  for (var i = 0; i < name.length; i++) {
+                      if (i > max_char) {
+                          break;
+                      }
+                      hash += weight * (name.charCodeAt(i) % mod);
+                      max_hash += weight * (mod - 1);
+                      weight *= 0.70;
+                  }
+                  if (max_hash > 0) {
+                      hash = hash / max_hash;
+                  }
+              }
+              return hash;
+          }
+
+          /**
+           *  @class util.color
+           *
+           * color utility
+           *
+           * @singleton
+           */
+          var self = {
+
+              regex: /(linear|radial)\((.*)\)(.*)/i,
+
+              /**
+               * @method format
+               *
+               * convert color to format string
+               *
+               *     // hex
+               *     color.format({ r : 255, g : 255, b : 255 }, 'hex')  // #FFFFFF
+               *
+               *     // rgb
+               *     color.format({ r : 255, g : 255, b : 255 }, 'rgb') // rgba(255, 255, 255, 0.5);
+               *
+               *     // rgba
+               *     color.format({ r : 255, g : 255, b : 255, a : 0.5 }, 'rgb') // rgba(255, 255, 255, 0.5);
+               *
+               * @param {Object} obj  obj has r, g, b and a attributes
+               * @param {"hex"/"rgb"} type  format string type
+               * @returns {*}
+               */
+              format: function format(obj, type) {
+                  if (type == 'hex') {
+                      var r = obj.r.toString(16);
+                      if (obj.r < 16) r = "0" + r;
+
+                      var g = obj.g.toString(16);
+                      if (obj.g < 16) g = "0" + g;
+
+                      var b = obj.b.toString(16);
+                      if (obj.b < 16) b = "0" + b;
+
+                      return "#" + [r, g, b].join("").toUpperCase();
+                  } else if (type == 'rgb') {
+                      if (typeof obj.a == 'undefined') {
+                          return "rgb(" + [obj.r, obj.g, obj.b].join(",") + ")";
+                      } else {
+                          return "rgba(" + [obj.r, obj.g, obj.b, obj.a].join(",") + ")";
+                      }
+                  }
+
+                  return obj;
+              },
+
+              /**
+               * @method scale
+               *
+               * get color scale
+               *
+               * 		var c = color.scale().domain('#FF0000', '#00FF00');
+               *
+               * 		// get middle color
+               * 		c(0.5)   ==  #808000
+               *
+               * 		// get middle color list
+               * 		c.ticks(20);  // return array ,    [startColor, ......, endColor ]
+               *
+               * @returns {func} scale function
+               */
+              scale: function scale() {
+                  var startColor, endColor;
+
+                  function func(t, type) {
+
+                      var obj = {
+                          r: parseInt(startColor.r + (endColor.r - startColor.r) * t, 10),
+                          g: parseInt(startColor.g + (endColor.g - startColor.g) * t, 10),
+                          b: parseInt(startColor.b + (endColor.b - startColor.b) * t, 10)
+                      };
+
+                      return self.format(obj, type);
+                  }
+
+                  func.domain = function (start, end) {
+                      startColor = self.rgb(start);
+                      endColor = self.rgb(end);
+
+                      return func;
+                  };
+
+                  func.ticks = function (n) {
+                      var unit = 1 / n;
+
+                      var start = 0;
+                      var colors = [];
+                      while (start <= 1) {
+                          var c = func(start, 'hex');
+                          colors.push(c);
+                          start = math$$1.plus(start, unit);
+                      }
+
+                      return colors;
+                  };
+
+                  return func;
+              },
+
+              /**
+               * @method map
+               *
+               * create color map
+               *
+               * 		var colorList = color.map(['#352a87', '#0f5cdd', '#00b5a6', '#ffc337', '#fdff00'], count)
+               *
+               * @param {Array} color_list
+               * @param {Number} count  a divide number
+               * @returns {Array} converted color list
+               */
+              map: function map(color_list, count) {
+
+                  var colors = [];
+                  count = count || 5;
+                  var scale = self.scale();
+                  for (var i = 0, len = color_list.length - 1; i < len; i++) {
+                      if (i == 0) {
+                          colors = scale.domain(color_list[i], color_list[i + 1]).ticks(count);
+                      } else {
+                          var colors2 = scale.domain(color_list[i], color_list[i + 1]).ticks(count);
+                          colors2.shift();
+                          colors = colors.concat(colors2);
+                      }
+                  }
+
+                  return colors;
+              },
+
+              /**
+               * @method rgb
+               *
+               * parse string to rgb color
+               *
+               * 		color.rgb("#FF0000") === { r : 255, g : 0, b : 0 }
+               *
+               * 		color.rgb("rgb(255, 0, 0)") == { r : 255, g : 0, b : }
+               *
+               * @param {String} str color string
+               * @returns {Object}  rgb object
+               */
+              rgb: function rgb(str) {
+
+                  if (typeof str == 'string') {
+                      if (str.indexOf("rgb(") > -1) {
+                          var arr = str.replace("rgb(", "").replace(")", "").split(",");
+
+                          for (var i = 0, len = arr.length; i < len; i++) {
+                              arr[i] = parseInt(_.trim(arr[i]), 10);
+                          }
+
+                          return { r: arr[0], g: arr[1], b: arr[2], a: 1 };
+                      } else if (str.indexOf("rgba(") > -1) {
+                          var arr = str.replace("rgba(", "").replace(")", "").split(",");
+
+                          for (var i = 0, len = arr.length; i < len; i++) {
+
+                              if (len - 1 == i) {
+                                  arr[i] = parseFloat(_.trim(arr[i]));
+                              } else {
+                                  arr[i] = parseInt(_.trim(arr[i]), 10);
+                              }
+                          }
+
+                          return { r: arr[0], g: arr[1], b: arr[2], a: arr[3] };
+                      } else if (str.indexOf("#") == 0) {
+
+                          str = str.replace("#", "");
+
+                          var arr = [];
+                          if (str.length == 3) {
+                              for (var i = 0, len = str.length; i < len; i++) {
+                                  var char = str.substr(i, 1);
+                                  arr.push(parseInt(char + char, 16));
+                              }
+                          } else {
+                              for (var i = 0, len = str.length; i < len; i += 2) {
+                                  arr.push(parseInt(str.substr(i, 2), 16));
+                              }
+                          }
+
+                          return { r: arr[0], g: arr[1], b: arr[2], a: 1 };
+                      }
+                  }
+
+                  return str;
+              },
+
+              /**
+               * @method HSVtoRGB
+               *
+               * convert hsv to rgb
+               *
+               * 		color.HSVtoRGB(0,0,1) === #FFFFF === { r : 255, g : 0, b : 0 }
+               *
+               * @param {Number} H  hue color number  (min : 0, max : 360)
+               * @param {Number} S  Saturation number  (min : 0, max : 1)
+               * @param {Number} V  Value number 		(min : 0, max : 1 )
+               * @returns {Object}
+               */
+              HSVtoRGB: function HSVtoRGB(H, S, V) {
+
+                  if (H == 360) {
+                      H = 0;
+                  }
+
+                  var C = S * V;
+                  var X = C * (1 - Math.abs(H / 60 % 2 - 1));
+                  var m = V - C;
+
+                  var temp = [];
+
+                  if (0 <= H && H < 60) {
+                      temp = [C, X, 0];
+                  } else if (60 <= H && H < 120) {
+                      temp = [X, C, 0];
+                  } else if (120 <= H && H < 180) {
+                      temp = [0, C, X];
+                  } else if (180 <= H && H < 240) {
+                      temp = [0, X, C];
+                  } else if (240 <= H && H < 300) {
+                      temp = [X, 0, C];
+                  } else if (300 <= H && H < 360) {
+                      temp = [C, 0, X];
+                  }
+
+                  return {
+                      r: Math.ceil((temp[0] + m) * 255),
+                      g: Math.ceil((temp[1] + m) * 255),
+                      b: Math.ceil((temp[2] + m) * 255)
+                  };
+              },
+
+              /**
+               * @method RGBtoHSV
+               *
+               * convert rgb to hsv
+               *
+               * 		color.RGBtoHSV(0, 0, 255) === { h : 240, s : 1, v : 1 } === '#FFFF00'
+               *
+               * @param {Number} R  red color value
+               * @param {Number} G  green color value
+               * @param {Number} B  blue color value
+               * @return {Object}  hsv color code
+               */
+              RGBtoHSV: function RGBtoHSV(R, G, B) {
+
+                  var R1 = R / 255;
+                  var G1 = G / 255;
+                  var B1 = B / 255;
+
+                  var MaxC = Math.max(R1, G1, B1);
+                  var MinC = Math.min(R1, G1, B1);
+
+                  var DeltaC = MaxC - MinC;
+
+                  var H = 0;
+
+                  if (DeltaC == 0) {
+                      H = 0;
+                  } else if (MaxC == R1) {
+                      H = 60 * ((G1 - B1) / DeltaC % 6);
+                  } else if (MaxC == G1) {
+                      H = 60 * ((B1 - R1) / DeltaC + 2);
+                  } else if (MaxC == B1) {
+                      H = 60 * ((R1 - G1) / DeltaC + 4);
+                  }
+
+                  if (H < 0) {
+                      H = 360 + H;
+                  }
+
+                  var S = 0;
+
+                  if (MaxC == 0) S = 0;else S = DeltaC / MaxC;
+
+                  var V = MaxC;
+
+                  return { h: H, s: S, v: V };
+              },
+
+              trim: function trim(str) {
+                  return (str || "").replace(/^\s+|\s+$/g, '');
+              },
+
+              /**
+               * @method lighten
+               *
+               * rgb 컬러 밝은 농도로 변환
+               *
+               * @param {String} color   RGB color code
+               * @param {Number} rate 밝은 농도
+               * @return {String}
+               */
+              lighten: function lighten(color, rate) {
+                  color = color.replace(/[^0-9a-f]/gi, '');
+                  rate = rate || 0;
+
+                  var rgb = [],
+                      c,
+                      i;
+                  for (i = 0; i < 6; i += 2) {
+                      c = parseInt(color.substr(i, 2), 16);
+                      c = Math.round(Math.min(Math.max(0, c + c * rate), 255)).toString(16);
+                      rgb.push(("00" + c).substr(c.length));
+                  }
+
+                  return "#" + rgb.join("");
+              },
+
+              /**
+               * @method darken
+               *
+               * rgb 컬러 어두운 농도로 변환
+               *
+               * @param {String} color   RGB color code
+               * @param {Number} rate 어두운 농도
+               * @return {String}
+               */
+              darken: function darken(color, rate) {
+                  return this.lighten(color, -rate);
+              },
+
+              /**
+               * @method parse
+               *
+               * gradient color string parsing
+               *
+               * @param {String} color
+               * @returns {*}
+               */
+              parse: function parse(color) {
+                  return this.parseGradient(color);
+              },
+
+              /**
+               * @method parseGrident
+               *
+               * gradient parser
+               *
+               *      linear(left) #fff,#000
+               *      linear(right) #fff,50 yellow,black
+               *      radial(50%,50%,50%,50,50)
+               *
+               * @param {String} color
+               */
+              parseGradient: function parseGradient(color) {
+                  var matches = color.match(this.regex);
+
+                  if (!matches) return color;
+
+                  var type = this.trim(matches[1]);
+                  var attr = this.parseAttr(type, this.trim(matches[2]));
+                  var stops = this.parseStop(this.trim(matches[3]));
+
+                  var obj = { type: type + "Gradient", attr: attr, children: stops };
+
+                  return obj;
+              },
+
+              parseStop: function parseStop(stop) {
+                  var stop_list = stop.split(",");
+
+                  var stops = [];
+
+                  for (var i = 0, len = stop_list.length; i < len; i++) {
+                      var stop = stop_list[i];
+
+                      var arr = stop.split(" ");
+
+                      if (arr.length == 0) continue;
+
+                      if (arr.length == 1) {
+                          stops.push({ type: "stop", attr: { "stop-color": arr[0] } });
+                      } else if (arr.length == 2) {
+                          stops.push({ type: "stop", attr: { "offset": arr[0], "stop-color": arr[1] } });
+                      } else if (arr.length == 3) {
+                          stops.push({ type: "stop", attr: { "offset": arr[0], "stop-color": arr[1], "stop-opacity": arr[2] } });
+                      }
+                  }
+
+                  var start = -1;
+                  var end = -1;
+                  for (var i = 0, len = stops.length; i < len; i++) {
+                      var stop = stops[i];
+
+                      if (i == 0) {
+                          if (!stop.offset) stop.offset = 0;
+                      } else if (i == len - 1) {
+                          if (!stop.offset) stop.offset = 1;
+                      }
+
+                      if (start == -1 && typeof stop.offset == 'undefined') {
+                          start = i;
+                      } else if (end == -1 && typeof stop.offset == 'undefined') {
+                          end = i;
+
+                          var count = end - start;
+
+                          var endOffset = stops[end].offset.indexOf("%") > -1 ? parseFloat(stops[end].offset) / 100 : stops[end].offset;
+                          var startOffset = stops[start].offset.indexOf("%") > -1 ? parseFloat(stops[start].offset) / 100 : stops[start].offset;
+
+                          var dist = endOffset - startOffset;
+                          var value = dist / count;
+
+                          var offset = startOffset + value;
+                          for (var index = start + 1; index < end; index++) {
+                              stops[index].offset = offset;
+
+                              offset += value;
+                          }
+
+                          start = end;
+                          end = -1;
+                      }
+                  }
+
+                  return stops;
+              },
+
+              parseAttr: function parseAttr(type, str) {
+
+                  if (type == 'linear') {
+                      switch (str) {
+                          case "":
+                          case "left":
+                              return { x1: 0, y1: 0, x2: 1, y2: 0, direction: str || "left" };
+                          case "right":
+                              return { x1: 1, y1: 0, x2: 0, y2: 0, direction: str };
+                          case "top":
+                              return { x1: 0, y1: 0, x2: 0, y2: 1, direction: str };
+                          case "bottom":
+                              return { x1: 0, y1: 1, x2: 0, y2: 0, direction: str };
+                          case "top left":
+                              return { x1: 0, y1: 0, x2: 1, y2: 1, direction: str };
+                          case "top right":
+                              return { x1: 1, y1: 0, x2: 0, y2: 1, direction: str };
+                          case "bottom left":
+                              return { x1: 0, y1: 1, x2: 1, y2: 0, direction: str };
+                          case "bottom right":
+                              return { x1: 1, y1: 1, x2: 0, y2: 0, direction: str };
+                          default:
+                              var arr = str.split(",");
+                              for (var i = 0, len = arr.length; i < len; i++) {
+                                  if (arr[i].indexOf("%") == -1) arr[i] = parseFloat(arr[i]);
+                              }
+
+                              return { x1: arr[0], y1: arr[1], x2: arr[2], y2: arr[3] };
+                      }
+                  } else {
+                      var arr = str.split(",");
+                      for (var i = 0, len = arr.length; i < len; i++) {
+
+                          if (arr[i].indexOf("%") == -1) arr[i] = parseFloat(arr[i]);
+                      }
+
+                      return { cx: arr[0], cy: arr[1], r: arr[2], fx: arr[3], fy: arr[4] };
+                  }
+              },
+
+              colorHash: function colorHash(name, callback) {
+                  // Return an rgb() color string that is a hash of the provided name,
+                  // and with a warm palette.
+                  var vector = 0;
+
+                  if (name) {
+                      name = name.replace(/.*`/, ""); // drop module name if present
+                      name = name.replace(/\(.*/, ""); // drop extra info
+                      vector = generateHash(name);
+                  }
+
+                  if (typeof callback == "function") {
+                      return callback(vector);
+                  }
+
+                  return {
+                      r: 200 + Math.round(55 * vector),
+                      g: 0 + Math.round(230 * (1 - vector)),
+                      b: 0 + Math.round(55 * (1 - vector))
+                  };
+              }
+
+          };
+
+          self.map.parula = function (count) {
+              return self.map(['#352a87', '#0f5cdd', '#00b5a6', '#ffc337', '#fdff00'], count);
+          };
+          self.map.jet = function (count) {
+              return self.map(['#00008f', '#0020ff', '#00ffff', '#51ff77', '#fdff00', '#ff0000', '#800000'], count);
+          };
+          self.map.hsv = function (count) {
+              return self.map(['#ff0000', '#ffff00', '#00ff00', '#00ffff', '#0000ff', '#ff00ff', '#ff0000'], count);
+          };
+          self.map.hot = function (count) {
+              return self.map(['#0b0000', '#ff0000', '#ffff00', '#ffffff'], count);
+          };
+          self.map.pink = function (count) {
+              return self.map(['#1e0000', '#bd7b7b', '#e7e5b2', '#ffffff'], count);
+          };
+          self.map.bone = function (count) {
+              return self.map(['#000000', '#4a4a68', '#a6c6c6', '#ffffff'], count);
+          };
+          self.map.copper = function (count) {
+              return self.map(['#000000', '#3d2618', '#9d623e', '#ffa167', '#ffc77f'], count);
+          };
+
+          return self;
+      }
+  };
+
+  var UICollection = {
+      name: "collection",
+      extend: null,
+      component: function component() {
+          var UICollection = function UICollection(type, selector, options, list) {
+              this.type = type;
+              this.selector = selector;
+              this.options = options;
+
+              this.destroy = function () {
+                  for (var i = 0; i < list.length; i++) {
+                      list[i].destroy();
+                  }
+              };
+
+              for (var i = 0; i < list.length; i++) {
+                  this.push(list[i]);
+              }
+          };
+
+          UICollection.prototype = Object.create(Array.prototype);
+
+          return UICollection;
+      }
+  };
+
+  var UIManager = {
+      name: "manager",
+      extend: null,
+      component: function component() {
+          var _ = jui$1.include("util.base");
+
+          var UIManager = new function () {
+              var instances = [],
+                  classes = [];
+
+              /**
+               * @method add
+               * Adds a component object created
+               *
+               * @param {Object} ui UI instance
+               */
+              this.add = function (uiIns) {
+                  instances.push(uiIns);
+              };
+
+              /**
+               * @method emit
+               * Generates a custom event to an applicable component
+               *
+               * @param {String} key Selector or UI type
+               * @param {String} type Event type
+               * @param {Array} args Event arguments
+               */
+              this.emit = function (key, type, args) {
+                  var targets = [];
+
+                  for (var i = 0; i < instances.length; i++) {
+                      var uiSet = instances[i];
+
+                      if (key == uiSet.selector || key == uiSet.type) {
+                          targets.push(uiSet);
+                      }
+                  }
+
+                  for (var i = 0; i < targets.length; i++) {
+                      var uiSet = targets[i];
+
+                      for (var j = 0; j < uiSet.length; j++) {
+                          uiSet[j].emit(type, args);
+                      }
+                  }
+              };
+
+              /**
+               * @method get
+               * Gets a component currently created
+               *
+               * @param {Integer/String} key
+               * @returns {Object/Array} UI instance
+               */
+              this.get = function (key) {
+                  if (_.typeCheck("integer", key)) {
+                      return instances[key];
+                  } else if (_.typeCheck("string", key)) {
+                      // 셀렉터 객체 검색
+                      for (var i = 0; i < instances.length; i++) {
+                          var uiSet = instances[i];
+
+                          if (key == uiSet.selector) {
+                              return uiSet.length == 1 ? uiSet[0] : uiSet;
+                          }
+                      }
+
+                      // 모듈 객체 검색
+                      var result = [];
+                      for (var i = 0; i < instances.length; i++) {
+                          var uiSet = instances[i];
+
+                          if (key == uiSet.type) {
+                              result.push(uiSet);
+                          }
+                      }
+
+                      return result;
+                  }
+              };
+
+              /**
+               * @method getAll
+               * Gets all components currently created
+               *
+               * @return {Array} UI instances
+               */
+              this.getAll = function () {
+                  return instances;
+              };
+
+              /**
+               * @method remove
+               * Removes a component object in an applicable index from the list
+               *
+               * @param {Integer} index
+               * @return {Object} Removed instance
+               */
+              this.remove = function (index) {
+                  if (_.typeCheck("integer", index)) {
+                      // UI 객체 인덱스
+                      return instances.splice(index, 1)[0];
+                  }
+              };
+
+              /**
+               * @method shift
+               * Removes the last component object from the list
+               *
+               * @return {Object} Removed instance
+               */
+              this.shift = function () {
+                  return instances.shift();
+              };
+
+              /**
+               * @method pop
+               * Removes the first component object from the list
+               *
+               * @return {Object} Removed instance
+               */
+              this.pop = function () {
+                  return instances.pop();
+              };
+
+              /**
+               * @method size
+               * Gets the number of objects currently created
+               *
+               * @return {Number}
+               */
+              this.size = function () {
+                  return instances.length;
+              };
+
+              /**
+               * @method addClass
+               * Adds a component class
+               *
+               * @param {Object} uiCls UI Class
+               */
+              this.addClass = function (uiCls) {
+                  classes.push(uiCls);
+              };
+
+              /**
+               * @method getClass
+               * Gets a component class
+               *
+               * @param {String/Integer} key
+               * @return {Object}
+               */
+              this.getClass = function (key) {
+                  if (_.typeCheck("integer", key)) {
+                      return classes[key];
+                  } else if (_.typeCheck("string", key)) {
+                      for (var i = 0; i < classes.length; i++) {
+                          if (key == classes[i].type) {
+                              return classes[i];
+                          }
+                      }
+                  }
+
+                  return null;
+              };
+
+              /**
+               * @method getClassAll
+               * Gets all component classes
+               *
+               * @return {Array}
+               */
+              this.getClassAll = function () {
+                  return classes;
+              };
+
+              /**
+               * @method create
+               * It is possible to create a component dynamically after the ready point
+               *
+               * @param {String} type UI type
+               * @param {String/DOMElement} selector
+               * @param {Object} options
+               * @return {Object}
+               */
+              this.create = function (type, selector, options) {
+                  var cls = UIManager.getClass(type);
+
+                  if (_.typeCheck("null", cls)) {
+                      throw new Error("JUI_CRITICAL_ERR: '" + type + "' does not exist");
+                  }
+
+                  return cls["class"](selector, options);
+              };
+          }();
+
+          return UIManager;
+      }
+  };
+
+  var UICore = {
+      name: "core",
+      extend: null,
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var $ = jui$1.include("util.dom");
+          var UIManager = jui$1.include("manager");
+          var UICollection = jui$1.include("collection");
+
+          var UICore = function UICore() {
+
+              /**
+               * @method emit
+               * Generates a custom event. The first parameter is the type of a custom event. A function defined as an option or on method is called
+               *
+               * @param {String} type Event type
+               * @param {Function} args Event Arguments
+               * @return {Mixed}
+               */
+              this.emit = function (type, args) {
+                  if (!_.typeCheck("string", type)) return;
+                  var result;
+
+                  for (var i = 0; i < this.event.length; i++) {
+                      var e = this.event[i];
+
+                      if (e.type == type.toLowerCase()) {
+                          var arrArgs = _.typeCheck("array", args) ? args : [args];
+                          result = e.callback.apply(this, arrArgs);
+                      }
+                  }
+
+                  return result;
+              };
+
+              /**
+               * @method on
+               * A callback function defined as an on method is run when an emit method is called
+               *
+               * @param {String} type Event type
+               * @param {Function} callback
+               */
+              this.on = function (type, callback) {
+                  if (!_.typeCheck("string", type) || !_.typeCheck("function", callback)) return;
+                  this.event.push({ type: type.toLowerCase(), callback: callback, unique: false });
+              };
+
+              /**
+               * @method off
+               * Removes a custom event of an applicable type or callback handler
+               *
+               * @param {String} type Event type
+               */
+              this.off = function (type) {
+                  var event = [];
+
+                  for (var i = 0; i < this.event.length; i++) {
+                      var e = this.event[i];
+
+                      if (_.typeCheck("function", type) && e.callback != type || _.typeCheck("string", type) && e.type != type.toLowerCase()) {
+                          event.push(e);
+                      }
+                  }
+
+                  this.event = event;
+              };
+
+              /**
+               * @method setOption
+               * Dynamically defines the options of a UI
+               *
+               * @param {String} key
+               * @param {Mixed} value
+               */
+              this.setOption = function (key, value) {
+                  if (_.typeCheck("object", key)) {
+                      for (var k in key) {
+                          this.options[k] = key[k];
+                      }
+                  } else {
+                      this.options[key] = value;
+                  }
+              };
+
+              /**
+               * @method destroy
+               * Removes all events set in a UI obejct and the DOM element
+               *
+               */
+              this.destroy = function () {
+                  if (this.__proto__) {
+                      for (var key in this.__proto__) {
+                          delete this.__proto__[key];
+                      }
+                  }
+              };
+          };
+
+          UICore.build = function (UI) {
+
+              return function (selector, options) {
+                  var list = [],
+                      elemList = [];
+
+                  if (_.typeCheck("string", selector)) {
+                      elemList = $.find(selector);
+                  } else if (_.typeCheck("object", selector)) {
+                      elemList.push(selector);
+                  } else {
+                      elemList.push(document.createElement("div"));
+                  }
+
+                  for (var i = 0, len = elemList.length; i < len; i++) {
+                      list[i] = jui$1.createUIObject(UI, selector, i, elemList[i], options);
+                  }
+
+                  // UIManager에 데이터 입력
+                  UIManager.add(new UICollection(UI.type, selector, options, list));
+
+                  // 객체가 없을 경우에는 null을 반환 (기존에는 빈 배열을 반환)
+                  if (list.length == 0) {
+                      return null;
+                  } else if (list.length == 1) {
+                      return list[0];
+                  }
+
+                  return list;
+              };
+          };
+
+          UICore.init = function (UI) {
+              var uiObj = null;
+
+              if ((typeof UI === "undefined" ? "undefined" : _typeof(UI)) === "object") {
+                  uiObj = UICore.build(UI);
+                  UIManager.addClass({ type: UI.type, "class": uiObj });
+              }
+
+              return uiObj;
+          };
+
+          UICore.setup = function () {
+              return {
+                  /**
+                   * @cfg {Object} [event={}]
+                   * Defines a DOM event to be used in a UI
+                   */
+                  event: {}
+              };
+          };
+
+          return UICore;
+      }
+  };
+
+  var time = {
+      name: "util.time",
+      extend: null,
+      component: function component() {
+          var _ = jui$1.include("util.base");
+
+          var self = {
+
+              //constant
+              MILLISECOND: 1000,
+              MINUTE: 1000 * 60,
+              HOUR: 1000 * 60 * 60,
+              DAY: 1000 * 60 * 60 * 24,
+
+              // unit
+              years: "years",
+              months: "months",
+              days: "days",
+              hours: "hours",
+              minutes: "minutes",
+              seconds: "seconds",
+              milliseconds: "milliseconds",
+              weeks: "weeks",
+
+              /**
+               * @method diff
+               *
+               * caculate time difference from a to b
+               *
+               * @param type
+               * @param a
+               * @param b
+               * @returns {number}
+               */
+              diff: function diff(type, a, b) {
+                  var milliseconds = +a - +b;
+
+                  if (type == 'seconds') {
+                      return Math.abs(Math.floor(milliseconds / self.MILLISECOND));
+                  } else if (type == 'minutes') {
+                      return Math.abs(Math.floor(milliseconds / self.MINUTE));
+                  } else if (type == 'hours') {
+                      return Math.abs(Math.floor(milliseconds / self.HOUR));
+                  } else if (type == 'days') {
+                      return Math.abs(Math.floor(milliseconds / self.DAY));
+                  }
+
+                  return milliseconds;
+              },
+
+              /**
+               * @method add
+               *
+               * add time
+               *
+               * 		var date = new Date();
+               * 		time.add(date, time.hours, 1); 		// add an hour on now
+               * 		time.add(date, time.hours, 1, time.minutes, 2); 		// add an hour and 2 minutes on now
+               *
+               * @param {Object} date
+               */
+              add: function add(date) {
+
+                  if (arguments.length <= 2) {
+                      return date;
+                  }
+
+                  if (arguments.length > 2) {
+                      var d = new Date(+date);
+
+                      for (var i = 1; i < arguments.length; i += 2) {
+
+                          var split = typeof arguments[i] == 'string' ? this[arguments[i]] : arguments[i];
+                          var time = arguments[i + 1];
+
+                          if (this.years == split) {
+                              d.setFullYear(d.getFullYear() + time);
+                          } else if (this.months == split) {
+                              d.setMonth(d.getMonth() + time);
+                          } else if (this.days == split) {
+                              d.setDate(d.getDate() + time);
+                          } else if (this.hours == split) {
+                              d.setHours(d.getHours() + time);
+                          } else if (this.minutes == split) {
+                              d.setMinutes(d.getMinutes() + time);
+                          } else if (this.seconds == split) {
+                              d.setSeconds(d.getSeconds() + time);
+                          } else if (this.milliseconds == split) {
+                              d.setMilliseconds(d.getMilliseconds() + time);
+                          } else if (this.weeks == split) {
+                              d.setDate(d.getDate() + time * 7);
+                          }
+                      }
+
+                      return d;
+                  }
+              },
+
+              /**
+               * @method format
+               *
+               * {util.dateFormat} 's alias
+               *
+               * @param {Object} date
+               * @param {Object} format
+               * @param {Object} utc
+               */
+              format: function format(date, _format, utc) {
+                  return _.dateFormat(date, _format, utc);
+              }
+          };
+
+          return self;
+      }
+  };
+
+  jui$1.use(math);
+
+  var transform = {
+      name: "util.transform",
+      extend: null,
+      component: function component() {
+          var math$$1 = jui$1.include("util.math");
+
+          var Transform = function Transform(points) {
+              function calculate(m) {
+                  for (var i = 0, count = points.length; i < count; i++) {
+                      points[i] = math$$1.matrix(m, points[i]);
+                  }
+
+                  return points;
+              }
+
+              // 매트릭스 맵
+              this.matrix = function () {
+                  var a = arguments,
+                      type = a[0];
+
+                  if (type == "move") {
+                      return [new Float32Array([1, 0, a[1]]), new Float32Array([0, 1, a[2]]), new Float32Array([0, 0, 1])];
+                  } else if (type == "scale") {
+                      return [new Float32Array([a[1], 0, 0]), new Float32Array([0, a[2], 0]), new Float32Array([0, 0, 1])];
+                  } else if (type == "rotate") {
+                      return [new Float32Array([Math.cos(math$$1.radian(a[1])), -Math.sin(math$$1.radian(a[1])), 0]), new Float32Array([Math.sin(math$$1.radian(a[1])), Math.cos(math$$1.radian(a[1])), 0]), new Float32Array([0, 0, 1])];
+                  } else if (type == "move3d") {
+                      return [new Float32Array([1, 0, 0, a[1]]), new Float32Array([0, 1, 0, a[2]]), new Float32Array([0, 0, 1, a[3]]), new Float32Array([0, 0, 0, 1])];
+                  } else if (type == "scale3d") {
+                      return [new Float32Array([a[1], 0, 0, 0]), new Float32Array([0, a[2], 0, 0]), new Float32Array([0, 0, a[3], 0]), new Float32Array([0, 0, 0, 1])];
+                  } else if (type == "rotate3dz") {
+                      return [new Float32Array([Math.cos(math$$1.radian(a[1])), -Math.sin(math$$1.radian(a[1])), 0, 0]), new Float32Array([Math.sin(math$$1.radian(a[1])), Math.cos(math$$1.radian(a[1])), 0, 0]), new Float32Array([0, 0, 1, 0]), new Float32Array([0, 0, 0, 1])];
+                  } else if (type == "rotate3dx") {
+                      return [new Float32Array([1, 0, 0, 0]), new Float32Array([0, Math.cos(math$$1.radian(a[1])), -Math.sin(math$$1.radian(a[1])), 0]), new Float32Array([0, Math.sin(math$$1.radian(a[1])), Math.cos(math$$1.radian(a[1])), 0]), new Float32Array([0, 0, 0, 1])];
+                  } else if (type == "rotate3dy") {
+                      return [new Float32Array([Math.cos(math$$1.radian(a[1])), 0, Math.sin(math$$1.radian(a[1])), 0]), new Float32Array([0, 1, 0, 0]), new Float32Array([-Math.sin(math$$1.radian(a[1])), 0, Math.cos(math$$1.radian(a[1])), 0]), new Float32Array([0, 0, 0, 1])];
+                  }
+              };
+
+              // 2차원 이동
+              this.move = function (dx, dy) {
+                  return calculate(this.matrix("move", dx, dy));
+              };
+
+              // 3차원 이동
+              this.move3d = function (dx, dy, dz) {
+                  return calculate(this.matrix("move3d", dx, dy, dz));
+              };
+
+              // 2차원 스케일
+              this.scale = function (sx, sy) {
+                  return calculate(this.matrix("scale", sx, sy));
+              };
+
+              // 3차원 스케일
+              this.scale3d = function (sx, sy, sz) {
+                  return calculate(this.matrix("scale3d", sx, sy, sz));
+              };
+
+              // 2차원 회전
+              this.rotate = function (angle) {
+                  return calculate(this.matrix("rotate", angle));
+              };
+
+              // Z축 중심 3차원 회전 - 롤(ROLL)
+              this.rotate3dz = function (angle) {
+                  return calculate(this.matrix("rotate3dz", angle));
+              };
+
+              // X축 중심 3차원 회전 - 롤(PITCH)
+              this.rotate3dx = function (angle) {
+                  return calculate(this.matrix("rotate3dx", angle));
+              };
+
+              // Y축 중심 3차원 회전 - 요(YAW)
+              this.rotate3dy = function (angle) {
+                  return calculate(this.matrix("rotate3dy", angle));
+              };
+
+              // 임의의 행렬 처리
+              this.custom = function (m) {
+                  return calculate(m);
+              };
+
+              // 행렬의 병합
+              this.merge = function () {
+                  var a = arguments,
+                      m = this.matrix.apply(this, a[0]);
+
+                  for (var i = 1; i < a.length; i++) {
+                      m = math$$1.matrix(m, this.matrix.apply(this, a[i]));
+                  }
+
+                  return calculate(m);
+              };
+
+              // 행렬의 병합 (콜백 형태)
+              this.merge2 = function (callback) {
+                  for (var i = 0, count = points.length; i < count; i++) {
+                      var a = callback.apply(null, points[i]),
+                          m = this.matrix.apply(this, a[0]);
+
+                      for (var j = 1; j < a.length; j++) {
+                          m = math$$1.matrix(m, this.matrix.apply(this, a[j]));
+                      }
+
+                      points[i] = math$$1.matrix(m, points[i]);
+                  }
+              };
+          };
+
+          return Transform;
+      }
+  };
+
+  var CanvasUtil = {
+      name: "util.canvas.base",
+      extend: null,
+      component: function component() {
+          var CanvasBase = function CanvasBase(context) {
+              this.clearContext = function () {
+                  context.clearRect(0, 0, context.canvas.width, context.canvas.height);
+              };
+
+              this.drawLine = function (x1, y1, x2, y2, color) {
+                  var lineWidth = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 1;
+
+                  color = color || '#434d6b';
+                  context.beginPath();
+                  context.moveTo(x1, y1);
+                  context.lineTo(x2, y2);
+                  context.lineWidth = lineWidth;
+                  context.strokeStyle = color;
+                  context.stroke();
+              };
+
+              this.drawCurve = function (points, minY, maxY) {
+                  var tension = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0.5;
+                  var isClosed = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
+                  var numOfSegments = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 16;
+
+                  context.beginPath();
+                  var pts = points.reduce(function (prev, e) {
+                      prev.push(e[0], e[1]);
+                      return prev;
+                  }, []);
+                  var ptsa = getCurvePoints(pts, minY, maxY, tension, isClosed, numOfSegments);
+                  context.moveTo(ptsa[0], ptsa[1]);
+                  for (var i = 2; i < ptsa.length - 1; i += 2) {
+                      context.lineTo(ptsa[i], ptsa[i + 1]);
+                  }
+              };
+
+              this.drawDashedLine = function (x1, y1, x2, y2, color) {
+                  var dash = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : [3, 3];
+                  var lineWidth = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : 1;
+
+                  color = color || '#434d6b';
+                  context.beginPath();
+                  context.moveTo(x1, y1);
+                  context.lineTo(x2, y2);
+                  context.lineWidth = lineWidth;
+                  context.strokeStyle = color;
+                  var originDash = context.getLineDash();
+                  context.setLineDash(dash);
+                  context.stroke();
+                  context.setLineDash(originDash);
+              };
+
+              this.drawLines = function (color) {
+                  color = color || '#434d6b';
+                  context.beginPath();
+
+                  for (var _len = arguments.length, pos = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+                      pos[_key - 1] = arguments[_key];
+                  }
+
+                  context.moveTo(pos[0][0], pos[0][1]);
+                  pos.slice(1).map(function (e) {
+                      return context.lineTo(e[0], e[1]);
+                  });
+                  context.lineWidth = 1;
+                  context.strokeStyle = color;
+                  context.stroke();
+              };
+
+              this.drawRoundRect = function (x, y, width, height, radius) {
+                  context.beginPath();
+                  context.moveTo(x, y + radius);
+
+                  // left line
+                  context.lineTo(x, y + height - radius);
+                  context.arcTo(x, y + height, x + radius, y + height, radius);
+
+                  // bottom line
+                  context.lineTo(x + width - radius, y + height);
+                  context.arcTo(x + width, y + height, x + width, y + height - radius, radius);
+
+                  // right line
+                  context.lineTo(x + width, y + radius);
+                  context.arcTo(x + width, y, x + width - radius, y, radius);
+
+                  // top line
+                  context.lineTo(x + radius, y);
+                  context.arcTo(x, y, x, y + radius, radius);
+
+                  context.closePath();
+              };
+
+              this.drawFreeRect = function (x1, y1, x2, y2, x3, y3, x4, y4, color) {
+                  var borderColor = arguments.length > 9 && arguments[9] !== undefined ? arguments[9] : null;
+
+                  color = color || '#ffffff';
+                  context.beginPath();
+                  context.moveTo(x1, y1);
+                  context.lineTo(x2, y2);
+                  context.lineTo(x3, y3);
+                  context.lineTo(x4, y4);
+                  context.closePath();
+                  context.fillStyle = color;
+                  if (borderColor != null) {
+                      context.lineWidth = 2;
+                      context.strokeStyle = borderColor;
+                      context.stroke();
+                  }
+                  context.fill();
+              };
+
+              this.drawFreeRectStroke = function (x1, y1, x2, y2, x3, y3, x4, y4, color) {
+                  color = color || '#ffffff';
+                  context.beginPath();
+                  context.moveTo(x1, y1);
+                  context.lineTo(x2, y2);
+                  context.lineTo(x3, y3);
+                  context.lineTo(x4, y4);
+                  context.lineWidth = 1;
+                  context.strokeStyle = color;
+                  context.stroke();
+              };
+
+              this.drawTriangle = function (x1, y1, d, color) {
+                  color = color || '#ffffff';
+                  context.beginPath();
+                  context.moveTo(x1, y1 - d);
+                  context.lineTo(x1 - d, y1 + d);
+                  context.lineTo(x1 + d, y1 + d);
+                  context.closePath();
+                  context.fillStyle = color;
+                  context.fill();
+              };
+
+              this.drawSquare = function (x1, y1, d, color) {
+                  color = color || '#ffffff';
+                  context.beginPath();
+                  context.moveTo(x1 - d, y1 - d);
+                  context.lineTo(x1 - d, y1 + d);
+                  context.lineTo(x1 + d, y1 + d);
+                  context.lineTo(x1 + d, y1 - d);
+                  context.closePath();
+                  context.fillStyle = color;
+                  context.fill();
+              };
+
+              this.drawPage = function (value, x1, y1, color) {
+                  var border = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
+
+                  drawFreeRect(context, value + x1, y1, value + x1 - 20, y1 + 14, value + x1 - 20, y1 + 52, value + x1, y1 + 38, color, border ? 'rgba(255,255,255,0.2)' : null);
+              };
+
+              this.drawCircle = function (x, y, d, color) {
+                  color = color || 'white';
+                  d = d || 1;
+                  context.beginPath();
+                  context.arc(x, y, d, 0, 2 * Math.PI);
+                  context.fillStyle = color;
+                  context.fill();
+              };
+
+              this.drawBullet = function (x, y) {
+                  var width = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 74;
+
+                  var grd = context.createLinearGradient(x, y, x + width, y);
+                  grd.addColorStop(0, '#1074fc');
+                  grd.addColorStop(1, 'rgba(37, 172, 254, 0)');
+
+                  context.beginPath();
+                  context.arc(x, y, 2, Math.PI / 2, Math.PI / 2 * 3);
+                  context.lineTo(x + width, y - 2);
+                  context.lineTo(x + width, y + 2);
+                  context.closePath();
+                  context.fillStyle = grd;
+                  context.fill();
+                  context.fillStyle = grd;
+              };
+
+              this.getCurvePoints = function (pts, minY, maxY) {
+                  var tension = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 0.5;
+                  var isClosed = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
+                  var numOfSegments = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 16;
+
+                  var _pts = [],
+                      res = [],
+                      // clone array
+                  x,
+                      y,
+                      // our x,y coords
+                  t1x,
+                      t2x,
+                      t1y,
+                      t2y,
+                      // tension vectors
+                  c1,
+                      c2,
+                      c3,
+                      c4,
+                      // cardinal points
+                  st,
+                      t,
+                      i; // steps based on num. of segments
+
+                  // clone array so we don't change the original
+                  _pts = pts.slice(0);
+
+                  // The algorithm require a previous and next point to the actual point array.
+                  // Check if we will draw closed or open curve.
+                  // If closed, copy end points to beginning and first points to end
+                  // If open, duplicate first points to befinning, end points to end
+                  if (isClosed) {
+                      _pts.unshift(pts[pts.length - 1]);
+                      _pts.unshift(pts[pts.length - 2]);
+                      _pts.unshift(pts[pts.length - 1]);
+                      _pts.unshift(pts[pts.length - 2]);
+                      _pts.push(pts[0]);
+                      _pts.push(pts[1]);
+                  } else {
+                      _pts.unshift(pts[1]); //copy 1. point and insert at beginning
+                      _pts.unshift(pts[0]);
+                      _pts.push(pts[pts.length - 2]); //copy last point and append
+                      _pts.push(pts[pts.length - 1]);
+                  }
+
+                  // ok, lets start..
+
+                  // 1. loop goes through point array
+                  // 2. loop goes through each segment between the 2 pts + 1e point before and after
+                  for (i = 2; i < _pts.length - 4; i += 2) {
+                      for (t = 0; t <= numOfSegments; t++) {
+
+                          // calc tension vectors
+                          t1x = (_pts[i + 2] - _pts[i - 2]) * tension;
+                          t2x = (_pts[i + 4] - _pts[i]) * tension;
+
+                          t1y = (_pts[i + 3] - _pts[i - 1]) * tension;
+                          t2y = (_pts[i + 5] - _pts[i + 1]) * tension;
+
+                          // calc step
+                          st = t / numOfSegments;
+
+                          // calc cardinals
+                          c1 = 2 * Math.pow(st, 3) - 3 * Math.pow(st, 2) + 1;
+                          c2 = -(2 * Math.pow(st, 3)) + 3 * Math.pow(st, 2);
+                          c3 = Math.pow(st, 3) - 2 * Math.pow(st, 2) + st;
+                          c4 = Math.pow(st, 3) - Math.pow(st, 2);
+
+                          // calc x and y cords with common control vectors
+                          x = c1 * _pts[i] + c2 * _pts[i + 2] + c3 * t1x + c4 * t2x;
+                          y = c1 * _pts[i + 1] + c2 * _pts[i + 3] + c3 * t1y + c4 * t2y;
+
+                          //store points in array
+                          res.push(x);
+                          if (y > maxY) res.push(maxY);else if (y < minY) res.push(minY);else res.push(y);
+                      }
+                  }
+
+                  return res;
+              };
+          };
+
+          return CanvasBase;
+      }
+  };
+
+  var JUISvgElement = {
+      name: "util.svg.element",
+      extend: null,
+      component: function component() {
+          var Element = function Element() {
+              var events = [];
+
+              this.create = function (type, attr) {
+                  // 퍼블릭 프로퍼티
+                  this.element = document.createElementNS("http://www.w3.org/2000/svg", type);
+                  this.children = [];
+                  this.parent = null;
+                  this.styles = {};
+                  this.attributes = {};
+                  this.order = 0;
+
+                  // 기본 속성 설정
+                  this.attr(attr);
+              };
+
+              this.each = function (callback) {
+                  if (typeof callback != "function") return;
+
+                  for (var i = 0, len = this.children.length; i < len; i++) {
+                      var self = this.children[i];
+                      callback.apply(self, [i, self]);
+                  }
+
+                  return this.children;
+              };
+
+              this.get = function (index) {
+                  if (this.children[index]) {
+                      return this.children[index];
+                  }
+
+                  return null;
+              };
+
+              this.index = function (obj) {
+                  for (var i = 0; i < this.children.length; i++) {
+                      if (obj == this.children[i]) {
+                          return i;
+                      }
+                  }
+
+                  return -1;
+              };
+
+              this.append = function (elem) {
+                  if (elem instanceof Element) {
+                      if (elem.parent) {
+                          elem.remove();
+                      }
+
+                      this.children.push(elem);
+                      elem.parent = this;
+                  }
+
+                  return this;
+              };
+
+              this.prepend = function (elem) {
+                  return this.insert(0, elem);
+              };
+
+              this.insert = function (index, elem) {
+                  if (elem.parent) {
+                      elem.remove();
+                  }
+
+                  this.children.splice(index, 0, elem);
+                  elem.parent = this;
+
+                  return this;
+              };
+
+              this.remove = function () {
+                  var nChild = [],
+                      pChild = this.parent.children;
+
+                  for (var i = 0; i < pChild.length; i++) {
+                      if (pChild[i] == this) {
+                          break;
+                      }
+
+                      nChild.push(pChild[i]);
+                  }
+
+                  this.parent.children = nChild;
+
+                  return this;
+              };
+
+              this.attr = function (attr) {
+                  if (typeof attr == "undefined" || !attr) return;
+
+                  if (typeof attr == "string") {
+                      return this.attributes[attr] || this.element.getAttribute(attr);
+                  }
+
+                  for (var k in attr) {
+                      this.attributes[k] = attr[k];
+
+                      if (k.indexOf("xlink:") != -1) {
+                          this.element.setAttributeNS("http://www.w3.org/1999/xlink", k, attr[k]);
+                      } else {
+                          this.element.setAttribute(k, attr[k]);
+                      }
+                  }
+
+                  return this;
+              };
+
+              this.css = function (css) {
+                  var list = [];
+
+                  for (var k in css) {
+                      this.styles[k] = css[k];
+                  }
+
+                  for (var k in css) {
+                      list.push(k + ":" + css[k]);
+                  }
+
+                  this.attr({ style: list.join(";") });
+
+                  return this;
+              };
+
+              this.html = function (html) {
+                  // @deprecated
+                  this.element.innerHTML = html;
+
+                  return this;
+              };
+
+              this.text = function (text) {
+                  var children = this.element.childNodes;
+
+                  for (var i = 0; i < children.length; i++) {
+                      this.element.removeChild(children[i]);
+                  }
+
+                  this.element.appendChild(document.createTextNode(text));
+                  return this;
+              };
+
+              this.on = function (type, handler) {
+                  var callback = function callback(e) {
+                      if (typeof handler == "function") {
+                          handler.call(this, e);
+                      }
+                  };
+
+                  this.element.addEventListener(type, callback, false);
+                  events.push({ type: type, callback: callback });
+
+                  return this;
+              };
+
+              this.off = function (type) {
+                  if (!type) {
+                      for (var i = 0, len = events.length; i < len; i++) {
+                          var e = events.shift();
+
+                          this.element.removeEventListener(e.type, e.callback, false);
+                      }
+                  } else {
+                      var newEvents = [];
+
+                      for (var i = 0, len = events.length; i < len; i++) {
+                          var e = events[i];
+
+                          if (e.type != type) {
+                              newEvents.push(e);
+                          } else {
+                              this.element.removeEventListener(e.type, e.callback, false);
+                          }
+                      }
+
+                      events = newEvents;
+                  }
+
+                  return this;
+              };
+
+              this.hover = function (overHandler, outHandler) {
+                  var callback1 = function callback1(e) {
+                      if (typeof overHandler == "function") {
+                          overHandler.call(this, e);
+                      }
+                  };
+
+                  var callback2 = function callback2(e) {
+                      if (typeof outHandler == "function") {
+                          outHandler.call(this, e);
+                      }
+                  };
+
+                  this.element.addEventListener("mouseover", callback1, false);
+                  this.element.addEventListener("mouseout", callback2, false);
+                  events.push({ type: "mouseover", callback: callback1 });
+                  events.push({ type: "mouseout", callback: callback2 });
+
+                  return this;
+              };
+
+              this.size = function () {
+                  var size = { width: 0, height: 0 },
+                      rect = this.element.getBoundingClientRect();
+
+                  if (!rect || rect.width == 0 && rect.height == 0) {
+                      var height_list = ["height", "paddingTop", "paddingBottom", "borderTopWidth", "borderBottomWidth"],
+                          width_list = ["width", "paddingLeft", "paddingRight", "borderLeftWidth", "borderRightWidth"];
+
+                      var computedStyle = window.getComputedStyle(this.element);
+
+                      for (var i = 0; i < height_list.length; i++) {
+                          size.height += parseFloat(computedStyle[height_list[i]]);
+                      }
+
+                      for (var i = 0; i < width_list.length; i++) {
+                          size.width += parseFloat(computedStyle[width_list[i]]);
+                      }
+
+                      size.width = size.width || this.element.getAttribute('width');
+                      size.height = size.height || this.element.getAttribute('height');
+                  } else {
+                      size.width = rect.width;
+                      size.height = rect.height;
+                  }
+
+                  if (isNaN(size.width)) size.width = 0;
+                  if (isNaN(size.height)) size.height = 0;
+
+                  return size;
+              };
+
+              this.is = function (moduleId) {
+                  return this instanceof jui.include(moduleId);
+              };
+          };
+
+          return Element;
+      }
+  };
+
+  var JUISvgTransformElement = {
+      name: "util.svg.element.transform",
+      extend: "util.svg.element",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+
+          var TransElement = function TransElement() {
+              var orders = {
+                  translate: null,
+                  scale: null,
+                  rotate: null,
+                  skew: null,
+                  matrix: null
+              };
+
+              function applyOrders(self) {
+                  var orderArr = [];
+
+                  for (var key in orders) {
+                      if (orders[key]) orderArr.push(orders[key]);
+                  }
+
+                  self.attr({ transform: orderArr.join(" ") });
+              }
+
+              function getStringArgs(args) {
+                  var result = [];
+
+                  for (var i = 0; i < args.length; i++) {
+                      result.push(args[i]);
+                  }
+
+                  return result.join(",");
+              }
+
+              this.translate = function () {
+                  orders["translate"] = "translate(" + getStringArgs(arguments) + ")";
+                  applyOrders(this);
+
+                  return this;
+              };
+
+              this.rotate = function (angle, x, y) {
+                  if (arguments.length == 1) {
+                      var str = angle;
+                  } else if (arguments.length == 3) {
+                      var str = angle + " " + x + "," + y;
+                  }
+
+                  orders["rotate"] = "rotate(" + str + ")";
+                  applyOrders(this);
+
+                  return this;
+              };
+
+              this.scale = function () {
+                  orders["scale"] = "scale(" + getStringArgs(arguments) + ")";
+                  applyOrders(this);
+
+                  return this;
+              };
+
+              this.skew = function () {
+                  orders["skew"] = "skew(" + getStringArgs(arguments) + ")";
+                  applyOrders(this);
+
+                  return this;
+              };
+
+              this.matrix = function () {
+                  orders["matrix"] = "matrix(" + getStringArgs(arguments) + ")";
+                  applyOrders(this);
+
+                  return this;
+              };
+
+              this.data = function (type) {
+                  var text = this.attr("transform"),
+                      regex = {
+                      translate: /[^translate()]+/g,
+                      rotate: /[^rotate()]+/g,
+                      scale: /[^scale()]+/g,
+                      skew: /[^skew()]+/g,
+                      matrix: /[^matrix()]+/g
+                  };
+
+                  if (_.typeCheck("string", text)) {
+                      return text.match(regex[type])[0];
+                  }
+
+                  return null;
+              };
+          };
+
+          return TransElement;
+      }
+  };
+
+  var JUISvgPathElement = {
+      name: "util.svg.element.path",
+      extend: "util.svg.element.transform",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+
+          var PathElement = function PathElement() {
+              var orders = [];
+
+              this.moveTo = function (x, y, type) {
+                  orders.push((type || "m") + x + "," + y);
+                  return this;
+              };
+              this.MoveTo = function (x, y) {
+                  return this.moveTo(x, y, "M");
+              };
+
+              this.lineTo = function (x, y, type) {
+                  orders.push((type || "l") + x + "," + y);
+                  return this;
+              };
+              this.LineTo = function (x, y) {
+                  return this.lineTo(x, y, "L");
+              };
+
+              this.hLineTo = function (x, type) {
+                  orders.push((type || "h") + x);
+                  return this;
+              };
+              this.HLineTo = function (x) {
+                  return this.hLineTo(x, "H");
+              };
+
+              this.vLineTo = function (y, type) {
+                  orders.push((type || "v") + y);
+                  return this;
+              };
+              this.VLineTo = function (y) {
+                  return this.vLineTo(y, "V");
+              };
+
+              this.curveTo = function (x1, y1, x2, y2, x, y, type) {
+                  orders.push((type || "c") + x1 + "," + y1 + " " + x2 + "," + y2 + " " + x + "," + y);
+                  return this;
+              };
+              this.CurveTo = function (x1, y1, x2, y2, x, y) {
+                  return this.curveTo(x1, y1, x2, y2, x, y, "C");
+              };
+
+              this.sCurveTo = function (x2, y2, x, y, type) {
+                  orders.push((type || "s") + x2 + "," + y2 + " " + x + "," + y);
+                  return this;
+              };
+              this.SCurveTo = function (x2, y2, x, y) {
+                  return this.sCurveTo(x2, y2, x, y, "S");
+              };
+
+              this.qCurveTo = function (x1, y1, x, y, type) {
+                  orders.push((type || "q") + x1 + "," + y1 + " " + x + "," + y);
+                  return this;
+              };
+              this.QCurveTo = function (x1, y1, x, y) {
+                  return this.qCurveTo(x1, y1, x, y, "Q");
+              };
+
+              this.tCurveTo = function (x1, y1, x, y, type) {
+                  orders.push((type || "t") + x1 + "," + y1 + " " + x + "," + y);
+                  return this;
+              };
+              this.TCurveTo = function (x1, y1, x, y) {
+                  return this.tCurveTo(x1, y1, x, y, "T");
+              };
+
+              this.arc = function (rx, ry, x_axis_rotation, large_arc_flag, sweep_flag, x, y, type) {
+                  large_arc_flag = large_arc_flag ? 1 : 0;
+                  sweep_flag = sweep_flag ? 1 : 0;
+
+                  orders.push((type || "a") + rx + "," + ry + " " + x_axis_rotation + " " + large_arc_flag + "," + sweep_flag + " " + x + "," + y);
+                  return this;
+              };
+              this.Arc = function (rx, ry, x_axis_rotation, large_arc_flag, sweep_flag, x, y) {
+                  return this.arc(rx, ry, x_axis_rotation, large_arc_flag, sweep_flag, x, y, "A");
+              };
+
+              this.closePath = function (type) {
+                  orders.push(type || "z");
+                  return this;
+              };
+              this.ClosePath = function () {
+                  return this.closePath("Z");
+              };
+
+              this.join = function () {
+                  if (orders.length > 0) {
+                      this.attr({ d: orders.join(" ") });
+                      orders = [];
+                  }
+              };
+
+              this.length = function () {
+                  var id = _.createId(),
+                      d = orders.join(" ");
+
+                  var svg = document.createElement("svg"),
+                      path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+
+                  path.setAttributeNS(null, "id", id);
+                  path.setAttributeNS(null, "d", d);
+                  svg.appendChild(path);
+
+                  document.body.appendChild(svg);
+                  var length = document.getElementById(id).getTotalLength();
+                  document.body.removeChild(svg);
+
+                  return length;
+              };
+          };
+
+          return PathElement;
+      }
+  };
+
+  var JUISvgPathRectElement = {
+      name: "util.svg.element.path.rect",
+      extend: "util.svg.element.path",
+      component: function component() {
+          var PathRectElement = function PathRectElement() {
+              this.round = function (width, height, tl, tr, br, bl) {
+                  tl = !tl ? 0 : tl;
+                  tr = !tr ? 0 : tr;
+                  br = !br ? 0 : br;
+                  bl = !bl ? 0 : bl;
+
+                  this.MoveTo(0, tl).Arc(tl, tl, 0, 0, 1, tl, 0).HLineTo(width - tr).Arc(tr, tr, 0, 0, 1, width, tr).VLineTo(height - br).Arc(br, br, 0, 0, 1, width - br, height).HLineTo(bl).Arc(bl, bl, 0, 0, 1, 0, height - bl).ClosePath().join();
+              };
+          };
+
+          return PathRectElement;
+      }
+  };
+
+  var JUISvgPathSymbolElement = {
+      name: "util.svg.element.path.symbol",
+      extend: "util.svg.element.path",
+      component: function component() {
+          var PathSymbolElement = function PathSymbolElement() {
+              var ordersString = "";
+
+              /**
+               * 심볼 템플릿
+               *
+               */
+              this.template = function (width, height) {
+                  var r = width,
+                      half_width = half_r = width / 2,
+                      half_height = height / 2;
+
+                  var start = "a" + half_r + "," + half_r + " 0 1,1 " + r + ",0",
+                      end = "a" + half_r + "," + half_r + " 0 1,1 " + -r + ",0";
+
+                  var obj = {
+                      triangle: ["m0," + -half_height, "l" + half_width + "," + height, "l" + -width + ",0", "l" + half_width + "," + -height].join(" "),
+                      rect: ["m" + -half_width + "," + -half_height, "l" + width + ",0", "l0," + height, "l" + -width + ',0', "l0," + -height].join(" "),
+                      cross: ["m" + -half_width + ',' + -half_height, "l" + width + "," + height, "m0," + -height, "l" + -width + "," + height].join(" "),
+                      circle: ["m" + -r + ",0", start, end].join(" ")
+                  };
+
+                  obj.rectangle = obj.rect;
+
+                  return obj;
+              };
+
+              this.join = function () {
+                  if (ordersString.length > 0) {
+                      this.attr({ d: ordersString });
+                      ordersString = "";
+                  }
+              };
+
+              /**
+               * 심볼 추가 하기 (튜닝)
+               */
+              this.add = function (cx, cy, tpl) {
+                  ordersString += " M" + cx + "," + cy + tpl;
+              };
+
+              /**
+               * path 내 심볼 생성
+               *
+               */
+              this.triangle = function (cx, cy, width, height) {
+                  return this.MoveTo(cx, cy).moveTo(0, -height / 2).lineTo(width / 2, height).lineTo(-width, 0).lineTo(width / 2, -height);
+              };
+
+              this.rect = this.rectangle = function (cx, cy, width, height) {
+                  return this.MoveTo(cx, cy).moveTo(-width / 2, -height / 2).lineTo(width, 0).lineTo(0, height).lineTo(-width, 0).lineTo(0, -height);
+              };
+
+              this.cross = function (cx, cy, width, height) {
+                  return this.MoveTo(cx, cy).moveTo(-width / 2, -height / 2).lineTo(width, height).moveTo(0, -height).lineTo(-width, height);
+              };
+
+              this.circle = function (cx, cy, r) {
+                  return this.MoveTo(cx, cy).moveTo(-r, 0).arc(r / 2, r / 2, 0, 1, 1, r, 0).arc(r / 2, r / 2, 0, 1, 1, -r, 0);
+              };
+          };
+
+          return PathSymbolElement;
+      }
+  };
+
+  var JUISvgPolyElement = {
+      name: "util.svg.element.poly",
+      extend: "util.svg.element.transform",
+      component: function component() {
+          var PolyElement = function PolyElement() {
+              var orders = [];
+
+              this.point = function (x, y) {
+                  orders.push(x + "," + y);
+                  return this;
+              };
+
+              this.join = function () {
+                  if (orders.length > 0) {
+                      // Firefox 처리
+                      var start = orders[0];
+                      orders.push(start);
+
+                      // 폴리곤 그리기
+                      this.attr({ points: orders.join(" ") });
+                      orders = [];
+                  }
+              };
+          };
+
+          return PolyElement;
+      }
+  };
+
+  jui$1.use(JUISvgElement, JUISvgTransformElement, JUISvgPathElement, JUISvgPathSymbolElement, JUISvgPathRectElement, JUISvgPolyElement);
+
+  var JUISvgBase = {
+      name: "util.svg.base",
+      extend: null,
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var Element = jui$1.include("util.svg.element");
+          var TransElement = jui$1.include("util.svg.element.transform");
+          var PathElement = jui$1.include("util.svg.element.path");
+          var PathSymbolElement = jui$1.include("util.svg.element.path.symbol");
+          var PathRectElement = jui$1.include("util.svg.element.path.rect");
+          var PolyElement = jui$1.include("util.svg.element.poly");
+
+          var globalObj = null;
+
+          /**
+           * @class util.svg.base
+           * SVG base module
+           *
+           * @requires util.base
+           * @requires util.math
+           * @requires util.color
+           * @requires util.svg.element
+           * @requires util.svg.element.transform
+           * @requires util.svg.element.path
+           * @requires util.svg.element.path.symbol
+           * @requires util.svg.element.path.rect
+           * @requires util.svg.element.poly
+           * @alias SVGBase
+           */
+          var SVGBase = function SVGBase() {
+              this.create = function (obj, type, attr, callback) {
+                  obj.create(type, attr);
+                  return obj;
+              };
+
+              this.createChild = function (obj, type, attr, callback) {
+                  return this.create(obj, type, attr, callback);
+              };
+
+              /**
+               * @method custom
+               *
+               * return custom element
+               *
+               * @param {String} name
+               * @param {Object} attr
+               * @param {Function} callback
+               * @return {util.svg.element}
+               */
+              this.custom = function (name, attr, callback) {
+                  return this.create(new Element(), name, attr, callback);
+              };
+
+              /**
+               * @method defs
+               *
+               * return defs element
+               *
+               * @param {Function} callback
+               * @return {util.svg.element}
+               */
+              this.defs = function (callback) {
+                  return this.create(new Element(), "defs", null, callback);
+              };
+
+              /**
+               * @method symbol
+               *
+               * return symbol element
+               *
+               * @param {Object} attr
+               * @param {Function} callback
+               * @return {util.svg.element}
+               */
+              this.symbol = function (attr, callback) {
+                  return this.create(new Element(), "symbol", attr, callback);
+              };
+
+              /**
+               * @method g
+               *
+               * return defs element
+               *
+               * @alias group
+               * @param {Object} attr
+               * @param {Function} callback
+               * @return {util.svg.element.transform}
+               */
+              this.g = this.group = function (attr, callback) {
+                  return this.create(new TransElement(), "g", attr, callback);
+              };
+
+              /**
+               * @method marker
+               *
+               * return marker element
+               *
+               * @param {Object} attr
+               * @param {Function} callback
+               * @return {util.svg.element}
+               */
+              this.marker = function (attr, callback) {
+                  return this.create(new Element(), "marker", attr, callback);
+              };
+
+              /**
+               * @method a
+               *
+               * return a element
+               *
+               * @param {Object} attr
+               * @param {Function} callback
+               * @return {util.svg.element.transform}
+               */
+              this.a = function (attr, callback) {
+                  return this.create(new TransElement(), "a", attr, callback);
+              };
+
+              /**
+               * @method switch
+               *
+               * return switch element
+               *
+               * @param {Object} attr
+               * @param {Function} callback
+               * @return {util.svg.element}
+               */
+              this.switch = function (attr, callback) {
+                  return this.create(new Element(), "switch", attr, callback);
+              };
+
+              /**
+               * @method use
+               *
+               * return use element
+               *
+               * @param {Object} attr
+               * @return {util.svg.element}
+               */
+              this.use = function (attr) {
+                  return this.create(new Element(), "use", attr);
+              };
+
+              /**
+               * @method rect
+               *
+               * return rect element
+               *
+               * @param {Object} attr
+               * @param {Function} callback
+               * @return {util.svg.element.transform}
+               */
+              this.rect = function (attr, callback) {
+                  return this.create(new TransElement(), "rect", attr, callback);
+              };
+
+              /**
+               * @method line
+               *
+               * return line element
+               *
+               * @param {Object} attr
+               * @param {Function} callback
+               * @return {util.svg.element.transform}
+               */
+              this.line = function (attr, callback) {
+                  return this.create(new TransElement(), "line", attr, callback);
+              };
+
+              this.circle = function (attr, callback) {
+                  return this.create(new TransElement(), "circle", attr, callback);
+              };
+
+              this.text = function (attr, textOrCallback) {
+                  if (arguments.length == 2) {
+                      if (_.typeCheck("function", textOrCallback)) {
+                          return this.create(new TransElement(), "text", attr, textOrCallback);
+                      }
+
+                      return this.create(new TransElement(), "text", attr).text(textOrCallback);
+                  }
+
+                  return this.create(new TransElement(), "text", attr);
+              };
+
+              this.textPath = function (attr, text) {
+                  if (_.typeCheck("string", text)) {
+                      return this.create(new Element(), "textPath", attr).text(text);
+                  }
+
+                  return this.create(new Element(), "textPath", attr);
+              };
+
+              this.tref = function (attr, text) {
+                  if (_.typeCheck("string", text)) {
+                      return this.create(new Element(), "tref", attr).text(text);
+                  }
+
+                  return this.create(new Element(), "tref", attr);
+              };
+
+              this.tspan = function (attr, text) {
+                  if (_.typeCheck("string", text)) {
+                      return this.create(new Element(), "tspan", attr).text(text);
+                  }
+
+                  return this.create(new Element(), "tspan", attr);
+              };
+
+              this.ellipse = function (attr, callback) {
+                  return this.create(new TransElement(), "ellipse", attr, callback);
+              };
+
+              this.image = function (attr, callback) {
+                  return this.create(new TransElement(), "image", attr, callback);
+              };
+
+              this.path = function (attr, callback) {
+                  return this.create(new PathElement(), "path", attr, callback);
+              };
+
+              this.pathSymbol = function (attr, callback) {
+                  return this.create(new PathSymbolElement(), "path", attr, callback);
+              };
+
+              this.pathRect = function (attr, callback) {
+                  return this.create(new PathRectElement(), "path", attr, callback);
+              };
+
+              this.polyline = function (attr, callback) {
+                  return this.create(new PolyElement(), "polyline", attr, callback);
+              };
+
+              this.polygon = function (attr, callback) {
+                  return this.create(new PolyElement(), "polygon", attr, callback);
+              };
+
+              this.pattern = function (attr, callback) {
+                  return this.create(new Element(), "pattern", attr, callback);
+              };
+
+              this.mask = function (attr, callback) {
+                  return this.create(new Element(), "mask", attr, callback);
+              };
+
+              this.clipPath = function (attr, callback) {
+                  return this.create(new Element(), "clipPath", attr, callback);
+              };
+
+              this.linearGradient = function (attr, callback) {
+                  return this.create(new Element(), "linearGradient", attr, callback);
+              };
+
+              this.radialGradient = function (attr, callback) {
+                  return this.create(new Element(), "radialGradient", attr, callback);
+              };
+
+              this.filter = function (attr, callback) {
+                  return this.create(new Element(), "filter", attr, callback);
+              };
+
+              this.foreignObject = function (attr, callback) {
+                  return this.create(new TransElement(), "foreignObject", attr, callback);
+              };
+
+              /**
+               * 엘리먼트 관련 메소드 (그라데이션)
+               *
+               */
+
+              this.stop = function (attr) {
+                  return this.createChild(new Element(), "stop", attr);
+              };
+
+              /**
+               * 엘리먼트 관련 메소드 (애니메이션)
+               *
+               */
+
+              this.animate = function (attr) {
+                  return this.createChild(new Element(), "animate", attr);
+              };
+
+              this.animateColor = function (attr) {
+                  return this.createChild(new Element(), "animateColor", attr);
+              };
+
+              this.animateMotion = function (attr) {
+                  return this.createChild(new Element(), "animateMotion", attr);
+              };
+
+              this.animateTransform = function (attr) {
+                  return this.createChild(new Element(), "animateTransform", attr);
+              };
+
+              this.mpath = function (attr) {
+                  return this.createChild(new Element(), "mpath", attr);
+              };
+
+              this.set = function (attr) {
+                  return this.createChild(new Element(), "set", attr);
+              };
+
+              /**
+               * 엘리먼트 관련 메소드 (필터)
+               *
+               */
+
+              this.feBlend = function (attr) {
+                  return this.createChild(new Element(), "feBlend", attr);
+              };
+
+              this.feColorMatrix = function (attr) {
+                  return this.createChild(new Element(), "feColorMatrix", attr);
+              };
+
+              this.feComponentTransfer = function (attr) {
+                  return this.createChild(new Element(), "feComponentTransfer", attr);
+              };
+
+              this.feComposite = function (attr) {
+                  return this.createChild(new Element(), "feComposite", attr);
+              };
+
+              this.feConvolveMatrix = function (attr) {
+                  return this.createChild(new Element(), "feConvolveMatrix", attr);
+              };
+
+              this.feDiffuseLighting = function (attr) {
+                  return this.createChild(new Element(), "feDiffuseLighting", attr);
+              };
+
+              this.feDisplacementMap = function (attr) {
+                  return this.createChild(new Element(), "feDisplacementMap", attr);
+              };
+
+              this.feFlood = function (attr) {
+                  return this.createChild(new Element(), "feFlood", attr);
+              };
+
+              this.feGaussianBlur = function (attr) {
+                  return this.createChild(new Element(), "feGaussianBlur", attr);
+              };
+
+              this.feImage = function (attr) {
+                  return this.createChild(new Element(), "feImage", attr);
+              };
+
+              this.feMerge = function (attr, callback) {
+                  return this.createChild(new Element(), "feMerge", attr, callback);
+              };
+
+              this.feMergeNode = function (attr) {
+                  return this.createChild(new Element(), "feMergeNode", attr);
+              };
+
+              this.feMorphology = function (attr) {
+                  return this.createChild(new Element(), "feMorphology", attr);
+              };
+
+              this.feOffset = function (attr) {
+                  return this.createChild(new Element(), "feOffset", attr);
+              };
+
+              this.feSpecularLighting = function (attr) {
+                  return this.createChild(new Element(), "feSpecularLighting", attr);
+              };
+
+              this.feTile = function (attr) {
+                  return this.createChild(new Element(), "feTile", attr);
+              };
+
+              this.feTurbulence = function (attr) {
+                  return this.createChild(new Element(), "feTurbulence", attr);
+              };
+          };
+
+          SVGBase.create = function (name, attr, callback) {
+              if (globalObj == null) {
+                  globalObj = new SVGBase();
+              }
+
+              return globalObj.custom(name, attr, callback);
+          };
+
+          return SVGBase;
+      }
+  };
+
+  jui$1.use(math, color, JUISvgBase);
+
+  var JUISvgBase3d = {
+      name: "util.svg.base3d",
+      extend: "util.svg.base",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var math$$1 = jui$1.include("util.math");
+          var color$$1 = jui$1.include("util.color");
+
+          var SVG3d = function SVG3d() {
+
+              this.rect3d = function (fill, width, height, degree, depth) {
+                  var self = this;
+
+                  var radian = math$$1.radian(degree),
+                      x1 = 0,
+                      y1 = 0,
+                      w1 = width,
+                      h1 = height;
+
+                  var x2 = Math.cos(radian) * depth,
+                      y2 = Math.sin(radian) * depth,
+                      w2 = width + x2,
+                      h2 = height + y2;
+
+                  var g = self.group({}, function () {
+                      self.path({
+                          fill: color$$1.lighten(fill, 0.15),
+                          stroke: color$$1.lighten(fill, 0.15)
+                      }).MoveTo(x2, x1).LineTo(w2, y1).LineTo(w1, y2).LineTo(x1, y2);
+
+                      self.path({
+                          fill: fill,
+                          stroke: fill
+                      }).MoveTo(x1, y2).LineTo(x1, h2).LineTo(w1, h2).LineTo(w1, y2);
+
+                      self.path({
+                          fill: color$$1.darken(fill, 0.2),
+                          stroke: color$$1.darken(fill, 0.2)
+                      }).MoveTo(w1, h2).LineTo(w2, h1).LineTo(w2, y1).LineTo(w1, y2);
+                  });
+
+                  return g;
+              };
+
+              this.cylinder3d = function (fill, width, height, degree, depth, rate) {
+                  var self = this;
+
+                  var radian = math$$1.radian(degree),
+                      rate = rate == undefined ? 1 : rate == 0 ? 0.01 : rate,
+                      r = width / 2,
+                      tr = r * rate,
+                      l = Math.cos(radian) * depth / 2,
+                      d = Math.sin(radian) * depth / 2,
+
+                  // key = _.createId("cylinder3d");
+                  key = "cylinder3d";
+
+                  var g = self.group({}, function () {
+                      self.ellipse({
+                          fill: color$$1.darken(fill, 0.05),
+                          "fill-opacity": 0.85,
+                          stroke: color$$1.darken(fill, 0.05),
+                          rx: r,
+                          ry: d,
+                          cx: r,
+                          cy: height
+                      }).translate(l, d);
+
+                      self.path({
+                          fill: "url(#" + key + ")",
+                          "fill-opacity": 0.85,
+                          stroke: fill
+                      }).MoveTo(r - tr, d).LineTo(0, height).Arc(r, d, 0, 0, 0, width, height).LineTo(r + tr, d).Arc(r + tr, d, 0, 0, 1, r - tr, d).translate(l, d);
+
+                      self.ellipse({
+                          fill: color$$1.lighten(fill, 0.2),
+                          "fill-opacity": 0.95,
+                          stroke: color$$1.lighten(fill, 0.2),
+                          rx: r * rate,
+                          ry: d * rate,
+                          cx: r,
+                          cy: d
+                      }).translate(l, d);
+
+                      self.linearGradient({
+                          id: key,
+                          x1: "100%",
+                          x2: "0%",
+                          y1: "0%",
+                          y2: "0%"
+                      }, function () {
+                          self.stop({
+                              offset: "0%",
+                              "stop-color": color$$1.lighten(fill, 0.15)
+                          });
+                          self.stop({
+                              offset: "33.333333333333336%",
+                              "stop-color": color$$1.darken(fill, 0.2)
+                          });
+                          self.stop({
+                              offset: "66.66666666666667%",
+                              "stop-color": color$$1.darken(fill, 0.2)
+                          });
+                          self.stop({
+                              offset: "100%",
+                              "stop-color": color$$1.lighten(fill, 0.15)
+                          });
+                      });
+                  });
+
+                  return g;
+              };
+          };
+
+          return SVG3d;
+      }
+  };
+
+  jui$1.use(JUISvgBase3d);
+
+  var svg = {
+      name: "util.svg",
+      extend: "util.svg.base3d",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var Element = jui$1.include("util.svg.element");
+          var TransElement = jui$1.include("util.svg.element.transform");
+          var PathElement = jui$1.include("util.svg.element.path");
+          var PolyElement = jui$1.include("util.svg.element.poly");
+
+          var SVG = function SVG(rootElem, rootAttr) {
+              var self = this,
+                  root = null,
+                  main = null,
+                  sub = null,
+                  parent = {},
+                  depth = 0;
+              var isFirst = false; // 첫번째 렌더링 체크
+
+              function init() {
+                  self.root = root = new Element();
+                  main = new TransElement();
+                  sub = new TransElement();
+
+                  root.create("svg", rootAttr);
+                  main.create("g");
+                  sub.create("g");
+
+                  main.translate(0.5, 0.5);
+                  sub.translate(0.5, 0.5);
+
+                  rootElem.appendChild(root.element);
+                  root.append(main);
+                  root.append(sub);
+              }
+
+              function appendAll(target) {
+                  var childs = target.children;
+
+                  // 엘리먼트 렌더링 순서 정하기
+                  if (isOrderingChild(childs)) {
+                      childs.sort(function (a, b) {
+                          return a.order - b.order;
+                      });
+                  }
+
+                  for (var i = 0, len = childs.length; i < len; i++) {
+                      var child = childs[i];
+
+                      if (child) {
+                          if (child.children.length > 0) {
+                              appendAll(child);
+                          }
+
+                          // PathElement & PathSymbolElement & PathRectElement & PolyElement auto join
+                          if (child instanceof PathElement || child instanceof PolyElement) {
+                              child.join();
+                          }
+
+                          if (child.parent == target) {
+                              target.element.appendChild(child.element);
+                          }
+                      }
+                  }
+              }
+
+              function removeEventAll(target) {
+                  var childs = target.children;
+
+                  for (var i = 0, len = childs.length; i < len; i++) {
+                      var child = childs[i];
+
+                      if (child) {
+                          child.off();
+
+                          if (child.children.length > 0) {
+                              removeEventAll(child);
+                          }
+                      }
+                  }
+              }
+
+              function isOrderingChild(childs) {
+                  // order가 0 이상인 엘리먼트가 하나라도 있을 경우
+                  for (var i = 0, len = childs.length; i < len; i++) {
+                      if (childs[i].order > 0) {
+                          return true;
+                      }
+                  }
+
+                  return false;
+              }
+
+              this.create = function (obj, type, attr, callback) {
+                  obj.create(type, attr);
+
+                  if (depth == 0) {
+                      main.append(obj);
+                  } else {
+                      parent[depth].append(obj);
+                  }
+
+                  if (_.typeCheck("function", callback)) {
+                      depth++;
+                      parent[depth] = obj;
+
+                      callback.call(obj);
+                      depth--;
+                  }
+
+                  return obj;
+              };
+
+              this.createChild = function (obj, type, attr, callback) {
+                  if (obj.parent == main) {
+                      throw new Error("JUI_CRITICAL_ERR: Parents are required elements of the '" + type + "'");
+                  }
+
+                  return this.create(obj, type, attr, callback);
+              };
+
+              /**
+               * @method size
+               *
+               * if arguments.length is 2, set attribute width, height to root element
+               * if arguments.length is zero, return svg size
+               *
+               * @return {Object}
+               * @return {Integer} width
+               * @return {Integer} height
+               */
+              this.size = function () {
+                  if (arguments.length == 2) {
+                      var w = arguments[0],
+                          h = arguments[1];
+
+                      root.attr({ width: w, height: h });
+                  } else {
+                      return root.size();
+                  }
+              };
+
+              /**
+               * @method clear
+               * @param isAll
+               */
+              this.clear = function (isAll) {
+                  main.each(function () {
+                      if (this.element.parentNode) {
+                          main.element.removeChild(this.element);
+                      }
+                  });
+
+                  removeEventAll(main);
+
+                  if (isAll === true) {
+                      sub.each(function () {
+                          if (this.element.parentNode) {
+                              sub.element.removeChild(this.element);
+                          }
+                      });
+
+                      removeEventAll(sub);
+                  }
+              };
+
+              /**
+               * @method reset
+               * @param isAll
+               */
+              this.reset = function (isAll) {
+                  this.clear(isAll);
+                  main.children = [];
+
+                  if (isAll === true) {
+                      sub.children = [];
+                  }
+              };
+
+              /**
+               * @method render
+               * @param isAll
+               */
+              this.render = function (isAll) {
+                  this.clear();
+
+                  if (isFirst === false || isAll === true) {
+                      appendAll(root);
+                  } else {
+                      appendAll(main);
+                  }
+
+                  isFirst = true;
+              };
+
+              /**
+               * @method
+               * implements svg image file download used by canvas
+               * @param name
+               */
+              this.download = function (name) {
+                  if (_.typeCheck("string", name)) {
+                      name = name.split(".")[0];
+                  }
+
+                  var a = document.createElement("a");
+                  a.download = name ? name + ".svg" : "svg.svg";
+                  a.href = this.toDataURI(); //;_.svgToBase64(rootElem.innerHTML);
+
+                  document.body.appendChild(a);
+                  a.click();
+                  a.parentNode.removeChild(a);
+              };
+
+              this.downloadImage = function (name, type) {
+                  type = type || "image/png";
+
+                  var img = new Image();
+                  var size = this.size();
+                  var uri = this.toDataURI().replace('width="100%"', 'width="' + size.width + '"').replace('height="100%"', 'height="' + size.height + '"');
+                  img.onload = function () {
+                      var canvas = document.createElement("canvas");
+                      canvas.width = img.width;
+                      canvas.height = img.height;
+
+                      var context = canvas.getContext('2d');
+                      context.drawImage(img, 0, 0);
+
+                      var png = canvas.toDataURL(type);
+
+                      if (_.typeCheck("string", name)) {
+                          name = name.split(".")[0];
+                      }
+
+                      var a = document.createElement('a');
+                      a.download = name ? name + ".png" : "svg.png";
+                      a.href = png;
+
+                      document.body.appendChild(a);
+                      a.click();
+                      a.parentNode.removeChild(a);
+                  };
+
+                  img.src = uri;
+              };
+
+              /**
+               * @method exportCanvas
+               *
+               * convert svg image to canvas
+               *
+               * @param {Canvas} canvas
+               */
+              this.exportCanvas = function (canvas) {
+                  var img = new Image(),
+                      size = this.size();
+
+                  var uri = this.toDataURI().replace('width="100%"', 'width="' + size.width + '"').replace('height="100%"', 'height="' + size.height + '"');
+
+                  img.onload = function () {
+                      canvas.width = img.width;
+                      canvas.height = img.height;
+
+                      var context = canvas.getContext('2d');
+                      context.drawImage(img, 0, 0);
+                  };
+
+                  img.src = uri;
+              };
+
+              /**
+               * @method toXML
+               *
+               * convert xml string
+               *
+               * @return {String} xml
+               */
+              this.toXML = function () {
+                  var text = rootElem.innerHTML;
+
+                  text = text.replace('xmlns="http://www.w3.org/2000/svg"', '');
+
+                  return ['<?xml version="1.0" encoding="utf-8"?>', text.replace("<svg ", '<svg xmlns="http://www.w3.org/2000/svg" ')].join("\n");
+              };
+
+              /**
+               * @method toDataURI
+               *
+               * convert svg to datauri format
+               *
+               * @return {String}
+               */
+              this.toDataURI = function () {
+                  var xml = this.toXML();
+
+                  if (_.browser.mozilla || _.browser.msie) {
+                      xml = encodeURIComponent(xml);
+                  }
+
+                  if (_.browser.msie) {
+                      return "data:image/svg+xml," + xml;
+                  } else {
+                      return "data:image/svg+xml;utf8," + xml;
+                  }
+              };
+
+              /**
+               * @method autoRender
+               *
+               * @param {util.svg.element} elem
+               * @param {Boolean} isAuto
+               */
+              this.autoRender = function (elem, isAuto) {
+                  if (depth > 0) return;
+
+                  if (!isAuto) {
+                      sub.append(elem);
+                  } else {
+                      main.append(elem);
+                  }
+              };
+
+              /**
+               * @method getTextSize
+               *
+               * caculate real pixel size of text element
+               *
+               * @param {String} text target text
+               * @return {Object}
+               * @return {Integer} return.width  text element's width (px)
+               * @return {Integer} return.height text element's height(px)
+               */
+              this.getTextSize = function (text, opt) {
+                  if (text == "") {
+                      return { width: 0, height: 0 };
+                  }
+
+                  opt = opt || {};
+
+                  var bodyElement = document.body || root.element;
+
+                  var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+                  svg.setAttributeNS(null, "width", 500);
+                  svg.setAttributeNS(null, "height", 100);
+                  svg.setAttributeNS(null, "x", -20000);
+                  svg.setAttributeNS(null, "y", -20000);
+
+                  var el = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                  el.setAttributeNS(null, "x", -200);
+                  el.setAttributeNS(null, "y", -200);
+                  el.appendChild(document.createTextNode(text));
+
+                  if (opt.fontSize) {
+                      el.setAttributeNS(null, "font-size", opt.fontSize);
+                  }
+
+                  if (opt.fontFamily) {
+                      el.setAttributeNS(null, "font-family", opt.fontFamily);
+                  }
+
+                  if (opt.bold) {
+                      el.setAttributeNS(null, "font-weight", opt.bold);
+                  }
+
+                  if (opt.style) {
+                      el.setAttributeNS(null, "font-style", opt.style);
+                  }
+
+                  svg.appendChild(el);
+
+                  bodyElement.appendChild(svg);
+                  var rect = el.getBoundingClientRect();
+                  bodyElement.removeChild(svg);
+
+                  return { width: rect.width, height: rect.height };
+              };
+
+              init();
+          };
+
+          /**
+           * @method create
+           *
+           * create nested elements by json
+           *
+           *      @example
+           *      SVG.create({
+          *          tag : "pattern",
+          *          attr : { x : 0, y : 0, width : 20, height : 20  },
+          *          children : [
+          *              { tag : 'rect', attr : {width : 20, height : 20, fill : 'black', stroke : 'blue', 'stroke-width' : 2 } ,
+          *              { tag : 'rect', attr : {width : 20, height : 20, fill : 'black', stroke : 'blue', 'stroke-width' : 2 } ,
+          *              { tag : 'rect', attr : {width : 20, height : 20, fill : 'black', stroke : 'blue', 'stroke-width' : 2 } ,
+          *              { tag : 'rect', attr : {width : 20, height : 20, fill : 'black', stroke : 'blue', 'stroke-width' : 2 }
+          *          ]
+          *      });
+          *
+          * is equals to
+          *
+           *      @example
+           *      <pattern x="0" y="0" width="20" height="20">
+           *          <rect width="20" height="20" fill="black" stroke="blue" stroke-width="2" />
+           *          <rect width="20" height="20" fill="black" stroke="blue" stroke-width="2" />
+           *          <rect width="20" height="20" fill="black" stroke="blue" stroke-width="2" />
+           *          <rect width="20" height="20" fill="black" stroke="blue" stroke-width="2" />
+           *      </pattern>
+           *
+           * @param {Object} obj json literal
+           * @param {String} obj.type  svg element name
+           * @param {Object} obj.attr  svg element's attributes
+           * @param {Array} [obj.children=null] svg element's children
+           * @static
+           * @return {util.svg.element}
+           *
+           */
+          SVG.createObject = function (obj) {
+              var el = new Element();
+
+              el.create(obj.type, obj.attr);
+
+              if (obj.children instanceof Array) {
+                  for (var i = 0, len = obj.children.length; i < len; i++) {
+                      el.append(SVG.createObject(obj.children[i]));
+                  }
+              }
+
+              return el;
+          };
+
+          return SVG;
+      }
+  };
+
+  jui$1.use([math]);
+
+  var LinearScaleUtil = {
+      name: "util.scale.linear",
+      extend: null,
+      component: function component() {
+          var math$$1 = jui$1.include("util.math");
+
+          var linear = function linear() {
+              var _domain = [0, 1];
+              var _range = [0, 1];
+              var _isRound = false;
+              var _isClamp = false;
+              var _cache = {};
+
+              var roundFunction = null;
+              var numberFunction = null;
+
+              var domainMin = null;
+              var domainMax = null;
+
+              var rangeMin = null;
+              var rangeMax = null;
+
+              var distDomain = null;
+              var distRange = null;
+              var rate = 0;
+
+              var callFunction = null;
+              var _rangeBand = null;
+
+              function func(x) {
+                  if (domainMax < x) {
+                      if (_isClamp) {
+                          return func(domainMax);
+                      }
+
+                      return _range[0] + Math.abs(x - _domain[0]) * rate;
+                  } else if (domainMin > x) {
+                      if (_isClamp) {
+                          return func(domainMin);
+                      }
+
+                      return _range[0] - Math.abs(x - _domain[0]) * rate;
+                  } else {
+                      var pos = (x - _domain[0]) / distDomain;
+
+                      return callFunction(pos);
+                  }
+              }
+
+              func.cache = function () {
+                  return _cache;
+              };
+
+              /**
+               * @method min
+               * @static
+               *
+               * @returns {number}
+               */
+              func.min = function () {
+                  return Math.min.apply(Math, _domain);
+              };
+
+              func.max = function () {
+                  return Math.max.apply(Math, _domain);
+              };
+
+              func.rangeMin = function () {
+                  return Math.min.apply(Math, _range);
+              };
+
+              func.rangeMax = function () {
+                  return Math.max.apply(Math, _range);
+              };
+
+              func.rate = function (value, max) {
+                  return func(func.max() * (value / max));
+              };
+
+              func.clamp = function (isClamp) {
+                  _isClamp = isClamp || false;
+              };
+
+              func.domain = function (values) {
+
+                  if (!arguments.length) {
+                      return _domain;
+                  }
+
+                  for (var i = 0; i < values.length; i++) {
+                      _domain[i] = values[i];
+                  }
+
+                  domainMin = func.min();
+                  domainMax = func.max();
+
+                  distDomain = _domain[1] - _domain[0];
+
+                  return this;
+              };
+
+              func.range = function (values) {
+
+                  if (!arguments.length) {
+                      return _range;
+                  }
+
+                  for (var i = 0; i < values.length; i++) {
+                      _range[i] = values[i];
+                  }
+
+                  roundFunction = math$$1.interpolateRound(_range[0], _range[1]);
+                  numberFunction = math$$1.interpolateNumber(_range[0], _range[1]);
+
+                  rangeMin = func.rangeMin();
+                  rangeMax = func.rangeMax();
+
+                  distRange = Math.abs(rangeMax - rangeMin);
+
+                  rate = distRange / distDomain;
+
+                  callFunction = _isRound ? roundFunction : numberFunction;
+
+                  return this;
+              };
+
+              func.rangeRound = function (values) {
+                  _isRound = true;
+
+                  return func.range(values);
+              };
+
+              func.rangeBand = function () {
+                  return _rangeBand;
+              };
+
+              func.invert = function (y) {
+                  var f = linear().domain(_range).range(_domain);
+                  return f(y);
+              };
+
+              func.ticks = function (count, isNice, /** @deprecated */intNumber, reverse) {
+
+                  //intNumber = intNumber || 10000;
+                  reverse = reverse || false;
+                  var max = func.max();
+
+                  if (_domain[0] == 0 && _domain[1] == 0) {
+                      return [];
+                  }
+
+                  var obj = math$$1.nice(_domain[0], _domain[1], count || 10, isNice || false);
+
+                  var arr = [];
+
+                  var start = reverse ? obj.max : obj.min;
+                  var end = reverse ? obj.min : obj.max;
+                  var unit = obj.spacing;
+                  var fixed = math$$1.fixed(unit);
+
+                  while (reverse ? end <= start : start <= end) {
+                      arr.push(start /* / intNumber*/);
+
+                      if (reverse) {
+                          start = fixed.minus(start, unit);
+                      } else {
+                          start = fixed.plus(start, unit);
+                      }
+                  }
+
+                  if (reverse) {
+                      if (arr[0] != max) {
+                          arr.unshift(max);
+                      }
+
+                      for (var i = 0, len = arr.length; i < len; i++) {
+                          arr[i] = Math.abs(arr[i] - max);
+                      }
+                      //arr.reverse();
+                  } else {
+                      if (arr[arr.length - 1] != end && start > end) {
+                          arr.push(end);
+                      }
+
+                      if (_domain[0] > _domain[1]) {
+                          arr.reverse();
+                      }
+                  }
+
+                  var first = func(arr[0]);
+                  var second = func(arr[1]);
+
+                  _rangeBand = Math.abs(second - first);
+
+                  return arr;
+              };
+
+              return func;
+          };
+
+          return linear;
+      }
+  };
+
+  var CircleScaleUtil = {
+      name: "util.scale.circle",
+      extend: null,
+      component: function component() {
+          var circle = function circle() {
+
+              var _domain = [];
+              var _range = [];
+              var _rangeBand = 0;
+
+              function func(t) {}
+
+              /**
+               * @method domain
+               * @static
+               *
+               * @param values
+               * @returns {*}
+               */
+              func.domain = function (values) {
+
+                  if (typeof values == 'undefined') {
+                      return _domain;
+                  }
+
+                  for (var i = 0; i < values.length; i++) {
+                      _domain[i] = values[i];
+                  }
+
+                  return this;
+              };
+
+              func.range = function (values) {
+
+                  if (typeof values == 'undefined') {
+                      return _range;
+                  }
+
+                  for (var i = 0; i < values.length; i++) {
+                      _range[i] = values[i];
+                  }
+
+                  return this;
+              };
+
+              func.rangePoints = function (interval, padding) {
+
+                  padding = padding || 0;
+
+                  var step = _domain.length;
+                  var unit = (interval[1] - interval[0] - padding) / step;
+
+                  var range = [];
+                  for (var i = 0; i < _domain.length; i++) {
+                      if (i == 0) {
+                          range[i] = interval[0] + padding / 2 + unit / 2;
+                      } else {
+                          range[i] = range[i - 1] + unit;
+                      }
+                  }
+
+                  _range = range;
+                  _rangeBand = unit;
+
+                  return func;
+              };
+
+              func.rangeBands = function (interval, padding, outerPadding) {
+                  padding = padding || 0;
+                  outerPadding = outerPadding || 0;
+
+                  var count = _domain.length;
+                  var step = count - 1;
+                  var band = (interval[1] - interval[0]) / step;
+
+                  var range = [];
+                  for (var i = 0; i < _domain.length; i++) {
+                      if (i == 0) {
+                          range[i] = interval[0];
+                      } else {
+                          range[i] = band + range[i - 1];
+                      }
+                  }
+
+                  _rangeBand = band;
+                  _range = range;
+
+                  return func;
+              };
+
+              func.rangeBand = function () {
+                  return _rangeBand;
+              };
+
+              return func;
+          };
+
+          return circle;
+      }
+  };
+
+  var LogScaleUtil = {
+      name: "util.scale.log",
+      extend: null,
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var linear = jui$1.include("util.scale.linear");
+
+          var log = function log(base) {
+              var _base = base || 10;
+
+              var func = linear();
+              var _domain = [];
+              var _domainMax = null;
+              var _domainMin = null;
+
+              function log(value) {
+                  if (value < 0) {
+                      return -(Math.log(Math.abs(value)) / Math.log(_base));
+                  } else if (value > 0) {
+                      return Math.log(value) / Math.log(_base);
+                  }
+
+                  return 0;
+              }
+
+              function pow(value) {
+                  if (value < 0) {
+                      return -Math.pow(_base, Math.abs(value));
+                  } else if (value > 0) {
+                      return Math.pow(_base, value);
+                  }
+
+                  return 0;
+              }
+
+              function checkMax(value) {
+                  return Math.pow(_base, (value + "").length - 1) < value;
+              }
+
+              function getNextMax(value) {
+                  return Math.pow(_base, (value + "").length);
+              }
+
+              var newFunc = function newFunc(x) {
+                  var value = x;
+
+                  if (x > _domainMax) {
+                      value = _domainMax;
+                  } else if (x < _domainMin) {
+                      value = _domainMin;
+                  }
+
+                  return func(log(value));
+              };
+
+              _.extend(newFunc, func);
+
+              newFunc.log = function () {
+                  var newDomain = [];
+                  for (var i = 0; i < _domain.length; i++) {
+                      newDomain[i] = log(_domain[i]);
+                  }
+
+                  return newDomain;
+              };
+
+              newFunc.domain = function (values) {
+                  if (!arguments.length) {
+                      return _domain;
+                  }
+
+                  for (var i = 0; i < values.length; i++) {
+                      _domain[i] = values[i];
+                  }
+
+                  _domainMax = Math.max.apply(Math, _domain);
+                  _domainMin = Math.min.apply(Math, _domain);
+
+                  if (checkMax(_domainMax)) {
+                      _domain[1] = _domainMax = getNextMax(_domainMax);
+                  }
+
+                  if (checkMax(Math.abs(_domainMin))) {
+
+                      var value = getNextMax(Math.abs(_domainMin));
+                      _domain[0] = _domainMin = _domainMin < 0 ? -value : value;
+                  }
+
+                  func.domain(newFunc.log());
+
+                  return newFunc;
+              };
+
+              newFunc.base = function (base) {
+                  func.domain(newFunc.log());
+
+                  return newFunc;
+              };
+
+              newFunc.invert = function (y) {
+                  return pow(func.invert(y));
+              };
+
+              newFunc.ticks = function (count, isNice, intNumber) {
+                  var arr = func.ticks(count, isNice, intNumber || 100000000000000000000, true);
+
+                  if (arr[arr.length - 1] < func.max()) {
+                      arr.push(func.max());
+                  }
+
+                  var newArr = [];
+                  for (var i = 0, len = arr.length; i < len; i++) {
+                      newArr[i] = pow(arr[i]);
+                  }
+
+                  return newArr;
+              };
+
+              return newFunc;
+          };
+
+          return log;
+      }
+  };
+
+  var OrdinalScaleUtil = {
+      name: "util.scale.ordinal",
+      extend: null,
+      component: function component() {
+          var ordinal = function ordinal() {
+              var _domain = [];
+              var _range = [];
+              var _rangeBand = 0;
+              var _cache = {};
+              var _isRangePoints = false;
+
+              function func(t) {
+                  var key = "" + t;
+                  if (typeof _cache[key] != 'undefined') {
+                      return _cache[key];
+                  }
+
+                  var index = -1;
+                  for (var i = 0; i < _domain.length; i++) {
+                      if (typeof t == 'string' && _domain[i] === t) {
+                          index = i;
+                          break;
+                      }
+                  }
+
+                  if (index > -1) {
+                      _cache[key] = _range[index];
+                      return _range[index];
+                  } else {
+                      if (typeof _range[t] != 'undefined') {
+                          //_domain[t] = t;               // FIXME: 이건 나중에 따로 연산해야할 듯
+                          _cache[key] = _range[t];
+                          return _range[t];
+                      }
+
+                      return null;
+                  }
+              }
+
+              /**
+               * @method domain
+               * @static
+               *
+               * @param values
+               * @returns {*}
+               */
+              func.domain = function (values) {
+
+                  if (typeof values == 'undefined') {
+                      return _domain;
+                  }
+
+                  for (var i = 0; i < values.length; i++) {
+                      _domain[i] = values[i];
+                  }
+
+                  return this;
+              };
+
+              func.range = function (values) {
+                  if (typeof values == 'undefined') {
+                      return _range;
+                  }
+
+                  for (var i = 0; i < values.length; i++) {
+                      _range[i] = values[i];
+                  }
+
+                  return this;
+              };
+
+              func.rangePoints = function (interval, padding) {
+                  padding = padding || 0;
+
+                  var step = _domain.length;
+                  var unit = (interval[1] - interval[0] - padding) / step;
+
+                  var range = [];
+                  for (var i = 0; i < _domain.length; i++) {
+                      if (i == 0) {
+                          range[i] = interval[0] + padding / 2 + unit / 2;
+                      } else {
+                          range[i] = range[i - 1] + unit;
+                      }
+                  }
+
+                  _range = range;
+                  _rangeBand = unit;
+                  _isRangePoints = true;
+
+                  return func;
+              };
+
+              func.rangeBands = function (interval, padding, outerPadding) {
+                  padding = padding || 0;
+                  outerPadding = outerPadding || 0;
+
+                  var count = _domain.length;
+                  var step = count - 1;
+                  var band = (interval[1] - interval[0]) / step;
+
+                  var range = [];
+                  for (var i = 0; i < _domain.length; i++) {
+                      if (i == 0) {
+                          range[i] = interval[0];
+                      } else {
+                          range[i] = band + range[i - 1];
+                      }
+                  }
+
+                  _rangeBand = band;
+                  _range = range;
+                  _isRangePoints = false;
+
+                  return func;
+              };
+
+              func.rangeBand = function () {
+                  return _rangeBand;
+              };
+
+              func.invert = function (x) {
+                  var min = Math.min(_range[0], _range[1]);
+
+                  if (_isRangePoints) {
+                      min -= _rangeBand / 2;
+
+                      var tempX = x;
+                      if (tempX < min) {
+                          tempX = min;
+                      }
+                      var result = Math.abs(tempX - min) / _rangeBand;
+                      return Math.floor(result);
+                  } else {
+                      var result = Math.abs(x - min) / _rangeBand;
+                      return Math.ceil(result);
+                  }
+              };
+
+              return func;
+          };
+
+          return ordinal;
+      }
+  };
+
+  var TimeScaleUtil = {
+      name: "util.scale.time",
+      extend: null,
+      component: function component() {
+          var _time = jui$1.include("util.time");
+          var linear = jui$1.include("util.scale.linear");
+
+          var time = function time() {
+
+              var _domain = [];
+              var _rangeBand;
+              var func = linear();
+              var df = func.domain;
+
+              func.domain = function (domain) {
+                  if (!arguments.length) return df.call(func);
+
+                  for (var i = 0; i < domain.length; i++) {
+                      _domain[i] = +domain[i];
+                  }
+
+                  return df.call(func, _domain);
+              };
+
+              func.min = function () {
+                  return Math.min(_domain[0], _domain[_domain.length - 1]);
+              };
+
+              func.max = function () {
+                  return Math.max(_domain[0], _domain[_domain.length - 1]);
+              };
+
+              func.rate = function (value, max) {
+                  return func(func.max() * (value / max));
+              };
+
+              func.ticks = function (type, interval) {
+                  var start = _domain[0];
+                  var end = _domain[1];
+
+                  var times = [];
+                  while (start < end) {
+                      times.push(new Date(+start));
+
+                      start = _time.add(start, type, interval);
+                  }
+
+                  times.push(new Date(+start));
+
+                  var first = func(times[1]);
+                  var second = func(times[2]);
+
+                  _rangeBand = second - first;
+
+                  return times;
+              };
+
+              func.realTicks = function (type, interval) {
+                  var start = _domain[0];
+                  var end = _domain[1];
+
+                  var times = [];
+                  var date = new Date(+start);
+                  var realStart = null;
+
+                  if (type == _time.years) {
+                      realStart = new Date(date.getFullYear(), 0, 1);
+                  } else if (type == _time.months) {
+                      realStart = new Date(date.getFullYear(), date.getMonth(), 1);
+                  } else if (type == _time.days || type == _time.weeks) {
+                      realStart = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+                  } else if (type == _time.hours) {
+                      realStart = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), 0, 0, 0);
+                  } else if (type == _time.minutes) {
+                      realStart = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), 0, 0);
+                  } else if (type == _time.seconds) {
+                      realStart = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds(), 0);
+                  } else if (type == _time.milliseconds) {
+                      realStart = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds());
+                  }
+                  realStart = _time.add(realStart, type, interval);
+
+                  while (+realStart < +end) {
+                      times.push(new Date(+realStart));
+                      realStart = _time.add(realStart, type, interval);
+                  }
+
+                  var first = func(times[1]);
+                  var second = func(times[2]);
+
+                  _rangeBand = second - first;
+
+                  return times;
+              };
+
+              func.rangeBand = function () {
+                  return _rangeBand;
+              };
+
+              func.invert = function (y) {
+                  var f = linear().domain(func.range()).range(func.domain());
+                  return new Date(f(y));
+              };
+
+              return func;
+          };
+
+          return time;
+      }
+  };
+
+  jui$1.use([math, time]);
+
+  var scale = {
+      name: "util.scale",
+      extend: null,
+      component: function component() {
+          var math$$1 = jui$1.include("util.math");
+          var _time = jui$1.include("util.time");
+
+          var self = {
+
+              /**
+               * 원형 좌표에 대한 scale
+               *
+               */
+              circle: function circle() {
+
+                  var _domain = [];
+                  var _range = [];
+                  var _rangeBand = 0;
+
+                  function func(t) {}
+
+                  func.domain = function (values) {
+
+                      if (typeof values == 'undefined') {
+                          return _domain;
+                      }
+
+                      for (var i = 0; i < values.length; i++) {
+                          _domain[i] = values[i];
+                      }
+
+                      return this;
+                  };
+
+                  func.range = function (values) {
+
+                      if (typeof values == 'undefined') {
+                          return _range;
+                      }
+
+                      for (var i = 0; i < values.length; i++) {
+                          _range[i] = values[i];
+                      }
+
+                      return this;
+                  };
+
+                  func.rangePoints = function (interval, padding) {
+
+                      padding = padding || 0;
+
+                      var step = _domain.length;
+                      var unit = (interval[1] - interval[0] - padding) / step;
+
+                      var range = [];
+                      for (var i = 0; i < _domain.length; i++) {
+                          if (i == 0) {
+                              range[i] = interval[0] + padding / 2 + unit / 2;
+                          } else {
+                              range[i] = range[i - 1] + unit;
+                          }
+                      }
+
+                      _range = range;
+                      _rangeBand = unit;
+
+                      return func;
+                  };
+
+                  func.rangeBands = function (interval, padding, outerPadding) {
+
+                      padding = padding || 0;
+                      outerPadding = outerPadding || 0;
+
+                      var count = _domain.length;
+                      var step = count - 1;
+                      var band = (interval[1] - interval[0]) / step;
+
+                      var range = [];
+                      for (var i = 0; i < _domain.length; i++) {
+                          if (i == 0) {
+                              range[i] = interval[0];
+                          } else {
+                              range[i] = band + range[i - 1];
+                          }
+                      }
+
+                      _rangeBand = band;
+                      _range = range;
+
+                      return func;
+                  };
+
+                  func.rangeBand = function () {
+                      return _rangeBand;
+                  };
+
+                  return func;
+              },
+
+              /**
+               *
+               * 순서를 가지는 리스트에 대한 scale
+               *
+               */
+              ordinal: function ordinal() {
+
+                  var _domain = [];
+                  var _range = [];
+                  var _rangeBand = 0;
+                  var _cache = {};
+
+                  function func(t) {
+
+                      var key = "" + t;
+                      if (typeof _cache[key] != 'undefined') {
+                          return _cache[key];
+                      }
+
+                      var index = -1;
+                      for (var i = 0; i < _domain.length; i++) {
+                          if (typeof t == 'string' && _domain[i] === t) {
+                              index = i;
+                              break;
+                          }
+                      }
+
+                      if (index > -1) {
+                          _cache[key] = _range[index];
+                          return _range[index];
+                      } else {
+                          if (typeof _range[t] != 'undefined') {
+                              _domain[t] = t;
+                              _cache[key] = _range[t];
+                              return _range[t];
+                          }
+
+                          return null;
+                      }
+                  }
+
+                  func.domain = function (values) {
+
+                      if (typeof values == 'undefined') {
+                          return _domain;
+                      }
+
+                      for (var i = 0; i < values.length; i++) {
+                          _domain[i] = values[i];
+                      }
+
+                      return this;
+                  };
+
+                  func.range = function (values) {
+
+                      if (typeof values == 'undefined') {
+                          return _range;
+                      }
+
+                      for (var i = 0; i < values.length; i++) {
+                          _range[i] = values[i];
+                      }
+
+                      return this;
+                  };
+
+                  func.rangePoints = function (interval, padding) {
+
+                      padding = padding || 0;
+
+                      var step = _domain.length;
+                      var unit = (interval[1] - interval[0] - padding) / step;
+
+                      var range = [];
+                      for (var i = 0; i < _domain.length; i++) {
+                          if (i == 0) {
+                              range[i] = interval[0] + padding / 2 + unit / 2;
+                          } else {
+                              range[i] = range[i - 1] + unit;
+                          }
+                      }
+
+                      _range = range;
+                      _rangeBand = unit;
+
+                      return func;
+                  };
+
+                  func.rangeBands = function (interval, padding, outerPadding) {
+
+                      padding = padding || 0;
+                      outerPadding = outerPadding || 0;
+
+                      var count = _domain.length;
+                      var step = count - 1;
+                      var band = (interval[1] - interval[0]) / step;
+
+                      var range = [];
+                      for (var i = 0; i < _domain.length; i++) {
+                          if (i == 0) {
+                              range[i] = interval[0];
+                          } else {
+                              range[i] = band + range[i - 1];
+                          }
+                      }
+
+                      _rangeBand = band;
+                      _range = range;
+
+                      return func;
+                  };
+
+                  func.rangeBand = function () {
+                      return _rangeBand;
+                  };
+
+                  func.invert = function (x) {
+                      return Math.ceil(x / _rangeBand);
+                  };
+
+                  return func;
+              },
+
+              /**
+               * 시간에 대한 scale
+               *
+               */
+              time: function time$$1() {
+
+                  var _domain = [];
+                  var _rangeBand;
+
+                  var func = self.linear();
+
+                  var df = func.domain;
+
+                  func.domain = function (domain) {
+
+                      if (!arguments.length) return df.call(func);
+
+                      for (var i = 0; i < domain.length; i++) {
+                          _domain[i] = +domain[i];
+                      }
+
+                      return df.call(func, _domain);
+                  };
+
+                  func.min = function () {
+                      return Math.min(_domain[0], _domain[_domain.length - 1]);
+                  };
+
+                  func.max = function () {
+                      return Math.max(_domain[0], _domain[_domain.length - 1]);
+                  };
+
+                  func.rate = function (value, max) {
+                      return func(func.max() * (value / max));
+                  };
+
+                  func.ticks = function (type, interval) {
+                      var start = _domain[0];
+                      var end = _domain[1];
+
+                      var times = [];
+                      while (start < end) {
+                          times.push(new Date(+start));
+
+                          start = _time.add(start, type, interval);
+                      }
+
+                      times.push(new Date(+start));
+
+                      var first = func(times[1]);
+                      var second = func(times[2]);
+
+                      _rangeBand = second - first;
+
+                      return times;
+                  };
+
+                  func.realTicks = function (type, interval) {
+                      var start = _domain[0];
+                      var end = _domain[1];
+
+                      var times = [];
+                      var date = new Date(+start);
+                      var realStart = null;
+
+                      if (type == _time.years) {
+                          realStart = new Date(date.getFullYear(), 0, 1);
+                      } else if (type == _time.months) {
+                          realStart = new Date(date.getFullYear(), date.getMonth(), 1);
+                      } else if (type == _time.days || type == _time.weeks) {
+                          realStart = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+                      } else if (type == _time.hours) {
+                          realStart = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), 0, 0, 0);
+                      } else if (type == _time.minutes) {
+                          realStart = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), 0, 0);
+                      } else if (type == _time.seconds) {
+                          realStart = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds(), 0);
+                      } else if (type == _time.milliseconds) {
+                          realStart = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds());
+                      }
+                      realStart = _time.add(realStart, type, interval);
+
+                      while (+realStart < +end) {
+                          times.push(new Date(+realStart));
+                          realStart = _time.add(realStart, type, interval);
+                      }
+
+                      var first = func(times[1]);
+                      var second = func(times[2]);
+
+                      _rangeBand = second - first;
+
+                      return times;
+                  };
+
+                  func.rangeBand = function () {
+                      return _rangeBand;
+                  };
+
+                  func.invert = function (y) {
+                      var f = self.linear().domain(func.range()).range(func.domain());
+
+                      return new Date(f(y));
+                  };
+
+                  return func;
+              },
+
+              /**
+               * log scale
+               *
+               * var log = _.scale.log(10).domain([0, 1000000]).range([0, 300]);
+               *
+               * log(0) == 0
+               * log.ticks(4) == [0, 100, 10000, 1000000]
+               *
+               * @param base
+               */
+              log: function log(base) {
+
+                  var _base = base || 10;
+
+                  var func = self.linear();
+                  var _domain = [];
+                  var _domainMax = null;
+                  var _domainMin = null;
+
+                  function log(value) {
+
+                      if (value < 0) {
+                          return -(Math.log(Math.abs(value)) / Math.log(_base));
+                      } else if (value > 0) {
+                          return Math.log(value) / Math.log(_base);
+                      }
+
+                      return 0;
+                  }
+
+                  function pow(value) {
+                      if (value < 0) {
+                          return -Math.pow(_base, Math.abs(value));
+                      } else if (value > 0) {
+                          return Math.pow(_base, value);
+                      }
+
+                      return 0;
+                  }
+
+                  function checkMax(value) {
+                      return Math.pow(_base, (value + "").length - 1) < value;
+                  }
+
+                  function getNextMax(value) {
+                      return Math.pow(_base, (value + "").length);
+                  }
+
+                  var newFunc = function newFunc(x) {
+
+                      var value = x;
+
+                      if (x > _domainMax) {
+                          value = _domainMax;
+                      } else if (x < _domainMin) {
+                          value = _domainMin;
+                      }
+
+                      return func(log(value));
+                  };
+
+                  $.extend(newFunc, func);
+
+                  newFunc.log = function () {
+                      var newDomain = [];
+                      for (var i = 0; i < _domain.length; i++) {
+                          newDomain[i] = log(_domain[i]);
+                      }
+
+                      return newDomain;
+                  };
+
+                  newFunc.domain = function (values) {
+
+                      if (!arguments.length) {
+                          return _domain;
+                      }
+
+                      for (var i = 0; i < values.length; i++) {
+                          _domain[i] = values[i];
+                      }
+
+                      _domainMax = Math.max.apply(Math, _domain);
+                      _domainMin = Math.min.apply(Math, _domain);
+
+                      if (checkMax(_domainMax)) {
+                          _domain[1] = _domainMax = getNextMax(_domainMax);
+                      }
+
+                      if (checkMax(Math.abs(_domainMin))) {
+
+                          var value = getNextMax(Math.abs(_domainMin));
+                          _domain[0] = _domainMin = _domainMin < 0 ? -value : value;
+                      }
+
+                      func.domain(newFunc.log());
+
+                      return newFunc;
+                  };
+
+                  newFunc.base = function (base) {
+                      func.domain(newFunc.log());
+
+                      return newFunc;
+                  };
+
+                  newFunc.invert = function (y) {
+                      return pow(func.invert(y));
+                  };
+
+                  newFunc.ticks = function (count, isNice, intNumber) {
+
+                      var arr = func.ticks(count, isNice, intNumber || 100000000000000000000, true);
+
+                      if (arr[arr.length - 1] < func.max()) {
+                          arr.push(func.max());
+                      }
+
+                      var newArr = [];
+                      for (var i = 0, len = arr.length; i < len; i++) {
+                          newArr[i] = pow(arr[i]);
+                      }
+
+                      return newArr;
+                  };
+
+                  return newFunc;
+              },
+
+              /**
+               * 범위에 대한 scale
+               *
+               */
+              linear: function linear() {
+
+                  var _domain = [0, 1];
+                  var _range = [0, 1];
+                  var _isRound = false;
+                  var _isClamp = false;
+                  var _cache = {};
+
+                  var roundFunction = null;
+                  var numberFunction = null;
+
+                  var domainMin = null;
+                  var domainMax = null;
+
+                  var rangeMin = null;
+                  var rangeMax = null;
+
+                  var distDomain = null;
+                  var distRange = null;
+                  var rate = 0;
+
+                  var callFunction = null;
+                  var _rangeBand = null;
+
+                  function func(x) {
+
+                      if (domainMax < x) {
+                          if (_isClamp) {
+                              return func(domainMax);
+                          }
+
+                          return _range[0] + Math.abs(x - _domain[0]) * rate;
+                      } else if (domainMin > x) {
+                          if (_isClamp) {
+                              return func(domainMin);
+                          }
+
+                          return _range[0] - Math.abs(x - _domain[0]) * rate;
+                      } else {
+                          var pos = (x - _domain[0]) / distDomain;
+
+                          return callFunction(pos);
+                      }
+                  }
+
+                  func.cache = function () {
+                      return _cache;
+                  };
+
+                  func.min = function () {
+                      return Math.min.apply(Math, _domain);
+                  };
+
+                  func.max = function () {
+                      return Math.max.apply(Math, _domain);
+                  };
+
+                  func.rangeMin = function () {
+                      return Math.min.apply(Math, _range);
+                  };
+
+                  func.rangeMax = function () {
+                      return Math.max.apply(Math, _range);
+                  };
+
+                  func.rate = function (value, max) {
+                      return func(func.max() * (value / max));
+                  };
+
+                  func.clamp = function (isClamp) {
+                      _isClamp = isClamp || false;
+                  };
+
+                  func.domain = function (values) {
+
+                      if (!arguments.length) {
+                          return _domain;
+                      }
+
+                      for (var i = 0; i < values.length; i++) {
+                          _domain[i] = values[i];
+                      }
+
+                      domainMin = func.min();
+                      domainMax = func.max();
+
+                      distDomain = _domain[1] - _domain[0];
+
+                      return this;
+                  };
+
+                  func.range = function (values) {
+
+                      if (!arguments.length) {
+                          return _range;
+                      }
+
+                      for (var i = 0; i < values.length; i++) {
+                          _range[i] = values[i];
+                      }
+
+                      roundFunction = math$$1.interpolateRound(_range[0], _range[1]);
+                      numberFunction = math$$1.interpolateNumber(_range[0], _range[1]);
+
+                      rangeMin = func.rangeMin();
+                      rangeMax = func.rangeMax();
+
+                      distRange = Math.abs(rangeMax - rangeMin);
+
+                      rate = distRange / distDomain;
+
+                      callFunction = _isRound ? roundFunction : numberFunction;
+
+                      return this;
+                  };
+
+                  func.rangeRound = function (values) {
+                      _isRound = true;
+
+                      return func.range(values);
+                  };
+
+                  func.rangeBand = function () {
+                      return _rangeBand;
+                  };
+
+                  func.invert = function (y) {
+
+                      var f = self.linear().domain(_range).range(_domain);
+                      return f(y);
+                  };
+
+                  func.ticks = function (count, isNice, /** @deprecated */intNumber, reverse) {
+
+                      //intNumber = intNumber || 10000;
+                      reverse = reverse || false;
+                      var max = func.max();
+
+                      if (_domain[0] == 0 && _domain[1] == 0) {
+                          return [];
+                      }
+
+                      var obj = math$$1.nice(_domain[0], _domain[1], count || 10, isNice || false);
+
+                      var arr = [];
+
+                      var start = reverse ? obj.max : obj.min;
+                      var end = reverse ? obj.min : obj.max;
+                      var unit = obj.spacing;
+                      var fixed = math$$1.fixed(unit);
+
+                      while (reverse ? end <= start : start <= end) {
+                          arr.push(start /* / intNumber*/);
+
+                          if (reverse) {
+                              start = fixed.minus(start, unit);
+                          } else {
+                              start = fixed.plus(start, unit);
+                          }
+                      }
+
+                      if (reverse) {
+                          if (arr[0] != max) {
+                              arr.unshift(max);
+                          }
+
+                          for (var i = 0, len = arr.length; i < len; i++) {
+                              arr[i] = Math.abs(arr[i] - max);
+                          }
+                          //arr.reverse();
+                      } else {
+                          if (arr[arr.length - 1] != end && start > end) {
+                              arr.push(end);
+                          }
+
+                          if (_domain[0] > _domain[1]) {
+                              arr.reverse();
+                          }
+                      }
+
+                      var first = func(arr[0]);
+                      var second = func(arr[1]);
+
+                      _rangeBand = Math.abs(second - first);
+
+                      return arr;
+                  };
+
+                  return func;
+              }
+          };
+
+          return self;
+      }
+  };
+
+  var vector = {
+      name: "chart.vector",
+      extend: null,
+      component: function component() {
+          var Vector = function Vector(x, y, z) {
+              this.x = x || 0;
+              this.y = y || 0;
+              this.z = z || 0;
+
+              this.add = function (numberOrVector) {
+                  if (numberOrVector instanceof Vector) {
+                      return new Vector(this.x + numberOrVector.x, this.y + numberOrVector.y, this.z + numberOrVector.z);
+                  }
+
+                  return new Vector(this.x + numberOrVector, this.y + numberOrVector, this.z + numberOrVector);
+              };
+
+              this.subtract = function (numberOrVector) {
+                  if (numberOrVector instanceof Vector) {
+                      return new Vector(this.x - numberOrVector.x, this.y - numberOrVector.y, this.z - numberOrVector.z);
+                  }
+
+                  return new Vector(this.x - numberOrVector, this.y - numberOrVector, this.z - numberOrVector);
+              };
+
+              this.multiply = function (numberOrVector) {
+                  if (numberOrVector instanceof Vector) {
+                      return new Vector(this.x * numberOrVector.x, this.y * numberOrVector.y, this.z * numberOrVector.z);
+                  }
+
+                  return new Vector(this.x * numberOrVector, this.y * numberOrVector, this.z * numberOrVector);
+              };
+
+              this.dotProduct = function (vector) {
+                  var value = this.x * vector.x + this.y * vector.y + this.z * vector.z;
+                  return Math.acos(value / (this.getMagnitude() * vector.getMagnitude()));
+              };
+
+              this.crossProduct = function (vector) {
+                  return new Vector(this.y * vector.z - this.z * vector.y, this.z * vector.x - this.x * vector.z, this.x * vector.y - this.y * vector.x);
+              };
+
+              this.normalize = function () {
+                  var mag = this.getMagnitude();
+
+                  this.x /= mag;
+                  this.y /= mag;
+                  this.z /= mag;
+              };
+
+              this.getMagnitude = function () {
+                  return Math.sqrt(this.x * this.x + this.y * this.y + this.z * this.z);
+              };
+          };
+
+          return Vector;
+      }
+  };
+
+  var draw = {
+      name: "chart.draw",
+      extend: null,
+      component: function component() {
+          var _ = jui$1.include("util.base");
+
+          var Draw = function Draw() {
+
+              /**
+               * @method drawBefore
+               *
+               * run before draw object
+               *
+               */
+
+              /**
+               * @method draw
+               *
+               * draw object
+               *
+               * @return {Object}
+               *
+               */
+
+              /**
+               * @method drawAfter
+               *
+               * run after draw object
+               */
+
+              /**
+               * @method drawAnimate
+               *
+               * implements animate code after draw object
+               */
+
+              /**
+               * @method render
+               *
+               * 모든 Draw 객체는  render 함수를 통해서 그려진다.
+               *
+               */
+              this.render = function () {
+                  if (!_.typeCheck("function", this.draw)) {
+                      throw new Error("JUI_CRITICAL_ERR: 'draw' method must be implemented");
+                  }
+
+                  // Call drawBefore method
+                  if (_.typeCheck("function", this.drawBefore)) {
+                      this.drawBefore();
+                  }
+
+                  // Call draw method (All)
+                  var obj = this.draw();
+
+                  // Call drawAnimate method
+                  if (_.typeCheck("function", this.drawAnimate)) {
+                      var draw = this.grid || this.brush || this.widget || this.map;
+
+                      if (draw.animate !== false) {
+                          this.drawAnimate(obj);
+                      }
+                  }
+
+                  // Call drawAfter method
+                  if (_.typeCheck("function", this.drawAfter)) {
+                      this.drawAfter(obj);
+                  }
+
+                  return obj;
+              };
+
+              /**
+               * @method format
+               * Get a default format callback of draw object.
+               *
+               * @return {Function}
+               */
+              this.format = function () {
+                  var draw = this.grid || this.brush || this.widget,
+                      callback = draw.format || this.chart.format;
+
+                  return callback.apply(this.chart, arguments);
+              };
+
+              /**
+               * @method balloonPoints
+               *
+               * 말풍선 그리그 메소드
+               *
+               * @param {String} type
+               * @param {Number} w
+               * @param {Number} h
+               * @param {Number} anchor
+               * @return {String}
+               */
+              this.balloonPoints = function (type, w, h, anchor) {
+                  var points = [];
+
+                  if (type == "top") {
+                      points.push([0, 0].join(","));
+                      points.push([w, 0].join(","));
+                      points.push([w, h].join(","));
+                      points.push([w / 2 + anchor / 2, h].join(","));
+                      points.push([w / 2, h + anchor].join(","));
+                      points.push([w / 2 - anchor / 2, h].join(","));
+                      points.push([0, h].join(","));
+                      points.push([0, 0].join(","));
+                  } else if (type == "bottom") {
+                      points.push([0, anchor].join(","));
+                      points.push([w / 2 - anchor / 2, anchor].join(","));
+                      points.push([w / 2, 0].join(","));
+                      points.push([w / 2 + anchor / 2, anchor].join(","));
+                      points.push([w, anchor].join(","));
+                      points.push([w, anchor + h].join(","));
+                      points.push([0, anchor + h].join(","));
+                      points.push([0, anchor].join(","));
+                  } else if (type == "left") {
+                      points.push([0, 0].join(","));
+                      points.push([w, 0].join(","));
+                      points.push([w, h / 2 - anchor / 2].join(","));
+                      points.push([w + anchor, h / 2].join(","));
+                      points.push([w, h / 2 + anchor / 2].join(","));
+                      points.push([w, h].join(","));
+                      points.push([0, h].join(","));
+                      points.push([0, 0].join(","));
+                  } else if (type == "right") {
+                      points.push([0, 0].join(","));
+                      points.push([w, 0].join(","));
+                      points.push([w, h].join(","));
+                      points.push([0, h].join(","));
+                      points.push([0, h / 2 + anchor / 2].join(","));
+                      points.push([0 - anchor, h / 2].join(","));
+                      points.push([0, h / 2 - anchor / 2].join(","));
+                      points.push([0, 0].join(","));
+                  } else {
+                      points.push([0, 0].join(","));
+                      points.push([w, 0].join(","));
+                      points.push([w, h].join(","));
+                      points.push([0, h].join(","));
+                      points.push([0, 0].join(","));
+                  }
+
+                  return points.join(" ");
+              };
+
+              /**
+               * @method on
+               *
+               * chart.on() 을 쉽게 사용 할 수 있게 해주는 유틸리티 함수
+               *
+               * @param {String} type event name
+               * @param {Function} callback
+               * @return {*}
+               */
+              this.on = function (type, callback) {
+                  var self = this;
+
+                  return this.chart.on(type, function () {
+                      if (_.startsWith(type, "axis.") && _.typeCheck("integer", self.axis.index)) {
+                          var axis = self.chart.axis(self.axis.index),
+                              e = arguments[0];
+
+                          if (_.typeCheck("object", axis)) {
+                              if (arguments[1] == self.axis.index) {
+                                  callback.apply(self, [e]);
+                              }
+                          }
+                      } else {
+                          callback.apply(self, arguments);
+                      }
+                  }, "render");
+              };
+
+              this.calculate3d = function () {
+                  var w = this.axis.area("width"),
+                      h = this.axis.area("height"),
+                      x = this.axis.area("x"),
+                      y = this.axis.area("y"),
+                      d = this.axis.depth,
+                      r = this.axis.degree,
+                      p = this.axis.perspective,
+                      list = arguments;
+
+                  if (!_.typeCheck("integer", r.x)) r.x = 0;
+                  if (!_.typeCheck("integer", r.y)) r.y = 0;
+                  if (!_.typeCheck("integer", r.z)) r.z = 0;
+
+                  for (var i = 0; i < list.length; i++) {
+                      list[i].perspective = p;
+                      list[i].rotate(Math.max(w, h, d), r, x + w / 2, y + h / 2, d / 2);
+                  }
+              };
+          };
+
+          Draw.setup = function () {
+              return {
+                  /** @cfg {String} [type=null] Specifies the type of a widget/brush/grid to be added.*/
+                  type: null,
+                  /** @cfg {Boolean} [animate=false] Run the animation effect.*/
+                  animate: false
+              };
+          };
+
+          return Draw;
+      }
+  };
+
+  var axis = {
+      name: "chart.axis",
+      extend: null,
+      component: function component() {
+          var _ = jui$1.include("util.base");
+
+          var Axis = function Axis(chart, originAxis, cloneAxis) {
+              var self = this,
+                  map = null;
+              var _area = {},
+                  _padding = {},
+                  _clipId = "",
+                  _clipPath = null,
+                  _clipRectId = "",
+                  _clipRect = null;
+
+              function calculatePanel(a, padding) {
+                  a.x = getRate(a.x, chart.area('width'));
+                  a.y = getRate(a.y, chart.area('height'));
+                  a.width = getRate(a.width, chart.area('width'));
+                  a.height = getRate(a.height, chart.area('height'));
+
+                  a.x2 = a.x + a.width;
+                  a.y2 = a.y + a.height;
+
+                  // 패딩 개념 추가
+                  a.x += padding.left || 0;
+                  a.y += padding.top || 0;
+
+                  a.x2 -= padding.right || 0;
+                  a.y2 -= padding.bottom || 0;
+
+                  a.width = a.x2 - a.x;
+                  a.height = a.y2 - a.y;
+
+                  return a;
+              }
+
+              function getRate(value, max) {
+                  if (_.typeCheck("string", value) && value.indexOf("%") > -1) {
+                      return max * (parseFloat(value.replace("%", "")) / 100);
+                  }
+
+                  return value;
+              }
+
+              function drawGridType(axis, k) {
+                  if ((k == "x" || k == "y" || k == "z") && !_.typeCheck("object", axis[k])) return null;
+
+                  // 축 위치 설정
+                  axis[k] = axis[k] || {};
+
+                  if (k == "x") {
+                      axis[k].orient = axis[k].orient == "top" ? "top" : "bottom";
+                  } else if (k == "y") {
+                      axis[k].orient = axis[k].orient == "right" ? "right" : "left";
+                  } else if (k == "z") {
+                      axis[k].orient = "center";
+                  } else if (k == "c") {
+                      axis[k].type = axis[k].type || "panel";
+                      axis[k].orient = "custom";
+                  }
+
+                  axis[k].type = axis[k].type || "block";
+                  var Grid = jui$1.include("chart.grid." + axis[k].type);
+
+                  // 그리드 기본 옵션과 사용자 옵션을 합침
+                  jui$1.defineOptions(Grid, axis[k]);
+
+                  // 엑시스 기본 프로퍼티 정의
+                  var obj = new Grid(chart, axis, axis[k]);
+                  obj.chart = chart;
+                  obj.axis = axis;
+                  obj.grid = axis[k];
+                  obj.svg = chart.svg;
+
+                  var elem = obj.render();
+
+                  // 그리드 별 위치 선정하기 (z축이 없을 때)
+                  if (!self.isFull3D()) {
+                      if (axis[k].orient == "left") {
+                          elem.root.translate(chart.area("x") + self.area("x") - axis[k].dist, chart.area("y"));
+                      } else if (axis[k].orient == "right") {
+                          elem.root.translate(chart.area("x") + self.area("x2") + axis[k].dist, chart.area("y"));
+                      } else if (axis[k].orient == "bottom") {
+                          elem.root.translate(chart.area("x"), chart.area("y") + self.area("y2") + axis[k].dist);
+                      } else if (axis[k].orient == "top") {
+                          elem.root.translate(chart.area("x"), chart.area("y") + self.area("y") - axis[k].dist);
+                      } else {
+                          if (elem.root) elem.root.translate(chart.area("x") + self.area("x"), chart.area("y") + self.area("y"));
+                      }
+                  }
+
+                  elem.scale.type = axis[k].type;
+                  elem.scale.root = elem.root;
+
+                  return elem.scale;
+              }
+
+              function drawMapType(axis, k) {
+                  if (k == "map" && !_.typeCheck("object", axis[k])) return null;
+
+                  // 축 위치 설정
+                  axis[k] = axis[k] || {};
+
+                  var Map = jui$1.include("chart.map");
+
+                  // 맵 기본 옵션과 사용자 옵션을 합침
+                  jui$1.defineOptions(Map, axis[k]);
+
+                  // 맵 객체는 한번만 생성함
+                  if (map == null) {
+                      map = new Map(chart, axis, axis[k]);
+                  }
+
+                  // 맵 기본 프로퍼티 설정
+                  map.chart = chart;
+                  map.axis = axis;
+                  map.map = axis[k];
+                  map.svg = chart.svg;
+
+                  // 그리드 별 위치 선정하기
+                  var elem = map.render();
+                  elem.root.translate(chart.area("x") + self.area("x"), chart.area("y") + self.area("y"));
+                  elem.scale.type = axis[k].type;
+                  elem.scale.root = elem.root;
+
+                  return elem.scale;
+              }
+
+              function setScreen(pNo) {
+                  var dataList = self.origin,
+                      limit = self.buffer,
+                      maxPage = Math.ceil(dataList.length / limit);
+
+                  // 최소 & 최대 페이지 설정
+                  if (pNo < 1) {
+                      self.page = 1;
+                  } else {
+                      self.page = pNo > maxPage ? maxPage : pNo;
+                  }
+
+                  self.start = (self.page - 1) * limit, self.end = self.start + limit;
+
+                  // 마지막 페이지 처리
+                  if (self.end > dataList.length) {
+                      self.start = dataList.length - limit;
+                      self.end = dataList.length;
+                  }
+
+                  if (self.end <= dataList.length) {
+                      self.start = self.start < 0 ? 0 : self.start;
+                      self.data = dataList.slice(self.start, self.end);
+
+                      if (dataList.length > 0) self.page++;
+                  }
+              }
+
+              function setZoom(start, end) {
+                  var dataList = self.origin;
+
+                  self.end = end > dataList.length ? dataList.length : end;
+                  self.start = start < 0 ? 0 : start;
+                  self.data = dataList.slice(self.start, self.end);
+              }
+
+              function createClipPath() {
+                  // clippath with x, y
+                  if (_clipPath) {
+                      _clipPath.remove();
+                      _clipPath = null;
+                  }
+
+                  // _clipId = _.createId("clip-id-");
+                  _clipId = "axis-clip-id";
+
+                  _clipPath = chart.svg.clipPath({
+                      id: _clipId
+                  }, function () {
+                      chart.svg.rect({
+                          x: _area.x,
+                          y: _area.y,
+                          width: _area.width,
+                          height: _area.height
+                      });
+                  });
+                  chart.appendDefs(_clipPath);
+
+                  // clippath without x, y
+                  if (_clipRect) {
+                      _clipRect.remove();
+                      _clipRect = null;
+                  }
+
+                  // _clipRectId = _.createId("clip-rect-id-");
+                  _clipRectId = "axis-clip-rect-id";
+
+                  _clipRect = chart.svg.clipPath({
+                      id: _clipRectId
+                  }, function () {
+                      chart.svg.rect({
+                          x: 0,
+                          y: 0,
+                          width: _area.width,
+                          height: _area.height
+                      });
+                  });
+
+                  chart.appendDefs(_clipRect);
+              }
+
+              function checkAxisPoint(e) {
+                  var top = self.area("y"),
+                      left = self.area("x");
+
+                  if (e.chartY > top && e.chartY < top + self.area("height") && e.chartX > left && e.chartX < left + self.area("width")) {
+
+                      e.axisX = e.chartX - left;
+                      e.axisY = e.chartY - top;
+
+                      return true;
+                  }
+
+                  return false;
+              }
+
+              function setAxisMouseEvent() {
+                  var isMouseOver = false,
+                      index = cloneAxis.index;
+
+                  chart.on("chart.mousemove", function (e) {
+                      if (checkAxisPoint(e)) {
+                          if (!isMouseOver) {
+                              chart.emit("axis.mouseover", [e, index]);
+                              isMouseOver = true;
+                          }
+                      } else {
+                          if (isMouseOver) {
+                              chart.emit("axis.mouseout", [e, index]);
+                              isMouseOver = false;
+                          }
+                      }
+
+                      if (checkAxisPoint(e)) {
+                          chart.emit("axis.mousemove", [e, index]);
+                      }
+                  });
+
+                  chart.on("bg.mousemove", function (e) {
+                      if (!checkAxisPoint(e) && isMouseOver) {
+                          chart.emit("axis.mouseout", [e, index]);
+                          isMouseOver = false;
+                      }
+                  });
+
+                  chart.on("chart.mousedown", function (e) {
+                      if (!checkAxisPoint(e)) return;
+                      chart.emit("axis.mousedown", [e, index]);
+                  });
+
+                  chart.on("chart.mouseup", function (e) {
+                      if (!checkAxisPoint(e)) return;
+                      chart.emit("axis.mouseup", [e, index]);
+                  });
+
+                  chart.on("chart.click", function (e) {
+                      if (!checkAxisPoint(e)) return;
+                      chart.emit("axis.click", [e, index]);
+                  });
+
+                  chart.on("chart.dblclick", function (e) {
+                      if (!checkAxisPoint(e)) return;
+                      chart.emit("axis.dblclick", [e, index]);
+                  });
+
+                  chart.on("chart.rclick", function (e) {
+                      if (!checkAxisPoint(e)) return;
+                      chart.emit("axis.rclick", [e, index]);
+                  });
+
+                  chart.on("chart.mousewheel", function (e) {
+                      if (!checkAxisPoint(e)) return;
+                      chart.emit("axis.mousewheel", [e, index]);
+                  });
+              }
+
+              function drawAxisBackground() {
+                  var bw = chart.theme("axisBorderWidth"),
+                      lr = _padding.left + _padding.right,
+                      tb = _padding.top + _padding.bottom;
+
+                  var bg = chart.svg.rect({
+                      rx: chart.theme("axisBorderRadius"),
+                      ry: chart.theme("axisBorderRadius"),
+                      fill: chart.theme("axisBackgroundColor"),
+                      "fill-opacity": chart.theme("axisBackgroundOpacity"),
+                      stroke: chart.theme("axisBorderColor"),
+                      "stroke-width": bw,
+                      width: _area.width + lr - bw,
+                      height: _area.height + tb - bw,
+                      x: _area.x - _padding.left,
+                      y: _area.y - _padding.top
+                  });
+
+                  bg.translate(chart.area("x"), chart.area("y"));
+
+                  return bg;
+              }
+
+              function init() {
+                  _.extend(self, {
+                      data: cloneAxis.data,
+                      origin: cloneAxis.origin,
+                      buffer: cloneAxis.buffer,
+                      shift: cloneAxis.shift,
+                      index: cloneAxis.index,
+                      page: cloneAxis.page,
+                      start: cloneAxis.start,
+                      end: cloneAxis.end,
+                      degree: cloneAxis.degree,
+                      depth: cloneAxis.depth,
+                      perspective: cloneAxis.perspective
+                  });
+
+                  // 원본 데이터 설정
+                  self.origin = self.data;
+
+                  // 페이지 초기화
+                  if (self.start > 0 || self.end > 0) {
+                      setZoom(self.start, self.end);
+                  } else {
+                      setScreen(self.page);
+                  }
+
+                  // 엑시스 이벤트 설정
+                  setAxisMouseEvent();
+
+                  // Grid 및 Area 설정
+                  self.reload(cloneAxis);
+              }
+
+              /**
+               * @method getValue
+               *
+               * 특정 필드의 값을 맵핑해서 가지고 온다.
+               *
+               * @param {Object} data row data
+               * @param {String} fieldString 필드 이름
+               * @param {String/Number/Boolean/Object} [defaultValue=''] 기본값
+               * @return {Mixed}
+               */
+              this.getValue = function (data, fieldString, defaultValue) {
+                  var value = data[cloneAxis.keymap[fieldString]];
+                  if (!_.typeCheck("undefined", value)) {
+                      return value;
+                  }
+
+                  value = data[fieldString];
+                  if (!_.typeCheck("undefined", value)) {
+                      return value;
+                  }
+
+                  return defaultValue;
+              };
+
+              /**
+               * @method reload
+               *
+               * Axis 의 x,y,z 축을 다시 생성한다.
+               * * *
+               * @param {Object} options
+               */
+              this.reload = function (options) {
+                  var area = chart.area();
+
+                  _.extend(this, {
+                      x: options.x,
+                      y: options.y,
+                      z: options.z,
+                      c: options.c,
+                      map: options.map
+                  });
+
+                  // 패딩 옵션 설정
+                  if (_.typeCheck("integer", options.padding)) {
+                      _padding = { left: options.padding, right: options.padding, bottom: options.padding, top: options.padding };
+                  } else {
+                      _padding = options.padding;
+                  }
+
+                  _area = calculatePanel(_.extend(options.area, {
+                      x: 0, y: 0, width: area.width, height: area.height
+                  }, true), _padding);
+
+                  // 클립 패스 설정
+                  createClipPath();
+
+                  this.root = drawAxisBackground();
+                  this.x = drawGridType(this, "x");
+                  this.y = drawGridType(this, "y");
+                  this.z = drawGridType(this, "z");
+                  this.c = drawGridType(this, "c");
+                  this.map = drawMapType(this, "map");
+
+                  this.buffer = options.buffer;
+                  this.shift = options.shift;
+                  this.index = options.index;
+                  this.page = options.page;
+                  this.start = options.start;
+                  this.end = options.end;
+                  this.degree = options.degree;
+                  this.depth = options.depth;
+                  this.perspective = options.perspective;
+              };
+
+              /**
+               * @method area
+               *
+               * Axis 의 표시 영역을 리턴한다.
+               *
+               * @param {"x"/"y"/"width"/'height"/null} key  area's key
+               * @return {Number/Object} key 가 있으면 해당 key 의 value 를 리턴한다. 없으면 전체 area 객체를 리턴한다.
+               */
+              this.area = function (key) {
+                  return _.typeCheck("undefined", _area[key]) ? _area : _area[key];
+              };
+
+              /**
+               * Gets the top, bottom, left and right margin values.
+               *
+               * @param {"top"/"left"/"bottom"/"right"} key
+               * @return {Number/Object}
+               */
+              this.padding = function (key) {
+                  return _.typeCheck("undefined", _padding[key]) ? _padding : _padding[key];
+              };
+
+              /**
+               * @method get
+               *
+               * Axis 의 옵션 정보를 리턴한다.
+               *
+               * @param key
+               */
+              this.get = function (type) {
+                  var obj = {
+                      area: _area,
+                      padding: _padding,
+                      clipId: _clipId,
+                      clipRectId: _clipRectId
+                  };
+
+                  return obj[type] || cloneAxis[type];
+              };
+
+              /**
+               * @method set
+               *
+               * axis의 주요 프로퍼티를 업데이트한다.
+               *
+               * @param {"x"/"y"/"c"/"map"/"degree"/"padding"} type
+               * @param {Object} grid
+               */
+              this.set = function (type, value, isReset) {
+                  if (_.typeCheck("object", value)) {
+                      if (isReset === true) {
+                          originAxis[type] = _.deepClone(value);
+                          cloneAxis[type] = _.deepClone(value);
+                      } else {
+                          _.extend(originAxis[type], value);
+                          _.extend(cloneAxis[type], value);
+                      }
+                  } else {
+                      originAxis[type] = value;
+                      cloneAxis[type] = value;
+                  }
+
+                  if (chart.isRender()) chart.render();
+              };
+
+              /**
+               * @deprecated
+               * @method updateGrid
+               *
+               * grid 정보를 업데이트 한다.
+               *
+               * @param {"x"/"y"/"c"/"map"} type
+               * @param {Object} grid
+               */
+              this.updateGrid = this.set;
+
+              /**
+               * @method update
+               *
+               * data 를 업데이트 한다.
+               *
+               * @param {Array} data
+               */
+              this.update = function (data) {
+                  this.origin = _.typeCheck("array", data) ? data : [data];
+                  this.page = 1;
+                  this.start = 0;
+                  this.end = 0;
+
+                  this.screen(1);
+              };
+
+              /**
+               * @method screen
+               *
+               * 화면상에 보여줄 데이타를 페이징한다.
+               *
+               * @param {Number} pNo 페이지 번호
+               */
+              this.screen = function (pNo) {
+                  setScreen(pNo);
+
+                  if (this.end <= this.origin.length) {
+                      if (chart.isRender()) chart.render();
+                  }
+              };
+
+              /**
+               * @method next
+               *
+               */
+              this.next = function () {
+                  var dataList = this.origin,
+                      limit = this.buffer,
+                      step = this.shift;
+
+                  this.start += step;
+
+                  var isLimit = this.start + limit > dataList.length;
+
+                  this.end = isLimit ? dataList.length : this.start + limit;
+                  this.start = isLimit ? dataList.length - limit : this.start;
+                  this.start = this.start < 0 ? 0 : this.start;
+                  this.data = dataList.slice(this.start, this.end);
+
+                  if (chart.isRender()) chart.render();
+              };
+
+              /**
+               * @method prev
+               */
+              this.prev = function () {
+                  var dataList = this.origin,
+                      limit = this.buffer,
+                      step = this.shift;
+
+                  this.start -= step;
+
+                  var isLimit = this.start < 0;
+
+                  this.end = isLimit ? limit : this.start + limit;
+                  this.start = isLimit ? 0 : this.start;
+                  this.data = dataList.slice(this.start, this.end);
+
+                  if (chart.isRender()) chart.render();
+              };
+
+              /**
+               * @method zoom
+               *
+               * 특정 인덱스의 영역으로 데이타를 다시 맞춘다.
+               *
+               * @param {Number} start
+               * @param {Number} end
+               */
+              this.zoom = function (start, end) {
+                  if (start == end) return;
+
+                  setZoom(start, end);
+                  if (chart.isRender()) chart.render();
+              };
+
+              this.isFull3D = function () {
+                  return !_.typeCheck(["undefined", "null"], this.z);
+              };
+
+              init();
+          };
+
+          Axis.setup = function () {
+
+              /** @property {chart.grid.core} [x=null] Sets a grid on the X axis (see the grid tab). */
+              /** @property {chart.grid.core} [y=null] Sets a grid on the Y axis (see the grid tab). */
+              /** @property {chart.grid.core} [c=null] Sets a custom grid (see the grid tab). */
+              /** @property {chart.map} [map=null] Sets a chart map. */
+              /** @property {Array} [data=[]] Sets the row set data which constitute a chart. */
+              /** @property {Integer} [buffer=10000] Limits the number of elements shown on a chart. */
+              /** @property {Integer} [shift=1] Data shift count for the 'prev' or 'next' method of the chart builder. */
+              /** @property {Array} [origin=[]] [For read only] Original data initially set. */
+              /** @property {Integer} [page=1] [For read only] Page number of the data currently drawn. */
+              /** @property {Integer} [start=0] [For read only] Start index of the data currently drawn. */
+              /** @property {Integer} [end=0] [For read only] End index of the data currently drawn. */
+
+              return {
+                  /** @cfg {Integer} [extend=null]  Configures the index of an applicable grid group when intending to use already configured axis options. */
+                  extend: null,
+
+                  /** @cfg {chart.grid.core} [x=null] Sets a grid on the X axis (see the grid tab). */
+                  x: null,
+                  /** @cfg {chart.grid.core} [y=null]  Sets a grid on the Y axis (see the grid tab). */
+                  y: null,
+                  /** @cfg {chart.grid.core} [z=null] Sets a grid on the Z axis (see the grid tab). */
+                  z: null,
+                  /** @cfg {chart.grid.core} [c=null] Sets a grid on the C axis (see the grid tab). */
+                  c: null,
+                  /** @cfg {chart.map.core} [map=null] Sets a map on the Map axis */
+                  map: null,
+                  /** @cfg {Array} [data=[]]  Sets the row set data which constitute a chart.  */
+                  data: [],
+                  /** @cfg {Array} [origin=[]]  [Fore read only] Original data initially set. */
+                  origin: [],
+                  /** @cfg {Object} [keymap={}] grid's data key map  */
+                  keymap: {},
+                  /** @cfg {Object} [area={}]  set area(x, y, width, height) of axis */
+                  area: {},
+                  /**
+                   * @cfg  {Object} padding axis padding
+                   * @cfg  {Number} [padding.top=0] axis's top padding
+                   * @cfg  {Number} [padding.bottom=0] axis's bottom padding
+                   * @cfg  {Number} [padding.left=0] axis's left padding
+                   * @cfg  {Number} [padding.right=0] axis's right padding
+                   */
+                  padding: {
+                      top: 0,
+                      bottom: 0,
+                      left: 0,
+                      right: 0
+                  },
+                  /** @cfg {Number} [buffer=10000] Limits the number of elements shown on a chart.  */
+                  buffer: 10000,
+                  /** @cfg {Number} [shift=1]  Data shift count for the 'prev' or 'next' method of the chart builder.  */
+                  shift: 1,
+
+                  /** @cfg {Number} [page=1]  Page number of the data currently drawn. */
+                  page: 1,
+                  /** @cfg {Number} [start=0] */
+                  start: 0,
+                  /** @cfg {Number} [end=0] */
+                  end: 0,
+                  /**
+                   * @cfg  {Object} Set degree of 3d chart
+                   * @cfg  {Number} [degree.x=0] axis's x-degree
+                   * @cfg  {Number} [degree.y=0] axis's y-degree
+                   * @cfg  {Number} [degree.z=0] axis's z-degree
+                   */
+                  degree: {
+                      x: 0,
+                      y: 0,
+                      z: 0
+                  },
+                  /** @cfg {Number} [depth=0]  Set depth of 3d chart  */
+                  depth: 0,
+                  /** @cfg {Number} [perspective=0.9]  Set perspective values in the 3d chart  */
+                  perspective: 0.9
+              };
+          };
+
+          return Axis;
+      }
+  };
+
+  jui$1.use([dom, svg]);
+
+  var Map = {
+      name: "chart.map",
+      extend: null,
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var $ = jui$1.include("util.dom");
+          var SVG = jui$1.include("util.svg");
+
+          var Map = function Map() {
+              var self = this;
+              var pathData = {},
+                  pathGroup = null,
+                  pathIndex = {},
+                  pathScale = 1,
+                  pathX = 0,
+                  pathY = 0;
+
+              function loadArray(data) {
+                  var children = [];
+
+                  for (var i = 0, len = data.length; i < len; i++) {
+                      if (_.typeCheck("object", data[i])) {
+                          var style = {};
+
+                          if (_.typeCheck("string", data[i].style)) {
+                              style = getStyleObj(data[i].style);
+                              delete data[i].style;
+                          }
+
+                          var elem = SVG.createObject({
+                              type: data[i].d != null ? "path" : "polygon",
+                              attr: data[i]
+                          });
+
+                          // Set styles
+                          elem.attr(_.extend(style, {
+                              fill: self.chart.theme("mapPathBackgroundColor"),
+                              "fill-opacity": self.chart.theme("mapPathBackgroundOpacity"),
+                              stroke: self.chart.theme("mapPathBorderColor"),
+                              "stroke-width": self.chart.theme("mapPathBorderWidth"),
+                              "stroke-opacity": self.chart.theme("mapPathBorderOpacity")
+                          }));
+
+                          children.push({
+                              path: elem,
+                              data: data[i]
+                          });
+                      }
+                  }
+
+                  function getStyleObj(str) {
+                      var style = {},
+                          list = str.split(";");
+
+                      for (var i = 0; i < list.length; i++) {
+                          if (list[i].indexOf(":") != -1) {
+                              var obj = list[i].split(":");
+
+                              style[_.trim(obj[0])] = _.trim(obj[1]);
+                          }
+                      }
+
+                      return style;
+                  }
+
+                  return children;
+              }
+
+              function getPathList(root) {
+                  if (!_.typeCheck("string", root.id)) return;
+
+                  var pathData = [],
+                      children = root.childNodes;
+
+                  for (var i = 0, len = children.length; i < len; i++) {
+                      var elem = children[i],
+                          name = elem.nodeName.toLowerCase();
+
+                      if (elem.nodeType != 1) continue;
+
+                      if (name == "g") {
+                          pathData = pathData.concat(getPathList(elem));
+                      } else if (name == "path" || name == "polygon") {
+                          var obj = { group: root.id };
+
+                          for (var key in elem.attributes) {
+                              var attr = elem.attributes[key];
+
+                              if (attr.specified && isLoadAttribute(attr.name)) {
+                                  obj[attr.name] = replaceXYValue(attr);
+                              }
+                          }
+
+                          if (_.typeCheck("string", obj.id)) {
+                              _.extend(obj, getDataById(obj.id));
+                          }
+
+                          pathData.push(obj);
+                      }
+                  }
+
+                  return pathData;
+              }
+
+              function loadPath(uri) {
+                  // 해당 URI의 데이터가 존재할 경우
+                  if (_.typeCheck("array", pathData[uri])) {
+                      return loadArray(pathData[uri]);
+                  }
+
+                  // 해당 URI의 데이터가 없을 경우
+                  pathData[uri] = [];
+
+                  _.ajax({
+                      url: uri,
+                      async: false,
+                      success: function success(xhr) {
+                          var xml = xhr.responseXML,
+                              svg$$1 = xml.getElementsByTagName("svg"),
+                              style = xml.getElementsByTagName("style");
+
+                          if (svg$$1.length != 1) return;
+                          var children = svg$$1[0].childNodes;
+
+                          for (var i = 0, len = children.length; i < len; i++) {
+                              var elem = children[i],
+                                  name = elem.nodeName.toLowerCase();
+
+                              if (elem.nodeType != 1) continue;
+
+                              if (name == "g") {
+                                  pathData[uri] = pathData[uri].concat(getPathList(elem));
+                              } else if (name == "path" || name == "polygon") {
+                                  var obj = {};
+
+                                  for (var key in elem.attributes) {
+                                      var attr = elem.attributes[key];
+
+                                      if (attr.specified && isLoadAttribute(attr.name)) {
+                                          obj[attr.name] = replaceXYValue(attr);
+                                      }
+                                  }
+
+                                  if (_.typeCheck("string", obj.id)) {
+                                      _.extend(obj, getDataById(obj.id));
+                                  }
+
+                                  pathData[uri].push(obj);
+                              }
+                          }
+
+                          // 스타일 태그가 정의되어 있을 경우
+                          for (var i = 0; i < style.length; i++) {
+                              self.svg.root.element.appendChild(style[i]);
+                          }
+                      },
+                      fail: function fail(xhr) {
+                          throw new Error("JUI_CRITICAL_ERR: Failed to load resource");
+                      }
+                  });
+
+                  return loadArray(pathData[uri]);
+              }
+
+              function isLoadAttribute(name) {
+                  return name == "group" || name == "id" || name == "title" || name == "x" || name == "y" || name == "d" || name == "points" || name == "class" || name == "style";
+              }
+
+              function replaceXYValue(attr) {
+                  if (attr.name == "x" || attr.name == "y") {
+                      return parseFloat(attr.value);
+                  }
+
+                  return attr.value;
+              }
+
+              function getDataById(id) {
+                  var list = self.axis.data;
+
+                  for (var i = 0; i < list.length; i++) {
+                      var dataId = self.axis.getValue(list[i], "id", null);
+
+                      if (dataId == id) {
+                          return list[i];
+                      }
+                  }
+
+                  return null;
+              }
+
+              function makePathGroup() {
+                  var group = self.chart.svg.group(),
+                      list = loadPath(self.map.path);
+
+                  for (var i = 0, len = list.length; i < len; i++) {
+                      var path = list[i].path,
+                          data = list[i].data;
+
+                      //addEvent(path, list[i]);
+                      group.append(path);
+
+                      if (_.typeCheck("string", data.id)) {
+                          pathIndex[data.id] = list[i];
+                      }
+                  }
+
+                  return group;
+              }
+
+              function getScaleXY() {
+                  // 차후에 공통 함수로 변경해야 함
+                  var w = self.map.width,
+                      h = self.map.height,
+                      px = (w * pathScale - w) / 2,
+                      py = (h * pathScale - h) / 2;
+
+                  return {
+                      x: px + pathX,
+                      y: py + pathY
+                  };
+              }
+
+              function addEvent(elem, obj) {
+                  var chart = self.chart;
+
+                  elem.on("click", function (e) {
+                      setMouseEvent(e);
+                      chart.emit("map.click", [obj, e]);
+                  });
+
+                  elem.on("dblclick", function (e) {
+                      setMouseEvent(e);
+                      chart.emit("map.dblclick", [obj, e]);
+                  });
+
+                  elem.on("contextmenu", function (e) {
+                      setMouseEvent(e);
+                      chart.emit("map.rclick", [obj, e]);
+                      e.preventDefault();
+                  });
+
+                  elem.on("mouseover", function (e) {
+                      setMouseEvent(e);
+                      chart.emit("map.mouseover", [obj, e]);
+                  });
+
+                  elem.on("mouseout", function (e) {
+                      setMouseEvent(e);
+                      chart.emit("map.mouseout", [obj, e]);
+                  });
+
+                  elem.on("mousemove", function (e) {
+                      setMouseEvent(e);
+                      chart.emit("map.mousemove", [obj, e]);
+                  });
+
+                  elem.on("mousedown", function (e) {
+                      setMouseEvent(e);
+                      chart.emit("map.mousedown", [obj, e]);
+                  });
+
+                  elem.on("mouseup", function (e) {
+                      setMouseEvent(e);
+                      chart.emit("map.mouseup", [obj, e]);
+                  });
+
+                  function setMouseEvent(e) {
+                      var pos = $.offset(chart.root),
+                          offsetX = e.pageX - pos.left,
+                          offsetY = e.pageY - pos.top;
+
+                      e.bgX = offsetX;
+                      e.bgY = offsetY;
+                      e.chartX = offsetX - chart.padding("left");
+                      e.chartY = offsetY - chart.padding("top");
+                  }
+              }
+
+              this.scale = function (id) {
+                  if (!_.typeCheck("string", id)) return;
+
+                  var x = null,
+                      y = null,
+                      path = null,
+                      data = null,
+                      pxy = getScaleXY();
+
+                  if (_.typeCheck("object", pathIndex[id])) {
+                      path = pathIndex[id].path;
+                      data = pathIndex[id].data;
+
+                      if (data.x != null) {
+                          var dx = self.axis.getValue(data, "dx", 0),
+                              cx = parseFloat(data.x) + dx;
+                          x = cx * pathScale - pxy.x;
+                      }
+
+                      if (data.y != null) {
+                          var dy = self.axis.getValue(data, "dy", 0),
+                              cy = parseFloat(data.y) + dy;
+                          y = cy * pathScale - pxy.y;
+                      }
+                  }
+
+                  return {
+                      x: x,
+                      y: y,
+                      path: path,
+                      data: data
+                  };
+              };
+
+              this.scale.each = function (callback) {
+                  var self = this;
+
+                  for (var id in pathIndex) {
+                      callback.apply(self, [id, pathIndex[id]]);
+                  }
+              };
+
+              this.scale.size = function () {
+                  return {
+                      width: self.map.width,
+                      height: self.map.height
+                  };
+              };
+
+              this.scale.scale = function (scale) {
+                  if (!scale || scale < 0) return pathScale;
+
+                  pathScale = scale;
+                  pathGroup.scale(pathScale);
+                  this.view(pathX, pathY);
+
+                  return pathScale;
+              };
+
+              this.scale.view = function (x, y) {
+                  var xy = { x: pathX, y: pathY };
+
+                  if (!_.typeCheck("number", x) || !_.typeCheck("number", y)) return xy;
+
+                  pathX = x;
+                  pathY = y;
+
+                  var pxy = getScaleXY();
+                  pathGroup.translate(-pxy.x, -pxy.y);
+
+                  return {
+                      x: pathX,
+                      y: pathY
+                  };
+              };
+
+              this.draw = function () {
+                  var root = this.chart.svg.group();
+
+                  pathScale = this.map.scale;
+                  pathX = this.map.viewX;
+                  pathY = this.map.viewY;
+                  pathGroup = makePathGroup();
+
+                  // pathGroup 루트에 추가
+                  root.append(pathGroup);
+
+                  if (this.map.scale != 1) {
+                      this.scale.scale(pathScale);
+                  }
+
+                  if (this.map.viewX != 0 || this.map.viewY != 0) {
+                      this.scale.view(pathX, pathY);
+                  }
+
+                  if (this.map.hide) {
+                      root.attr({ visibility: "hidden" });
+                  }
+
+                  return {
+                      root: root,
+                      scale: this.scale
+                  };
+              };
+
+              this.drawAfter = function (obj) {
+                  obj.root.attr({ "clip-path": "url(#" + this.axis.get("clipRectId") + ")" });
+
+                  // 모든 path가 그려진 이후에 이벤트 설정
+                  setTimeout(function () {
+                      self.scale.each(function (id, obj) {
+                          addEvent(obj.path, obj);
+                      });
+                  }, 1);
+              };
+          };
+
+          Map.setup = function () {
+              /** @property {chart.builder} chart */
+              /** @property {chart.axis} axis */
+              /** @property {Object} map */
+
+              return {
+                  scale: 1,
+                  viewX: 0,
+                  viewY: 0,
+
+                  /** @cfg {Boolean} [hide=false] Determines whether to display an applicable grid.  */
+                  hide: false,
+                  /** @cfg {String} [map=''] Set a map file's name */
+                  path: "",
+                  /** @cfg {Number} [width=-1] Set map's width */
+                  width: -1,
+                  /** @cfg {Number} [height=-1] Set map's height */
+                  height: -1
+              };
+          };
+
+          /**
+           * @event map_click
+           * Event that occurs when clicking on the map area. (real name ``` map.click ```)
+           * @param {jQueryEvent} e The event object.
+           * @param {Number} index Axis index.
+           */
+          /**
+           * @event map_dblclick
+           * Event that occurs when double clicking on the map area. (real name ``` map.dblclick ```)
+           * @param {jQueryEvent} e The event object.
+           * @param {Number} index Axis index.
+           */
+          /**
+           * @event map_rclick
+           * Event that occurs when right clicking on the map area. (real name ``` map.rclick ```)
+           * @param {jQueryEvent} e The event object.
+           * @param {Number} index Axis index.
+           */
+          /**
+           * @event map_mouseover
+           * Event that occurs when placing the mouse over the map area. (real name ``` map.mouseover ```)
+           * @param {jQueryEvent} e The event object.
+           * @param {Number} index Axis index.
+           */
+          /**
+           * @event map_mouseout
+           * Event that occurs when moving the mouse out of the map area. (real name ``` map.mouseout ```)
+           * @param {jQueryEvent} e The event object.
+           * @param {Number} index Axis index.
+           */
+          /**
+           * @event map_mousemove
+           * Event that occurs when moving the mouse over the map area. (real name ``` map.mousemove ```)
+           * @param {jQueryEvent} e The event object.
+           * @param {Number} index Axis index.
+           */
+          /**
+           * @event map_mousedown
+           * Event that occurs when left clicking on the map area. (real name ``` map.mousedown ```)
+           * @param {jQueryEvent} e The event object.
+           * @param {Number} index Axis index.
+           */
+          /**
+           * @event map_mouseup
+           * Event that occurs after left clicking on the map area. (real name ``` map.mouseup ```)
+           * @param {jQueryEvent} e The event object.
+           * @param {Number} index Axis index.
+           */
+
+          return Map;
+      }
+  };
+
+  jui$1.use(dom, svg, color, axis);
+
+  var JUIBuilder = {
+      name: "chart.builder",
+      extend: "core",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var $ = jui$1.include("util.dom");
+          var SVGUtil = jui$1.include("util.svg");
+          var ColorUtil = jui$1.include("util.color");
+          var Axis = jui$1.include("chart.axis");
+
+          _.resize(function () {
+              var call_list = jui$1.get("chart.builder");
+
+              for (var i = 0; i < call_list.length; i++) {
+                  var ui_list = call_list[i];
+
+                  for (var j = 0; j < ui_list.length; j++) {
+                      if (_.typeCheck("function", ui_list[j].resize)) {
+                          ui_list[j].resize();
+                      }
+                  }
+              }
+          }, 1000);
+
+          var UI = function UI() {
+              var _axis = [],
+                  _brush = [],
+                  _widget = [],
+                  _defs = null;
+              var _padding,
+                  _area,
+                  _theme,
+                  _hash = {};
+              var _initialize = false,
+                  _options = null,
+                  _handler = { render: [], renderAll: [] }; // 리셋 대상 커스텀 이벤트 핸들러
+              var _canvas = { main: null, buffer: null, sub: null }; // 캔버스 모드 전용
+              var _cache = {};
+
+              function calculate(self) {
+                  var max = self.svg.size();
+
+                  var _chart = {
+                      width: max.width - (_padding.left + _padding.right),
+                      height: max.height - (_padding.top + _padding.bottom),
+                      x: _padding.left,
+                      y: _padding.top
+                  };
+
+                  // chart 크기가 마이너스일 경우 (엘리먼트가 hidden 상태)
+                  if (_chart.width < 0) _chart.width = 0;
+                  if (_chart.height < 0) _chart.height = 0;
+
+                  // _chart 영역 계산
+                  _chart.x2 = _chart.x + _chart.width;
+                  _chart.y2 = _chart.y + _chart.height;
+
+                  _area = _chart;
+              }
+
+              function drawBefore(self) {
+                  _brush = _.deepClone(_options.brush);
+                  _widget = _.deepClone(_options.widget);
+
+                  // defs 엘리먼트 생성
+                  _defs = self.svg.defs();
+
+                  // 해쉬 코드 초기화
+                  _hash = {};
+              }
+
+              function drawAxis(self) {
+
+                  // 엑시스 리스트 얻어오기
+                  var axisList = _.deepClone(_options.axis, { data: true, origin: true });
+
+                  for (var i = 0; i < axisList.length; i++) {
+                      jui$1.defineOptions(Axis, axisList[i]);
+
+                      // 엑시스 인덱스 설정
+                      axisList[i].index = i;
+
+                      if (!_axis[i]) {
+                          _axis[i] = new Axis(self, _options.axis[i], axisList[i]);
+                      } else {
+                          _axis[i].reload(axisList[i]);
+                      }
+                  }
+              }
+
+              function drawBrush(self) {
+                  var draws = _brush;
+
+                  if (draws != null) {
+                      for (var i = 0; i < draws.length; i++) {
+                          var Obj = jui$1.include("chart.brush." + draws[i].type);
+
+                          // 브러쉬 기본 옵션과 사용자 옵션을 합침
+                          jui$1.defineOptions(Obj, draws[i]);
+                          var axis$$1 = _axis[draws[i].axis];
+
+                          // 타겟 프로퍼티 설정
+                          if (!draws[i].target) {
+                              var target = [];
+
+                              if (axis$$1) {
+                                  for (var key in axis$$1.data[0]) {
+                                      target.push(key);
+                                  }
+                              }
+
+                              draws[i].target = target;
+                          } else if (_.typeCheck("string", draws[i].target)) {
+                              draws[i].target = [draws[i].target];
+                          }
+
+                          // 브러쉬 인덱스 설정
+                          draws[i].index = i;
+
+                          // 브러쉬 기본 프로퍼티 정의
+                          var draw = new Obj(self, axis$$1, draws[i]);
+                          draw.chart = self;
+                          draw.axis = axis$$1;
+                          draw.brush = draws[i];
+                          draw.svg = self.svg;
+                          draw.canvas = _canvas.buffer;
+
+                          // 브러쉬 렌더링
+                          draw.render();
+                      }
+                  }
+              }
+
+              function drawWidget(self, isAll) {
+                  var draws = _widget;
+
+                  if (draws != null) {
+                      for (var i = 0; i < draws.length; i++) {
+                          var Obj = jui$1.include("chart.widget." + draws[i].type);
+
+                          // 위젯 기본 옵션과 사용자 옵션을 합침
+                          jui$1.defineOptions(Obj, draws[i]);
+
+                          // 위젯 인덱스 설정
+                          draws[i].index = i;
+
+                          // 위젯 기본 프로퍼티 정의
+                          var draw = new Obj(self, _axis[0], draws[i]);
+                          draw.chart = self;
+                          draw.axis = _axis[0];
+                          draw.widget = draws[i];
+                          draw.svg = self.svg;
+                          draw.canvas = _canvas.sub;
+
+                          // 위젯은 렌더 옵션이 false일 때, 최초 한번만 로드함 (연산 + 드로잉)
+                          // 하지만 isAll이 true이면, 강제로 연산 및 드로잉을 함 (테마 변경 및 리사이징 시)
+                          if (_initialize && !draw.isRender() && isAll !== true) {
+                              return;
+                          }
+
+                          var elem = draw.render();
+                          if (!draw.isRender()) {
+                              self.svg.autoRender(elem, false);
+                          }
+                      }
+                  }
+              }
+
+              function setCommonEvents(self, elem) {
+                  var isMouseOver = false;
+
+                  elem.on("click", function (e) {
+                      if (!checkPosition(e)) {
+                          self.emit("bg.click", [e]);
+                      } else {
+                          self.emit("chart.click", [e]);
+                      }
+                  });
+
+                  elem.on("dblclick", function (e) {
+                      if (!checkPosition(e)) {
+                          self.emit("bg.dblclick", [e]);
+                      } else {
+                          self.emit("chart.dblclick", [e]);
+                      }
+                  });
+
+                  elem.on("contextmenu", function (e) {
+                      if (!checkPosition(e)) {
+                          self.emit("bg.rclick", [e]);
+                      } else {
+                          self.emit("chart.rclick", [e]);
+                      }
+
+                      e.preventDefault();
+                  });
+
+                  elem.on("mousemove", function (e) {
+                      if (!checkPosition(e)) {
+                          if (isMouseOver) {
+                              self.emit("chart.mouseout", [e]);
+                              isMouseOver = false;
+                          }
+
+                          self.emit("bg.mousemove", [e]);
+                      } else {
+                          if (isMouseOver) {
+                              self.emit("chart.mousemove", [e]);
+                          } else {
+                              self.emit("chart.mouseover", [e]);
+                              isMouseOver = true;
+                          }
+                      }
+                  });
+
+                  elem.on("mousedown", function (e) {
+                      if (!checkPosition(e)) {
+                          self.emit("bg.mousedown", [e]);
+                      } else {
+                          self.emit("chart.mousedown", [e]);
+                      }
+                  });
+
+                  elem.on("mouseup", function (e) {
+                      if (!checkPosition(e)) {
+                          self.emit("bg.mouseup", [e]);
+                      } else {
+                          self.emit("chart.mouseup", [e]);
+                      }
+                  });
+
+                  elem.on("mouseover", function (e) {
+                      if (!checkPosition(e)) {
+                          self.emit("bg.mouseover", [e]);
+                      }
+                  });
+
+                  elem.on("mouseout", function (e) {
+                      if (!checkPosition(e)) {
+                          self.emit("bg.mouseout", [e]);
+                      }
+                  });
+
+                  elem.on("mousewheel", function (e) {
+                      if (!checkPosition(e)) {
+                          self.emit("bg.mousewheel", [e]);
+                      } else {
+                          self.emit("chart.mousewheel", [e]);
+                      }
+                  });
+
+                  function checkPosition(e) {
+                      var pos = $.offset(self.root),
+                          offsetX = e.pageX - pos.left,
+                          offsetY = e.pageY - pos.top;
+
+                      e.bgX = offsetX;
+                      e.bgY = offsetY;
+                      e.chartX = offsetX - self.padding("left");
+                      e.chartY = offsetY - self.padding("top");
+
+                      if (e.chartX < 0) return;
+                      if (e.chartX > self.area("width")) return;
+                      if (e.chartY < 0) return;
+                      if (e.chartY > self.area("height")) return;
+
+                      return true;
+                  }
+              }
+
+              function resetCustomEvent(self, isAll) {
+                  for (var i = 0; i < _handler.render.length; i++) {
+                      self.off(_handler.render[i]);
+                  }
+                  _handler.render = [];
+
+                  if (isAll === true) {
+                      for (var i = 0; i < _handler.renderAll.length; i++) {
+                          self.off(_handler.renderAll[i]);
+                      }
+                      _handler.renderAll = [];
+                  }
+              }
+
+              function createGradient(obj, hashKey) {
+                  if (!_.typeCheck("undefined", hashKey) && _hash[hashKey]) {
+                      return "url(#" + _hash[hashKey] + ")";
+                  }
+
+                  // var id = _.createId("gradient");
+                  var id = "gradient";
+                  obj.attr.id = id;
+
+                  var g = SVGUtil.createObject(obj);
+                  _defs.append(g);
+
+                  if (!_.typeCheck("undefined", hashKey)) {
+                      _hash[hashKey] = id;
+                  }
+
+                  return "url(#" + id + ")";
+              }
+
+              function createPattern(obj) {
+                  if (_.typeCheck("string", obj)) {
+                      obj = obj.replace("url(#", "").replace(")", "");
+
+                      if (_hash[obj]) {
+                          return "url(#" + obj + ")";
+                      }
+
+                      // already pattern id
+                      if (obj.indexOf('pattern-') == -1) {
+                          return false;
+                      }
+
+                      var arr = obj.split("-"),
+                          method = arr.pop();
+
+                      var pattern = jui$1.include("chart." + arr.join("."));
+
+                      if (!pattern) {
+                          return false;
+                      }
+
+                      var patternElement = pattern[method];
+
+                      if (typeof patternElement == 'function') {
+                          patternElement = patternElement.call(patternElement);
+                      }
+
+                      // json 객체를 svg element 로 변환
+                      if (patternElement.attr && !patternElement.attr.id) {
+                          patternElement.attr.id = obj;
+                      }
+
+                      patternElement = SVGUtil.createObject(patternElement);
+
+                      _defs.append(patternElement);
+
+                      _hash[obj] = obj;
+
+                      return "url(#" + obj + ")";
+                  } else {
+                      // obj.attr.id = obj.attr.id || _.createId('pattern-');
+                      obj.attr.id = obj.attr.id || "pattern";
+
+                      if (_hash[obj.attr.id]) {
+                          return "url(#" + obj.attr.id + ")";
+                      }
+
+                      var patternElement = SVGUtil.createObject(obj);
+
+                      _defs.append(patternElement);
+
+                      _hash[obj.attr.id] = obj.attr.id;
+
+                      return "url(#" + obj.attr.id + ")";
+                  }
+              }
+
+              function createColor(color$$1) {
+                  if (_.typeCheck("undefined", color$$1)) {
+                      return "none";
+                  }
+
+                  if (_.typeCheck("object", color$$1)) {
+
+                      if (color$$1.type == "pattern") {
+                          return createPattern(color$$1);
+                      } else {
+                          return createGradient(color$$1);
+                      }
+                  }
+
+                  if (typeof color$$1 == "string") {
+                      var url = createPattern(color$$1);
+                      if (url) {
+                          return url;
+                      }
+                  }
+
+                  var parsedColor = ColorUtil.parse(color$$1);
+                  if (parsedColor == color$$1) return color$$1;
+
+                  return createGradient(parsedColor, color$$1);
+              }
+
+              function setThemeStyle(theme) {
+                  var style = {};
+
+                  // 테마를 하나의 객체로 Merge
+                  if (_.typeCheck("string", theme)) {
+                      _.extend(style, jui$1.include("chart.theme." + theme));
+                      _.extend(style, _options.style);
+                  } else if (_.typeCheck("object", theme)) {
+                      _.extend(_theme, _options.style);
+                      _.extend(_theme, theme);
+                      _.extend(style, _theme);
+                  }
+
+                  // 최종 렌더링에 적용되는 객체
+                  _theme = style;
+              }
+
+              function setDefaultOptions(self) {
+                  // 일부 옵션을 제외하고 클론
+                  _options = _.deepClone(self.options, { data: true, bind: true });
+
+                  var padding = _options.padding;
+
+                  // 패딩 옵션 설정
+                  if (_.typeCheck("integer", padding)) {
+                      _padding = { left: padding, right: padding, bottom: padding, top: padding };
+                  } else {
+                      _padding = padding;
+                  }
+
+                  // Draw 옵션 설정
+                  if (!_.typeCheck("array", _options.axis)) {
+                      _options.axis = [_options.axis];
+                  }
+
+                  if (!_.typeCheck("array", _options.brush)) {
+                      _options.brush = [_options.brush];
+                  }
+
+                  if (!_.typeCheck("array", _options.widget)) {
+                      _options.widget = [_options.widget];
+                  }
+
+                  // Axis 기본값 설정
+                  if (_options.axis.length == 0) {
+                      _options.axis.push({ data: [] });
+                  }
+
+                  // Axis 확장 설정
+                  for (var i = 0; i < _options.axis.length; i++) {
+                      var axis$$1 = _options.axis[i];
+                      _.extend(axis$$1, _options.axis[axis$$1.extend], true);
+                  }
+              }
+
+              function setVectorFontIcons() {
+                  var icon = _options.icon;
+                  if (!_.typeCheck(["string", "array"], icon.path)) return;
+
+                  var pathList = _.typeCheck("string", icon.path) ? [icon.path] : icon.path,
+                      urlList = [];
+
+                  for (var i = 0; i < pathList.length; i++) {
+                      var path = pathList[i],
+                          url = "url(" + path + ") ";
+
+                      if (path.indexOf(".eot") != -1) {
+                          url += "format('embedded-opentype')";
+                      } else if (path.indexOf(".woff") != -1) {
+                          url += "format('woff')";
+                      } else if (path.indexOf(".ttf") != -1) {
+                          url += "format('truetype')";
+                      } else if (path.indexOf(".svg") != -1) {
+                          url += "format('svg')";
+                      }
+
+                      urlList.push(url);
+                  }
+
+                  var fontFace = "font-family: " + icon.type + "; font-weight: normal; font-style: normal; src: " + urlList.join(",");
+
+                  (function (rule) {
+                      var sheet = function () {
+                          var style = document.createElement("style");
+
+                          style.appendChild(document.createTextNode(""));
+                          document.head.appendChild(style);
+
+                          return style.sheet;
+                      }();
+
+                      sheet.insertRule(rule, 0);
+                  })("@font-face {" + fontFace + "}");
+              }
+
+              function parseIconInText(self, text) {
+                  var regex = /{([^{}]+)}/g,
+                      result = text.match(regex);
+
+                  if (result != null) {
+                      for (var i = 0; i < result.length; i++) {
+                          var key = result[i].substring(1, result[i].length - 1);
+                          text = text.replace(result[i], self.icon(key));
+                      }
+                  }
+
+                  return text;
+              }
+
+              function getCanvasRealSize(self) {
+                  var size = self.svg.size();
+
+                  return {
+                      width: _.typeCheck("integer", _options.width) ? _options.width : size.width,
+                      height: _.typeCheck("integer", _options.height) ? _options.height : size.height
+                  };
+              }
+
+              function initRootStyles(root) {
+                  root.style.position = "relative";
+                  root.style.userSelect = "none";
+                  root.style.webkitUserSelect = "none";
+                  root.style.MozUserSelect = "none";
+                  root.setAttribute("unselectable", "on");
+              }
+
+              function initCanvasElement(self) {
+                  var size = getCanvasRealSize(self);
+
+                  for (var key in _canvas) {
+                      var elem = document.createElement("CANVAS");
+
+                      elem.setAttribute("width", size.width);
+                      elem.setAttribute("height", size.height);
+                      elem.style.position = "absolute";
+                      elem.style.left = "0px";
+                      elem.style.top = "0px";
+
+                      // Context 설정하기
+                      if (elem.getContext) {
+                          _canvas[key] = elem.getContext("2d");
+
+                          if (key != "buffer") {
+                              self.root.appendChild(elem);
+                          }
+                      }
+
+                      // Widget 캔버스 이벤트 함수 정의
+                      if (key == "sub") {
+                          elem.on = function (type, handler) {
+                              var callback = function callback(e) {
+                                  if (typeof handler == "function") {
+                                      handler.call(this, e);
+                                  }
+                              };
+
+                              elem.addEventListener(type, callback, false);
+                              return this;
+                          };
+                      }
+                  }
+              }
+
+              function resetCanvasElement(self, type) {
+                  var size = getCanvasRealSize(self),
+                      context = _canvas[type];
+
+                  context.restore();
+                  context.clearRect(0, 0, size.width, size.height);
+                  context.save();
+
+                  if (type == "main") {
+                      context.translate(_area.x, _area.y);
+                  }
+              }
+
+              this.init = function () {
+                  // 기본 옵션 설정
+                  setDefaultOptions(this);
+
+                  // 차트 테마 설정 (+옵션 스타일)
+                  setThemeStyle(_options.theme);
+
+                  // 루트 엘리먼트 기본 스타일 설정
+                  initRootStyles(this.root);
+
+                  /** @property {chart.svg} svg Refers to an SVG utility object. */
+                  this.svg = new SVGUtil(this.root, {
+                      width: _options.width,
+                      height: _options.height,
+                      "buffered-rendering": "dynamic"
+                  });
+
+                  // canvas 기본 객체 생성
+                  if (_options.canvas) {
+                      initCanvasElement(this);
+                      setCommonEvents(this, $.find(this.root, "CANVAS")[1]);
+                  } else {
+                      setCommonEvents(this, this.svg.root);
+                  }
+
+                  // 아이콘 폰트 설정
+                  setVectorFontIcons();
+
+                  // 차트 기본 렌더링
+                  this.render();
+              };
+
+              /**
+               * @method get
+               *
+               * Gets a named axis, brush, widget (type: axis, brush, widget, padding, area)
+               *
+               * @param {"axis"/"brush"/"widget"/"padding"/"area"} type
+               * @param {String} key  Property name
+               * @return {Mixed/Object}
+               */
+              this.get = function (type, key) {
+                  var obj = {
+                      axis: _axis,
+                      brush: _brush,
+                      widget: _widget,
+                      padding: _padding,
+                      area: _area
+                  };
+
+                  if (obj[type][key]) {
+                      return obj[type][key];
+                  }
+
+                  return obj[type] || obj;
+              };
+
+              /**
+               * Gets the axis object of that index.
+               *
+               * @param {Number} key
+               * @returns {Array/Object}
+               */
+              this.axis = function (key) {
+                  return arguments.length == 0 ? _axis : _axis[key];
+              };
+
+              /**
+               * Gets a calculated value for a chart area (type: width, height, x, y, x2, y2)).
+               *
+               * @param {String} key
+               * @return {Number/Object}
+               */
+              this.area = function (key) {
+                  return _.typeCheck("undefined", _area[key]) ? _area : _area[key];
+              };
+
+              /**
+               * Gets the top, bottom, left and right margin values.
+               *
+               * @param {"top"/"left"/"bottom"/"right"} key
+               * @return {Number/Object}
+               */
+              this.padding = function (key) {
+                  return _.typeCheck("undefined", _padding[key]) ? _padding : _padding[key];
+              };
+
+              /**
+               * Gets a color defined in the theme or the color set.
+               *
+               * @param {Number/String} key
+               * @param {Array} colors
+               * @param {Array} target
+               * @return {String} Selected color string
+               */
+              this.color = function (key, colors) {
+                  var color$$1 = null;
+
+                  // 직접 색상을 추가할 경우 (+그라데이션, +필터)
+                  if (arguments.length == 1) {
+                      if (_.typeCheck("string", key)) {
+                          color$$1 = key;
+                      } else if (_.typeCheck("integer", key)) {
+                          color$$1 = nextColor(key);
+                      }
+                  } else {
+                      // 테마 & 브러쉬 옵션 컬러 설정
+                      if (_.typeCheck(["array", "object"], colors)) {
+                          color$$1 = colors[key];
+
+                          if (_.typeCheck("integer", color$$1)) {
+                              color$$1 = nextColor(color$$1);
+                          }
+                      } else {
+                          color$$1 = nextColor();
+                      }
+                  }
+
+                  if (_hash[color$$1]) {
+                      return "url(#" + _hash[color$$1] + ")";
+                  }
+
+                  function nextColor(newIndex) {
+                      var c = _theme["colors"],
+                          index = newIndex || key;
+
+                      return index > c.length - 1 ? c[c.length - 1] : c[index];
+                  }
+
+                  return createColor(color$$1);
+              };
+
+              /**
+               * Gets the unicode string of the icon.
+               *
+               * @param {String} key  icon's alias
+               */
+              this.icon = function (key) {
+                  return jui$1.include("chart.icon." + _options.icon.type)[key];
+              };
+
+              /**
+               * Creates a text element to which a theme is applied.
+               *
+               * Also it support icon string
+               *
+               * @param {Object} attr
+               * @param {String|Function} textOrCallback
+               */
+              this.text = function (attr, textOrCallback) {
+                  if (_.typeCheck("string", textOrCallback)) {
+                      textOrCallback = parseIconInText(this, textOrCallback);
+                  } else if (_.typeCheck("undefined", textOrCallback)) {
+                      textOrCallback = "";
+                  }
+
+                  return this.svg.text(attr, textOrCallback);
+              };
+
+              /**
+               * Creates a text element to which a theme is applied.
+               *
+               * Also it support icon string
+               *
+               * @param {Object} attr
+               * @param {Array} texts
+               * @param {Number} lineBreakRate
+               */
+              this.texts = function (attr, texts, lineBreakRate) {
+                  var g = this.svg.group();
+
+                  for (var i = 0; i < texts.length; i++) {
+                      if (_.typeCheck("string", texts[i])) {
+                          var size = (attr["font-size"] || 10) * (lineBreakRate || 1);
+
+                          g.append(this.svg.text(_.extend({ y: i * size }, attr, true), parseIconInText(this, texts[i])));
+                      }
+                  }
+
+                  return g;
+              };
+
+              /**
+               * @method theme
+               *
+               * Gets a value for the theme element applied to the current chart.
+               *
+               * ```
+               *      // get all theme property
+               *      var theme = chart.theme();
+               *      // get a part of theme
+               *      var fontColor = chart.theme("fontColor");
+               *      // get selected value of theme
+               *      chart.theme(isSelected, "selectedFontColor", "fontColor");  // if isSelected is true, return 'selectedFontColor' else return 'fontColor'
+               * ```
+               */
+              this.theme = function (key, value, value2) {
+                  if (arguments.length == 0) {
+                      return _theme;
+                  } else if (arguments.length == 1) {
+                      if (key.indexOf("Color") > -1 && _theme[key] != null) {
+                          return createColor(_theme[key]);
+                      }
+
+                      return _theme[key];
+                  } else if (arguments.length == 3) {
+                      var val = key ? value : value2;
+
+                      if (val.indexOf("Color") > -1 && _theme[val] != null) {
+                          return createColor(_theme[val]);
+                      }
+
+                      return _theme[val];
+                  }
+              };
+
+              /**
+               * Returns a value from the format callback function of a defined option.
+               *
+               * @param {Function} format
+               * @return {Mixed}
+               */
+              this.format = function () {
+                  if (arguments.length == 0) return;
+                  var callback = _options.format;
+
+                  if (_.typeCheck("function", callback)) {
+                      return callback.apply(this, arguments);
+                  }
+
+                  return arguments[0];
+              };
+
+              /**
+               * @method on
+               *
+               * A callback function defined as an on method is run when an emit method is called.
+               *
+               * @param {String} type Event's name
+               * @param {Function} callback
+               * @param {"render"/"renderAll"/undefined} resetType
+               */
+              this.on = function (type, callback, resetType) {
+                  if (!_.typeCheck("string", type) || !_.typeCheck("function", callback)) return;
+
+                  this.event.push({ type: type.toLowerCase(), callback: callback });
+
+                  // 브러쉬나 위젯에서 설정한 이벤트 핸들러만 추가
+                  if (resetType == "render" || resetType == "renderAll") {
+                      _handler[resetType].push(callback);
+                  }
+              };
+
+              /**
+               * @method render
+               *
+               * Renders all draw objects.
+               *
+               * @param {Boolean} isAll
+               */
+              this.render = function (isAll) {
+                  // SVG 메인 리셋
+                  this.svg.reset(isAll);
+
+                  // chart 이벤트 초기화 (삭제 대상)
+                  resetCustomEvent(this, isAll);
+
+                  // chart 영역 계산
+                  calculate(this);
+
+                  // Canvas 초기 설정
+                  if (this.options.canvas) {
+                      resetCanvasElement(this, "main");
+                      resetCanvasElement(this, "buffer");
+
+                      if (isAll) {
+                          resetCanvasElement(this, "sub");
+                      }
+                  }
+
+                  // chart 관련된 요소 draw
+                  drawBefore(this);
+                  drawAxis(this);
+                  drawBrush(this);
+                  drawWidget(this, isAll);
+
+                  // Canvas 더블버퍼링 렌더링
+                  if (this.options.canvas) {
+                      _canvas.main.drawImage(_canvas.buffer.canvas, 0, 0);
+                  }
+
+                  // SVG 기본 테마 설정
+                  this.svg.root.css({
+                      "font-family": this.theme("fontFamily") + "," + _options.icon.type,
+                      background: this.theme("backgroundColor")
+                  });
+
+                  // SVG 메인/서브 렌더링
+                  this.svg.render(isAll);
+
+                  // 커스텀 이벤트 발생
+                  this.emit("render", [_initialize]);
+
+                  // 초기화 및 렌더링 체크 설정
+                  _initialize = true;
+              };
+
+              /**
+               * @method appendDefs
+               *
+               * Add the child element in defs tag.
+               *
+               * @param {chart.svg.element} elem
+               */
+              this.appendDefs = function (elem) {
+                  _defs.append(elem);
+              };
+
+              /**
+               * @method addBrush
+               *
+               * Adds a brush and performs rendering again.
+               *
+               * @param {Object} brush
+               */
+              this.addBrush = function (brush) {
+                  _options.brush.push(brush);
+                  if (this.isRender()) this.render();
+              };
+
+              /**
+               * @method removeBrush
+               *
+               * Deletes the brush of a specified index and performs rendering again.
+               * @param {Number} index
+               */
+              this.removeBrush = function (index) {
+                  _options.brush.splice(index, 1);
+                  if (this.isRender()) this.render();
+              };
+
+              /**
+               * @method updateBrush
+               * Updates the brush of a specified index and performs rendering again.
+               * @param {Number} index
+               * @param {Object} brush
+               * @param {Boolean} isReset
+               */
+              this.updateBrush = function (index, brush, isReset) {
+                  if (isReset === true) {
+                      _options.brush[index] = brush;
+                  } else {
+                      _.extend(_options.brush[index], brush);
+                  }
+
+                  if (this.isRender()) this.render();
+              };
+
+              /**
+               * @method addWidget
+               * Adds a widget and performs rendering again.
+               *
+               * @param {Object} widget
+               */
+              this.addWidget = function (widget) {
+                  _options.widget.push(widget);
+                  if (this.isRender()) this.render();
+              };
+
+              /**
+               * @method removeWidget
+               * Deletes the widget of a specified index and performs rendering again.
+               * @param {Number} index
+               */
+              this.removeWidget = function (index) {
+                  _options.widget.splice(index, 1);
+                  if (this.isRender()) this.render();
+              };
+
+              /**
+               * @method updateWidget
+               * Updates the widget of a specified index and performs rendering again
+               * @param {Number} index
+               * @param {Object} widget
+               * @param {Boolean} isReset
+               */
+              this.updateWidget = function (index, widget, isReset) {
+                  if (isReset === true) {
+                      _options.widget[index] = widget;
+                  } else {
+                      _.extend(_options.widget[index], widget);
+                  }
+
+                  if (this.isRender()) this.render();
+              };
+
+              /**
+               * Changes a chart to a specified theme and renders the chart again.
+               *
+               * @param {String/Object} theme
+               */
+              this.setTheme = function (theme) {
+                  setThemeStyle(theme);
+                  if (this.isRender()) this.render(true);
+              };
+
+              /**
+               * Changes the size of a chart to the specified area and height then performs rendering.
+               *
+               * @param {Number} width
+               * @param {Number} height
+               */
+              this.setSize = function (width, height) {
+                  if (arguments.length == 2) {
+                      _options.width = width;
+                      _options.height = height;
+                  }
+
+                  // Resize svg
+                  this.svg.size(_options.width, _options.height);
+
+                  // Resize canvas
+                  if (_options.canvas) {
+                      var list = $.find(this.root, "CANVAS"),
+                          size = getCanvasRealSize(this);
+
+                      for (var i = 0; i < list.length; i++) {
+                          list[i].setAttribute("width", size.width);
+                          list[i].setAttribute("height", size.height);
+                      }
+                  }
+
+                  if (this.isRender()) this.render(true);
+              };
+
+              /**
+               * Returns true if the horizontal or vertical size of the chart is 100%.
+               *
+               * @return {Boolean}
+               */
+              this.isFullSize = function () {
+                  if (_options.width == "100%" || _options.height == "100%") return true;
+
+                  return true;
+              };
+
+              /**
+               * Resize the chart to fit the screen width.
+               *
+               */
+              this.resize = function () {
+                  if (this.isFullSize()) {
+                      this.setSize();
+                  }
+
+                  if (!this.isRender()) {
+                      this.render(true);
+                  }
+              };
+
+              /**
+               * Returns the values of rendering options and, if the rendering option is false, does not render the chart again when a method is called.
+               *
+               * @return {Boolean}
+               */
+              this.isRender = function () {
+                  return !_initialize ? true : _options.render;
+              };
+
+              this.setCache = function (key, value) {
+                  _cache[key] = value;
+              };
+
+              this.getCache = function (key, defValue) {
+                  if (_cache[key] === undefined) return defValue;
+                  return _cache[key];
+              };
+          };
+
+          UI.setup = function () {
+              return {
+                  /** @cfg  {String/Number} [width="100%"] chart width */
+                  width: "100%",
+                  /** @cfg  {String/Number} [height="100%"] chart height */
+                  height: "100%",
+                  /**
+                   * @cfg  {Object} padding chart padding
+                   * @cfg  {Number} [padding.top=50] chart padding
+                   * @cfg  {Number} [padding.bottom=50] chart padding
+                   * @cfg  {Number} [padding.left=50] chart padding
+                   * @cfg  {Number} [padding.right=50] chart padding
+                   */
+                  padding: {
+                      top: 50,
+                      bottom: 50,
+                      left: 50,
+                      right: 50
+                  },
+
+                  /** @cfg  {String} [theme=classic] chart theme  */
+                  theme: "classic",
+                  /** @cfg  {Object} style chart custom theme  */
+                  style: {},
+                  /** @cfg {Array} brush Determines a brush to be added to a chart. */
+                  brush: [],
+                  /** @cfg {Array} widget Determines a widget to be added to a chart. */
+                  widget: [],
+                  /** @cfg {Array} [axis=[]] Determines a axis to be added to a chart. */
+                  axis: [],
+
+                  /** @cfg {Object} [bind=null] Sets a component objects to be bind.*/
+                  bind: null,
+                  /** @cfg {Function} [format=null] Sets a format callback function to be used in a grid/brush/widget. */
+                  format: null,
+                  /** @cfg {Boolean} [render=true] Does not render a chart when a rendering-related method is called with false (although the render method is not included). */
+                  render: true,
+
+                  /**
+                   * @cfg {Object} icon Icon-related settings available in the chart.
+                   * @cfg {String} [icon.type="classic"]
+                   * @cfg {String} [icon.path=null]
+                   */
+                  icon: {
+                      type: "classic",
+                      path: null
+                  },
+
+                  /** @cfg {Boolean} [canvas=false] */
+                  canvas: false
+              };
+          };
+
+          /**
+           * @event chart_click
+           * Event that occurs when clicking on the chart area. (real name ``` chart.click ```)
+           * @param {jQueryEvent} e The event object.
+           */
+          /**
+           * @event chart_dblclick
+           * Event that occurs when double clicking on the chart area. (real name ``` chart.dblclick ```)
+           * @param {jQueryEvent} e The event object.
+           */
+          /**
+           * @event chart_rclick
+           * Event that occurs when right clicking on the chart area. (real name ``` chart.rclick ```)
+           * @param {jQueryEvent} e The event object.
+           */
+          /**
+           * @event chart_mouseover
+           * Event that occurs when placing the mouse over the chart area. (real name ``` chart.mouseover ```)
+           * @param {jQueryEvent} e The event object.
+           */
+          /**
+           * @event chart_mouseout
+           * Event that occurs when moving the mouse out of the chart area. (real name ``` chart.mouseout ```)
+           * @param {jQueryEvent} e The event object.
+           */
+          /**
+           * @event chart_mousemove
+           * Event that occurs when moving the mouse over the chart area. (real name ``` chart.mousemove ```)
+           * @param {jQueryEvent} e The event object.
+           */
+          /**
+           * @event chart_mousedown
+           * Event that occurs when left clicking on the chart area. (real name ``` chart.mousedown ```)
+           * @param {jQueryEvent} e The event object.
+           */
+          /**
+           * @event chart_mouseup
+           * Event that occurs after left clicking on the chart area. (real name ``` chart.mouseup ```)
+           * @param {jQueryEvent} e The event object.
+           */
+
+          /**
+           * @event bg_click
+           * Event that occurs when clicking on the chart margin. (real name ``` bg.click ```)
+           * @param {jQueryEvent} e The event object.
+           */
+          /**
+           * @event bg_dblclick
+           * Event that occurs when double clicking on the chart margin. (real name ``` bg.dblclick ```)
+           * @param {jQueryEvent} e The event object.
+           */
+          /**
+           * @event bg_rclick
+           * Event that occurs when right clicking on the chart margin. (real name ``` bg.rclick ```)
+           * @param {jQueryEvent} e The event object.
+           */
+          /**
+           * @event bg_mouseover
+           * Event that occurs when placing the mouse over the chart margin. (real name ``` bg.mouseover ```)
+           * @param {jQueryEvent} e The event object.
+           */
+          /**
+           * @event bg_mouseout
+           * Event that occurs when moving the mouse out of the chart margin. (real name ``` bg.mouseout ```)
+           * @param {jQueryEvent} e The event object.
+           */
+          /**
+           * @event bg_mousemove
+           * Event that occurs when moving the mouse over the chart margin. (real name ``` bg.mousemove ```)
+           * @param {jQueryEvent} e The event object.
+           */
+          /**
+           * @event bg_mousedown
+           * Event that occurs when left clicking on the chart margin. (real name ``` bg.mousedown ```)
+           * @param {jQueryEvent} e The event object.
+           */
+          /**
+           * @event bg_mouseup
+           * Event that occurs after left clicking on the chart margin. (real name ``` bg.mouseup ```)
+           * @param {jQueryEvent} e The event object.
+           */
+
+          return UI;
+      }
+  };
+
+  var Plane = {
+      name: "chart.plane",
+      extend: "core",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var builder = jui$1.include("chart.builder");
+
+          var UI = function UI() {
+              var chart = null,
+                  axis = [],
+                  brush = [],
+                  widget = [];
+
+              var axisIndex = 0,
+                  baseAxis = {},
+                  etcAxis = {};
+
+              this.init = function () {
+                  var opts = this.options,
+                      defAxis = {
+                      type: "range",
+                      step: opts.step,
+                      line: opts.line
+                  };
+
+                  baseAxis.x = _.extend({ domain: opts.x }, defAxis);
+                  baseAxis.y = _.extend({ domain: opts.y }, defAxis);
+                  baseAxis.x.orient = "bottom";
+                  baseAxis.y.orient = "left";
+                  baseAxis.z = _.extend({ domain: opts.z }, defAxis);
+                  baseAxis.depth = opts.depth - opts.padding * 2;
+                  baseAxis.degree = { x: opts.dx, y: opts.dy, z: opts.dz };
+                  baseAxis.perspective = opts.perspective;
+
+                  etcAxis.extend = 0;
+                  etcAxis.x = { hide: true };
+                  etcAxis.y = { hide: true };
+                  etcAxis.z = { hide: true };
+
+                  if (opts.dimension == "2d") {
+                      baseAxis.perspective = 1;
+                      baseAxis.degree.x = 0;
+                      baseAxis.degree.y = 0;
+                      baseAxis.degree.z = 0;
+                      baseAxis.z.hideText = true;
+                  }
+              };
+
+              this.push = function (data) {
+                  if (!_.typeCheck("array", data)) return;
+
+                  if (!axis[axisIndex]) {
+                      axis.push(_.extend({}, axisIndex == 0 ? baseAxis : etcAxis));
+                  }
+
+                  if (!axis[axisIndex].data) {
+                      axis[axisIndex].data = [];
+                  }
+
+                  axis[axisIndex].data.push(data);
+              };
+
+              this.commit = function (symbol, r) {
+                  var opts = this.options;
+
+                  brush.push({
+                      type: "canvas.dot3d",
+                      color: axisIndex,
+                      axis: axisIndex,
+                      symbol: symbol || opts.symbol,
+                      size: (r || opts.r) * 2
+                  });
+
+                  axisIndex++;
+              };
+
+              this.append = function (datas, symbol, r) {
+                  var opts = this.options;
+
+                  axis.push(_.extend({}, axisIndex == 0 ? baseAxis : etcAxis));
+                  axis[axisIndex].data = datas;
+
+                  brush.push({
+                      type: "canvas.dot3d",
+                      color: axisIndex,
+                      axis: axisIndex,
+                      symbol: symbol || opts.symbol,
+                      size: (r || opts.r) * 2
+                  });
+
+                  axisIndex++;
+              };
+
+              this.render = function () {
+                  var opts = this.options;
+
+                  if (opts.dimension == "3d") {
+                      widget.push({
+                          type: "polygon.rotate3d"
+                      });
+                  }
+
+                  if (chart != null) {
+                      chart.root.innerHTML = "";
+                      chart = null;
+                  }
+
+                  if (axis.length == 0) {
+                      axis.push(baseAxis);
+                  }
+
+                  chart = builder(this.root, {
+                      padding: opts.padding,
+                      width: opts.width,
+                      height: opts.height,
+                      axis: axis,
+                      brush: brush,
+                      widget: widget,
+                      canvas: true,
+                      render: false,
+                      style: {
+                          gridFaceBackgroundOpacity: 0.1
+                      }
+                  });
+
+                  if (_.typeCheck("array", opts.colors)) {
+                      var colors = [];
+
+                      for (var i = 0; i < opts.colors.length; i++) {
+                          colors.push(chart.color(opts.colors[i]));
+                      }
+
+                      chart.setTheme({ colors: colors });
+                  }
+
+                  axis = [];
+                  brush = [];
+                  widget = [];
+                  axisIndex = 0;
+
+                  chart.render();
+              };
+          };
+
+          UI.setup = function () {
+              return {
+                  dimension: "2d",
+                  width: 500,
+                  height: 500,
+                  depth: 500,
+                  padding: 50,
+                  x: [-100, 100],
+                  y: [-100, 100],
+                  z: [-100, 100],
+                  step: 4,
+                  line: true,
+                  symbol: "dot",
+                  r: 2,
+                  perspective: 0.9,
+                  dx: 10,
+                  dy: 5,
+                  dz: 0,
+                  colors: null
+              };
+          };
+
+          return UI;
+      }
+  };
+
+  var Animation = {
+      name: "chart.animation",
+      extend: "core",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var builder = jui$1.include("chart.builder");
+
+          var UI = function UI() {
+              var interval = void 0,
+                  animateSeq = -1,
+                  prevTime = 0,
+                  startTime = 0;
+
+              this.init = function () {
+                  var opts = this.options;
+
+                  // 차트 빌더는 interval 옵션을 사용하지 않기 때문에 삭제함
+                  interval = opts.interval;
+                  delete opts.interval;
+
+                  if (opts.axis.length && opts.axis.length > 1) throw new Error("JUI_CRITICAL_ERR: the real-time module allows only a single axes");
+
+                  this.builder = builder(this.selector, opts);
+              };
+
+              this.run = function (callback) {
+                  var self = this;
+                  var currentTime = Date.now();
+
+                  if (startTime == 0) {
+                      startTime = currentTime;
+                  }
+
+                  if (currentTime - prevTime > interval || interval == 0) {
+                      var tpf = (currentTime - prevTime) / 1000;
+                      if (tpf > 1) tpf = 1;
+
+                      this.builder.setCache("tpf", tpf);
+                      this.builder.setCache("fps", 1.0 / tpf);
+
+                      if (typeof callback == "function") {
+                          callback.call(this, currentTime - startTime);
+                      }
+
+                      this.render();
+                      prevTime = currentTime;
+                  }
+
+                  animateSeq = requestAnimationFrame(function () {
+                      self.run(callback);
+                  });
+              };
+
+              this.stop = function () {
+                  if (animateSeq != -1) {
+                      cancelAnimationFrame(animateSeq);
+                      animateSeq = -1;
+                  }
+              };
+
+              this.set = function (type, value, isReset) {
+                  this.builder.axis(0).set(type, value, isReset);
+              };
+
+              this.update = function (data) {
+                  this.builder.axis(0).update(data);
+              };
+
+              this.render = function (isAll) {
+                  this.builder.render(isAll);
+              };
+          };
+
+          UI.setup = function () {
+              return _.extend({
+                  render: false,
+                  canvas: true,
+                  interval: 0
+              }, JUIBuilder.component().setup(), true);
+          };
+
+          return UI;
+      }
+  };
+
+  jui$1.use([vector, transform, math]);
+
+  var core = {
+      name: "chart.polygon.core",
+      extend: null,
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var Vector = jui$1.include("chart.vector");
+          var Transform = jui$1.include("util.transform");
+          var math$$1 = jui$1.include("util.math");
+
+          var PolygonCore = function PolygonCore() {
+              this.perspective = 0.9;
+
+              this.rotate = function (depth, degree, cx, cy, cz) {
+                  var p = this.perspective,
+                      t = new Transform(this.vertices),
+                      m = t.matrix("move3d", cx, cy, cz);
+
+                  // 폴리곤 이동 및 각도 변경
+                  m = math$$1.matrix3d(m, t.matrix("rotate3dx", degree.x));
+                  m = math$$1.matrix3d(m, t.matrix("rotate3dy", degree.y));
+                  m = math$$1.matrix3d(m, t.matrix("rotate3dz", degree.z));
+                  m = math$$1.matrix3d(m, t.matrix("move3d", -cx, -cy, -cz));
+                  this.vertices = t.custom(m);
+
+                  for (var i = 0, count = this.vertices.length; i < count; i++) {
+                      var far = Math.abs(this.vertices[i][2] - depth),
+                          s = math$$1.scaleValue(far, 0, depth, p, 1),
+                          t2 = new Transform(),
+                          m2 = t2.matrix("move3d", cx, cy, depth / 2);
+
+                      // 폴리곤 스케일 변경
+                      m2 = math$$1.matrix3d(m2, t2.matrix("scale3d", s, s, s));
+                      m2 = math$$1.matrix3d(m2, t2.matrix("move3d", -cx, -cy, -depth / 2));
+                      this.vertices[i] = math$$1.matrix3d(m2, this.vertices[i]);
+
+                      // 벡터 객체 생성 및 갱신
+                      if (_.typeCheck("array", this.vectors)) {
+                          if (this.vectors[i] == null) {
+                              this.vectors[i] = new Vector(this.vertices[i][0], this.vertices[i][1], this.vertices[i][2]);
+                          } else {
+                              this.vectors[i].x = this.vertices[i][0];
+                              this.vectors[i].y = this.vertices[i][1];
+                              this.vectors[i].z = this.vertices[i][2];
+                          }
+                      }
+                  }
+              };
+
+              this.min = function () {
+                  var obj = {
+                      x: this.vertices[0][0],
+                      y: this.vertices[0][1],
+                      z: this.vertices[0][2]
+                  };
+
+                  for (var i = 1, len = this.vertices.length; i < len; i++) {
+                      obj.x = Math.min(obj.x, this.vertices[i][0]);
+                      obj.y = Math.min(obj.y, this.vertices[i][1]);
+                      obj.z = Math.min(obj.z, this.vertices[i][2]);
+                  }
+
+                  return obj;
+              };
+
+              this.max = function () {
+                  var obj = {
+                      x: this.vertices[0][0],
+                      y: this.vertices[0][1],
+                      z: this.vertices[0][2]
+                  };
+
+                  for (var i = 1, len = this.vertices.length; i < len; i++) {
+                      obj.x = Math.max(obj.x, this.vertices[i][0]);
+                      obj.y = Math.max(obj.y, this.vertices[i][1]);
+                      obj.z = Math.max(obj.z, this.vertices[i][2]);
+                  }
+
+                  return obj;
+              };
+          };
+
+          return PolygonCore;
+      }
+  };
+
+  jui$1.use(core);
+
+  var grid$1 = {
+      name: "chart.polygon.grid",
+      extend: "chart.polygon.core",
+      component: function component() {
+          var GridPolygon = function GridPolygon(type, width, height, depth, x, y) {
+              x = x || 0;
+              y = y || 0;
+              width = x + width;
+              height = y + height;
+
+              var matrix = {
+                  center: [new Float32Array([x, y, depth, 1]), new Float32Array([width, y, depth, 1]), new Float32Array([width, height, depth, 1]), new Float32Array([x, height, depth, 1])],
+                  horizontal: [new Float32Array([x, height, 0, 1]), new Float32Array([width, height, 0, 1]), new Float32Array([width, height, depth, 1]), new Float32Array([x, height, depth, 1])],
+                  vertical: [new Float32Array([width, y, 0, 1]), new Float32Array([width, height, 0, 1]), new Float32Array([width, height, depth, 1]), new Float32Array([width, y, depth, 1])]
+              };
+
+              this.vertices = matrix[type];
+
+              this.vectors = [];
+          };
+
+          return GridPolygon;
+      }
+  };
+
+  jui$1.use(core);
+
+  var line = {
+      name: "chart.polygon.line",
+      extend: "chart.polygon.core",
+      component: function component() {
+          var LinePolygon = function LinePolygon(x1, y1, d1, x2, y2, d2) {
+              this.vertices = [new Float32Array([x1, y1, d1, 1]), new Float32Array([x2, y2, d2, 1])];
+
+              this.vectors = [];
+          };
+
+          return LinePolygon;
+      }
+  };
+
+  jui$1.use(core);
+
+  var point = {
+      name: "chart.polygon.point",
+      extend: "chart.polygon.core",
+      component: function component() {
+          var PointPolygon = function PointPolygon(x, y, d) {
+              this.vertices = [new Float32Array([x, y, d, 1])];
+
+              this.vectors = [];
+          };
+
+          return PointPolygon;
+      }
+  };
+
+  jui$1.use(core);
+
+  var CubePolygon = {
+      name: "chart.polygon.cube",
+      extend: "chart.polygon.core",
+      component: function component() {
+          var CubePolygon = function CubePolygon(x, y, z, w, h, d) {
+              this.vertices = [new Float32Array([x, y, z, 1]), new Float32Array([x + w, y, z, 1]), new Float32Array([x + w, y, z + d, 1]), new Float32Array([x, y, z + d, 1]), new Float32Array([x, y + h, z, 1]), new Float32Array([x + w, y + h, z, 1]), new Float32Array([x + w, y + h, z + d, 1]), new Float32Array([x, y + h, z + d, 1])];
+
+              this.faces = [[0, 1, 2, 3], [3, 2, 6, 7], [0, 3, 7, 4], [1, 2, 6, 5], [0, 1, 5, 4], [4, 5, 6, 7]];
+
+              this.vectors = [];
+          };
+
+          return CubePolygon;
+      }
+  };
+
+  jui$1.use(draw);
+
+  var draw2d = {
+      name: "chart.grid.draw2d",
+      extend: "chart.draw",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+
+          var Draw2DGrid = function Draw2DGrid() {
+
+              this.createGridX = function (position, index, x, isActive, isLast) {
+                  var line = this.getLineOption(),
+                      axis = this.chart.svg.group().translate(x, 0),
+                      size = this.chart.theme("gridTickBorderSize");
+
+                  axis.append(this.line({
+                      y2: position == "bottom" ? size : -size,
+                      stroke: this.color(isActive, "gridActiveBorderColor", "gridXAxisBorderColor"),
+                      "stroke-width": this.chart.theme("gridTickBorderWidth")
+                  }));
+
+                  if (line) {
+                      this.drawValueLine(position, axis, isActive, line, index, isLast);
+                  }
+
+                  return axis;
+              };
+
+              this.createGridY = function (position, index, y, isActive, isLast) {
+                  var line = this.getLineOption(),
+                      axis = this.chart.svg.group().translate(0, y),
+                      size = this.chart.theme("gridTickBorderSize");
+
+                  axis.append(this.line({
+                      x2: position == "left" ? -size : size,
+                      stroke: this.color(isActive, "gridActiveBorderColor", "gridYAxisBorderColor"),
+                      "stroke-width": this.chart.theme("gridTickBorderWidth")
+                  }));
+
+                  if (line) {
+                      this.drawValueLine(position, axis, isActive, line, index, isLast);
+                  }
+
+                  return axis;
+              };
+
+              this.fillRectObject = function (g, line, position, x, y, width, height) {
+                  if (line.type.indexOf("gradient") > -1) {
+                      g.append(this.chart.svg.rect({
+                          x: x,
+                          y: y,
+                          height: height,
+                          width: width,
+                          fill: this.chart.color(line.fill ? line.fill : "linear(" + position + ") " + this.chart.theme("gridPatternColor") + ",0.5 " + this.chart.theme("backgroundColor")),
+                          "fill-opacity": this.chart.theme("gridPatternOpacity")
+                      }));
+                  } else if (line.type.indexOf("rect") > -1) {
+                      g.append(this.chart.svg.rect({
+                          x: x,
+                          y: y,
+                          height: height,
+                          width: width,
+                          fill: this.chart.color(line.fill ? line.fill : this.chart.theme("gridPatternColor")),
+                          "fill-opacity": this.chart.theme("gridPatternOpacity")
+                      }));
+                  }
+              };
+
+              /**
+               * @method drawAxisLine
+               * theme 이 적용된  axis line 리턴
+               * @param {ChartBuilder} chart
+               * @param {Object} attr
+               */
+              this.drawAxisLine = function (position, g, attr) {
+                  var isTopOrBottom = position == "top" || position == "bottom";
+
+                  g.append(this.chart.svg.line(_.extend({
+                      x1: 0,
+                      y1: 0,
+                      x2: 0,
+                      y2: 0,
+                      stroke: this.color(isTopOrBottom ? "gridXAxisBorderColor" : "gridYAxisBorderColor"),
+                      "stroke-width": this.chart.theme(isTopOrBottom ? "gridXAxisBorderWidth" : "gridYAxisBorderWidth"),
+                      "stroke-opacity": 1
+                  }, attr)));
+              };
+
+              this.drawPattern = function (position, ticks, values, isMove) {
+                  if (this.grid.hide) return;
+                  if (!position) return;
+                  if (!ticks) return;
+                  if (!values) return;
+
+                  var line = this.getLineOption(),
+                      isY = position == "left" || position == "right",
+                      g = this.chart.svg.group();
+
+                  g.translate(this.axis.area("x") + this.chart.area("x"), this.axis.area("y") + this.chart.area("y"));
+
+                  if (line && (line.type.indexOf("gradient") > -1 || line.type.indexOf("rect") > -1)) {
+                      for (var i = 0; i < values.length - 1; i += 2) {
+                          var dist = Math.abs(values[i + 1] - values[i]),
+                              pos = values[i] - (isMove ? dist / 2 : 0),
+                              x = isY ? 0 : pos,
+                              y = isY ? pos : 0,
+                              width = isY ? this.axis.area("width") : dist,
+                              height = isY ? dist : this.axis.area("height");
+
+                          this.fillRectObject(g, line, position, x, y, width, height);
+                      }
+                  }
+              };
+
+              this.drawBaseLine = function (position, g) {
+                  var obj = this.getGridSize(),
+                      pos = {};
+
+                  if (position == "bottom" || position == "top") {
+                      pos = { x1: obj.start, x2: obj.end };
+                  } else if (position == "left" || position == "right") {
+                      pos = { y1: obj.start, y2: obj.end };
+                  }
+
+                  this.drawAxisLine(position, g, pos);
+              };
+
+              this.drawValueLine = function (position, axis, isActive, line, index, isLast) {
+                  var area = {},
+                      isDrawLine = false;
+
+                  if (position == "top") {
+                      isDrawLine = this.checkDrawLineY(index, isLast);
+                      area = { x1: 0, x2: 0, y1: 0, y2: this.axis.area("height") };
+                  } else if (position == "bottom") {
+                      isDrawLine = this.checkDrawLineY(index, isLast);
+                      area = { x1: 0, x2: 0, y1: 0, y2: -this.axis.area("height") };
+                  } else if (position == "left") {
+                      isDrawLine = this.checkDrawLineX(index, isLast);
+                      area = { x1: 0, x2: this.axis.area("width"), y1: 0, y2: 0 };
+                  } else if (position == "right") {
+                      isDrawLine = this.checkDrawLineX(index, isLast);
+                      area = { x1: 0, x2: -this.axis.area("width"), y1: 0, y2: 0 };
+                  }
+
+                  if (isDrawLine) {
+                      var lineObject = this.line(_.extend({
+                          stroke: this.chart.theme(isActive, "gridActiveBorderColor", "gridBorderColor"),
+                          "stroke-width": this.chart.theme(isActive, "gridActiveBorderWidth", "gridBorderWidth")
+                      }, area));
+
+                      if (line.type.indexOf("dashed") > -1) {
+                          var dash = this.chart.theme("gridBorderDashArray");
+
+                          lineObject.attr({
+                              "stroke-dasharray": dash == "none" || !dash ? "3,3" : dash
+                          });
+                      }
+
+                      axis.append(lineObject);
+                  }
+              };
+
+              this.drawValueText = function (position, axis, index, xy, domain, move, isActive) {
+                  if (this.grid.hideText) return;
+
+                  if (position == "top") {
+                      axis.append(this.getTextRotate(this.chart.text({
+                          x: move,
+                          y: -(this.chart.theme("gridTickBorderSize") + this.chart.theme("gridTickPadding") * 2),
+                          dy: this.chart.theme("gridXFontSize") / 3,
+                          fill: this.chart.theme(isActive, "gridActiveFontColor", "gridXFontColor"),
+                          "text-anchor": "middle",
+                          "font-size": this.chart.theme("gridXFontSize"),
+                          "font-weight": this.chart.theme("gridXFontWeight")
+                      }, domain)));
+                  } else if (position == "bottom") {
+                      axis.append(this.getTextRotate(this.chart.text({
+                          x: move,
+                          y: this.chart.theme("gridTickBorderSize") + this.chart.theme("gridTickPadding") * 2,
+                          dy: this.chart.theme("gridXFontSize") / 3,
+                          fill: this.chart.theme(isActive, "gridActiveFontColor", "gridXFontColor"),
+                          "text-anchor": "middle",
+                          "font-size": this.chart.theme("gridXFontSize"),
+                          "font-weight": this.chart.theme("gridXFontWeight")
+                      }, domain)));
+                  } else if (position == "left") {
+                      axis.append(this.getTextRotate(this.chart.text({
+                          x: -this.chart.theme("gridTickBorderSize") - this.chart.theme("gridTickPadding"),
+                          y: move,
+                          dy: this.chart.theme("gridYFontSize") / 3,
+                          fill: this.chart.theme(isActive, "gridActiveFontColor", "gridYFontColor"),
+                          "text-anchor": "end",
+                          "font-size": this.chart.theme("gridYFontSize"),
+                          "font-weight": this.chart.theme("gridYFontWeight")
+                      }, domain)));
+                  } else if (position == "right") {
+                      axis.append(this.getTextRotate(this.chart.text({
+                          x: this.chart.theme("gridTickBorderSize") + this.chart.theme("gridTickPadding"),
+                          y: move,
+                          dy: this.chart.theme("gridYFontSize") / 3,
+                          fill: this.chart.theme(isActive, "gridActiveFontColor", "gridYFontColor"),
+                          "text-anchor": "start",
+                          "font-size": this.chart.theme("gridYFontSize"),
+                          "font-weight": this.chart.theme("gridYFontWeight")
+                      }, domain)));
+                  }
+              };
+
+              this.drawImage = function (orient, g, tick, index, x, y) {
+                  if (!_.typeCheck("function", this.grid.image)) return;
+
+                  var opts = this.grid.image.apply(this.chart, [tick, index]);
+
+                  if (_.typeCheck("object", opts)) {
+                      var image = this.chart.svg.image({
+                          "xlink:href": opts.uri,
+                          width: opts.width,
+                          height: opts.height
+                      });
+
+                      if (orient == "top" || orient == "bottom") {
+                          image.attr({
+                              x: this.grid.type == "block" ? this.scale.rangeBand() / 2 - opts.width / 2 : -(opts.width / 2)
+                          });
+                      } else if (orient == "left" || orient == "right") {
+                          image.attr({
+                              y: this.grid.type == "block" ? this.scale.rangeBand() / 2 - opts.height / 2 : -(opts.height / 2)
+                          });
+                      }
+
+                      if (orient == "bottom") {
+                          image.attr({ y: opts.dist });
+                      } else if (orient == "top") {
+                          image.attr({ y: -(opts.dist + opts.height) });
+                      } else if (orient == "left") {
+                          image.attr({ x: -(opts.dist + opts.width) });
+                      } else if (orient == "right") {
+                          image.attr({ x: opts.dist });
+                      }
+
+                      image.translate(x, y);
+                      g.append(image);
+                  }
+              };
+          };
+
+          return Draw2DGrid;
+      }
+  };
+
+  jui$1.use(draw, grid$1, line, point);
+
+  var draw3d = {
+      name: "chart.grid.draw3d",
+      extend: "chart.draw",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var GridPolygon = jui$1.include("chart.polygon.grid");
+          var LinePolygon = jui$1.include("chart.polygon.line");
+          var PointPolygon = jui$1.include("chart.polygon.point");
+
+          var Draw3DGrid = function Draw3DGrid() {
+
+              this.createGridX = function (position, index, x, isActive, isLast) {
+                  var line$$1 = this.getLineOption(),
+                      axis = this.svg.group();
+
+                  if (line$$1) {
+                      this.drawValueLine(position, axis, isActive, line$$1, index, x, isLast);
+                  }
+
+                  return axis;
+              };
+
+              this.createGridY = function (position, index, y, isActive, isLast) {
+                  var line$$1 = this.getLineOption(),
+                      axis = this.svg.group();
+
+                  if (line$$1) {
+                      this.drawValueLine(position, axis, isActive, line$$1, index, y, isLast);
+                  }
+
+                  return axis;
+              };
+
+              /**
+               * @method center
+               *
+               * draw center
+               *
+               * @param {chart.util.svg} g
+               * @param {Array} ticks
+               * @param {Array} values
+               * @param {Number} min
+               * @param {Function} checkActive
+               */
+              this.drawCenter = function (g, ticks, values, checkActive, moveZ) {
+                  var axis = this.svg.group(),
+                      line$$1 = this.getLineOption();
+
+                  if (line$$1) {
+                      this.drawValueLineCenter(axis, ticks, line$$1);
+                  }
+
+                  this.drawValueTextCenter(axis, ticks, values, checkActive, moveZ);
+
+                  g.append(axis);
+              };
+
+              this.drawBaseLine = function (position, g) {
+                  var axis = this.svg.group();
+                  this.drawAxisLine(position, axis);
+
+                  g.append(axis);
+              };
+
+              /**
+               * @method axisLine
+               * theme 이 적용된  axis line 리턴
+               * @param {ChartBuilder} chart
+               * @param {Object} attr
+               */
+              this.drawAxisLine = function (position, axis) {
+                  var isTopOrBottom = position == "top" || position == "bottom",
+                      borderColor = isTopOrBottom ? "gridXAxisBorderColor" : "gridYAxisBorderColor",
+                      borderWidth = isTopOrBottom ? "gridXAxisBorderWidth" : "gridYAxisBorderWidth";
+
+                  if (position == "center") {
+                      borderColor = "gridZAxisBorderColor";
+                      borderWidth = "gridZAxisBorderWidth";
+                  }
+
+                  var face = this.svg.polygon({
+                      stroke: this.chart.theme(borderColor),
+                      "stroke-width": this.chart.theme(borderWidth),
+                      "stroke-opacity": 1,
+                      fill: this.chart.theme("gridFaceBackgroundColor"),
+                      "fill-opacity": this.chart.theme("gridFaceBackgroundOpacity")
+                  });
+
+                  var p = null,
+                      w = this.axis.area("width"),
+                      h = this.axis.area("height"),
+                      x = this.axis.area("x"),
+                      y = this.axis.area("y"),
+                      d = this.axis.depth;
+
+                  if (position == "center") {
+                      p = new GridPolygon("center", w, h, d, x, y);
+                  } else {
+                      if (isTopOrBottom) {
+                          h = position == "bottom" ? h : 0;
+                          p = new GridPolygon("horizontal", w, h, d, x, y);
+                      } else {
+                          w = position == "right" ? w : 0;
+                          p = new GridPolygon("vertical", w, h, d, x, y);
+                      }
+                  }
+
+                  // 사각면 위치 계산 및 추가
+                  this.calculate3d(p);
+                  for (var i = 0; i < p.vectors.length; i++) {
+                      face.point(p.vectors[i].x, p.vectors[i].y);
+                  }
+
+                  // Y축이 숨김 상태일 때
+                  if (position == "center") {
+                      if (this.axis.get("y").hide !== true) {
+                          axis.append(face);
+                      }
+                  } else {
+                      axis.append(face);
+                  }
+              };
+
+              this.drawValueLine = function (position, axis, isActive, line$$1, index, xy, isLast) {
+                  var isDrawLine = false,
+                      w = this.axis.area("width"),
+                      h = this.axis.area("height"),
+                      x = this.axis.area("x"),
+                      y = this.axis.area("y"),
+                      d = this.axis.depth,
+                      l1 = null,
+                      l2 = null;
+
+                  if (position == "top") {
+                      isDrawLine = this.checkDrawLineY(index, isLast);
+                      l1 = new LinePolygon(xy, y, 0, xy, y, d);
+                      l2 = new LinePolygon(xy, y, d, xy, y + h, d);
+                  } else if (position == "bottom") {
+                      isDrawLine = this.checkDrawLineY(index, isLast);
+                      l1 = new LinePolygon(xy, y + h, 0, xy, y + h, d);
+                      l2 = new LinePolygon(xy, y + h, d, xy, y, d);
+                  } else if (position == "left") {
+                      isDrawLine = this.checkDrawLineX(index, isLast);
+                      l1 = new LinePolygon(x, xy, 0, x, xy, d);
+                      l2 = new LinePolygon(x, xy, d, x + w, xy, d);
+                  } else if (position == "right") {
+                      isDrawLine = this.checkDrawLineX(index, isLast);
+                      l1 = new LinePolygon(x + w, xy, 0, x + w, xy, d);
+                      l2 = new LinePolygon(x + w, xy, d, x, xy, d);
+                  }
+
+                  if (isDrawLine) {
+                      // 폴리곤 계산
+                      this.calculate3d(l1, l2);
+
+                      var lo1 = this.line({
+                          stroke: this.chart.theme("gridBorderColor"),
+                          "stroke-width": this.chart.theme("gridBorderWidth"),
+                          x1: l1.vectors[0].x,
+                          y1: l1.vectors[0].y,
+                          x2: l1.vectors[1].x,
+                          y2: l1.vectors[1].y
+                      });
+
+                      var lo2 = this.line({
+                          stroke: this.chart.theme("gridBorderColor"),
+                          "stroke-width": this.chart.theme("gridBorderWidth"),
+                          x1: l2.vectors[0].x,
+                          y1: l2.vectors[0].y,
+                          x2: l2.vectors[1].x,
+                          y2: l2.vectors[1].y
+                      });
+
+                      if (line$$1.type.indexOf("dashed") > -1) {
+                          var dash = this.chart.theme("gridBorderDashArray"),
+                              style = dash == "none" || !dash ? "3,3" : dash;
+
+                          lo1.attr({ "stroke-dasharray": style });
+                          lo2.attr({ "stroke-dasharray": style });
+                      }
+
+                      axis.append(lo1);
+
+                      // Y축이 숨김 상태가 아닐 때만 추가
+                      if (this.axis.get("y").hide !== true) {
+                          axis.append(lo2);
+                      }
+                  }
+              };
+
+              this.drawValueLineCenter = function (axis, ticks, line$$1) {
+                  var len = this.grid.type != "block" ? ticks.length - 1 : ticks.length,
+                      w = this.axis.area("width"),
+                      h = this.axis.area("height"),
+                      x = this.axis.area("x"),
+                      y = this.axis.area("y"),
+                      d = this.axis.depth,
+                      dx = this.axis.get("y").orient == "left" ? 0 : w,
+                      dy = this.axis.get("x").orient == "top" ? 0 : h;
+
+                  // z축 라인 드로잉
+                  for (var i = 1; i < len; i++) {
+                      var t = i * (d / len),
+                          p1 = new LinePolygon(x, y + dy, t, x + w, y + dy, t),
+                          p2 = new LinePolygon(x + dx, y, t, x + dx, y + h, t);
+
+                      this.calculate3d(p1, p2);
+
+                      var lo1 = this.line({
+                          stroke: this.chart.theme("gridBorderColor"),
+                          "stroke-width": this.chart.theme("gridBorderWidth"),
+                          x1: p1.vectors[0].x,
+                          y1: p1.vectors[0].y,
+                          x2: p1.vectors[1].x,
+                          y2: p1.vectors[1].y
+                      });
+
+                      var lo2 = this.line({
+                          stroke: this.chart.theme("gridBorderColor"),
+                          "stroke-width": this.chart.theme("gridBorderWidth"),
+                          x1: p2.vectors[0].x,
+                          y1: p2.vectors[0].y,
+                          x2: p2.vectors[1].x,
+                          y2: p2.vectors[1].y
+                      });
+
+                      if (line$$1.type.indexOf("dashed") > -1) {
+                          var dash = this.chart.theme("gridBorderDashArray"),
+                              style = dash == "none" || !dash ? "3,3" : dash;
+
+                          lo1.attr({ "stroke-dasharray": style });
+                          lo2.attr({ "stroke-dasharray": style });
+                      }
+
+                      axis.append(lo1);
+
+                      // Y축이 숨김 상태가 아닐 때만 추가
+                      if (this.axis.get("y").hide !== true) {
+                          axis.append(lo2);
+                      }
+                  }
+              };
+
+              this.drawValueText = function (position, axis, index, xy, domain) {
+                  if (this.grid.hideText) return;
+
+                  var isVertical = position == "left" || position == "right";
+
+                  var tickSize = this.chart.theme("gridTickBorderSize"),
+                      tickPadding = this.chart.theme("gridTickPadding"),
+                      w = this.axis.area("width"),
+                      h = this.axis.area("height"),
+                      dx = this.axis.area("x"),
+                      dy = this.axis.area("y"),
+                      x = 0,
+                      y = 0;
+
+                  if (position == "top") {
+                      x = xy;
+                      y = dy + -(tickSize + tickPadding * 2);
+                  } else if (position == "bottom") {
+                      x = xy;
+                      y = dy + (h + tickSize + tickPadding * 2);
+                  } else if (position == "left") {
+                      x = dx + -(tickSize + tickPadding);
+                      y = xy;
+                  } else if (position == "right") {
+                      x = dx + (w + tickSize + tickPadding);
+                      y = xy;
+                  }
+
+                  var p = new PointPolygon(x, y, 0);
+                  this.calculate3d(p);
+
+                  axis.append(this.getTextRotate(this.chart.text({
+                      x: p.vectors[0].x,
+                      y: p.vectors[0].y,
+                      dx: !isVertical ? this.chart.theme("gridXFontSize") / 3 : 0,
+                      dy: isVertical ? this.chart.theme("gridYFontSize") / 3 : 0,
+                      fill: this.chart.theme(isVertical ? "gridYFontColor" : "gridXFontColor"),
+                      "text-anchor": isVertical ? position == "left" ? "end" : "start" : "middle",
+                      "font-size": this.chart.theme(isVertical ? "gridYFontSize" : "gridXFontSize"),
+                      "font-weight": this.chart.theme(isVertical ? "gridYFontWeight" : "gridXFontWeight")
+                  }, domain)));
+              };
+
+              this.drawValueTextCenter = function (axis, ticks, values, checkActive, moveZ) {
+                  if (this.grid.hideText) return;
+
+                  var margin = this.chart.theme("gridTickBorderSize") + this.chart.theme("gridTickPadding"),
+                      isLeft = this.axis.get("y").orient == "left",
+                      isTop = this.axis.get("x").orient == "top",
+                      len = this.grid.type != "block" ? ticks.length - 1 : ticks.length,
+                      w = this.axis.area("width"),
+                      h = this.axis.area("height"),
+                      d = this.axis.depth,
+                      x = this.axis.area("x") + (isLeft ? w + margin : -margin),
+                      y = this.axis.area("y") + (isTop ? -margin : h + margin);
+
+                  // z축 라인 드로잉
+                  for (var i = 0; i < ticks.length; i++) {
+                      var domain = this.format(ticks[i], i),
+                          t = i * (d / len) + moveZ,
+                          p = new PointPolygon(x, y, t);
+
+                      this.calculate3d(p);
+
+                      axis.append(this.getTextRotate(this.chart.text({
+                          x: p.vectors[0].x,
+                          y: p.vectors[0].y,
+                          fill: this.chart.theme("gridZFontColor"),
+                          "text-anchor": isLeft ? "start" : "end",
+                          "font-size": this.chart.theme("gridZFontSize"),
+                          "font-weight": this.chart.theme("gridZFontWeight")
+                      }, domain)));
+                  }
+              };
+
+              this.drawPattern = function () {};
+              this.drawImage = function () {};
+          };
+
+          return Draw3DGrid;
+      }
+  };
+
+  jui$1.use([math, draw, draw2d, draw3d]);
+
+  var CoreGrid = {
+      name: "chart.grid.core",
+      extend: "chart.draw",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var math$$1 = jui$1.include("util.math");
+          var Draw2D = jui$1.include("chart.grid.draw2d");
+          var Draw3D = jui$1.include("chart.grid.draw3d");
+
+          var CoreGrid = function CoreGrid() {
+
+              /**
+               * @method wrapper
+               * scale wrapper
+               *
+               * grid 의 x 좌표 값을 같은 형태로 가지고 오기 위한 wrapper 함수
+               *
+               * grid 속성에 key 가 있다면  key 의 속성값으로 실제 값을 처리
+               *
+               *      @example
+               *      // 그리드 속성에 키가 없을 때
+               *      scale(0);		// 0 인덱스에 대한 값  (block, radar)
+               *      // grid 속성에 key 가 있을 때
+               *      grid { key : "field" }
+               *      scale(0)			// field 값으로 scale 설정 (range, date)
+               *
+               * @protected
+               */
+              this.wrapper = function (scale, key) {
+                  return scale;
+              };
+
+              /**
+               * @method line
+               * theme 이 적용된  line 리턴
+               * @protected
+               * @param {ChartBuilder} chart
+               * @param {Object} attr
+               */
+              this.line = function (attr) {
+                  return this.chart.svg.line(_.extend({
+                      x1: 0,
+                      y1: 0,
+                      x2: 0,
+                      y2: 0,
+                      stroke: this.color("gridBorderColor"),
+                      "stroke-width": this.chart.theme("gridBorderWidth"),
+                      "stroke-dasharray": this.chart.theme("gridBorderDashArray"),
+                      "stroke-opacity": this.chart.theme("gridBorderOpacity")
+                  }, attr));
+              };
+
+              /**
+               * @method color
+               * grid 에서 color 를 위한 유틸리티 함수
+               * @param theme
+               * @return {Mixed}
+               */
+              this.color = function (theme) {
+                  var color = this.grid.color;
+
+                  if (arguments.length == 3) {
+                      return color != null ? this.chart.color(color) : this.chart.theme.apply(this.chart, arguments);
+                  }
+
+                  return color != null ? this.chart.color(color) : this.chart.theme(theme);
+              };
+
+              /**
+               * @method data
+               * get data for axis
+               * @protected
+               * @param {Number} index
+               * @param {String} field
+               */
+              this.data = function (index, field) {
+                  if (this.axis.data && this.axis.data[index]) {
+                      return this.axis.data[index][field] || this.axis.data[index];
+                  }
+
+                  return this.axis.data || [];
+              };
+
+              this.getGridSize = function () {
+                  var orient = this.grid.orient,
+                      depth = this.axis.depth,
+                      degree = this.axis.degree,
+                      axis = orient == "left" || orient == "right" ? this.axis.area("y") : this.axis.area("x"),
+                      max = orient == "left" || orient == "right" ? this.axis.area("height") : this.axis.area("width"),
+                      start = axis,
+                      size = max,
+                      end = start + size;
+
+                  var result = {
+                      start: start,
+                      size: size,
+                      end: end
+                  };
+
+                  if (!this.axis.isFull3D()) {
+                      if (depth > 0 || degree > 0) {
+                          var radian = math$$1.radian(360 - degree),
+                              x2 = Math.cos(radian) * depth,
+                              y2 = Math.sin(radian) * depth;
+
+                          if (orient == "left") {
+                              result.start = result.start - y2;
+                              result.size = result.size - y2;
+                          } else if (orient == "bottom") {
+                              result.end = result.end - x2;
+                              result.size = result.size - x2;
+                          }
+                      }
+                  } else {
+                      if (orient == "center") {
+                          // z축
+                          result.start = 0;
+                          result.size = depth;
+                          result.end = depth;
+                      }
+                  }
+
+                  return result;
+              };
+
+              /**
+               * @method getDefaultOffset
+               *
+               * get real size of grid
+               *
+               * @param {chart.builder} chart
+               * @param {Strng} orient
+               * @param {Object} grid             그리드 옵션
+               * @return {Object}
+               * @return {Number} return.start    시작 지점
+               * @return {Number} return.size     그리드 넓이 또는 높이
+               * @return {Number} return.end      마지막 지점
+               */
+              this.getDefaultOffset = function () {
+                  var orient = this.grid.orient,
+                      area = this.axis.area();
+
+                  var width = area.width,
+                      height = area.height,
+                      axis = orient == "left" || orient == "right" ? area.y : area.x,
+                      max = orient == "left" || orient == "right" ? height : width,
+                      start = axis,
+                      size = max,
+                      end = start + size;
+
+                  return {
+                      start: start,
+                      size: size,
+                      end: end
+                  };
+              };
+
+              /**
+               * @method getTextRotate
+               * implement text rotate in grid text
+               * @protected
+               * @param {SVGElement} textElement
+               */
+              this.getTextRotate = function (textElement) {
+                  var rotate = this.grid.textRotate;
+
+                  if (rotate == null) {
+                      return textElement;
+                  }
+
+                  if (_.typeCheck("function", rotate)) {
+                      rotate = rotate.apply(this.chart, [textElement]);
+                  }
+
+                  var x = textElement.attr("x");
+                  var y = textElement.attr("y");
+
+                  textElement.rotate(rotate, x, y);
+
+                  return textElement;
+              };
+
+              this.getLineOption = function () {
+                  var line = this.grid.line;
+
+                  if (typeof line === "string") {
+                      line = { type: line || "solid" };
+                  } else if (typeof line === "number") {
+                      line = { type: "solid", "stroke-width": line };
+                  } else if ((typeof line === "undefined" ? "undefined" : _typeof(line)) !== "object") {
+                      line = !!line;
+
+                      if (line) {
+                          line = { type: "solid" };
+                      }
+                  }
+
+                  if (line && !line.type == "string") {
+                      line.type = line.type.split(/ /g);
+                  }
+
+                  return line;
+              };
+
+              this.checkDrawLineY = function (index, isLast) {
+                  var y = this.axis.get("y");
+
+                  if (!y.hide) {
+                      if (y.orient == "left" && index == 0 && !this.grid.realtime) {
+                          return false;
+                      } else if (y.orient == "right" && isLast) {
+                          return false;
+                      }
+                  }
+
+                  return true;
+              };
+
+              this.checkDrawLineX = function (index, isLast) {
+                  var x = this.axis.get("x");
+
+                  if (!x.hide) {
+                      if (x.orient == "top" && index == 0) {
+                          return false;
+                      } else if (x.orient == "bottom" && isLast && !this.grid.realtime) {
+                          return false;
+                      }
+                  }
+
+                  return true;
+              };
+
+              /**
+               * @method top
+               *
+               * draw top
+               *
+               * @param {chart.util.svg} g
+               * @param {Array} ticks
+               * @param {Array} values
+               * @param {Number} min
+               * @param {Function} checkActive
+               */
+              this.drawTop = function (g, ticks, values, checkActive, moveX) {
+                  for (var i = 0, len = ticks.length; i < len; i++) {
+                      var domain = this.format(ticks[i], i),
+                          x = values[i] - moveX,
+                          isLast = i == len - 1 && this.grid.type != "block",
+                          isActive = false;
+
+                      // 그리드 이미지 그리기
+                      this.drawImage("top", g, ticks[i], i, x, 0);
+
+                      // 도메인이 없으면 그리지 않음
+                      if (!domain && domain !== 0) {
+                          continue;
+                      }
+
+                      // 액티브 라인 체크
+                      if (_.typeCheck("function", checkActive)) {
+                          isActive = checkActive(ticks[i]);
+                      }
+
+                      var axis = this.createGridX("top", i, x, isActive, isLast);
+                      this.drawValueText("top", axis, i, values[i], domain, moveX, isActive);
+
+                      g.append(axis);
+                  }
+              };
+
+              this.drawBottom = function (g, ticks, values, checkActive, moveX) {
+                  for (var i = 0, len = ticks.length; i < len; i++) {
+                      var domain = this.format(ticks[i], i),
+                          x = values[i] - moveX,
+                          isLast = i == len - 1 && this.grid.type != "block",
+                          isActive = false;
+
+                      // 그리드 이미지 그리기
+                      this.drawImage("bottom", g, ticks[i], i, x, 0);
+
+                      // 도메인이 없으면 그리지 않음
+                      if (!domain && domain !== 0) {
+                          continue;
+                      }
+
+                      // 액티브 라인 체크
+                      if (_.typeCheck("function", checkActive)) {
+                          isActive = checkActive(ticks[i]);
+                      }
+
+                      var axis = this.createGridX("bottom", i, x, isActive, isLast);
+                      this.drawValueText("bottom", axis, i, values[i], domain, moveX, isActive);
+
+                      g.append(axis);
+                  }
+              };
+
+              this.drawLeft = function (g, ticks, values, checkActive, moveY) {
+                  for (var i = 0, len = ticks.length; i < len; i++) {
+                      var domain = this.format(ticks[i], i),
+                          y = values[i] - moveY,
+                          isLast = i == len - 1 && this.grid.type != "block",
+                          isActive = false;
+
+                      // 그리드 이미지 그리기
+                      this.drawImage("left", g, ticks[i], i, 0, y);
+
+                      // 도메인이 없으면 그리지 않음
+                      if (!domain && domain !== 0) {
+                          continue;
+                      }
+
+                      // 액티브 라인 체크
+                      if (_.typeCheck("function", checkActive)) {
+                          isActive = checkActive(ticks[i]);
+                      }
+
+                      var axis = this.createGridY("left", i, y, isActive, isLast);
+                      this.drawValueText("left", axis, i, values[i], domain, moveY, isActive);
+
+                      g.append(axis);
+                  }
+              };
+
+              this.drawRight = function (g, ticks, values, checkActive, moveY) {
+                  for (var i = 0, len = ticks.length; i < len; i++) {
+                      var domain = this.format(ticks[i], i),
+                          y = values[i] - moveY,
+                          isLast = i == len - 1 && this.grid.type != "block",
+                          isActive = false;
+
+                      // 그리드 이미지 그리기
+                      this.drawImage("right", g, ticks[i], i, 0, y);
+
+                      // 도메인이 없으면 그리지 않음
+                      if (!domain && domain !== 0) {
+                          continue;
+                      }
+
+                      // 액티브 라인 체크
+                      if (_.typeCheck("function", checkActive)) {
+                          isActive = checkActive(ticks[i]);
+                      }
+
+                      var axis = this.createGridY("right", i, y, isActive, isLast);
+                      this.drawValueText("right", axis, i, values[i], domain, moveY, isActive);
+
+                      g.append(axis);
+                  }
+              };
+
+              /**
+               * @method drawGrid
+               * draw base grid structure
+               * @protected
+               * @param {chart.builder} chart
+               * @param {String} orient
+               * @param {String} cls
+               * @param {Grid} grid
+               */
+              this.drawGrid = function () {
+                  // create group
+                  var root = this.chart.svg.group(),
+                      func = this[this.grid.orient],
+                      draw$$1 = this.axis.isFull3D() ? Draw3D : Draw2D;
+
+                  // wrapped scale
+                  this.scale = this.wrapper(this.scale, this.grid.key);
+
+                  // render axis
+                  if (_.typeCheck("function", func)) {
+                      draw$$1.call(this);
+                      func.call(this, root);
+                  }
+
+                  // hide grid
+                  if (this.grid.hide) {
+                      root.attr({ display: "none" });
+                  }
+
+                  return {
+                      root: root,
+                      scale: this.scale
+                  };
+              };
+
+              /**
+               * @method drawAfter
+               *
+               * @param {Object} obj
+               * @protected
+               */
+              this.drawAfter = function (obj) {
+                  obj.root.attr({ "class": "grid-" + this.grid.type });
+                  obj.root.translate(this.chart.area("x"), this.chart.area("y"));
+              };
+          };
+
+          CoreGrid.setup = function () {
+
+              /** @property {chart.builder} chart */
+              /** @property {chart.axis} axis */
+              /** @property {Object} grid */
+
+              return {
+                  /**  @cfg {Number} [dist=0] Able to change the locatn of an axis.  */
+                  dist: 0,
+                  /**  @cfg {"top"/"left"/"bottom"/"right"} [orient=null] Specifies the direction in which an axis is shown (top, bottom, left or right). */
+                  orient: null,
+                  /** @cfg {Boolean} [hide=false] Determines whether to display an applicable grid.  */
+                  hide: false,
+                  /** @cfg {String/Object/Number} [color=null] Specifies the color of a grid. */
+                  color: null,
+                  /** @cfg {String} [title=null] Specifies the text shown on a grid.*/
+                  title: null,
+                  /** @cfg {Boolean} [hide=false] Determines whether to display a line on the axis background. */
+                  line: false,
+                  /** @cfg {Function} [format=null]  Determines whether to format the value on an axis. */
+                  format: null,
+                  /** @cfg {Function} [image=null]  Determines whether to image the value on an axis. */
+                  image: null,
+                  /** @cfg {Number} [textRotate=null] Specifies the slope of text displayed on a grid. */
+                  textRotate: null
+              };
+          };
+
+          return CoreGrid;
+      }
+  };
+
+  var BlockGrid = {
+      name: "chart.grid.block",
+      extend: "chart.grid.core",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var UtilScale = jui$1.include("util.scale");
+
+          var BlockGrid = function BlockGrid() {
+              this.center = function (g) {
+                  this.drawCenter(g, this.domain, this.points, null, this.half_band);
+                  this.drawBaseLine("center", g);
+              };
+
+              this.top = function (g) {
+                  this.drawPattern("top", this.domain, this.points, true);
+                  this.drawTop(g, this.domain, this.points, null, this.half_band);
+                  this.drawBaseLine("top", g);
+                  g.append(this.createGridX("top", this.domain.length, this.end, null, true));
+              };
+
+              this.bottom = function (g) {
+                  this.drawPattern("bottom", this.domain, this.points, true);
+                  this.drawBottom(g, this.domain, this.points, null, this.half_band);
+                  this.drawBaseLine("bottom", g);
+                  g.append(this.createGridX("bottom", this.domain.length, this.end, null, true));
+              };
+
+              this.left = function (g) {
+                  this.drawPattern("left", this.domain, this.points, true);
+                  this.drawLeft(g, this.domain, this.points, null, this.half_band);
+                  this.drawBaseLine("left", g);
+                  g.append(this.createGridY("left", this.domain.length, this.end, null, true));
+              };
+
+              this.right = function (g) {
+                  this.drawPattern("right", this.domain, this.points, true);
+                  this.drawRight(g, this.domain, this.points, null, this.half_band);
+                  this.drawBaseLine("right", g);
+                  g.append(this.createGridY("right", this.domain.length, this.end, null, true));
+              };
+
+              this.initDomain = function () {
+                  var domain = [];
+
+                  if (_.typeCheck("string", this.grid.domain)) {
+                      var field = this.grid.domain;
+                      var data = this.data();
+
+                      if (this.grid.reverse) {
+                          var start = data.length - 1,
+                              end = 0,
+                              step = -1;
+                      } else {
+                          var start = 0,
+                              end = data.length - 1,
+                              step = 1;
+                      }
+
+                      for (var i = start; this.grid.reverse ? i >= end : i <= end; i += step) {
+                          domain.push(data[i][field]);
+                      }
+                  } else if (_.typeCheck("function", this.grid.domain)) {
+                      // block 은 배열을 통째로 리턴함
+                      domain = this.grid.domain.call(this.chart);
+                  } else if (_.typeCheck("array", this.grid.domain)) {
+                      domain = this.grid.domain;
+                  }
+
+                  if (this.grid.reverse) {
+                      domain.reverse();
+                  }
+
+                  return domain;
+              };
+
+              this.wrapper = function (scale, key) {
+                  var old_scale = scale;
+                  var self = this;
+                  var len = self.domain.length;
+                  var reverse = self.grid.reverse;
+
+                  function new_scale(i) {
+                      if (typeof i == 'number' && key) {
+                          return old_scale(self.axis.data[i][key]);
+                      } else {
+                          return old_scale(reverse ? len - i - 1 : i);
+                      }
+                  }
+
+                  return key ? _.extend(new_scale, old_scale) : old_scale;
+              };
+
+              this.drawBefore = function () {
+                  var domain = this.initDomain(),
+                      obj = this.getGridSize(),
+                      range = [obj.start, obj.end];
+
+                  // scale 설정
+                  this.scale = UtilScale.ordinal().domain(domain);
+                  this.scale.rangePoints(range);
+
+                  this.start = obj.start;
+                  this.size = obj.size;
+                  this.end = obj.end;
+                  this.points = this.scale.range();
+                  this.domain = this.scale.domain();
+
+                  this.band = this.scale.rangeBand();
+                  this.half_band = this.band / 2;
+                  this.bar = 6;
+                  this.reverse = this.grid.reverse;
+              };
+
+              this.draw = function () {
+                  return this.drawGrid("block");
+              };
+          };
+
+          BlockGrid.setup = function () {
+              return {
+                  /** @cfg {String/Array/Function} [domain=null] Sets the value displayed on an axis.*/
+                  domain: null,
+                  /** @cfg {Boolean} [reverse=false] Reverses the value on domain values*/
+                  reverse: false,
+                  /** @cfg {Number} [max=10] Sets the maximum value of a grid. */
+                  max: 10,
+                  /** @cfg {Boolean} [hideText=false] Determines whether to show text across the grid. */
+                  hideText: false,
+                  /** @cfg {String} [key=null] Sets the value on the grid to the value for the specified key. */
+                  key: null
+              };
+          };
+
+          return BlockGrid;
+      }
+  };
+
+  var DateGrid = {
+      name: "chart.grid.date",
+      extend: "chart.grid.core",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var UtilScale = jui$1.include("util.scale");
+          var UtilTime = jui$1.include("util.time");
+
+          var DateGrid = function DateGrid() {
+
+              this.center = function (g) {
+                  this.drawCenter(g, this.ticks, this.values, null, 0);
+                  this.drawBaseLine("center", g);
+              };
+
+              this.top = function (g) {
+                  this.drawPattern("top", this.ticks, this.values);
+                  this.drawTop(g, this.ticks, this.values, null, 0);
+                  this.drawBaseLine("top", g);
+              };
+
+              this.bottom = function (g) {
+                  this.drawPattern("bottom", this.ticks, this.values);
+                  this.drawBottom(g, this.ticks, this.values, null, 0);
+                  this.drawBaseLine("bottom", g);
+              };
+
+              this.left = function (g) {
+                  this.drawPattern("left", this.ticks, this.values);
+                  this.drawLeft(g, this.ticks, this.values, null, 0);
+                  this.drawBaseLine("left", g);
+              };
+
+              this.right = function (g) {
+                  this.drawPattern("right", this.ticks, this.values);
+                  this.drawRight(g, this.ticks, this.values, null, 0);
+                  this.drawBaseLine("right", g);
+              };
+
+              this.wrapper = function (scale, key) {
+                  var old_scale = scale;
+                  var self = this;
+
+                  function new_scale(i) {
+                      if (typeof i == 'number') {
+                          return old_scale(self.axis.data[i][key]);
+                      } else {
+                          return old_scale(+i);
+                      }
+                  }
+
+                  return key ? _.extend(new_scale, old_scale) : old_scale;
+              };
+
+              this.initDomain = function () {
+                  var domain = [],
+                      interval = [];
+                  var min = this.grid.min || undefined,
+                      max = this.grid.max || undefined;
+                  var data = this.data(),
+                      value_list = [];
+
+                  if (_.typeCheck("string", this.grid.domain)) {
+                      if (data.length > 0) {
+                          var field = this.grid.domain;
+                          value_list.push(+data[0][field]);
+                          value_list.push(+data[data.length - 1][field]);
+                      }
+                  } else if (_.typeCheck("function", this.grid.domain)) {
+                      var index = data.length;
+
+                      while (index--) {
+                          var value = this.grid.domain.call(this.chart, data[index]);
+
+                          if (_.typeCheck("array", value)) {
+                              value_list[index] = Math.max.apply(Math, value);
+                              value_list.push(Math.min.apply(Math, value));
+                          } else {
+                              value_list[index] = value;
+                          }
+                      }
+                  } else {
+                      value_list = this.grid.domain;
+                  }
+
+                  if (_.typeCheck("undefined", min) && value_list.length > 0) min = Math.min.apply(Math, value_list);
+                  if (_.typeCheck("undefined", max) && value_list.length > 0) max = Math.max.apply(Math, value_list);
+
+                  domain = [min, max];
+                  interval = this.grid.interval;
+
+                  if (this.grid.reverse) {
+                      domain.reverse();
+                  }
+
+                  if (_.typeCheck("function", interval)) {
+                      this.interval = interval.call(this.chart, domain);
+                  } else {
+                      this.interval = interval;
+                  }
+
+                  return domain;
+              };
+
+              this.drawBefore = function () {
+                  var domain = this.initDomain();
+
+                  var obj = this.getGridSize(),
+                      range = [obj.start, obj.end];
+
+                  this.scale = UtilScale.time().domain(domain).range(range);
+
+                  this.scale.clamp(this.grid.clamp);
+
+                  // 기본값 설정
+                  this.ticks = [];
+
+                  if (this.grid.realtime != null && UtilTime[this.grid.realtime] == this.grid.realtime) {
+                      var ticks = this.scale.realTicks(this.grid.realtime, this.interval);
+                  } else {
+                      var ticks = this.scale.ticks("milliseconds", this.interval);
+                  }
+
+                  /* data 없을 때도 기본 설정만으로 보여야 하기 때문에. 지우겠음
+                  if (this.axis.data.length == 0) {
+                      //this.ticks = [];
+                  } */
+
+                  if (typeof this.grid.format == "string") {
+                      (function (grid, str) {
+                          grid.format = function (value) {
+                              return UtilTime.format(value, str);
+                          };
+                      })(this.grid, this.grid.format);
+                  }
+
+                  // interval = [this.time.days, 1];
+                  this.start = obj.start;
+                  this.size = obj.size;
+                  this.end = obj.end;
+                  this.bar = 6;
+                  this.values = [];
+
+                  for (var i = 0, len = ticks.length; i < len; i++) {
+                      var value = this.scale(ticks[i]);
+
+                      if (value >= obj.start && value <= obj.end) {
+                          this.values.push(value);
+                          this.ticks.push(ticks[i]);
+                      }
+                  }
+              };
+
+              this.draw = function () {
+                  return this.drawGrid("date");
+              };
+          };
+
+          DateGrid.setup = function () {
+              return {
+                  /** @cfg {Array} [domain=null] Sets the value displayed on a grid. */
+                  domain: null,
+                  /** @cfg {Number} [interval=1000] Sets the interval of the scale displayed on a grid.*/
+                  interval: 1000,
+                  /** @cfg {Number} [min=null] Sets the minimum timestamp of a grid.  */
+                  min: null,
+                  /** @cfg {Number} [max=null] Sets the maximum timestamp of a grid. */
+                  max: null,
+                  /** @cfg {Boolean} [reverse=false] Reverses the value on domain values*/
+                  reverse: false,
+                  /** @cfg {String} [key=null] Sets the value on the grid to the value for the specified key. */
+                  key: null,
+                  /** @cfg {"years"/"months"/"days"/"hours"/"minutes"/"seconds"/"milliseconds"} [realtime=""] Determines whether to use as a real-time grid. */
+                  realtime: null,
+                  /** @cfg {Boolean} [hideText=false] Determines whether to show text across the grid. */
+                  hideText: false
+              };
+          };
+
+          return DateGrid;
+      }
+  };
+
+  var DateBlockGrid = {
+      name: "chart.grid.dateblock",
+      extend: "chart.grid.date",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var UtilScale = jui$1.include("util.scale");
+          var UtilTime = jui$1.include("util.time");
+
+          var DateBlockGrid = function DateBlockGrid() {
+
+              this.wrapper = function (scale, key) {
+                  var old_scale = scale;
+                  var self = this;
+
+                  old_scale.rangeBand = function () {
+                      return self.grid.unit;
+                  };
+
+                  return old_scale;
+              };
+
+              this.initDomain = function () {
+                  var domain = [],
+                      interval = [];
+                  var min = this.grid.min || undefined,
+                      max = this.grid.max || undefined;
+                  var data = this.data(),
+                      value_list = [];
+
+                  if (_.typeCheck("string", this.grid.domain)) {
+                      var field = this.grid.domain;
+                      value_list.push(+data[0][field]);
+                      value_list.push(+data[data.length - 1][field]);
+                  } else if (_.typeCheck("function", this.grid.domain)) {
+                      var index = data.length;
+
+                      while (index--) {
+                          var value = this.grid.domain.call(this.chart, data[index]);
+
+                          if (_.typeCheck("array", value)) {
+                              value_list[index] = +Math.max.apply(Math, value);
+                              value_list.push(+Math.min.apply(Math, value));
+                          } else {
+                              value_list[index] = +value;
+                          }
+                      }
+                  } else {
+                      value_list = this.grid.domain;
+                  }
+
+                  if (_.typeCheck("undefined", min)) min = Math.min.apply(Math, value_list);
+                  if (_.typeCheck("undefined", max)) max = Math.max.apply(Math, value_list);
+
+                  domain = [min, max];
+                  interval = this.grid.interval;
+
+                  if (this.grid.reverse) {
+                      domain.reverse();
+                  }
+
+                  if (_.typeCheck("function", interval)) {
+                      domain.interval = interval.call(this.chart, domain);
+                  } else {
+                      domain.interval = interval;
+                  }
+
+                  return domain;
+              };
+
+              this.drawBefore = function () {
+                  var domain = this.initDomain(),
+                      obj = this.getGridSize(),
+                      range = [obj.start, obj.end],
+                      time = UtilScale.time().domain(domain).rangeRound(range);
+
+                  if (this.grid.realtime != null && UtilTime[this.grid.realtime] == this.grid.realtime) {
+                      this.ticks = time.realTicks(this.grid.realtime, domain.interval);
+                  } else {
+                      this.ticks = time.ticks("milliseconds", domain.interval);
+                  }
+
+                  var len = this.axis.data.length - 1;
+                  var unit = this.grid.unit = Math.abs(range[0] - range[1]) / len;
+
+                  if (typeof this.grid.format == "string") {
+                      (function (grid, str) {
+                          grid.format = function (value) {
+                              return UtilTime.format(value, str);
+                          };
+                      })(this.grid, this.grid.format);
+                  }
+
+                  // interval = [this.time.days, 1];
+                  this.start = obj.start;
+                  this.size = obj.size;
+                  this.end = obj.end;
+                  this.bar = 6;
+                  this.values = [];
+
+                  for (var i = 0, len = this.ticks.length; i < len; i++) {
+                      this.values[i] = time(this.ticks[i]);
+                  }
+
+                  var self = this;
+                  this.scale = _.extend(function (i) {
+                      // area 시작 영역 추가
+                      return self.start + i * unit;
+                  }, time);
+              };
+
+              this.draw = function () {
+                  return this.drawGrid("dateblock");
+              };
+          };
+
+          return DateBlockGrid;
+      }
+  };
+
+  var FullBlockGrid = {
+      name: "chart.grid.fullblock",
+      extend: "chart.grid.core",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var UtilScale = jui$1.include("util.scale");
+
+          var FullBlockGrid = function FullBlockGrid() {
+              this.center = function (g) {
+                  this.drawCenter(g, this.domain, this.points, null, 0);
+                  this.drawBaseLine("center", g);
+              };
+
+              this.top = function (g) {
+                  this.drawPattern("top", this.domain, this.points);
+                  this.drawTop(g, this.domain, this.points, null, 0);
+                  this.drawBaseLine("top", g);
+              };
+
+              this.bottom = function (g) {
+                  this.drawPattern("bottom", this.domain, this.points);
+                  this.drawBottom(g, this.domain, this.points, null, 0);
+                  this.drawBaseLine("bottom", g);
+              };
+
+              this.left = function (g) {
+                  this.drawPattern("left", this.domain, this.points);
+                  this.drawLeft(g, this.domain, this.points, null, 0);
+                  this.drawBaseLine("left", g);
+              };
+
+              this.right = function (g) {
+                  this.drawPattern("right", this.domain, this.points);
+                  this.drawRight(g, this.domain, this.points, null, 0);
+                  this.drawBaseLine("right", g);
+              };
+
+              this.initDomain = function () {
+                  var domain = [];
+
+                  if (_.typeCheck("string", this.grid.domain)) {
+                      var field = this.grid.domain;
+                      var data = this.data();
+
+                      if (this.grid.reverse) {
+                          var start = data.length - 1,
+                              end = 0,
+                              step = -1;
+                      } else {
+                          var start = 0,
+                              end = data.length - 1,
+                              step = 1;
+                      }
+
+                      for (var i = start; this.grid.reverse ? i >= end : i <= end; i += step) {
+                          domain.push(data[i][field]);
+                      }
+                  } else if (_.typeCheck("function", this.grid.domain)) {
+                      // block 은 배열을 통째로 리턴함
+                      domain = this.grid.domain.call(this.chart);
+                  } else if (_.typeCheck("array", this.grid.domain)) {
+                      domain = this.grid.domain;
+                  }
+
+                  if (this.grid.reverse) {
+                      domain.reverse();
+                  }
+
+                  return domain;
+              };
+
+              this.wrapper = function (scale, key) {
+                  var old_scale = scale;
+                  var self = this;
+                  var len = self.domain.length;
+                  var reverse = self.grid.reverse;
+
+                  function new_scale(i) {
+                      if (typeof i == 'number' && key) {
+                          return old_scale(self.axis.data[i][key]);
+                      } else {
+                          return old_scale(reverse ? len - i : i);
+                      }
+                  }
+
+                  return key ? _.extend(new_scale, old_scale) : old_scale;
+              };
+
+              this.drawBefore = function () {
+                  var domain = this.initDomain();
+
+                  var obj = this.getGridSize();
+
+                  // scale 설정
+                  this.scale = UtilScale.ordinal().domain(domain);
+                  var range = [obj.start, obj.end];
+
+                  this.scale.rangeBands(range);
+
+                  this.start = obj.start;
+                  this.size = obj.size;
+                  this.end = obj.end;
+                  this.points = this.scale.range();
+                  this.domain = this.scale.domain();
+
+                  this.band = this.scale.rangeBand();
+                  this.half_band = 0;
+                  this.bar = 6;
+                  this.reverse = this.grid.reverse;
+              };
+
+              this.draw = function () {
+                  return this.drawGrid("fullblock");
+              };
+          };
+
+          FullBlockGrid.setup = function () {
+              return {
+                  /** @cfg {String/Array/Function} [domain=null] Sets the value displayed on an axis.*/
+                  domain: null,
+                  /** @cfg {Boolean} [reverse=false] Reverses the value on domain values*/
+                  reverse: false,
+                  /** @cfg {Number} [max=10] Sets the maximum value of a grid. */
+                  max: 10,
+                  /** @cfg {Boolean} [hideText=false] Determines whether to show text across the grid. */
+                  hideText: false
+              };
+          };
+
+          return FullBlockGrid;
+      }
+  };
+
+  jui$1.use([math]);
+
+  var RadarGrid = {
+      name: "chart.grid.radar",
+      extend: "chart.grid.core",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var math$$1 = jui$1.include("util.math");
+
+          var RadarGrid = function RadarGrid() {
+              var self = this,
+                  position = [];
+
+              function drawCircle(root, centerX, centerY, x, y, count) {
+                  var r = Math.abs(y),
+                      cx = centerX,
+                      cy = centerY;
+
+                  root.append(self.chart.svg.circle({
+                      cx: cx,
+                      cy: cy,
+                      r: r,
+                      "fill-opacity": 0,
+                      stroke: self.color("gridBorderColor"),
+                      "stroke-width": self.chart.theme("gridBorderWidth")
+                  }));
+              }
+
+              function drawRadial(root, centerX, centerY, x, y, count, unit) {
+                  var g = self.chart.svg.group();
+                  var points = [];
+
+                  points.push([centerX + x, centerY + y]);
+
+                  var startX = x,
+                      startY = y;
+
+                  for (var i = 0; i < count; i++) {
+                      var obj = math$$1.rotate(startX, startY, unit);
+
+                      startX = obj.x;
+                      startY = obj.y;
+
+                      points.push([centerX + obj.x, centerY + obj.y]);
+                  }
+
+                  var path = self.chart.svg.path({
+                      "fill": "none",
+                      stroke: self.color("gridBorderColor"),
+                      "stroke-width": self.chart.theme("gridBorderWidth")
+                  });
+
+                  for (var i = 0; i < points.length; i++) {
+                      var point = points[i];
+
+                      if (i == 0) {
+                          path.MoveTo(point[0], point[1]);
+                      } else {
+                          path.LineTo(point[0], point[1]);
+                      }
+                  }
+
+                  path.LineTo(points[0][0], points[0][1]);
+                  //path.ClosePath();
+
+                  g.append(path);
+                  root.append(g);
+              }
+
+              function scale(obj) {
+                  var max = self.grid.max;
+
+                  var dx = self.chart.padding('left');
+                  var dy = self.chart.padding('top');
+
+                  return function (index, value) {
+                      var rate = value / max;
+
+                      var height = Math.abs(obj.y1) - Math.abs(obj.y2),
+                          pos = height * rate,
+                          unit = 2 * Math.PI / self.domain.length;
+
+                      var cx = obj.x1,
+                          cy = obj.y1,
+                          y = -pos,
+                          x = 0;
+
+                      var o = math$$1.rotate(x, y, unit * index);
+
+                      var result = {
+                          x: dx + cx + o.x,
+                          y: dy + cy + o.y
+                      };
+
+                      return result;
+                  };
+              }
+
+              this.initDomain = function () {
+                  var domain = [];
+                  if (_.typeCheck("string", this.grid.domain)) {
+                      var field = this.grid.domain;
+                      var data = this.data();
+
+                      if (this.grid.reverse) {
+                          var start = data.length - 1,
+                              end = 0,
+                              step = -1;
+                      } else {
+                          var start = 0,
+                              end = data.length - 1,
+                              step = 1;
+                      }
+
+                      for (var i = start; this.grid.reverse ? i >= end : i <= end; i += step) {
+                          domain.push(data[i][field]);
+                      }
+
+                      //grid.domain = domain;
+                  } else if (_.typeCheck("function", this.grid.domain)) {
+                      // block 은 배열을 통째로 리턴함
+                      domain = this.grid.domain(this.chart, this.grid);
+                  } else {
+                      domain = this.grid.domain;
+                  }
+
+                  if (this.grid.reverse) {
+                      domain.reverse();
+                  }
+
+                  return domain;
+              };
+
+              this.drawBefore = function () {
+                  this.domain = this.initDomain();
+              };
+
+              this.draw = function () {
+                  var width = this.axis.area('width'),
+                      height = this.axis.area('height');
+                  var min = width;
+
+                  if (height < min) {
+                      min = height;
+                  }
+
+                  // center
+                  var w = min / 2,
+                      centerX = this.axis.area('x') + width / 2,
+                      centerY = this.axis.area('y') + height / 2;
+
+                  var startY = -w,
+                      startX = 0,
+                      count = this.domain.length,
+                      step = this.grid.step,
+                      unit = 2 * Math.PI / count,
+                      h = Math.abs(startY) / step;
+
+                  var g = this.chart.svg.group(),
+                      root = this.chart.svg.group();
+
+                  g.append(root);
+
+                  // domain line
+                  position = [];
+
+                  for (var i = 0; i < count; i++) {
+                      var x2 = centerX + startX,
+                          y2 = centerY + startY;
+
+                      root.append(this.chart.svg.line({
+                          x1: centerX,
+                          y1: centerY,
+                          x2: x2,
+                          y2: y2,
+                          stroke: this.color("gridAxisBorderColor"),
+                          "stroke-width": this.chart.theme("gridBorderWidth")
+                      }));
+
+                      position[i] = {
+                          x1: centerX,
+                          y1: centerY,
+                          x2: x2,
+                          y2: y2
+                      };
+
+                      var ty = y2,
+                          tx = x2,
+                          talign = "middle";
+
+                      if (y2 > centerY) {
+                          ty = y2 + 20;
+                      } else if (y2 < centerY) {
+                          ty = y2 - 10;
+                      }
+
+                      if (x2 > centerX) {
+                          talign = "start";
+                          tx += 10;
+                      } else if (x2 < centerX) {
+                          talign = "end";
+                          tx -= 10;
+                      }
+
+                      if (!this.grid.hideText) {
+                          root.append(this.chart.text({
+                              x: tx,
+                              y: ty,
+                              "text-anchor": talign,
+                              "font-size": this.chart.theme("gridCFontSize"),
+                              "font-weight": this.chart.theme("gridCFontWeight"),
+                              fill: this.chart.theme("gridCFontColor")
+                          }, this.domain[i]));
+                      }
+
+                      var obj = math$$1.rotate(startX, startY, unit);
+
+                      startX = obj.x;
+                      startY = obj.y;
+                  }
+
+                  if (!this.grid.line) {
+                      return {
+                          root: root,
+                          scale: scale(position[0])
+                      };
+                  }
+
+                  // area split line
+                  startY = -w;
+                  var stepBase = 0,
+                      stepValue = this.grid.max / this.grid.step;
+
+                  for (var i = 0; i < step; i++) {
+                      if (i == 0 && this.grid.extra) {
+                          startY += h;
+                          continue;
+                      }
+
+                      if (this.grid.shape == "circle") {
+                          drawCircle(root, centerX, centerY, 0, startY, count);
+                      } else {
+                          drawRadial(root, centerX, centerY, 0, startY, count, unit);
+                      }
+
+                      if (!this.grid.hideText) {
+                          root.append(this.chart.text({
+                              x: centerX,
+                              y: centerY + (startY + h - 5),
+                              "font-size": this.chart.theme("gridCFontSize"),
+                              "font-weight": this.chart.theme("gridCFontWeight"),
+                              fill: this.chart.theme("gridCFontColor")
+                          }, this.grid.max - stepBase + ""));
+                      }
+
+                      startY += h;
+                      stepBase += stepValue;
+                  }
+
+                  // hide
+                  if (this.grid.hide) {
+                      root.attr({ display: "none" });
+                  }
+
+                  return {
+                      root: root,
+                      scale: scale(position[0])
+                  };
+              };
+          };
+
+          RadarGrid.setup = function () {
+              return {
+                  /** @cfg {String/Array/Function} [domain=null] Sets the value displayed on an axis.*/
+                  domain: null,
+                  /** @cfg {Boolean} [reverse=false] Reverses the value on domain values*/
+                  reverse: false,
+                  /** @cfg {Number} [max=null] Sets the maximum value of a grid. */
+                  max: 100,
+                  /** @cfg {Array} [step=10] Sets the interval of the scale displayed on a grid. */
+                  step: 10,
+                  /** @cfg {Boolean} [line=true] Determines whether to display a line on the axis background. */
+                  line: true,
+                  /** @cfg {Boolean} [hideText=false] Determines whether to show text across the grid. */
+                  hideText: false,
+                  /** @cfg {Boolean} [extra=false] Leaves a certain spacing distance from the grid start point and displays a line where the spacing ends. */
+                  extra: false,
+                  /** @cfg {"radial"/"circle"} [shape="radial"] Determines the shape of a grid (radial, circle). */
+                  shape: "radial" // or circle
+              };
+          };
+
+          return RadarGrid;
+      }
+  };
+
+  jui$1.use([math, scale]);
+
+  var RangeGrid = {
+      name: "chart.grid.range",
+      extend: "chart.grid.core",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var math$$1 = jui$1.include("util.math");
+          var UtilScale = jui$1.include("util.scale");
+
+          var RangeGrid = function RangeGrid() {
+              this.center = function (g) {
+                  var min = this.scale.min(),
+                      max = this.scale.max();
+
+                  this.drawCenter(g, this.ticks, this.values, function (tick) {
+                      return tick == 0 && tick != min && tick != max;
+                  }, 0);
+                  this.drawBaseLine("center", g);
+              };
+
+              this.top = function (g) {
+                  this.drawPattern("top", this.ticks, this.values);
+                  var min = this.scale.min(),
+                      max = this.scale.max();
+
+                  this.drawTop(g, this.ticks, this.values, function (tick) {
+                      return tick == 0 && tick != min && tick != max;
+                  }, 0);
+                  this.drawBaseLine("top", g);
+              };
+
+              this.bottom = function (g) {
+                  this.drawPattern("bottom", this.ticks, this.values);
+                  var min = this.scale.min(),
+                      max = this.scale.max();
+
+                  this.drawBottom(g, this.ticks, this.values, function (tick) {
+                      return tick == 0 && tick != min && tick != max;
+                  }, 0);
+                  this.drawBaseLine("bottom", g);
+              };
+
+              this.left = function (g) {
+                  this.drawPattern("left", this.ticks, this.values);
+                  var min = this.scale.min(),
+                      max = this.scale.max();
+
+                  this.drawLeft(g, this.ticks, this.values, function (tick) {
+                      return tick == 0 && tick != min && tick != max;
+                  }, 0);
+                  this.drawBaseLine("left", g);
+              };
+
+              this.right = function (g) {
+                  this.drawPattern("right", this.ticks, this.values);
+                  var min = this.scale.min(),
+                      max = this.scale.max();
+
+                  this.drawRight(g, this.ticks, this.values, function (tick) {
+                      return tick == 0 && tick != min && tick != max;
+                  }, 0);
+                  this.drawBaseLine("right", g);
+              };
+
+              this.wrapper = function (scale$$1, key) {
+                  var old_scale = scale$$1;
+                  var self = this;
+
+                  function new_scale(i) {
+                      return old_scale(self.axis.data[i][key]);
+                  }
+
+                  return key ? _.extend(new_scale, old_scale) : old_scale;
+              };
+
+              this.initDomain = function () {
+
+                  var domain = [];
+                  var min = this.grid.min || undefined,
+                      max = this.grid.max || undefined,
+                      data = this.data();
+                  var value_list = [];
+                  var isArray = false;
+
+                  if (_.typeCheck("string", this.grid.domain)) {
+                      var field = this.grid.domain;
+
+                      value_list = new Array(data.length);
+                      var index = data.length;
+                      while (index--) {
+                          var value = data[index][field];
+
+                          if (_.typeCheck("array", value)) {
+                              value_list[index] = Math.max(value);
+                              value_list.push(Math.min(value));
+                          } else {
+                              value_list[index] = value;
+                              value_list.push(0);
+                          }
+                      }
+                  } else if (_.typeCheck("function", this.grid.domain)) {
+                      value_list = new Array(data.length);
+
+                      var isCheck = false;
+                      var index = data.length;
+                      while (index--) {
+
+                          var value = this.grid.domain.call(this.chart, data[index]);
+
+                          if (_.typeCheck("array", value)) {
+
+                              value_list[index] = Math.max.apply(Math, value);
+                              value_list.push(Math.min.apply(Math, value));
+                          } else {
+                              value_list[index] = value;
+
+                              if (!isCheck) {
+                                  value_list.push(0);
+                                  isCheck = true;
+                              }
+                          }
+                      }
+                  } else {
+                      value_list = this.grid.domain;
+                      isArray = true;
+                  }
+
+                  var tempMin = Math.min.apply(Math, value_list);
+                  var tempMax = Math.max.apply(Math, value_list);
+
+                  if (isArray) {
+                      min = tempMin;
+                      max = tempMax;
+                  } else {
+                      if (typeof min == 'undefined' || min > tempMin) min = tempMin;
+                      if (typeof max == 'undefined' || max < tempMax) max = tempMax;
+                  }
+
+                  var unit;
+                  if (_.typeCheck("function", this.grid.unit)) {
+                      unit = this.grid.unit.call(this.chart, this.grid);
+                  } else if (_.typeCheck("number", this.grid.unit)) {
+                      unit = this.grid.unit;
+                  } else {
+
+                      if (min > 0) {
+                          min = Math.floor(min);
+                      }
+
+                      unit = math$$1.div(max - min, this.grid.step); // (max - min) / this.grid.step
+
+                      if (unit > 1) {
+                          unit = Math.ceil(unit);
+                      } else if (0 < unit && unit < 1) {
+                          unit = math$$1.div(Math.ceil(math$$1.multi(unit, 10)), 10);
+                      }
+                  }
+
+                  if (unit == 0) {
+                      domain = [0, 0];
+                  } else {
+
+                      var start = 0;
+
+                      var fixed = math$$1.fixed(unit);
+                      while (start < max) {
+                          start = fixed.plus(start, unit);
+                      }
+
+                      var end = start;
+                      while (end > min) {
+                          end = fixed.minus(end, unit);
+                      }
+
+                      domain = [end, start];
+
+                      domain.step = Math.abs(end - start) / unit;
+                  }
+
+                  if (this.grid.reverse) {
+                      domain.reverse();
+                  }
+
+                  return domain;
+              };
+
+              this.drawBefore = function () {
+                  var domain = this.initDomain();
+
+                  var obj = this.getGridSize();
+
+                  this.scale = UtilScale.linear().domain(domain);
+
+                  if (this.grid.orient == "left" || this.grid.orient == "right") {
+                      var arr = [obj.end, obj.start];
+                  } else {
+                      var arr = [obj.start, obj.end];
+                  }
+
+                  this.scale.range(arr);
+                  this.scale.clamp(this.grid.clamp);
+
+                  this.start = obj.start;
+                  this.size = obj.size;
+                  this.end = obj.end;
+                  this.step = domain.step;
+                  this.nice = this.grid.nice;
+                  this.ticks = this.scale.ticks(this.step, this.nice);
+
+                  if (this.grid.orient == 'left' || this.grid.orient == 'right') {
+                      this.ticks.reverse();
+                  }
+
+                  this.bar = 6;
+
+                  this.values = [];
+
+                  for (var i = 0, len = this.ticks.length; i < len; i++) {
+                      this.values[i] = this.scale(this.ticks[i]);
+                  }
+              };
+
+              this.draw = function () {
+                  return this.drawGrid("range");
+              };
+          };
+
+          RangeGrid.setup = function () {
+              return {
+                  /** @cfg {String/Array/Function} [domain=null] Sets the value displayed on an axis.*/
+                  domain: null,
+                  /** @cfg {Array} [step=10] Sets the interval of the scale displayed on a grid. */
+                  step: 10,
+                  /** @cfg {Number} [min=0] Sets the minimum value of a grid.  */
+                  min: 0,
+                  /** @cfg {Number} [max=0] Sets the maximum value of a grid. */
+                  max: 0,
+                  /** @cfg {Number} [unit=null] Multiplies the axis value to be displayed.  */
+                  unit: null,
+                  /**
+                   * @cfg {Boolean} [clamp=true]
+                   *
+                   * max 나 min 을 넘어가는 값에 대한 체크,
+                   * true 이면 넘어가는 값도 min, max 에서 조정, false 이면  비율로 계산해서 넘어가는 값 적용
+                   */
+                  clamp: true,
+                  /** @cfg {Boolean} [reverse=false] Reverses the value on domain values*/
+                  reverse: false,
+                  /** @cfg {String} [key=null] Sets the value on the grid to the value for the specified key. */
+                  key: null,
+                  /** @cfg {Boolean} [hideText=false] Determines whether to show text across the grid. */
+                  hideText: false,
+                  /** @cfg {Boolean} [nice=false] Automatically sets the value of a specific section.  */
+                  nice: false
+              };
+          };
+
+          return RangeGrid;
+      }
+  };
+
+  var LogGrid = {
+      name: "chart.grid.log",
+      extend: "chart.grid.range",
+      component: function component() {
+          var UtilScale = jui$1.include("util.scale");
+
+          var LogGrid = function LogGrid() {
+
+              this.drawBefore = function () {
+                  this.grid.unit = false;
+
+                  var domain = this.initDomain();
+
+                  var obj = this.getGridSize();
+
+                  this.scale = UtilScale.log(this.grid.base).domain(domain);
+
+                  if (this.grid.orient == "left" || this.grid.orient == "right") {
+                      var arr = [obj.end, obj.start];
+                  } else {
+                      var arr = [obj.start, obj.end];
+                  }
+                  this.scale.range(arr);
+
+                  this.start = obj.start;
+                  this.size = obj.size;
+                  this.end = obj.end;
+                  this.step = this.grid.step;
+                  this.nice = this.grid.nice;
+                  this.ticks = this.scale.ticks(this.step, this.nice);
+
+                  if (this.grid.orient == 'left' || this.grid.orient == 'right') {
+                      this.ticks.reverse();
+                  }
+
+                  this.bar = 6;
+
+                  this.values = [];
+
+                  for (var i = 0, len = this.ticks.length; i < len; i++) {
+                      this.values[i] = this.scale(this.ticks[i]);
+                  }
+              };
+
+              this.draw = function () {
+                  return this.drawGrid("log");
+              };
+          };
+
+          LogGrid.setup = function () {
+              return {
+                  /** @cfg {Number} [base=10] log's base */
+                  base: 10,
+                  step: 4,
+                  nice: false,
+                  /** @cfg {Boolean} [hideText=false] Determines whether to show text across the grid. */
+                  hideText: false
+              };
+          };
+
+          return LogGrid;
+      }
+  };
+
+  var RuleGrid = {
+      name: "chart.grid.rule",
+      extend: "chart.grid.core",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var UtilScale = jui$1.include("util.scale");
+
+          var RuleGrid = function RuleGrid() {
+
+              this.top = function (g) {
+                  var height = this.axis.area('height'),
+                      half_height = height / 2;
+
+                  g.append(this.axisLine({
+                      y1: this.center ? half_height : 0,
+                      y2: this.center ? half_height : 0,
+                      x1: this.start,
+                      x2: this.end
+                  }));
+
+                  var ticks = this.ticks,
+                      values = this.values,
+                      bar = this.bar;
+
+                  for (var i = 0; i < ticks.length; i++) {
+                      var domain = this.format(ticks[i], i);
+
+                      if (!domain && domain !== 0) {
+                          continue;
+                      }
+
+                      var isZero = ticks[i] == 0,
+                          axis = this.chart.svg.group().translate(values[i], this.center ? half_height : 0);
+
+                      axis.append(this.line({
+                          y1: this.center ? -bar : 0,
+                          y2: bar,
+                          stroke: this.color("gridAxisBorderColor"),
+                          "stroke-width": this.chart.theme("gridBorderWidth")
+                      }));
+
+                      if (!isZero || isZero && !this.hideZero) {
+                          axis.append(this.getTextRotate(this.chart.text({
+                              x: 0,
+                              y: bar + bar + 4,
+                              "text-anchor": "middle",
+                              fill: this.chart.theme("gridFontColor")
+                          }, domain)));
+                      }
+
+                      g.append(axis);
+                  }
+              };
+
+              this.bottom = function (g) {
+                  var height = this.axis.area('height'),
+                      half_height = height / 2;
+
+                  g.append(this.axisLine({
+                      y1: this.center ? -half_height : 0,
+                      y2: this.center ? -half_height : 0,
+                      x1: this.start,
+                      x2: this.end
+                  }));
+
+                  var ticks = this.ticks,
+                      values = this.values,
+                      bar = this.bar;
+
+                  for (var i = 0; i < ticks.length; i++) {
+                      var domain = this.format(ticks[i], i);
+
+                      if (!domain && domain !== 0) {
+                          continue;
+                      }
+
+                      var isZero = ticks[i] == 0,
+                          axis = this.chart.svg.group().translate(values[i], this.center ? -half_height : 0);
+
+                      axis.append(this.line({
+                          y1: this.center ? -bar : 0,
+                          y2: this.center ? bar : -bar,
+                          stroke: this.color("gridAxisBorderColor"),
+                          "stroke-width": this.chart.theme("gridBorderWidth")
+                      }));
+
+                      if (!isZero || isZero && !this.hideZero) {
+                          axis.append(this.getTextRotate(this.chart.text({
+                              x: 0,
+                              y: -bar * 2,
+                              "text-anchor": "middle",
+                              fill: this.chart.theme(isZero, "gridActiveFontColor", "gridFontColor")
+                          }, domain)));
+                      }
+
+                      g.append(axis);
+                  }
+              };
+
+              this.left = function (g) {
+                  var width = this.axis.area('width'),
+                      height = this.axis.area('height'),
+                      half_width = width / 2;
+
+                  g.append(this.axisLine({
+                      x1: this.center ? half_width : 0,
+                      x2: this.center ? half_width : 0,
+                      y1: this.start,
+                      y2: this.end
+                  }));
+
+                  var ticks = this.ticks,
+                      values = this.values,
+                      bar = this.bar;
+
+                  for (var i = 0; i < ticks.length; i++) {
+                      var domain = this.format(ticks[i], i);
+
+                      if (!domain && domain !== 0) {
+                          continue;
+                      }
+
+                      var isZero = ticks[i] == 0,
+                          axis = this.chart.svg.group().translate(this.center ? half_width : 0, values[i]);
+
+                      axis.append(this.line({
+                          x1: this.center ? -bar : 0,
+                          x2: bar,
+                          stroke: this.color("gridAxisBorderColor"),
+                          "stroke-width": this.chart.theme("gridBorderWidth")
+                      }));
+
+                      if (!isZero || isZero && !this.hideZero) {
+                          axis.append(this.getTextRotate(this.chart.text({
+                              x: bar / 2 + 4,
+                              y: bar - 2,
+                              fill: this.chart.theme("gridFontColor")
+                          }, domain)));
+                      }
+
+                      g.append(axis);
+                  }
+              };
+
+              this.right = function (g) {
+                  var width = this.axis.area('width'),
+                      half_width = width / 2;
+
+                  g.append(this.axisLine({
+                      x1: this.center ? -half_width : 0,
+                      x2: this.center ? -half_width : 0,
+                      y1: this.start,
+                      y2: this.end
+                  }));
+
+                  var ticks = this.ticks,
+                      values = this.values,
+                      bar = this.bar;
+
+                  for (var i = 0; i < ticks.length; i++) {
+                      var domain = this.format(ticks[i], i);
+
+                      if (!domain && domain !== 0) {
+                          continue;
+                      }
+
+                      var isZero = ticks[i] == 0,
+                          axis = this.chart.svg.group().translate(this.center ? -half_width : 0, values[i]);
+
+                      axis.append(this.line({
+                          x1: this.center ? -bar : 0,
+                          x2: this.center ? bar : -bar,
+                          stroke: this.color("gridAxisBorderColor"),
+                          "stroke-width": this.chart.theme("gridBorderWidth")
+                      }));
+
+                      if (!isZero || isZero && !this.hideZero) {
+                          axis.append(this.getTextRotate(this.chart.text({
+                              x: -bar - 4,
+                              y: bar - 2,
+                              "text-anchor": "end",
+                              fill: this.chart.theme("gridFontColor")
+                          }, domain)));
+                      }
+
+                      g.append(axis);
+                  }
+              };
+
+              this.wrapper = function (scale, key) {
+                  var old_scale = scale;
+                  var self = this;
+
+                  function new_scale(i) {
+                      return old_scale(self.axis.data[i][key]);
+                  }
+
+                  return key ? _.extend(new_scale, old_scale) : old_scale;
+              };
+
+              this.initDomain = function () {
+
+                  var domain = [];
+                  var min = this.grid.min || undefined,
+                      max = this.grid.max || undefined,
+                      data = this.data();
+                  var value_list = [];
+
+                  if (_.typeCheck("string", this.grid.domain)) {
+                      var field = this.grid.domain;
+
+                      value_list = new Array(data.length);
+                      for (var index = 0, len = data.length; index < len; index++) {
+
+                          var value = data[index][field];
+
+                          if (_.typeCheck("array", value)) {
+                              value_list[index] = Math.max(value);
+                              value_list.push(Math.min(value));
+                          } else {
+                              value_list[index] = value;
+                          }
+                      }
+                  } else if (_.typeCheck("function", this.grid.domain)) {
+                      value_list = new Array(data.length);
+
+                      for (var index = 0, len = data.length; index < len; index++) {
+
+                          var value = this.grid.domain.call(this.chart, data[index]);
+
+                          if (_.typeCheck("array", value)) {
+
+                              value_list[index] = Math.max.apply(Math, value);
+                              value_list.push(Math.min.apply(Math, value));
+                          } else {
+                              value_list[index] = value;
+                          }
+                      }
+                  } else {
+                      value_list = grid.domain;
+                  }
+
+                  var tempMin = Math.min.apply(Math, value_list);
+                  var tempMax = Math.max.apply(Math, value_list);
+
+                  if (typeof min == 'undefined') min = tempMin;
+                  if (typeof max == 'undefined') max = tempMax;
+
+                  this.grid.max = max;
+                  this.grid.min = min;
+
+                  var unit;
+
+                  if (_.typeCheck("function", this.grid.unit)) {
+                      unit = this.grid.unit.call(this.chart, this.grid);
+                  } else if (_.typeCheck("number", this.grid.unit)) {
+                      unit = this.grid.unit;
+                  } else {
+                      unit = Math.ceil((max - min) / this.grid.step);
+                  }
+
+                  if (unit == 0) {
+                      domain = [0, 0];
+                  } else {
+
+                      var start = 0;
+
+                      while (start < max) {
+                          start += unit;
+                      }
+
+                      var end = start;
+                      while (end > min) {
+                          end -= unit;
+                      }
+
+                      domain = [end, start];
+                      //this.grid.step = Math.abs(start / unit) + Math.abs(end / unit);
+                  }
+
+                  if (this.grid.reverse) {
+                      domain.reverse();
+                  }
+
+                  return domain;
+              };
+
+              this.drawBefore = function () {
+                  var domain = this.initDomain();
+
+                  var obj = this.getGridSize();
+                  this.scale = UtilScale.linear().domain(domain);
+
+                  if (this.grid.orient == "left" || this.grid.orient == "right") {
+                      var arr = [obj.end, obj.start];
+                  } else {
+                      var arr = [obj.start, obj.end];
+                  }
+                  this.scale.range(arr);
+
+                  this.start = obj.start;
+                  this.size = obj.size;
+                  this.end = obj.end;
+                  this.step = this.grid.step;
+                  this.nice = this.grid.nice;
+                  this.ticks = this.scale.ticks(this.step, this.nice);
+                  this.bar = 6;
+                  this.hideZero = this.grid.hideZero;
+                  this.center = this.grid.center;
+                  this.values = [];
+
+                  for (var i = 0, len = this.ticks.length; i < len; i++) {
+                      this.values[i] = this.scale(this.ticks[i]);
+                  }
+              };
+
+              this.draw = function () {
+                  return this.drawGrid(chart, orient, "rule", grid);
+              };
+          };
+
+          RuleGrid.setup = function () {
+              return {
+                  /** @cfg {String/Array/Function} [domain=null] Sets the value displayed on an axis.*/
+                  domain: null,
+                  /** @cfg {Array} [step=10] Sets the interval of the scale displayed on a grid. */
+                  step: 10,
+                  /** @cfg {Number} [min=0] Sets the minimum value of a grid.  */
+                  min: 0,
+                  /** @cfg {Number} [max=0] Sets the maximum value of a grid. */
+                  max: 0,
+                  /** @cfg {Number} [unit=null] Multiplies the axis value to be displayed.  */
+                  unit: null,
+                  /**
+                   * @cfg {Boolean} [clamp=true]
+                   *
+                   * max 나 min 을 넘어가는 값에 대한 체크,
+                   * true 이면 넘어가는 값도 min, max 에서 조정, false 이면  비율로 계산해서 넘어가는 값 적용
+                   */
+                  clamp: true,
+                  /** @cfg {Boolean} [reverse=false] Reverses the value on domain values*/
+                  reverse: false,
+                  /** @cfg {String} [key=null] Sets the value on the grid to the value for the specified key. */
+                  key: null,
+                  /** @cfg {Boolean} [hideText=false] Determines whether to show text across the grid. */
+                  hideText: false,
+                  /** @cfg {Boolean} [hideZero=false] Determines whether to show '0' displayed on the grid. */
+                  hideZero: false,
+                  /** @cfg {Boolean} [nice=false] Automatically sets the value of a specific section.  */
+                  nice: false,
+                  /** @cfg {Boolean} [center=false] Place the reference axis in the middle.  */
+                  center: false
+
+              };
+          };
+
+          return RuleGrid;
+      }
+  };
+
+  var PanelGrid = {
+      name: "chart.grid.panel",
+      extend: "chart.grid.core",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+
+          var PanelGrid = function PanelGrid() {
+
+              this.custom = function (g) {
+                  var obj = this.scale(0);
+
+                  obj.x -= this.axis.area("x");
+                  obj.y -= this.axis.area("y");
+
+                  g.append(this.chart.svg.rect(_.extend(obj, {
+                      fill: "transparent",
+                      stroke: "transparent"
+                  })));
+              };
+
+              this.drawBefore = function () {
+                  this.scale = function (axis) {
+                      return function (i) {
+
+                          return {
+                              x: axis.area("x"),
+                              y: axis.area("y"),
+                              width: axis.area("width"),
+                              height: axis.area("height")
+                          };
+                      };
+                  }(this.axis);
+              };
+
+              this.draw = function () {
+                  this.grid.hide = true;
+                  return this.drawGrid("panel");
+              };
+          };
+
+          return PanelGrid;
+      }
+  };
+
+  var TableGrid = {
+      name: "chart.grid.table",
+      extend: "chart.grid.core",
+      component: function component() {
+          var TableGrid = function TableGrid(chart, axis, grid) {
+              var row, column;
+
+              this.custom = function (g) {
+                  for (var r = 0; r < row; r++) {
+                      for (var c = 0; c < column; c++) {
+                          var index = r * column + c;
+
+                          var obj = this.scale(index);
+
+                          obj.x -= this.axis.area('x');
+                          obj.y -= this.axis.area('y');
+
+                          var rect = this.chart.svg.rect(_.extend(obj, {
+                              fill: "tranparent",
+                              stroke: "black"
+                          }));
+
+                          //g.append(rect);
+                      }
+                  }
+              };
+
+              this.drawBefore = function () {
+
+                  var row = this.grid.rows;
+                  var column = this.grid.columns;
+
+                  var padding = this.grid.padding;
+
+                  var columnUnit = (this.axis.area('width') - (column - 1) * padding) / column;
+                  var rowUnit = (this.axis.area('height') - (row - 1) * padding) / row;
+
+                  // create scale
+                  this.scale = function (axis, row, column, rowUnit, columnUnit) {
+                      return function (i) {
+
+                          var r = Math.floor(i / column);
+                          var c = i % column;
+
+                          var x = c * columnUnit;
+                          var y = r * rowUnit;
+
+                          var space = padding * c;
+                          var rspace = padding * r;
+
+                          return {
+                              x: axis.area('x') + x + space,
+                              y: axis.area('y') + y + rspace,
+                              width: columnUnit,
+                              height: rowUnit
+                          };
+                      };
+                  }(this.axis, row, column, rowUnit, columnUnit);
+              };
+
+              this.draw = function () {
+                  this.grid.hide = true;
+                  return this.drawGrid("table");
+              };
+          };
+
+          TableGrid.setup = function () {
+              return {
+                  /** @cfg {Number} [rows=1] row count in table  */
+                  rows: 1,
+                  /** @cfg {Number} [column=1] column count in table  */
+                  columns: 1,
+                  /** @cfg {Number} [padding=1] padding in table  */
+                  padding: 10
+              };
+          };
+
+          return TableGrid;
+      }
+  };
+
+  var OverlapGrid = {
+      name: "chart.grid.overlap",
+      extend: "chart.grid.core",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+
+          var OverlapGrid = function OverlapGrid() {
+              var size, widthUnit, heightUnit, width, height;
+
+              this.custom = function () {
+                  for (var i = 0, len = this.axis.data.length; i < len; i++) {
+                      var obj = this.scale(i);
+
+                      obj.x -= this.axis.area("x");
+                      obj.y -= this.axis.area("y");
+
+                      this.chart.svg.rect(_.extend(obj, {
+                          fill: "transparent",
+                          stroke: "transparent"
+                      }));
+                  }
+              };
+
+              this.drawBefore = function () {
+                  size = this.grid.count || this.axis.data.length || 1;
+
+                  widthUnit = this.axis.area('width') / 2 / size;
+                  heightUnit = this.axis.area('height') / 2 / size;
+
+                  width = this.axis.area('width');
+                  height = this.axis.area('height');
+
+                  // create scale
+                  this.scale = function (axis) {
+                      return function (i) {
+
+                          var x = i * widthUnit;
+                          var y = i * heightUnit;
+
+                          return {
+                              x: axis.area('x') + x,
+                              y: axis.area('y') + y,
+                              width: Math.abs(width / 2 - x) * 2,
+                              height: Math.abs(height / 2 - y) * 2
+                          };
+                      };
+                  }(this.axis);
+              };
+
+              this.draw = function () {
+                  this.grid.hide = true;
+                  return this.drawGrid("overlap");
+              };
+          };
+
+          OverlapGrid.setup = function () {
+              return {
+                  /** @cfg {Number} [count=null] Splited count  */
+                  count: null
+              };
+          };
+
+          return OverlapGrid;
+      }
+  };
+
+  jui$1.use([math]);
+
+  var Grid3dGrid = {
+      name: "chart.grid.grid3d",
+      extend: "chart.grid.core",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var math$$1 = jui$1.include("util.math");
+
+          var Grid3D = function Grid3D() {
+              var self = this,
+                  depth = 0,
+                  degree = 0,
+                  radian = 0;
+
+              function getElementAttr(root) {
+                  var attr = null;
+
+                  root.each(function (i, elem) {
+                      if (elem.element.nodeName == "line") {
+                          attr = elem.attributes;
+                      }
+                  });
+
+                  return attr;
+              }
+
+              this.drawBefore = function () {
+                  depth = this.axis.get("depth");
+                  degree = this.axis.get("degree");
+                  radian = math$$1.radian(360 - degree);
+
+                  this.scale = function () {
+                      return function (x, y, z, count) {
+                          var step = _.typeCheck("integer", count) ? count : 1,
+                              split = depth / step;
+
+                          if (z == undefined || step == 1) {
+                              return {
+                                  x: self.axis.x(x),
+                                  y: self.axis.y(y),
+                                  depth: split
+                              };
+                          } else {
+                              var z = z == undefined ? 0 : z,
+                                  c = split * z,
+                                  top = Math.sin(radian) * split;
+
+                              return {
+                                  x: self.axis.x(x) + Math.cos(radian) * c,
+                                  y: self.axis.y(y) + Math.sin(radian) * c + top,
+                                  depth: split
+                              };
+                          }
+                      };
+                  }(this.axis);
+
+                  this.scale.depth = depth;
+                  this.scale.degree = degree;
+                  this.scale.radian = radian;
+              };
+
+              this.draw = function () {
+                  var xRoot = this.axis.x.root,
+                      yRoot = this.axis.y.root;
+
+                  var y2 = Math.sin(radian) * depth,
+                      x2 = Math.cos(radian) * depth;
+
+                  yRoot.each(function (i, elem) {
+                      if (elem.element.nodeName == "line") {
+                          yRoot.append(self.line({
+                              x1: x2,
+                              y1: 0,
+                              x2: x2,
+                              y2: y2 + elem.attributes.y2
+                          }));
+                      } else {
+                          // X축 라인 속성 가져오기
+                          var xAttr = getElementAttr(xRoot);
+
+                          elem.append(self.line({
+                              x1: 0,
+                              y1: 0,
+                              x2: x2,
+                              y2: y2
+                          }));
+
+                          elem.append(self.line({
+                              x1: x2,
+                              y1: y2,
+                              x2: x2 + xAttr.x2,
+                              y2: y2
+                          }));
+                      }
+                  });
+
+                  xRoot.each(function (i, elem) {
+                      var attr = elem.element.nodeName == "line" ? elem.attributes : elem.get(0).attributes,
+                          y2 = attr.y1 + Math.sin(radian) * depth,
+                          x2 = attr.x1 + Math.cos(radian) * depth;
+
+                      if (i > 0) {
+                          // Y축 라인 속성 가져오기
+                          var yAttr = getElementAttr(yRoot);
+
+                          elem.append(self.line({
+                              x1: attr.x1,
+                              y1: attr.y1,
+                              x2: x2,
+                              y2: y2
+                          }));
+
+                          elem.append(self.line({
+                              x1: x2,
+                              y1: y2,
+                              x2: x2,
+                              y2: -(yAttr.y2 - y2)
+                          }));
+                      }
+                  });
+
+                  return this.drawGrid();
+              };
+          };
+
+          Grid3D.setup = function () {
+              return {
+                  /** @cfg {Array} [domain=null] */
+                  domain: null
+              };
+          };
+
+          return Grid3D;
+      }
+  };
+
+  jui$1.use(draw, dom);
+
+  var CoreBrush = {
+      name: "chart.brush.core",
+      extend: "chart.draw",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+          var $ = jui$1.include("util.dom");
+
+          var CoreBrush = function CoreBrush() {
+
+              function getMinMaxValue(data, target) {
+                  var seriesList = {},
+                      targetList = {};
+
+                  for (var i = 0; i < target.length; i++) {
+                      if (!seriesList[target[i]]) {
+                          targetList[target[i]] = [];
+                      }
+                  }
+
+                  // 시리즈 데이터 구성
+                  for (var i = 0, len = data.length; i < len; i++) {
+                      var row = data[i];
+
+                      for (var k in targetList) {
+                          targetList[k].push(row[k]);
+                      }
+                  }
+
+                  for (var key in targetList) {
+                      seriesList[key] = {
+                          min: Math.min.apply(Math, targetList[key]),
+                          max: Math.max.apply(Math, targetList[key])
+                      };
+                  }
+
+                  return seriesList;
+              }
+
+              this.drawAfter = function (obj) {
+                  if (this.brush.clip !== false) {
+                      obj.attr({ "clip-path": "url(#" + this.axis.get("clipId") + ")" });
+                  }
+
+                  obj.attr({ "class": "brush-" + this.brush.type });
+                  obj.translate(this.chart.area("x"), this.chart.area("y")); // 브러쉬일 경우, 기본 좌표 설정
+              };
+
+              this.drawTooltip = function (fill, stroke, opacity) {
+                  var self = this,
+                      tooltip = null;
+
+                  function draw$$1() {
+                      return self.chart.svg.group({ "visibility": "hidden" }, function () {
+                          self.chart.text({
+                              fill: self.chart.theme("tooltipPointFontColor"),
+                              "font-size": self.chart.theme("tooltipPointFontSize"),
+                              "font-weight": self.chart.theme("tooltipPointFontWeight"),
+                              "text-anchor": "middle",
+                              opacity: opacity
+                          });
+
+                          self.chart.svg.circle({
+                              r: self.chart.theme("tooltipPointRadius"),
+                              fill: fill,
+                              stroke: stroke,
+                              opacity: opacity,
+                              "stroke-width": self.chart.theme("tooltipPointBorderWidth")
+                          });
+                      });
+                  }
+
+                  function show(orient, x, y, value) {
+                      var text = tooltip.get(0);
+                      text.element.textContent = value;
+
+                      if (orient == "left") {
+                          text.attr({ x: -7, y: 4, "text-anchor": "end" });
+                      } else if (orient == "right") {
+                          text.attr({ x: 7, y: 4, "text-anchor": "start" });
+                      } else if (orient == "bottom") {
+                          text.attr({ y: 16 });
+                      } else {
+                          text.attr({ y: -7 });
+                      }
+
+                      tooltip.attr({ visibility: value != 0 ? "visible" : "hidden" });
+                      tooltip.translate(x, y);
+                  }
+
+                  // 툴팁 생성
+                  tooltip = draw$$1();
+
+                  return {
+                      tooltip: tooltip,
+                      control: show,
+                      style: function style(fill, stroke, opacity) {
+                          tooltip.get(0).attr({
+                              opacity: opacity
+                          });
+
+                          tooltip.get(1).attr({
+                              fill: fill,
+                              stroke: stroke,
+                              opacity: opacity
+                          });
+                      }
+                  };
+              };
+
+              /**
+               *
+               * @method curvePoints
+               *
+               * 좌표 배열 'K'에 대한 커브 좌표 'P1', 'P2'를 구하는 함수
+               *
+               * TODO: min, max 에 대한 처리도 같이 필요함.
+               *
+               * @param {Array} K
+               * @return {Object}
+               * @return {Array} return.p1
+               * @return {Array} return.p2
+               *
+               */
+              this.curvePoints = function (K) {
+                  var p1 = [];
+                  var p2 = [];
+                  var n = K.length - 1;
+
+                  /*rhs vector*/
+                  var a = [];
+                  var b = [];
+                  var c = [];
+                  var r = [];
+
+                  /*left most segment*/
+                  a[0] = 0;
+                  b[0] = 2;
+                  c[0] = 1;
+                  r[0] = K[0] + 2 * K[1];
+
+                  /*internal segments*/
+                  for (i = 1; i < n - 1; i++) {
+                      a[i] = 1;
+                      b[i] = 4;
+                      c[i] = 1;
+                      r[i] = 4 * K[i] + 2 * K[i + 1];
+                  }
+
+                  /*right segment*/
+                  a[n - 1] = 2;
+                  b[n - 1] = 7;
+                  c[n - 1] = 0;
+                  r[n - 1] = 8 * K[n - 1] + K[n];
+
+                  /*solves Ax=b with the Thomas algorithm (from Wikipedia)*/
+                  for (var i = 1; i < n; i++) {
+                      var m = a[i] / b[i - 1];
+                      b[i] = b[i] - m * c[i - 1];
+                      r[i] = r[i] - m * r[i - 1];
+                  }
+
+                  p1[n - 1] = r[n - 1] / b[n - 1];
+                  for (var i = n - 2; i >= 0; --i) {
+                      p1[i] = (r[i] - c[i] * p1[i + 1]) / b[i];
+                  } /*we have p1, now compute p2*/
+                  for (var i = 0; i < n - 1; i++) {
+                      p2[i] = 2 * K[i + 1] - p1[i + 1];
+                  }p2[n - 1] = 0.5 * (K[n] + p1[n - 1]);
+
+                  return {
+                      p1: p1,
+                      p2: p2
+                  };
+              };
+
+              /**
+               *
+               * @method eachData
+               *
+               * loop axis data
+               *
+               * @param {Function} callback
+               */
+              this.eachData = function (callback, reverse) {
+                  if (!_.typeCheck("function", callback)) return;
+                  var list = this.listData();
+
+                  if (reverse === true) {
+                      for (var len = list.length - 1; len >= 0; len--) {
+                          callback.call(this, len, list[len]);
+                      }
+                  } else {
+                      for (var index = 0, len = list.length; index < len; index++) {
+                          callback.call(this, list[index], index);
+                      }
+                  }
+              };
+
+              /**
+               *
+               * @method listData
+               *
+               * get axis.data
+               *
+               * @returns {Array} axis.data
+               */
+              this.listData = function () {
+                  if (!this.axis) {
+                      return [];
+                  } else {
+                      if (!this.axis.data) {
+                          return [];
+                      }
+                  }
+
+                  return this.axis.data;
+              };
+
+              /**
+               *
+               * @method getData
+               *
+               * get record by index in axis.data
+               *
+               * @param {Integer} index
+               * @returns {Object} record in axis.data
+               */
+              this.getData = function (index) {
+                  return this.listData()[index];
+              };
+
+              /**
+               * @method getValue
+               *
+               * chart.axis.getValue alias
+               *
+               * @param {Object} data row data
+               * @param {String} fieldString 필드 이름
+               * @param {String/Number/Boolean/Object} [defaultValue=''] 기본값
+               * @return {Mixed}
+               */
+              this.getValue = function (data, fieldString, defaultValue) {
+                  return this.axis.getValue(data, fieldString, defaultValue);
+              };
+
+              /**
+               *
+               * @method getXY
+               *
+               * 차트 데이터에 대한 좌표 'x', 'y'를 구하는 함수
+               *
+               * @param {Boolean} [isCheckMinMax=true]
+               * @return {Array}
+               */
+              this.getXY = function (isCheckMinMax) {
+                  var xy = [],
+                      series = {},
+                      length = this.listData().length,
+                      i = length,
+                      target = this.brush.target,
+                      targetLength = target.length;
+
+                  if (isCheckMinMax !== false) {
+                      series = getMinMaxValue(this.axis.data, target);
+                  }
+
+                  for (var j = 0; j < targetLength; j++) {
+                      xy[j] = {
+                          x: new Array(length),
+                          y: new Array(length),
+                          value: new Array(length),
+                          min: [],
+                          max: [],
+                          length: length
+                      };
+                  }
+
+                  var axisData = this.axis.data,
+                      isRangeY = this.axis.y.type == "range",
+                      x = this.axis.x,
+                      y = this.axis.y,
+                      func = _.loop(i);
+
+                  func(function (i, group) {
+                      var data = axisData[i],
+                          startX = 0,
+                          startY = 0;
+
+                      if (isRangeY) startX = x(i);else startY = y(i);
+
+                      for (var j = 0; j < targetLength; j++) {
+                          var key = target[j],
+                              value = data[key];
+
+                          if (isRangeY) startY = y(value);else startX = x(value);
+
+                          xy[j].x[i] = startX;
+                          xy[j].y[i] = startY;
+                          xy[j].value[i] = value;
+
+                          if (isCheckMinMax !== false) {
+                              xy[j].min[i] = value == series[key].min;
+                              xy[j].max[i] = value == series[key].max;
+                          }
+                      }
+                  });
+
+                  return xy;
+              };
+
+              /**
+               *
+               * @method getStackXY
+               *
+               * 차트 데이터에 대한 좌표 'x', 'y'를 구하는 함수
+               * 단, 'y' 좌표는 다음 데이터 보다 높게 구해진다.
+               *
+               * @param {Boolean} [isCheckMinMax=true]
+               * @return {Array}
+               */
+              this.getStackXY = function (isCheckMinMax) {
+                  var xy = this.getXY(isCheckMinMax),
+                      isRangeY = this.axis.y.type == "range";
+
+                  this.eachData(function (data, i) {
+                      var valueSum = 0;
+
+                      for (var j = 0; j < this.brush.target.length; j++) {
+                          var key = this.brush.target[j],
+                              value = data[key];
+
+                          if (j > 0) {
+                              valueSum += data[this.brush.target[j - 1]];
+                          }
+
+                          if (isRangeY) {
+                              xy[j].y[i] = this.axis.y(value + valueSum);
+                          } else {
+                              xy[j].x[i] = this.axis.x(value + valueSum);
+                          }
+                      }
+                  });
+
+                  return xy;
+              };
+
+              /**
+               * @method addEvent
+               * 브러쉬 엘리먼트에 대한 공통 이벤트 정의
+               *
+               * @param {Element} element
+               * @param {Integer} dataIndex
+               * @param {Integer} targetIndex
+               */
+              this.addEvent = function (elem, dataIndex, targetIndex) {
+                  if (this.brush.useEvent !== true) return;
+
+                  var chart = this.chart,
+                      obj = {};
+
+                  if (_.typeCheck("object", dataIndex) && !targetIndex) {
+                      obj.brush = this.brush;
+                      obj.data = dataIndex;
+                  } else {
+                      obj.brush = this.brush;
+                      obj.dataIndex = dataIndex;
+                      obj.dataKey = targetIndex != null ? this.brush.target[targetIndex] : null;
+                      obj.data = dataIndex != null ? this.getData(dataIndex) : null;
+                  }
+
+                  elem.on("click", function (e) {
+                      setMouseEvent(e);
+                      chart.emit("click", [obj, e]);
+                  });
+
+                  elem.on("dblclick", function (e) {
+                      setMouseEvent(e);
+                      chart.emit("dblclick", [obj, e]);
+                  });
+
+                  elem.on("contextmenu", function (e) {
+                      setMouseEvent(e);
+                      chart.emit("rclick", [obj, e]);
+                      e.preventDefault();
+                  });
+
+                  elem.on("mouseover", function (e) {
+                      setMouseEvent(e);
+                      chart.emit("mouseover", [obj, e]);
+                  });
+
+                  elem.on("mouseout", function (e) {
+                      setMouseEvent(e);
+                      chart.emit("mouseout", [obj, e]);
+                  });
+
+                  elem.on("mousemove", function (e) {
+                      setMouseEvent(e);
+                      chart.emit("mousemove", [obj, e]);
+                  });
+
+                  elem.on("mousedown", function (e) {
+                      setMouseEvent(e);
+                      chart.emit("mousedown", [obj, e]);
+                  });
+
+                  elem.on("mouseup", function (e) {
+                      setMouseEvent(e);
+                      chart.emit("mouseup", [obj, e]);
+                  });
+
+                  function setMouseEvent(e) {
+                      var pos = $.offset(chart.root),
+                          offsetX = e.pageX - pos.left,
+                          offsetY = e.pageY - pos.top;
+
+                      e.bgX = offsetX;
+                      e.bgY = offsetY;
+                      e.chartX = offsetX - chart.padding("left");
+                      e.chartY = offsetY - chart.padding("top");
+                  }
+              };
+
+              /**
+               * @method color
+               *
+               * chart.color() 를 쉽게 사용할 수 있게 만든 유틸리티 함수
+               *
+               * @param {Number} key1  브러쉬에서 사용될 컬러 Index
+               * @param {Number} key2  브러쉬에서 사용될 컬러 Index
+               * @returns {*}
+               */
+              this.color = function (key1, key2) {
+                  var colors = this.brush.colors,
+                      color = null,
+                      colorIndex = 0,
+                      rowIndex = 0;
+
+                  if (!_.typeCheck("undefined", key2)) {
+                      colorIndex = key2;
+                      rowIndex = key1;
+                  } else {
+                      colorIndex = key1;
+                  }
+
+                  if (_.typeCheck("function", colors)) {
+                      var newColor = colors.call(this.chart, this.getData(rowIndex), rowIndex);
+
+                      if (_.typeCheck(["string", "integer"], newColor)) {
+                          color = this.chart.color(newColor);
+                      } else if (_.typeCheck("array", newColor)) {
+                          color = this.chart.color(colorIndex, newColor);
+                      } else {
+                          color = this.chart.color(0);
+                      }
+                  } else {
+                      color = this.chart.color(colorIndex, colors);
+                  }
+
+                  return color;
+              };
+
+              /**
+               * @method offset
+               *
+               * 그리드 타입에 따른 시작 좌표 가져오기 (블럭)
+               *
+               * @param {String} 그리드 종류
+               * @param {Number} 인덱스
+               * @returns {*}
+               */
+              this.offset = function (type, index) {
+                  // 그리드 타입에 따른 시작 좌표 가져오기
+                  var res = this.axis[type](index);
+
+                  if (this.axis[type].type != "block") {
+                      res += this.axis[type].rangeBand() / 2;
+                  }
+
+                  return res;
+              };
+          };
+
+          CoreBrush.setup = function () {
+              return {
+
+                  /** @property {chart.builder} chart */
+                  /** @property {chart.axis} axis */
+                  /** @property {Object} brush */
+
+                  /** @cfg {Array} [target=null] Specifies the key value of data displayed on a brush.  */
+                  target: null,
+                  /** @cfg {Array/Function} [colors=null] Able to specify color codes according to the target order (basically, refers to the color codes of a theme) */
+                  colors: null,
+                  /** @cfg {Integer} [axis=0] Specifies the index of a grid group which acts as the reference axis of a brush. */
+                  axis: 0,
+                  /** @cfg {Integer} [index=null] [Read Only] Sequence index on which brush is drawn. */
+                  index: null,
+                  /** @cfg {boolean} [clip=true] If the brush is drawn outside of the chart, cut the area. */
+                  clip: true,
+                  /** @cfg {boolean} [useEvent=true] If you do not use a brush events, it gives better performance. */
+                  useEvent: true
+              };
+          };
+
+          /**
+           * @event click
+           * Event that occurs when clicking on the brush.
+           * @param {BrushData} obj Related brush data.
+           */
+          /**
+           * @event dblclick
+           * Event that occurs when double clicking on the brush.
+           * @param {BrushData} obj Related brush data.
+           */
+          /**
+           * @event rclick
+           * Event that occurs when right clicking on the brush.
+           * @param {BrushData} obj Related brush data.
+           */
+          /**
+           * @event mouseover
+           * Event that occurs when placing the mouse over the brush.
+           * @param {BrushData} obj Related brush data.
+           */
+          /**
+           * @event mouseout
+           * Event that occurs when moving the mouse out of the brush.
+           * @param {BrushData} obj Related brush data.
+           */
+          /**
+           * @event mousemove
+           * Event that occurs when moving the mouse over the brush.
+           * @param {BrushData} obj Related brush data.
+           */
+          /**
+           * @event mousedown
+           * Event that occurs when left clicking on the brush.
+           * @param {BrushData} obj Related brush data.
+           */
+          /**
+           * @event mouseup
+           * Event that occurs after left clicking on the brush.
+           * @param {BrushData} obj Related brush data.
+           */
+
+          return CoreBrush;
+      }
+  };
+
+  var MapCoreBrush = {
+      name: "chart.brush.map.core",
+      extend: "chart.brush.core",
+      component: function component() {
+          var MapCoreBrush = function MapCoreBrush() {};
+
+          return MapCoreBrush;
+      }
+  };
+
+  var PolygonCoreBrush = {
+      name: "chart.brush.polygon.core",
+      extend: "chart.brush.core",
+      component: function component() {
+          var PolygonCoreBrush = function PolygonCoreBrush() {
+              this.createPolygon = function (polygon, callback) {
+                  this.calculate3d(polygon);
+
+                  var element = callback.call(this, polygon);
+                  if (element) {
+                      element.order = this.axis.depth - polygon.max().z;
+                      return element;
+                  }
+              };
+          };
+
+          PolygonCoreBrush.setup = function () {
+              return {
+                  id: null,
+                  clip: false
+              };
+          };
+
+          return PolygonCoreBrush;
+      }
+  };
+
+  var CanvasCoreBrush = {
+      name: "chart.brush.canvas.core",
+      extend: "chart.brush.core",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+
+          var CanvasCoreBrush = function CanvasCoreBrush() {
+              this.addPolygon = function (polygon, callback) {
+                  if (!_.typeCheck("array", this.polygons)) {
+                      this.polygons = [];
+                  }
+
+                  // 폴리곤 각도 및 깊이 연산
+                  this.calculate3d(polygon);
+
+                  // 연산된 폴리곤 객체 추가
+                  this.polygons.push({
+                      polygon: polygon,
+                      order: this.axis.depth - polygon.max().z,
+                      handler: callback
+                  });
+              };
+
+              this.drawAfter = function () {
+                  // 폴리곤 기반의 브러쉬일 경우
+                  if (_.typeCheck("array", this.polygons)) {
+                      var list = this.polygons;
+
+                      list.sort(function (a, b) {
+                          return a.order - b.order;
+                      });
+
+                      for (var i = 0, len = list.length; i < len; i++) {
+                          var p = list.shift();
+                          p.handler.call(this, p.polygon);
+                      }
+                  }
+              };
+          };
+
+          return CanvasCoreBrush;
+      }
+  };
+
+  jui$1.use(draw);
+
+  var CoreWidget = {
+      name: "chart.widget.core",
+      extend: "chart.draw",
+      component: function component() {
+          var _ = jui$1.include("util.base");
+
+          var CoreWidget = function CoreWidget() {
+
+              this.getIndexArray = function (index) {
+                  var list = [0];
+
+                  if (_.typeCheck("array", index)) {
+                      list = index;
+                  } else if (_.typeCheck("integer", index)) {
+                      list = [index];
+                  }
+
+                  return list;
+              };
+
+              this.getScaleToValue = function (scale, minScale, maxScale, minValue, maxValue) {
+                  var tick = (maxScale - minScale) * 10,
+                      step = (maxValue - minValue) / tick,
+                      value = maxValue - step * ((scale - minScale) / 0.1);
+
+                  if (value < minValue) return minValue;else if (value > maxValue) return maxValue;
+
+                  return value;
+              };
+
+              this.getValueToScale = function (value, minValue, maxValue, minScale, maxScale) {
+                  var tick = (maxScale - minScale) * 10,
+                      step = (maxValue - minValue) / tick;
+
+                  return parseFloat((minScale + (maxValue - value) / step * 0.1).toFixed(1));
+              };
+
+              this.isRender = function () {
+                  return this.widget.render === true ? true : false;
+              };
+
+              this.on = function (type, callback, axisIndex) {
+                  var self = this;
+
+                  return this.chart.on(type, function () {
+                      if (_.startsWith(type, "axis.") && _.typeCheck("integer", axisIndex)) {
+                          var axis = self.chart.axis(axisIndex),
+                              e = arguments[0];
+
+                          if (_.typeCheck("object", axis)) {
+                              if (arguments[1] == axisIndex) {
+                                  callback.apply(self, [e]);
+                              }
+                          }
+                      } else {
+                          callback.apply(self, arguments);
+                      }
+                  }, this.isRender() ? "render" : "renderAll");
+              };
+
+              this.drawAfter = function (obj) {
+                  obj.attr({ "class": "widget-" + this.widget.type });
+              };
+          };
+
+          CoreWidget.setup = function () {
+
+              /** @property {chart.builder} chart */
+              /** @property {chart.axis} axis */
+              /** @property {Object} widget */
+              /** @property {Number} index [Read Only] Index which shows the sequence how a widget is drawn. */
+
+              return {
+                  /**
+                   * @cfg {Boolean} [render=false] Determines whether a widget is to be rendered.
+                   */
+                  render: false,
+                  /**
+                   * @cfg {Number} [index=0] current widget index
+                   */
+                  index: 0
+              };
+          };
+
+          return CoreWidget;
+      }
+  };
+
+  var MapCoreWidget = {
+      name: "chart.widget.map.core",
+      extend: "chart.widget.core",
+      component: function component() {
+          var MapCoreWidget = function MapCoreWidget(chart, axis, widget) {};
+
+          MapCoreWidget.setup = function () {
+              return {
+                  axis: 0
+              };
+          };
+
+          return MapCoreWidget;
+      }
+  };
+
+  var PolygonCoreWidget = {
+      name: "chart.widget.polygon.core",
+      extend: "chart.widget.core",
+      component: function component() {
+          var PolygonCoreWidget = function PolygonCoreWidget() {
+              this.drawAfter = function (obj) {};
+          };
+
+          return PolygonCoreWidget;
+      }
+  };
+
+  var CanvasCoreWidget = {
+      name: "chart.widget.canvas.core",
+      extend: "chart.widget.core",
+      component: function component() {
+          var CanvasCoreWidget = function CanvasCoreWidget() {
+              this.drawAfter = function (obj) {};
+          };
+
+          return CanvasCoreWidget;
+      }
+  };
+
+  jui$1.use([dom, math, color, UICollection, UIManager, UICore, time, transform, CanvasUtil, JUISvgElement, JUISvgTransformElement, JUISvgPathElement, JUISvgPathRectElement, JUISvgPathSymbolElement, JUISvgPolyElement, JUISvgBase, JUISvgBase3d, svg, LinearScaleUtil, CircleScaleUtil, LogScaleUtil, OrdinalScaleUtil, TimeScaleUtil, scale, vector, draw, axis, Map, JUIBuilder, Plane, Animation, core, grid$1, line, point, CubePolygon, draw2d, draw3d, CoreGrid, BlockGrid, DateGrid, DateBlockGrid, FullBlockGrid, RadarGrid, RangeGrid, LogGrid, RuleGrid, PanelGrid, TableGrid, OverlapGrid, Grid3dGrid, CoreBrush, MapCoreBrush, PolygonCoreBrush, CanvasCoreBrush, CoreWidget, MapCoreWidget, PolygonCoreWidget, CanvasCoreWidget]);
+
+  return jui$1;
+
+}());

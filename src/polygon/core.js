@@ -1,4 +1,9 @@
 import jui from "../base/base.js"
+import vector from "../base/vector.js"
+import transform from "../util/transform.js"
+import math from "../util/math.js"
+
+jui.use([ vector, transform, math ]);
 
 export default {
     name: "chart.polygon.core",

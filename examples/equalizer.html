@@ -4,7 +4,7 @@
 <meta http-equiv="content-type" content="charset=utf-8;"/>
 <script src="../dist/jui-graph.js"></script>
 <script>
-    jui.define("chart.theme.classic", [], function() {
+    graph.define("chart.theme.classic", [], function() {
         var themeColors = [
             "#7977C2",
             "#7BBAE7",
@@ -384,7 +384,7 @@
         }
     });
 
-    jui.define("chart.brush.canvas.equalizercolumn", [ "util.base" ], function(_) {
+    graph.define("chart.brush.canvas.equalizercolumn", [ "util.base" ], function(_) {
         var CanvasEqualizerColumnBrush = function() {
             let zeroY, bar_width, is_reverse;
 
@@ -569,7 +569,7 @@
 
     }, "chart.brush.canvas.core");
 
-    jui.ready([ "chart.animation" ], function(animation) {
+    graph.ready([ "chart.animation" ], function(animation) {
         window.c = animation("#chart", {
             width: 500,
             height: 300,

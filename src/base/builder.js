@@ -1,8 +1,10 @@
 import JUI from "./base.js"
-import JUISvgUtil from "../util/svg.js"
-import JUIAxis from "./axis.js"
+import dom from "../util/dom.js"
+import svg from "../util/svg.js"
+import color from "../util/color.js"
+import axis from "./axis.js"
 
-JUI.use(JUISvgUtil, JUIAxis);
+JUI.use(dom, svg, color, axis);
 
 export default {
     name: "chart.builder",

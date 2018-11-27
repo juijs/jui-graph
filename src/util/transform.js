@@ -1,4 +1,7 @@
 import jui from "../base/base.js"
+import math from './math';
+
+jui.use(math);
 
 export default {
     name: "util.transform",

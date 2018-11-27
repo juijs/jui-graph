@@ -1,4 +1,10 @@
 import jui from "../base/base.js"
+import math from "../util/math.js"
+import draw from "../base/draw.js"
+import draw2d from "../grid/draw2d.js"
+import draw3d from "../grid/draw3d.js"
+
+jui.use([ math, draw, draw2d, draw3d ]);
 
 export default {
     name: "chart.grid.core",

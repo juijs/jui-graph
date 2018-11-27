@@ -1,4 +1,7 @@
 import jui from "../base/base.js"
+import draw from "../base/draw.js"
+
+jui.use(draw);
 
 export default {
     name: "chart.widget.core",

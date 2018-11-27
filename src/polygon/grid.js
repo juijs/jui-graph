@@ -1,3 +1,8 @@
+import jui from "../base/base.js"
+import core from "./core.js"
+
+jui.use(core);
+
 export default {
     name: "chart.polygon.grid",
     extend: "chart.polygon.core",

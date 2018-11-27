@@ -4,7 +4,7 @@
 <meta http-equiv="content-type" content="charset=utf-8;"/>
 <script src="../dist/jui-graph.js"></script>
 <script>
-    jui.define("chart.theme.classic", [], function() {
+    graph.define("chart.theme.classic", [], function() {
         var themeColors = [
             "#7977C2",
             "#7BBAE7",
@@ -384,7 +384,7 @@
         }
     });
 
-    jui.define("chart.brush.rangebar", [], function() {
+    graph.define("chart.brush.rangebar", [], function() {
         var RangeBarBrush = function(chart, axis, brush) {
             var g, height, half_height, barHeight;
             var outerPadding, innerPadding;
@@ -451,7 +451,7 @@
         return RangeBarBrush;
     }, "chart.brush.core");
 
-    jui.ready([ 'chart.builder'], function(builder) {
+    graph.ready([ 'chart.builder'], function(builder) {
         builder('#chart', {
             width: 400,
             height : 400,
