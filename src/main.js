@@ -69,4 +69,9 @@ jui.use([
     CoreBrush, MapCoreBrush, PolygonCoreBrush, CanvasCoreBrush, CoreWidget, MapCoreWidget, PolygonCoreWidget, CanvasCoreWidget
 ]);
 
+var _ = jui.include("util.base"),
+    manager = jui.include("manager");
+
+_.extend(jui, manager, true);
+
 export default jui;

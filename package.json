@@ -1,11 +1,11 @@
 {
   "name": "juijs-graph",
-  "version": "0.5.10-es6",
+  "version": "0.5.11-es6",
   "sideEffects": false,
   "description": "SVG-based JUI chart that can be used in the browser and Node.js. Support many types of charts. (Dashboard, Map, Topology, Full 3D)",
   "scripts": {
     "test": "jest --config ./jest.config.js",
-    "dist": "rollup -c && npm run test"
+    "dist": "npm run test && rollup -c"
   },
   "main": "dist/jui-graph.cjs.js",
   "module": "dist/jui-graph.esm.js",

@@ -1,4 +1,4 @@
-import jui from '../../dist/jui-graph.esm.js'
+import jui from '../../src/base/base.js'
 
 describe('/base/base.js', () => {
     const TestUtil = jui.include('util.test');

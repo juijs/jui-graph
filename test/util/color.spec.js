@@ -1,4 +1,7 @@
-import jui from '../../dist/jui-graph.esm.js'
+import jui from '../../src/base/base.js'
+import color from '../../src/util/color.js'
+
+jui.use(color);
 
 describe('/util/color.js', () => {
     const ColorUtil = jui.include('util.color');

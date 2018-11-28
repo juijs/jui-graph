@@ -576,6 +576,82 @@ var utility = global["util.base"] = {
             ( text + "" ).replace( rtrim, "" );
     },
 
+    param: function(data) {
+        var r20 = /%20/g,
+            s = [],
+            add = function(key, value) {
+                // If value is a function, invoke it and return its value
+                value = utility.typeCheck("function", value) ? value() : (value == null ? "" : value);
+                s[s.length] = encodeURIComponent(key) + "=" + encodeURIComponent(value);
+            };
+
+        for(var key in data) {
+            add(key, data[key]);
+        }
+
+        return s.join("&").replace(r20, "+");
+    },
+
+    ajax: function(data) {
+        var xhr = null, paramStr = "", callback = null;
+
+        var opts = utility.extend({
+            url: null,
+            type: "GET",
+            data: null,
+            async: true,
+            success: null,
+            fail: null
+        }, data);
+
+        if(!this.typeCheck("string", opts.url) || !this.typeCheck("function", opts.success))
+            return;
+
+        if(this.typeCheck("object", opts.data))
+            paramStr = this.param(opts.data);
+
+        if(!this.typeCheck("undefined", XMLHttpRequest)) {
+            xhr = new XMLHttpRequest();
+        } else {
+            var versions = [
+                "MSXML2.XmlHttp.5.0",
+                "MSXML2.XmlHttp.4.0",
+                "MSXML2.XmlHttp.3.0",
+                "MSXML2.XmlHttp.2.0",
+                "Microsoft.XmlHttp"
+            ];
+
+            for(var i = 0, len = versions.length; i < len; i++) {
+                try {
+                    xhr = new ActiveXObject(versions[i]);
+                    break;
+                }
+                catch(e) {}
+            }
+        }
+
+        if(xhr != null) {
+            xhr.open(opts.type, opts.url, opts.async);
+            xhr.send(paramStr);
+
+            callback = function() {
+                if (xhr.readyState === 4 && xhr.status == 200) {
+                    opts.success(xhr);
+                } else {
+                    if (utility.typeCheck("function", opts.fail)) {
+                        opts.fail(xhr);
+                    }
+                }
+            }
+
+            if (!opts.async) {
+                callback();
+            } else {
+                xhr.onreadystatechange = callback;
+            }
+        }
+    },
+
     ready: (function() {
         var readyList,
             DOMContentLoaded,
@@ -802,108 +878,7 @@ var utility = global["util.base"] = {
         }
 
         return ready;
-    })(),
-
-    param: function(data) {
-        var r20 = /%20/g,
-            s = [],
-            add = function(key, value) {
-                // If value is a function, invoke it and return its value
-                value = utility.typeCheck("function", value) ? value() : (value == null ? "" : value);
-                s[s.length] = encodeURIComponent(key) + "=" + encodeURIComponent(value);
-            };
-
-        for(var key in data) {
-            add(key, data[key]);
-        }
-
-        return s.join("&").replace(r20, "+");
-    },
-
-    ajax: function(data) {
-        var xhr = null, paramStr = "", callback = null;
-
-        var opts = utility.extend({
-            url: null,
-            type: "GET",
-            data: null,
-            async: true,
-            success: null,
-            fail: null
-        }, data);
-
-        if(!this.typeCheck("string", opts.url) || !this.typeCheck("function", opts.success))
-            return;
-
-        if(this.typeCheck("object", opts.data))
-            paramStr = this.param(opts.data);
-
-        if(!this.typeCheck("undefined", XMLHttpRequest)) {
-            xhr = new XMLHttpRequest();
-        } else {
-            var versions = [
-                "MSXML2.XmlHttp.5.0",
-                "MSXML2.XmlHttp.4.0",
-                "MSXML2.XmlHttp.3.0",
-                "MSXML2.XmlHttp.2.0",
-                "Microsoft.XmlHttp"
-            ];
-
-            for(var i = 0, len = versions.length; i < len; i++) {
-                try {
-                    xhr = new ActiveXObject(versions[i]);
-                    break;
-                }
-                catch(e) {}
-            }
-        }
-
-        if(xhr != null) {
-            xhr.open(opts.type, opts.url, opts.async);
-            xhr.send(paramStr);
-
-            callback = function() {
-                if (xhr.readyState === 4 && xhr.status == 200) {
-                    opts.success(xhr);
-                } else {
-                    if (utility.typeCheck("function", opts.fail)) {
-                        opts.fail(xhr);
-                    }
-                }
-            }
-
-            if (!opts.async) {
-                callback();
-            } else {
-                xhr.onreadystatechange = callback;
-            }
-        }
-    },
-
-    scrollWidth: function() {
-        var inner = document.createElement("p");
-        inner.style.width = "100%";
-        inner.style.height = "200px";
-
-        var outer = document.createElement("div");
-        outer.style.position = "absolute";
-        outer.style.top = "0px";
-        outer.style.left = "0px";
-        outer.style.visibility = "hidden";
-        outer.style.width = "200px";
-        outer.style.height = "150px";
-        outer.style.overflow = "hidden";
-        outer.appendChild(inner);
-
-        document.body.appendChild(outer);
-        var w1 = inner.offsetWidth;
-        outer.style.overflow = "scroll";
-        var w2 = inner.offsetWidth;
-        if (w1 == w2) w2 = outer.clientWidth;
-        document.body.removeChild(outer);
-
-        return (w1 - w2);
-    }
+    })()
 }
 
 
@@ -986,15 +961,6 @@ var jui = {
         utility.ready(function() {
             if (depends) {
                 args = getDepends(depends);
-            } else {
-                // @Deprecated 기존의 레거시를 위한 코드
-                var ui = getModules("ui"),
-                    uix = {};
-
-                utility.extend(uix, ui);
-                utility.extend(uix, getModules("grid"));
-
-                args = [ ui, uix, utility ];
             }
 
             callback.apply(null, args);
@@ -1094,8 +1060,6 @@ var jui = {
         mainObj.init.prototype.root = elem;
         /** @property {Object} options */
         mainObj.init.prototype.options = opts;
-        /** @property {Object} tpl Templates */
-        mainObj.init.prototype.tpl = {};
         /** @property {Array} event Custom events */
         mainObj.init.prototype.event = new Array(); // Custom Event
         /** @property {Integer} timestamp UI Instance creation time*/
@@ -1108,15 +1072,6 @@ var jui = {
         // UI 객체 프로퍼티를 외부에서 정의할 수 있음 (jQuery 의존성 제거를 위한 코드)
         if(utility.typeCheck("function", afterHook)) {
             afterHook(mainObj, opts);
-        }
-
-        // Script-based Template Settings
-        for (var name in opts.tpl) {
-            var tplHtml = opts.tpl[name];
-
-            if (utility.typeCheck("string", tplHtml) && tplHtml != "") {
-                mainObj.init.prototype.tpl[name] = utility.template(tplHtml);
-            }
         }
 
         var uiObj = new mainObj.init();
