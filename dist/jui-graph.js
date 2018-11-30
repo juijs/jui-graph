@@ -4276,9 +4276,7 @@ var graph = (function () {
                       tr = r * rate,
                       l = Math.cos(radian) * depth / 2,
                       d = Math.sin(radian) * depth / 2,
-
-                  // key = _.createId("cylinder3d");
-                  key = "cylinder3d";
+                      key = _.createId("cylinder3d");
 
                   var g = self.group({}, function () {
                       self.ellipse({
@@ -6569,7 +6567,7 @@ var graph = (function () {
                   }
 
                   // _clipId = _.createId("clip-id-");
-                  _clipId = "axis-clip-id";
+                  _clipId = "axis-clip-id-" + jui$1.size();
 
                   _clipPath = chart.svg.clipPath({
                       id: _clipId
@@ -6590,7 +6588,7 @@ var graph = (function () {
                   }
 
                   // _clipRectId = _.createId("clip-rect-id-");
-                  _clipRectId = "axis-clip-rect-id";
+                  _clipRectId = "axis-clip-rect-id-" + jui$1.size();
 
                   _clipRect = chart.svg.clipPath({
                       id: _clipRectId
@@ -7824,7 +7822,7 @@ var graph = (function () {
                   }
 
                   // var id = _.createId("gradient");
-                  var id = "gradient";
+                  var id = "gradient-" + jui$1.size();
                   obj.attr.id = id;
 
                   var g = SVGUtil.createObject(obj);
@@ -7879,7 +7877,7 @@ var graph = (function () {
                       return "url(#" + obj + ")";
                   } else {
                       // obj.attr.id = obj.attr.id || _.createId('pattern-');
-                      obj.attr.id = obj.attr.id || "pattern";
+                      obj.attr.id = obj.attr.id || "pattern-" + jui$1.size();
 
                       if (_hash[obj.attr.id]) {
                           return "url(#" + obj.attr.id + ")";

@@ -288,7 +288,7 @@ export default {
                 }
 
                 // var id = _.createId("gradient");
-                var id = "gradient";
+                var id = "gradient-" + JUI.size();
                 obj.attr.id = id;
 
                 var g = SVGUtil.createObject(obj);
@@ -344,7 +344,7 @@ export default {
 
                 } else {
                     // obj.attr.id = obj.attr.id || _.createId('pattern-');
-                    obj.attr.id = obj.attr.id || "pattern";
+                    obj.attr.id = obj.attr.id || "pattern-" + JUI.size();
 
                     if (_hash[obj.attr.id]) {
                         return "url(#" + obj.attr.id + ")";
