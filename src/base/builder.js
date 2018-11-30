@@ -35,7 +35,7 @@ export default {
             var _padding, _area,  _theme, _hash = {};
             var _initialize = false, _options = null, _handler = { render: [], renderAll: [] }; // 리셋 대상 커스텀 이벤트 핸들러
             var _canvas = { main: null, buffer: null, sub: null }; // 캔버스 모드 전용
-            var _cache = {};
+            var _cache = {}, _index = 0; // index는 차트의 생성 순서
 
             function calculate(self) {
                 var max = self.svg.size();
@@ -288,7 +288,7 @@ export default {
                 }
 
                 // var id = _.createId("gradient");
-                var id = "gradient-" + JUI.size();
+                var id = "gradient-" + _index;
                 obj.attr.id = id;
 
                 var g = SVGUtil.createObject(obj);
@@ -344,7 +344,7 @@ export default {
 
                 } else {
                     // obj.attr.id = obj.attr.id || _.createId('pattern-');
-                    obj.attr.id = obj.attr.id || "pattern-" + JUI.size();
+                    obj.attr.id = obj.attr.id || "pattern-" + _index;
 
                     if (_hash[obj.attr.id]) {
                         return "url(#" + obj.attr.id + ")";
@@ -566,6 +566,9 @@ export default {
             }
 
             this.init = function() {
+                // TODO: 차트 인덱스 설정
+                _index = this.index = JUI.size();
+
                 // 기본 옵션 설정
                 setDefaultOptions(this);
 

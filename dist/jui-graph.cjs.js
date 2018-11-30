@@ -6566,7 +6566,7 @@ var axis = {
                 }
 
                 // _clipId = _.createId("clip-id-");
-                _clipId = "axis-clip-id-" + jui$1.size();
+                _clipId = "axis-clip-id-" + chart.index;
 
                 _clipPath = chart.svg.clipPath({
                     id: _clipId
@@ -6587,7 +6587,7 @@ var axis = {
                 }
 
                 // _clipRectId = _.createId("clip-rect-id-");
-                _clipRectId = "axis-clip-rect-id-" + jui$1.size();
+                _clipRectId = "axis-clip-rect-id-" + chart.index;
 
                 _clipRect = chart.svg.clipPath({
                     id: _clipRectId
@@ -7568,7 +7568,8 @@ var JUIBuilder = {
                 _options = null,
                 _handler = { render: [], renderAll: [] }; // 리셋 대상 커스텀 이벤트 핸들러
             var _canvas = { main: null, buffer: null, sub: null }; // 캔버스 모드 전용
-            var _cache = {};
+            var _cache = {},
+                _index = 0; // index는 차트의 생성 순서
 
             function calculate(self) {
                 var max = self.svg.size();
@@ -7821,7 +7822,7 @@ var JUIBuilder = {
                 }
 
                 // var id = _.createId("gradient");
-                var id = "gradient-" + jui$1.size();
+                var id = "gradient-" + _index;
                 obj.attr.id = id;
 
                 var g = SVGUtil.createObject(obj);
@@ -7876,7 +7877,7 @@ var JUIBuilder = {
                     return "url(#" + obj + ")";
                 } else {
                     // obj.attr.id = obj.attr.id || _.createId('pattern-');
-                    obj.attr.id = obj.attr.id || "pattern-" + jui$1.size();
+                    obj.attr.id = obj.attr.id || "pattern-" + _index;
 
                     if (_hash[obj.attr.id]) {
                         return "url(#" + obj.attr.id + ")";
@@ -8096,6 +8097,9 @@ var JUIBuilder = {
             }
 
             this.init = function () {
+                // TODO: 차트 인덱스 설정
+                _index = this.index = jui$1.size();
+
                 // 기본 옵션 설정
                 setDefaultOptions(this);
 

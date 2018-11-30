@@ -175,7 +175,7 @@ export default {
                 }
 
                 // _clipId = _.createId("clip-id-");
-                _clipId = "axis-clip-id-" + jui.size();
+                _clipId = "axis-clip-id-" + chart.index;
 
                 _clipPath = chart.svg.clipPath({
                     id: _clipId
@@ -196,7 +196,7 @@ export default {
                 }
 
                 // _clipRectId = _.createId("clip-rect-id-");
-                _clipRectId = "axis-clip-rect-id-" + jui.size();
+                _clipRectId = "axis-clip-rect-id-" + chart.index;
 
                 _clipRect = chart.svg.clipPath({
                     id: _clipRectId
