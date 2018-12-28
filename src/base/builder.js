@@ -15,6 +15,7 @@ export default {
         const SVGUtil = JUI.include("util.svg");
         const ColorUtil = JUI.include("util.color");
         const Axis = JUI.include("chart.axis");
+        const HidpiUtil = JUI.include("util.canvas.hidpi");
 
         _.resize(function() {
             var call_list = JUI.get("chart.builder");
@@ -587,6 +588,11 @@ export default {
 
                 // canvas 기본 객체 생성
                 if(_options.canvas) {
+                    if(_options.hidpi) {
+                        HidpiUtil();
+                        console.warn("JUI_WARNING_MSG: Changed the prototype of 'HTMLCanvasElement' and 'CanvasRenderingContext2D' objects for canvas HiDPI support. If you do not want to use it, change the 'hidpi' option to false")
+                    }
+
                     initCanvasElement(this);
                     setCommonEvents(this, $.find(this.root, "CANVAS")[1]);
                 } else {
@@ -1100,7 +1106,9 @@ export default {
                 },
 
                 /** @cfg {Boolean} [canvas=false] */
-                canvas: false
+                canvas: false,
+                /** @cfg {Boolean} [hidpi=true] */
+                hidpi: true
             }
         }
 

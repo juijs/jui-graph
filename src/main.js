@@ -9,6 +9,7 @@ import UICore from './base/core.js'
 import TimeUtil from './util/time.js'
 import TransformUtil from './util/transform.js'
 import CanvasUtil from './util/canvas/base.js'
+import CanvasHidpiUtil from './util/canvas/hidpi.js'
 import SvgElementUtil from './util/svg/element.js'
 import SvgTransformElementUtil from './util/svg/element.transform.js'
 import SvgPathElementUtil from './util/svg/element.path.js'
@@ -62,7 +63,7 @@ import CanvasCoreWidget from './widget/canvas/core.js'
 
 jui.use([
     DomUtil, MathUtil, ColorUtil, UICollection, UIManager, UICore,
-    TimeUtil, TransformUtil, CanvasUtil, SvgElementUtil, SvgTransformElementUtil, SvgPathElementUtil, SvgPathRectElementUtil, SvgPathSymbolElementUtil,
+    TimeUtil, TransformUtil, CanvasUtil, CanvasHidpiUtil, SvgElementUtil, SvgTransformElementUtil, SvgPathElementUtil, SvgPathRectElementUtil, SvgPathSymbolElementUtil,
     SvgPolyElementUtil, SvgBaseUtil, SvgBase3dUtil, SvgUtil, LinearScaleUtil, CircleScaleUtil, LogScaleUtil, OrdinalScaleUtil, TimeScaleUtil, ScaleUtil,
     Vector, Draw, Axis, Map, Builder, Plane, Animation, CorePolygon, GridPolygon, LinePolygon, PointPolygon, CubePolygon,
     Draw2dGrid, Draw3dGrid, CoreGrid, BlockGrid, DateGrid, DateBlockGrid, FullBlockGrid, RadarGrid, RangeGrid, LogGrid, RuleGrid, PanelGrid, TableGrid, OverlapGrid, Grid3dGrid,
