@@ -1,12 +1,12 @@
 const pixelRatio = (function() {
     let canvas = document.createElement('canvas'),
         context = canvas.getContext('2d'),
-        backingStore = context.backingStorePixelRatio ||
+        backingStore = (context && (context.backingStorePixelRatio ||
             context.webkitBackingStorePixelRatio ||
             context.mozBackingStorePixelRatio ||
             context.msBackingStorePixelRatio ||
             context.oBackingStorePixelRatio ||
-            context.backingStorePixelRatio || 1;
+            context.backingStorePixelRatio)) || 1;
 
     return (window.devicePixelRatio || 1) / backingStore;
 })();

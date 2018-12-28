@@ -3247,7 +3247,7 @@ var graph = (function () {
   var pixelRatio = function () {
       var canvas = document.createElement('canvas'),
           context = canvas.getContext('2d'),
-          backingStore = context.backingStorePixelRatio || context.webkitBackingStorePixelRatio || context.mozBackingStorePixelRatio || context.msBackingStorePixelRatio || context.oBackingStorePixelRatio || context.backingStorePixelRatio || 1;
+          backingStore = context && (context.backingStorePixelRatio || context.webkitBackingStorePixelRatio || context.mozBackingStorePixelRatio || context.msBackingStorePixelRatio || context.oBackingStorePixelRatio || context.backingStorePixelRatio) || 1;
 
       return (window.devicePixelRatio || 1) / backingStore;
   }();
