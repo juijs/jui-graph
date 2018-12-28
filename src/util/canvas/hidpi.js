@@ -152,6 +152,9 @@ export default {
                 polyfillForCanvasRenderingContext2D(CanvasRenderingContext2D.prototype);
                 polyfillForHTMLCanvasElement(HTMLCanvasElement.prototype);
             },
+            apply: function(context) {
+                polyfillForCanvasRenderingContext2D(context);
+            },
             pixelRatio: pixelRatio
         }
     }

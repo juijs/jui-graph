@@ -3380,6 +3380,9 @@ var graph = (function () {
                   polyfillForCanvasRenderingContext2D(CanvasRenderingContext2D.prototype);
                   polyfillForHTMLCanvasElement(HTMLCanvasElement.prototype);
               },
+              apply: function apply(context) {
+                  polyfillForCanvasRenderingContext2D(context);
+              },
               pixelRatio: pixelRatio
           };
       }
@@ -8191,19 +8194,22 @@ var graph = (function () {
 
               function initCanvasElement(self) {
                   var size = getCanvasRealSize(self);
+                  var ratio = HidpiUtil.pixelRatio;
 
-                  for (var key in _canvas) {
+                  var _loop = function _loop(key) {
                       var elem = document.createElement("CANVAS");
-
-                      elem.setAttribute("width", size.width);
-                      elem.setAttribute("height", size.height);
+                      elem.width = size.width * ratio;
+                      elem.height = size.height * ratio;
                       elem.style.position = "absolute";
                       elem.style.left = "0px";
                       elem.style.top = "0px";
+                      elem.style.width = size.width + "px";
+                      elem.style.height = size.height + "px";
 
                       // Context 설정하기
                       if (elem.getContext) {
                           _canvas[key] = elem.getContext("2d");
+                          HidpiUtil.apply(_canvas[key]);
 
                           if (key != "buffer") {
                               self.root.appendChild(elem);
@@ -8223,15 +8229,20 @@ var graph = (function () {
                               return this;
                           };
                       }
+                  };
+
+                  for (var key in _canvas) {
+                      _loop(key);
                   }
               }
 
               function resetCanvasElement(self, type) {
-                  var size = getCanvasRealSize(self),
+                  var ratio = HidpiUtil.pixelRatio,
+                      size = getCanvasRealSize(self),
                       context = _canvas[type];
 
                   context.restore();
-                  context.clearRect(0, 0, size.width, size.height);
+                  context.clearRect(0, 0, size.width * ratio, size.height * ratio);
                   context.save();
 
                   if (type == "main") {
@@ -8261,11 +8272,6 @@ var graph = (function () {
 
                   // canvas 기본 객체 생성
                   if (_options.canvas) {
-                      if (_options.hidpi) {
-                          HidpiUtil.polyfills();
-                          console.warn("JUI_WARNING_MSG: Changed the prototype of 'HTMLCanvasElement' and 'CanvasRenderingContext2D' objects for canvas HiDPI support. If you do not want to use it, change the 'hidpi' option to false");
-                      }
-
                       initCanvasElement(this);
                       setCommonEvents(this, $.find(this.root, "CANVAS")[1]);
                   } else {
@@ -8675,8 +8681,10 @@ var graph = (function () {
                           size = getCanvasRealSize(this);
 
                       for (var i = 0; i < list.length; i++) {
-                          list[i].setAttribute("width", size.width * ratio);
-                          list[i].setAttribute("height", size.height * ratio);
+                          list[i].width = size.width * ratio;
+                          list[i].height = size.height * ratio;
+                          list[i].style.width = size.width + "px";
+                          list[i].style.height = size.height + "px";
                       }
                   }
 
@@ -8776,9 +8784,7 @@ var graph = (function () {
                   },
 
                   /** @cfg {Boolean} [canvas=false] */
-                  canvas: false,
-                  /** @cfg {Boolean} [hidpi=true] */
-                  hidpi: true
+                  canvas: false
               };
           };
 

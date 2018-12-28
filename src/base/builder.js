@@ -500,7 +500,7 @@ export default {
             }
 
             function getCanvasRealSize(self) {
-                var size = self.svg.size();
+                const size = self.svg.size();
 
                 return {
                     width : (_.typeCheck("integer", _options.width)) ? _options.width : size.width,
@@ -517,20 +517,23 @@ export default {
             }
 
             function initCanvasElement(self) {
-                var size = getCanvasRealSize(self);
+                const size = getCanvasRealSize(self);
+                const ratio = HidpiUtil.pixelRatio;
 
-                for(var key in _canvas) {
-                    var elem = document.createElement("CANVAS");
-
-                    elem.setAttribute("width", size.width);
-                    elem.setAttribute("height", size.height);
+                for(let key in _canvas) {
+                    let elem = document.createElement("CANVAS");
+                    elem.width = size.width * ratio;
+                    elem.height = size.height * ratio;
                     elem.style.position = "absolute";
                     elem.style.left = "0px";
                     elem.style.top = "0px";
+                    elem.style.width = `${size.width}px`;
+                    elem.style.height = `${size.height}px`;
 
                     // Context 설정하기
                     if (elem.getContext) {
                         _canvas[key] = elem.getContext("2d");
+                        HidpiUtil.apply(_canvas[key]);
 
                         if(key != "buffer") {
                             self.root.appendChild(elem);
@@ -540,7 +543,7 @@ export default {
                     // Widget 캔버스 이벤트 함수 정의
                     if (key == "sub") {
                         elem.on = function(type, handler) {
-                            var callback = function(e) {
+                            let callback = function(e) {
                                 if(typeof(handler) == "function") {
                                     handler.call(this, e);
                                 }
@@ -554,11 +557,12 @@ export default {
             }
 
             function resetCanvasElement(self, type) {
-                let size = getCanvasRealSize(self),
+                const ratio = HidpiUtil.pixelRatio,
+                    size = getCanvasRealSize(self),
                     context = _canvas[type];
 
                 context.restore();
-                context.clearRect(0, 0, size.width, size.height);
+                context.clearRect(0, 0, size.width * ratio, size.height * ratio);
                 context.save();
 
                 if(type == "main") {
@@ -588,11 +592,6 @@ export default {
 
                 // canvas 기본 객체 생성
                 if(_options.canvas) {
-                    if(_options.hidpi) {
-                        HidpiUtil.polyfills();
-                        console.warn("JUI_WARNING_MSG: Changed the prototype of 'HTMLCanvasElement' and 'CanvasRenderingContext2D' objects for canvas HiDPI support. If you do not want to use it, change the 'hidpi' option to false")
-                    }
-
                     initCanvasElement(this);
                     setCommonEvents(this, $.find(this.root, "CANVAS")[1]);
                 } else {
@@ -1000,13 +999,15 @@ export default {
 
                 // Resize canvas
                 if(_options.canvas) {
-                    let ratio = HidpiUtil.pixelRatio,
+                    const ratio = HidpiUtil.pixelRatio,
                         list = $.find(this.root, "CANVAS"),
                         size = getCanvasRealSize(this);
 
                     for(let i = 0; i < list.length; i++) {
-                        list[i].setAttribute("width", size.width * ratio);
-                        list[i].setAttribute("height", size.height * ratio);
+                        list[i].width = size.width * ratio;
+                        list[i].height = size.height * ratio;
+                        list[i].style.width = `${size.width}px`;
+                        list[i].style.height = `${size.height}px`;
                     }
                 }
 
@@ -1107,9 +1108,7 @@ export default {
                 },
 
                 /** @cfg {Boolean} [canvas=false] */
-                canvas: false,
-                /** @cfg {Boolean} [hidpi=true] */
-                hidpi: true
+                canvas: false
             }
         }
 
