@@ -589,7 +589,7 @@ export default {
                 // canvas 기본 객체 생성
                 if(_options.canvas) {
                     if(_options.hidpi) {
-                        HidpiUtil();
+                        HidpiUtil.polyfills();
                         console.warn("JUI_WARNING_MSG: Changed the prototype of 'HTMLCanvasElement' and 'CanvasRenderingContext2D' objects for canvas HiDPI support. If you do not want to use it, change the 'hidpi' option to false")
                     }
 
@@ -1000,12 +1000,13 @@ export default {
 
                 // Resize canvas
                 if(_options.canvas) {
-                    var list = $.find(this.root, "CANVAS"),
+                    let ratio = HidpiUtil.pixelRatio,
+                        list = $.find(this.root, "CANVAS"),
                         size = getCanvasRealSize(this);
 
-                    for(var i = 0; i < list.length; i++) {
-                        list[i].setAttribute("width", size.width);
-                        list[i].setAttribute("height", size.height);
+                    for(let i = 0; i < list.length; i++) {
+                        list[i].setAttribute("width", size.width * ratio);
+                        list[i].setAttribute("height", size.height * ratio);
                     }
                 }
 

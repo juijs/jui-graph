@@ -1,18 +1,18 @@
+const pixelRatio = (function() {
+    let canvas = document.createElement('canvas'),
+        context = canvas.getContext('2d'),
+        backingStore = context.backingStorePixelRatio ||
+            context.webkitBackingStorePixelRatio ||
+            context.mozBackingStorePixelRatio ||
+            context.msBackingStorePixelRatio ||
+            context.oBackingStorePixelRatio ||
+            context.backingStorePixelRatio || 1;
+
+    return (window.devicePixelRatio || 1) / backingStore;
+})();
+
 function polyfillForCanvasRenderingContext2D(prototype) {
-    let pixelRatio = (function() {
-            let canvas = document.createElement('canvas'),
-                context = canvas.getContext('2d'),
-                backingStore = context.backingStorePixelRatio ||
-                    context.webkitBackingStorePixelRatio ||
-                    context.mozBackingStorePixelRatio ||
-                    context.msBackingStorePixelRatio ||
-                    context.oBackingStorePixelRatio ||
-                    context.backingStorePixelRatio || 1;
-
-            return (window.devicePixelRatio || 1) / backingStore;
-        })(),
-
-        forEach = function(obj, func) {
+    let forEach = function(obj, func) {
             for (let p in obj) {
                 if (obj.hasOwnProperty(p)) {
                     func(obj[p], p);
@@ -127,25 +127,14 @@ function polyfillForCanvasRenderingContext2D(prototype) {
 function polyfillForHTMLCanvasElement(prototype) {
     prototype.getContext = (function(_super) {
         return function(type) {
-            let backingStore, ratio,
-                context = _super.call(this, type);
+            let context = _super.call(this, type);
 
             if (type === '2d') {
-
-                backingStore = context.backingStorePixelRatio ||
-                    context.webkitBackingStorePixelRatio ||
-                    context.mozBackingStorePixelRatio ||
-                    context.msBackingStorePixelRatio ||
-                    context.oBackingStorePixelRatio ||
-                    context.backingStorePixelRatio || 1;
-
-                ratio = (window.devicePixelRatio || 1) / backingStore;
-
-                if (ratio > 1) {
+                if (pixelRatio > 1) {
                     this.style.height = this.height + 'px';
                     this.style.width = this.width + 'px';
-                    this.width *= ratio;
-                    this.height *= ratio;
+                    this.width *= pixelRatio;
+                    this.height *= pixelRatio;
                 }
             }
 
@@ -158,12 +147,12 @@ export default {
     name: "util.canvas.hidpi",
     extend: null,
     component: function () {
-        return function(proto1, proto2) {
-            polyfillForCanvasRenderingContext2D(CanvasRenderingContext2D.prototype);
-            polyfillForHTMLCanvasElement(HTMLCanvasElement.prototype);
-
-            // polyfillForHTMLCanvasElement(proto1);
-            // polyfillForCanvasRenderingContext2D(proto2);
+        return {
+            polyfills: function() {
+                polyfillForCanvasRenderingContext2D(CanvasRenderingContext2D.prototype);
+                polyfillForHTMLCanvasElement(HTMLCanvasElement.prototype);
+            },
+            pixelRatio: pixelRatio
         }
     }
 }

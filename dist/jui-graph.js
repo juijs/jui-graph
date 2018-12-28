@@ -3244,15 +3244,16 @@ var graph = (function () {
       }
   };
 
-  function polyfillForCanvasRenderingContext2D(prototype) {
-      var pixelRatio = function () {
-          var canvas = document.createElement('canvas'),
-              context = canvas.getContext('2d'),
-              backingStore = context.backingStorePixelRatio || context.webkitBackingStorePixelRatio || context.mozBackingStorePixelRatio || context.msBackingStorePixelRatio || context.oBackingStorePixelRatio || context.backingStorePixelRatio || 1;
+  var pixelRatio = function () {
+      var canvas = document.createElement('canvas'),
+          context = canvas.getContext('2d'),
+          backingStore = context.backingStorePixelRatio || context.webkitBackingStorePixelRatio || context.mozBackingStorePixelRatio || context.msBackingStorePixelRatio || context.oBackingStorePixelRatio || context.backingStorePixelRatio || 1;
 
-          return (window.devicePixelRatio || 1) / backingStore;
-      }(),
-          forEach = function forEach(obj, func) {
+      return (window.devicePixelRatio || 1) / backingStore;
+  }();
+
+  function polyfillForCanvasRenderingContext2D(prototype) {
+      var forEach = function forEach(obj, func) {
           for (var p in obj) {
               if (obj.hasOwnProperty(p)) {
                   func(obj[p], p);
@@ -3354,21 +3355,14 @@ var graph = (function () {
   function polyfillForHTMLCanvasElement(prototype) {
       prototype.getContext = function (_super) {
           return function (type) {
-              var backingStore = void 0,
-                  ratio = void 0,
-                  context = _super.call(this, type);
+              var context = _super.call(this, type);
 
               if (type === '2d') {
-
-                  backingStore = context.backingStorePixelRatio || context.webkitBackingStorePixelRatio || context.mozBackingStorePixelRatio || context.msBackingStorePixelRatio || context.oBackingStorePixelRatio || context.backingStorePixelRatio || 1;
-
-                  ratio = (window.devicePixelRatio || 1) / backingStore;
-
-                  if (ratio > 1) {
+                  if (pixelRatio > 1) {
                       this.style.height = this.height + 'px';
                       this.style.width = this.width + 'px';
-                      this.width *= ratio;
-                      this.height *= ratio;
+                      this.width *= pixelRatio;
+                      this.height *= pixelRatio;
                   }
               }
 
@@ -3381,12 +3375,12 @@ var graph = (function () {
       name: "util.canvas.hidpi",
       extend: null,
       component: function component() {
-          return function (proto1, proto2) {
-              polyfillForCanvasRenderingContext2D(CanvasRenderingContext2D.prototype);
-              polyfillForHTMLCanvasElement(HTMLCanvasElement.prototype);
-
-              // polyfillForHTMLCanvasElement(proto1);
-              // polyfillForCanvasRenderingContext2D(proto2);
+          return {
+              polyfills: function polyfills() {
+                  polyfillForCanvasRenderingContext2D(CanvasRenderingContext2D.prototype);
+                  polyfillForHTMLCanvasElement(HTMLCanvasElement.prototype);
+              },
+              pixelRatio: pixelRatio
           };
       }
   };
@@ -8268,7 +8262,7 @@ var graph = (function () {
                   // canvas 기본 객체 생성
                   if (_options.canvas) {
                       if (_options.hidpi) {
-                          HidpiUtil();
+                          HidpiUtil.polyfills();
                           console.warn("JUI_WARNING_MSG: Changed the prototype of 'HTMLCanvasElement' and 'CanvasRenderingContext2D' objects for canvas HiDPI support. If you do not want to use it, change the 'hidpi' option to false");
                       }
 
@@ -8676,12 +8670,13 @@ var graph = (function () {
 
                   // Resize canvas
                   if (_options.canvas) {
-                      var list = $.find(this.root, "CANVAS"),
+                      var ratio = HidpiUtil.pixelRatio,
+                          list = $.find(this.root, "CANVAS"),
                           size = getCanvasRealSize(this);
 
                       for (var i = 0; i < list.length; i++) {
-                          list[i].setAttribute("width", size.width);
-                          list[i].setAttribute("height", size.height);
+                          list[i].setAttribute("width", size.width * ratio);
+                          list[i].setAttribute("height", size.height * ratio);
                       }
                   }
 
