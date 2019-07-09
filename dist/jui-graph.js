@@ -6711,7 +6711,7 @@ var graph = (function () {
                   }
 
                   // _clipId = _.createId("clip-id-");
-                  _clipId = "axis-clip-id-" + chart.index;
+                  _clipId = "axis-clip-id-" + chart.index + "." + cloneAxis.index;
 
                   _clipPath = chart.svg.clipPath({
                       id: _clipId
