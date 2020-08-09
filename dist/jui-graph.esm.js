@@ -5910,7 +5910,13 @@ var scale = {
                     } else if (type == _time.milliseconds) {
                         realStart = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds());
                     }
-                    realStart = _time.add(realStart, type, interval);
+
+                    // Fix realtime tick with seconds
+                    if (type == _time.seconds) {
+                        realStart = _time.add(realStart, type, interval - realStart.getSeconds() % interval);
+                    } else {
+                        realStart = _time.add(realStart, type, interval);
+                    }
 
                     while (+realStart < +end) {
                         times.push(new Date(+realStart));
